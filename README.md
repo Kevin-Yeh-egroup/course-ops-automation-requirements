@@ -41,10 +41,15 @@
 - noindex/nofollow/noarchive：保留搜尋索引限制。
 - no privacy guarantee：noindex 不是權限控管，內容仍應避免放入個資或敏感原文。
 
+目前 Vercel Production URL：
+
+<https://course-ops-automation-requirements.vercel.app>
+
+GitHub public repo 尚未建立；本機已完成 git repo 與 commit，可在建立遠端 repo 後直接 push。
+
 ## 治理原則
 
 - 第一階段只讀取、整理、產生草稿，不自動發送。
 - 外部訊息、Calendar 寫入、Google Sheet 寫回、InfoCenter 寫入，都需要人工確認。
 - 涉及個資、薪資、個案、發票、交通住宿、敏感身心議題時，只保留必要摘要與來源指標。
 - 每個自動化都要有 no-op 規則：資料不足、日期未確認、派課未完成時，只產生補問或待確認清單。
-

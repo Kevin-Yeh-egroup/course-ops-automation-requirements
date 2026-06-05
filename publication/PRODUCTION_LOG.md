@@ -17,5 +17,41 @@
 
 ## External Publication
 
-Pending.
+## Git
 
+- Local git repo: created.
+- Branch: `main`
+- Initial commit: `a5d652a` (`Create consolidated course ops automation requirements`)
+- GitHub target repo: `Kevin-Yeh-egroup/course-ops-automation-requirements`
+- GitHub status: pending, because this session has no repo-creation tool and `gh` is not installed.
+
+## Vercel Production Deployment
+
+- Date: 2026-06-05
+- Team: `egroup-task3s-projects`
+- Project: `course-ops-automation-requirements`
+- Deployment ID: `dpl_7fjanRCwpAnsvjE4Ge3Bv1Exc9wG`
+- Deployment URL: `https://course-ops-automation-requirements-q7v5tb031.vercel.app`
+- Stable production alias: `https://course-ops-automation-requirements.vercel.app`
+- Target: `production`
+- Ready state: `READY`
+
+## Verification
+
+- Stable alias returned `HTTP/1.1 200 OK`.
+- Header confirmed: `X-Robots-Tag: noindex, nofollow, noarchive`.
+- HTML confirmed the title `課務與個案行政自動化需求總覽`.
+- HTML confirmed Peixin, Siyi, Yujun, and shared modules sections.
+- HTML meta robots confirmed: `<meta name="robots" content="noindex,nofollow,noarchive">`.
+- `robots.txt` confirmed:
+
+```text
+User-agent: *
+Disallow: /
+```
+
+## Remaining Work
+
+1. Create GitHub public repo `Kevin-Yeh-egroup/course-ops-automation-requirements`.
+2. Push local `main`.
+3. Optionally connect Vercel project to GitHub `main` for GitHub-backed production updates.

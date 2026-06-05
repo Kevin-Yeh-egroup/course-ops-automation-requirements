@@ -8,10 +8,11 @@
 - [x] Static public homepage prepared.
 - [x] `robots.txt` added.
 - [x] `vercel.json` noindex header added.
+- [x] Local git repo initialized and committed.
 - [ ] Public GitHub repo created.
 - [ ] Local repo pushed to GitHub.
-- [ ] Vercel Production deployment created.
-- [ ] Stable public URL verified.
+- [x] Vercel Production deployment created.
+- [x] Stable public URL verified.
 
 ## Intended Profile
 
@@ -33,9 +34,12 @@ Ask Kevin before:
 
 Before treating the public URL as done:
 
-- `curl -I -L <url>` returns `200 OK`.
-- Response header contains `X-Robots-Tag: noindex, nofollow, noarchive`.
-- HTML contains `<meta name="robots" content="noindex,nofollow,noarchive">`.
-- `/robots.txt` returns `User-agent: *` and `Disallow: /`.
-- Page includes Peixin, Siyi, and Yujun sections.
+- [x] `curl -I -L https://course-ops-automation-requirements.vercel.app/` returns `200 OK`.
+- [x] Response header contains `X-Robots-Tag: noindex, nofollow, noarchive`.
+- [x] HTML contains `<meta name="robots" content="noindex,nofollow,noarchive">`.
+- [x] `/robots.txt` returns `User-agent: *` and `Disallow: /`.
+- [x] Page includes Peixin, Siyi, and Yujun sections.
 
+## Current Limitation
+
+The GitHub connector available in this session can write to existing repositories but does not expose a create-repository action, and `gh` is not installed locally. Create the public GitHub repo `Kevin-Yeh-egroup/course-ops-automation-requirements` before pushing this local repo.
