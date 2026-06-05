@@ -72,7 +72,9 @@
 
 <https://course-ops-automation-requirements.vercel.app>
 
-GitHub public repo 尚未建立；本機已完成 git repo 與 commit，可在建立遠端 repo 後直接 push。
+GitHub public repo 已建立並推送 `main`：
+
+<https://github.com/Kevin-Yeh-egroup/course-ops-automation-requirements>
 
 ## 治理原則
 

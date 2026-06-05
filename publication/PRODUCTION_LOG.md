@@ -28,7 +28,12 @@
 - Full roster commit: `7158c6e` (`Add full colleague collection roster`)
 - Sujing settlement summary commit: `e8aaf70` (`Add Sujing settlement workflow summary`)
 - GitHub target repo: `Kevin-Yeh-egroup/course-ops-automation-requirements`
-- GitHub status: pending, because this session has no repo-creation tool and `gh` is not installed.
+- GitHub status: created and pushed.
+- GitHub repo URL: `https://github.com/Kevin-Yeh-egroup/course-ops-automation-requirements`
+- GitHub repo ID: `1260071768`
+- GitHub visibility: `public`
+- GitHub default branch: `main`
+- Remote `origin/main`: `4aef101119d0e05eb61d18f27349dfec414feca2`
 
 ## Vercel Production Deployment
 
@@ -80,6 +85,5 @@ Verification:
 
 ## Remaining Work
 
-1. Create GitHub public repo `Kevin-Yeh-egroup/course-ops-automation-requirements`.
-2. Push local `main`.
-3. Optionally connect Vercel project to GitHub `main` for GitHub-backed production updates.
+1. Optionally connect Vercel project to GitHub `main` for GitHub-backed production updates.
+2. Keep public review content de-identified and noindex until explicitly approved otherwise.
