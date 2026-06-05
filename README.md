@@ -1,26 +1,32 @@
 # 課務與個案行政自動化需求總覽
 
-這個 repo 用來統整佩欣、思宜、瑜君三位夥伴的 Codex 自動化需求，保留個別工作流差異，同時抽出可以共用的提醒、缺漏檢查、狀態對帳與訊息草稿模組。
+這個 repo 用來統整資料蒐集同仁的 Codex 自動化需求，保留個別工作流差異，同時抽出可以共用的提醒、缺漏檢查、狀態對帳與訊息草稿模組。
 
 首頁採三層架構：
 
 1. 總覽頁：說明這份統整頁要怎麼讀。
-2. 同仁整理結果：分別放入佩欣、思宜、瑜君的蒐集與需求整理。
-3. 統整問題摘要：把所有需求合併後，整理共同問題、優先處理順序與治理邊界。
+2. 同仁整理結果：分別放入已完成初版整理的同仁需求，待整理者先建立位置。
+3. 統整問題摘要：把已整理需求合併後，整理共同問題、優先處理順序與治理邊界，後續隨名單補齊再更新。
 
 ## 一句話結論
 
 三人的需求不應該拆成三個完全獨立的小工具。更好的方向是建立一套「行政案件工作台」：每位夥伴保留自己的工作頁面，底層共用資料檢查、提醒規則、狀態對帳與人工核准機制。
 
-## 目前匯入內容
+## 資料蒐集名單
 
-| 夥伴 | 本 repo 文件 | 原公開頁 |
-| --- | --- | --- |
-| 佩欣 | `people/peixin/needs-analysis.md`、`people/peixin/workflow-map.md` | <https://peixin-needs-automation-report.vercel.app> |
-| 思宜 | `people/siyi/needs-analysis.md` | <https://siyi-infocenter-codex-workflow-repo.vercel.app> |
-| 瑜君 | `people/yujun/needs-analysis.md` | <https://course-admin-codex-automation.vercel.app> |
+| 分類 | 同仁 | 本 repo 文件 | 原公開頁 |
+| --- | --- | --- | --- |
+| 已完成初版整理 | 佩欣 | `people/peixin/needs-analysis.md`、`people/peixin/workflow-map.md` | <https://peixin-needs-automation-report.vercel.app> |
+| 已完成初版整理 | 思宜 | `people/siyi/needs-analysis.md` | <https://siyi-infocenter-codex-workflow-repo.vercel.app> |
+| 已完成初版整理 | 瑜君 | `people/yujun/needs-analysis.md` | <https://course-admin-codex-automation.vercel.app> |
+| 已列入，待補整理 | 怡君 | `people/yijun/README.md` | - |
+| 已列入，待補整理 | 阿丸 | `people/awan/README.md` | - |
+| 已列入，待補整理 | 素菁 | `people/sujing/README.md` | - |
+| 後續預計加入 | 雨虹 | `people/yuhong/README.md` | - |
+| 後續預計加入 | 奕吟 | `people/yiyin/README.md` | - |
+| 後續預計加入 | 思璇 | `people/sixuan/README.md` | - |
 
-## 統整後共同問題
+## 目前統整後共同問題
 
 | 問題 | 說明 |
 | --- | --- |
@@ -30,6 +36,8 @@
 | 狀態不同步 | 一邊完成不代表另一邊已更新，需要跨系統對帳。 |
 | 重複文字整理 | 派課摘要、補問、提醒、核銷通知、課前確認都需要固定格式草稿。 |
 | 外部動作風險 | 發送、寫回、勾完成、建立事件都可能影響個資、薪資、課務或對外承諾。 |
+
+這一版共同問題先根據已完成初版整理的佩欣、思宜、瑜君資料形成。怡君、阿丸、素菁與後續三位資料補齊後，需重新檢查與更新本段。
 
 ## 共用模組
 
@@ -42,7 +50,7 @@
 
 ## 合併策略
 
-這是輕量合併，不刪除原本佩欣、思宜、瑜君的 repo。原 repo 保留歷史與舊公開網址，這個 repo 作為新的總覽入口與後續產品化討論基礎。
+這是輕量合併，不刪除原本已建立的 repo。原 repo 保留歷史與舊公開網址，這個 repo 作為新的總覽入口與後續產品化討論基礎。
 
 建議順序：
 

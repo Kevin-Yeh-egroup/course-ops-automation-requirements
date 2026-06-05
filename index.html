@@ -201,6 +201,8 @@
     .card.peixin { border-top: 5px solid var(--green); }
     .card.siyi { border-top: 5px solid var(--blue); }
     .card.yujun { border-top: 5px solid var(--wine); }
+    .card.pending { border-top: 5px solid var(--gold); }
+    .card.future { border-top: 5px solid #6c6f76; }
 
     .result-list {
       margin: 16px 0 0;
@@ -383,7 +385,7 @@
     <div class="hero-inner">
       <p class="eyebrow">Course operations automation requirements</p>
       <h1>課務與個案行政自動化需求總覽</h1>
-      <p class="hero-copy">把佩欣、思宜、瑜君的工作流放進同一個可維護架構：個別需求保留，共用能力集中，後續開發不再各做各的。</p>
+      <p class="hero-copy">把目前蒐集到的同仁需求放進同一個可維護架構：個別整理結果保留，共用問題集中，後續新增訪談時可以持續擴充。</p>
     </div>
   </header>
 
@@ -394,23 +396,68 @@
 
     <section class="section" id="overview">
       <h2>總覽頁怎麼讀</h2>
-      <p class="lede">這個頁面分成三層：先看整體判斷，再看每位蒐集資料同仁的整理結果，最後看跨所有工作流統整出的共同問題摘要。</p>
+      <p class="lede">這個頁面分成三層：先看整體判斷與名單狀態，再看每位蒐集資料同仁的整理結果，最後看跨所有工作流統整出的共同問題摘要。</p>
       <div class="toc">
-        <a href="#colleague-results"><strong>1. 同仁整理結果</strong>佩欣、思宜、瑜君各自一張摘要卡，保留原需求文件與公開頁連結。</a>
-        <a href="#shared-modules"><strong>2. 共用自動化模組</strong>把重複出現的提醒、缺漏、對帳、草稿能力抽出來。</a>
-        <a href="#problem-summary"><strong>3. 問題統整摘要</strong>把三人所有需求整理成共同問題、優先順序與治理邊界。</a>
+        <a href="#colleague-status"><strong>1. 名單與狀態</strong>目前 6 位同仁已列入，後續 3 位預計加入。</a>
+        <a href="#colleague-results"><strong>2. 同仁整理結果</strong>已完成者放摘要與文件，待整理者先保留位置。</a>
+        <a href="#problem-summary"><strong>3. 問題統整摘要</strong>把已整理需求彙整成共同問題、優先順序與治理邊界。</a>
       </div>
       <div class="metrics">
-        <div class="metric"><b>3</b><span>三位夥伴需求已匯入：佩欣、思宜、瑜君。</span></div>
-        <div class="metric"><b>4</b><span>四個共用模組：提醒、欄位字典、狀態檢查、訊息草稿。</span></div>
-        <div class="metric"><b>1</b><span>一個總覽 repo 作為後續討論與開發入口。</span></div>
-        <div class="metric"><b>0</b><span>不刪除舊 repo，不覆蓋既有公開頁。</span></div>
+        <div class="metric"><b>6</b><span>目前已列入資料蒐集名單：佩欣、思宜、怡君、瑜君、阿丸、素菁。</span></div>
+        <div class="metric"><b>3</b><span>已完成初版整理：佩欣、思宜、瑜君。</span></div>
+        <div class="metric"><b>3</b><span>已列入但待補整理：怡君、阿丸、素菁。</span></div>
+        <div class="metric"><b>3</b><span>後續預計加入：雨虹、奕吟、思璇。</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="colleague-status">
+      <h2>資料蒐集名單與整理狀態</h2>
+      <p class="lede">這裡先把名單盤清楚：誰已經有整理結果、誰只是先列入資料蒐集範圍、誰是後續預計訪談或整理對象。</p>
+      <table>
+        <thead>
+          <tr>
+            <th>分類</th>
+            <th>同仁</th>
+            <th>目前狀態</th>
+            <th>頁面處理方式</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>已完成初版整理</td>
+            <td>佩欣、思宜、瑜君</td>
+            <td>已有需求分析、公開頁或可匯入文件。</td>
+            <td>放入摘要卡、比較表、共用問題摘要與原文件連結。</td>
+          </tr>
+          <tr>
+            <td>已列入，待補整理</td>
+            <td>怡君、阿丸、素菁</td>
+            <td>已列入這一輪蒐集資料同仁名單，但尚未在本 repo 匯入完整整理。</td>
+            <td>先建立待整理位置，不推論尚未提供的工作流內容。</td>
+          </tr>
+          <tr>
+            <td>後續預計加入</td>
+            <td>雨虹、奕吟、思璇</td>
+            <td>後續會再蒐集或整理。</td>
+            <td>先列入後續名單，等資料到位再新增摘要與問題統整。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>整理狀態總覽</h2>
+      <p class="lede">已完成初版整理的人會有可閱讀的摘要與文件；尚未整理的人只標記狀態，避免把推測寫成事實。</p>
+      <div class="toc">
+        <a href="#shared-modules"><strong>2. 共用自動化模組</strong>把重複出現的提醒、缺漏、對帳、草稿能力抽出來。</a>
+        <a href="#problem-summary"><strong>3. 統整問題摘要</strong>目前先根據已整理資料產出，之後隨名單補齊更新。</a>
+        <a href="#governance"><strong>4. 治理邊界</strong>公開頁只放摘要與狀態，不放敏感原文。</a>
       </div>
     </section>
 
     <section class="section" id="colleague-results">
       <h2>蒐集資料同仁整理結果</h2>
-      <p class="lede">這一段保留個別工作情境，不急著把三人的需求混在一起。每張卡片都包含目前整理出的角色定位、主要問題、第一版適合做的自動化，以及完整文件連結。</p>
+      <p class="lede">這一段保留個別工作情境，不急著把不同人的需求混在一起。已整理者放摘要與文件連結；待整理者先放狀態卡。</p>
       <div class="cards">
         <article class="card peixin">
           <span class="tag">佩欣</span>
@@ -455,6 +502,70 @@
             <a href="https://course-admin-codex-automation.vercel.app">原公開頁</a>
           </div>
         </article>
+        <article class="card pending">
+          <span class="tag">怡君</span>
+          <h3>待整理</h3>
+          <p>怡君已列入目前資料蒐集名單，但尚未在本 repo 匯入完整訪談或需求整理。</p>
+          <ul class="result-list">
+            <li>目前處理：建立 placeholder。</li>
+            <li>下一步：補入逐字稿、訪談摘要或工作紀錄後，再整理角色定位與自動化可能。</li>
+            <li>治理原則：不先推論未提供的工作內容。</li>
+          </ul>
+          <div class="link-row">
+            <a href="people/yijun/README.md">待整理頁</a>
+          </div>
+        </article>
+        <article class="card pending">
+          <span class="tag">阿丸</span>
+          <h3>待整理</h3>
+          <p>阿丸已列入目前資料蒐集名單，但尚未在本 repo 匯入完整訪談或需求整理。</p>
+          <ul class="result-list">
+            <li>目前處理：建立 placeholder。</li>
+            <li>下一步：補入資料後，整理工作流、痛點、資料來源與可自動化任務。</li>
+            <li>治理原則：先保留名單，不把零散印象寫成需求結論。</li>
+          </ul>
+          <div class="link-row">
+            <a href="people/awan/README.md">待整理頁</a>
+          </div>
+        </article>
+        <article class="card pending">
+          <span class="tag">素菁</span>
+          <h3>待整理</h3>
+          <p>素菁已列入目前資料蒐集名單，但尚未在本 repo 匯入完整訪談或需求整理。</p>
+          <ul class="result-list">
+            <li>目前處理：建立 placeholder。</li>
+            <li>下一步：補入訪談或工作流資料後，再與既有課務、info、行政流程統整。</li>
+            <li>治理原則：涉及管理或系統權限的判斷需另行確認。</li>
+          </ul>
+          <div class="link-row">
+            <a href="people/sujing/README.md">待整理頁</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>後續預計加入</h2>
+      <p class="lede">以下三位目前先列入後續名單，等資料蒐集完成後，再新增個別整理結果與統整後問題摘要。</p>
+      <div class="cards">
+        <article class="card future">
+          <span class="tag">雨虹</span>
+          <h3>後續預計</h3>
+          <p>尚待蒐集或匯入資料。</p>
+          <div class="link-row"><a href="people/yuhong/README.md">後續頁</a></div>
+        </article>
+        <article class="card future">
+          <span class="tag">奕吟</span>
+          <h3>後續預計</h3>
+          <p>尚待蒐集或匯入資料。</p>
+          <div class="link-row"><a href="people/yiyin/README.md">後續頁</a></div>
+        </article>
+        <article class="card future">
+          <span class="tag">思璇</span>
+          <h3>後續預計</h3>
+          <p>尚待蒐集或匯入資料。</p>
+          <div class="link-row"><a href="people/sixuan/README.md">後續頁</a></div>
+        </article>
       </div>
     </section>
 
@@ -487,6 +598,18 @@
             <td>南區課務、課前提醒、派課後行政追蹤</td>
             <td>真正痛點是課前行政節點太細，忙碌時容易漏設提醒。</td>
             <td>南區案件篩選、課前倒數、發票/交通/媒材提醒。</td>
+          </tr>
+          <tr>
+            <td>怡君、阿丸、素菁</td>
+            <td>待補資料後整理</td>
+            <td>已列入名單，但尚未匯入完整需求，不先推論。</td>
+            <td>先建立待整理頁，等資料到位後補摘要與共通問題。</td>
+          </tr>
+          <tr>
+            <td>雨虹、奕吟、思璇</td>
+            <td>後續預計加入</td>
+            <td>尚待蒐集或整理。</td>
+            <td>先列入後續名單。</td>
           </tr>
         </tbody>
       </table>
@@ -521,7 +644,7 @@
 
     <section class="section" id="problem-summary">
       <h2>統整後所有問題摘要</h2>
-      <p class="lede">把三人的需求放在一起看，問題不是「要不要用 AI」，而是公司目前有一批行政流程都靠人腦記住狀態、靠手動搬資料、靠即時通訊補洞。第一版要先把問題浮出來，再談自動寫回。</p>
+      <p class="lede">先根據已完成初版整理的佩欣、思宜、瑜君資料統整。問題不是「要不要用 AI」，而是公司目前有一批行政流程都靠人腦記住狀態、靠手動搬資料、靠即時通訊補洞。怡君、阿丸、素菁與後續三位補齊後，這一段會再做第二輪統整。</p>
       <div class="issue-grid">
         <div class="issue"><strong>資料分散</strong>Google Sheet、Excel、InfoCenter、Line、Calendar、Email 與文件資料夾分散，單一案件常要在多處重建脈絡。</div>
         <div class="issue"><strong>欄位品質不穩</strong>表單內容可能粗略、缺欄、格式不一致，導致後續派課、追蹤、匯入或統計都需要人工補判斷。</div>
@@ -560,7 +683,7 @@
             <td>3</td>
             <td>提醒與逾期追蹤太碎</td>
             <td>提醒引擎與倒數規則</td>
-            <td>佩欣與瑜君課務、思宜追蹤都能共用。</td>
+            <td>已整理資料中，佩欣與瑜君課務、思宜追蹤都能共用；後續名單可再擴充。</td>
           </tr>
           <tr>
             <td>4</td>
@@ -587,7 +710,7 @@
     <section class="section">
       <h2>建議工作流</h2>
       <div class="flow">
-        <div class="step"><strong>1. 匯入</strong>保留佩欣、思宜、瑜君個別需求文件。</div>
+        <div class="step"><strong>1. 名單</strong>先標出已整理、待整理、後續預計三種狀態。</div>
         <div class="step"><strong>2. 抽象化</strong>把共同需求整理成模組，不重複寫規則。</div>
         <div class="step"><strong>3. 回測</strong>用少量真實案件驗證提醒與缺漏判斷。</div>
         <div class="step"><strong>4. 草稿化</strong>先產生摘要、補問與提醒，不自動外送。</div>
@@ -608,8 +731,20 @@
       workflow-map.md
     siyi/
       needs-analysis.md
+    yijun/
+      README.md
     yujun/
       needs-analysis.md
+    awan/
+      README.md
+    sujing/
+      README.md
+    yuhong/
+      README.md
+    yiyin/
+      README.md
+    sixuan/
+      README.md
   shared-modules/
     reminder-engine.md
     sheet-field-dictionary.md
@@ -620,7 +755,7 @@
     PRODUCTION_LOG.md</pre>
     </section>
 
-    <section class="section">
+    <section class="section" id="governance">
       <h2>治理邊界</h2>
       <div class="checks">
         <div class="check">第一版只讀取與產生草稿，不自動外部發送。</div>
