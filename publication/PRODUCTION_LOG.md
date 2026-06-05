@@ -14,6 +14,7 @@
 | Peixin | `C:\Users\Kevin\Documents\Codex\2026-05-28\https-docs-google-com-spreadsheets-d\peixin-needs-automation-report` | `https://peixin-needs-automation-report.vercel.app` |
 | Siyi | `C:\Users\Kevin\Documents\Codex\2026-05-27\codex-info-line-infocenter-line-info` | `https://siyi-infocenter-codex-workflow-repo.vercel.app` |
 | Yujun | `C:\Users\Kevin\Documents\Codex\2026-05-28\codex-ai-ai-ppt-ivy-schedule` | `https://course-admin-codex-automation.vercel.app` |
+| Yijun | Kevin provided discussion notes and transcript in this thread | No prior public source link |
 | Awan | `C:\Users\Kevin\Documents\Codex\2026-05-28\codex-routin-codex-match-mp3-infocenter` | `https://amaru-codex-automation-analysis.vercel.app` |
 | Sujing | `C:\Users\Kevin\Documents\Codex\2026-05-28\codex-info-info-info-info-key` | Prior local settlement workbench; not published as a public source link |
 
@@ -103,6 +104,26 @@ Verification:
 - Stable alias confirmed `剩餘常見需求`.
 - Stable alias confirmed `shared-modules/office-common-needs.md`.
 - Header confirmed: `X-Robots-Tag: noindex, nofollow, noarchive`.
+- `robots.txt` confirmed `Disallow: /`.
+
+## Update: Yijun Content Workflow Summary
+
+- Date: 2026-06-05
+- Content commit: `4eda9a9` (`Add Yijun content workflow summary`)
+- Deployment ID: `dpl_2VGWBwCTMCnZAgdjckqacZG78pzn`
+- Deployment URL: `https://course-ops-automation-requirements-8thdaysab.vercel.app`
+- Stable production alias: `https://course-ops-automation-requirements.vercel.app`
+- Target: `production`
+- Ready state: `READY`
+
+Verification:
+
+- Stable alias returned `HTTP/1.1 200 OK`.
+- Header confirmed: `X-Robots-Tag: noindex, nofollow, noarchive`.
+- HTML confirmed `分享會與 Podcast 內容助理`.
+- HTML confirmed `people/yijun/needs-analysis.md`.
+- HTML confirmed `shared-modules/content-repurposing-workflow.md`.
+- HTML confirmed `已有可整理材料：佩欣、思宜、怡君、瑜君、阿丸、素菁`.
 - `robots.txt` confirmed `Disallow: /`.
 
 ## Remaining Work
