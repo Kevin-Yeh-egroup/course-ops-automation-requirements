@@ -14,6 +14,7 @@
 | Peixin | `C:\Users\Kevin\Documents\Codex\2026-05-28\https-docs-google-com-spreadsheets-d\peixin-needs-automation-report` | `https://peixin-needs-automation-report.vercel.app` |
 | Siyi | `C:\Users\Kevin\Documents\Codex\2026-05-27\codex-info-line-infocenter-line-info` | `https://siyi-infocenter-codex-workflow-repo.vercel.app` |
 | Yujun | `C:\Users\Kevin\Documents\Codex\2026-05-28\codex-ai-ai-ppt-ivy-schedule` | `https://course-admin-codex-automation.vercel.app` |
+| Sujing | `C:\Users\Kevin\Documents\Codex\2026-05-28\codex-info-info-info-info-key` | Prior local settlement workbench; not published as a public source link |
 
 ## External Publication
 
@@ -25,6 +26,7 @@
 - Deployment log commit: `4d34ab4` (`Record production deployment status`)
 - Overview restructure commit: `2ae363f` (`Restructure overview page around colleague results and issue summary`)
 - Full roster commit: `7158c6e` (`Add full colleague collection roster`)
+- Sujing settlement summary commit: `e8aaf70` (`Add Sujing settlement workflow summary`)
 - GitHub target repo: `Kevin-Yeh-egroup/course-ops-automation-requirements`
 - GitHub status: pending, because this session has no repo-creation tool and `gh` is not installed.
 
@@ -54,6 +56,27 @@
 User-agent: *
 Disallow: /
 ```
+
+## Update: Sujing Settlement Summary
+
+- Date: 2026-06-05
+- Content commit: `e8aaf70` (`Add Sujing settlement workflow summary`)
+- Deployment ID: `dpl_HB851SLscyUmsoDsjcTbCBKTqftJ`
+- Deployment URL: `https://course-ops-automation-requirements-5zpk6trty.vercel.app`
+- Stable production alias: `https://course-ops-automation-requirements.vercel.app`
+- Target: `production`
+- Ready state: `READY`
+
+Verification:
+
+- Stable alias returned `HTTP/1.1 200 OK`.
+- Header confirmed: `X-Robots-Tag: noindex, nofollow, noarchive`.
+- HTML confirmed `月結與課務結算工作台`.
+- HTML confirmed `shared-modules/settlement-workbench.md`.
+- HTML confirmed `南區課務提醒助理`.
+- HTML confirmed no old Sujing pending phrasing remained.
+- HTML meta robots confirmed: `<meta name="robots" content="noindex,nofollow,noarchive">`.
+- `robots.txt` confirmed `Disallow: /`.
 
 ## Remaining Work
 
