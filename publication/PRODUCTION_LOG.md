@@ -34,6 +34,8 @@
 - GitHub visibility: `public`
 - GitHub default branch: `main`
 - Remote `origin/main`: `4aef101119d0e05eb61d18f27349dfec414feca2`
+- Vercel Git connection: connected to `https://github.com/Kevin-Yeh-egroup/course-ops-automation-requirements` on 2026-06-05.
+- Vercel project ID: `prj_OiHifUKkwPFUZNTSmUkV4z9BsKBH`
 
 ## Vercel Production Deployment
 
@@ -85,5 +87,5 @@ Verification:
 
 ## Remaining Work
 
-1. Optionally connect Vercel project to GitHub `main` for GitHub-backed production updates.
-2. Keep public review content de-identified and noindex until explicitly approved otherwise.
+1. Keep public review content de-identified and noindex until explicitly approved otherwise.
+2. After future pushes, verify that GitHub-backed Vercel deployments keep `X-Robots-Tag: noindex, nofollow, noarchive`.
