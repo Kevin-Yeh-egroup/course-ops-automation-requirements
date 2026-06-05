@@ -10,7 +10,7 @@
 
 ## 一句話結論
 
-三人的需求不應該拆成三個完全獨立的小工具。更好的方向是建立一套「行政案件工作台」：每位夥伴保留自己的工作頁面，底層共用資料檢查、提醒規則、狀態對帳與人工核准機制。
+目前已整理的材料不應該拆成完全獨立的小工具。更好的方向是建立一套「行政案件工作台」：每位夥伴保留自己的工作頁面，底層共用資料檢查、提醒規則、狀態對帳、月結對帳與人工核准機制。
 
 ## 資料蒐集名單
 
@@ -19,9 +19,9 @@
 | 已完成初版整理 | 佩欣 | `people/peixin/needs-analysis.md`、`people/peixin/workflow-map.md` | <https://peixin-needs-automation-report.vercel.app> |
 | 已完成初版整理 | 思宜 | `people/siyi/needs-analysis.md` | <https://siyi-infocenter-codex-workflow-repo.vercel.app> |
 | 已完成初版整理 | 瑜君 | `people/yujun/needs-analysis.md` | <https://course-admin-codex-automation.vercel.app> |
+| 已有既有材料整理 | 素菁 | `people/sujing/README.md`、`people/sujing/needs-analysis.md` | 先前月結工作台雛形，未公開連結 |
 | 已列入，待補整理 | 怡君 | `people/yijun/README.md` | - |
 | 已列入，待補整理 | 阿丸 | `people/awan/README.md` | - |
-| 已列入，待補整理 | 素菁 | `people/sujing/README.md` | - |
 | 後續預計加入 | 雨虹 | `people/yuhong/README.md` | - |
 | 後續預計加入 | 奕吟 | `people/yiyin/README.md` | - |
 | 後續預計加入 | 思璇 | `people/sixuan/README.md` | - |
@@ -35,18 +35,20 @@
 | 提醒節點過碎 | 課前、核銷、電訪、會議、補件與發票都有不同倒數時間。 |
 | 狀態不同步 | 一邊完成不代表另一邊已更新，需要跨系統對帳。 |
 | 重複文字整理 | 派課摘要、補問、提醒、核銷通知、課前確認都需要固定格式草稿。 |
+| 月結規則複雜 | 課務、諮詢、企劃、交通、補扣款與人員歷史累積會進到月結試算與 Ivy 輸出。 |
 | 外部動作風險 | 發送、寫回、勾完成、建立事件都可能影響個資、薪資、課務或對外承諾。 |
 
-這一版共同問題先根據已完成初版整理的佩欣、思宜、瑜君資料形成。怡君、阿丸、素菁與後續三位資料補齊後，需重新檢查與更新本段。
+這一版共同問題先根據已完成初版整理的佩欣、思宜、瑜君，以及先前素菁帳務/月結工具材料形成。怡君、阿丸與後續三位資料補齊後，需重新檢查與更新本段。
 
 ## 共用模組
 
 | 模組 | 用途 |
 | --- | --- |
-| `shared-modules/reminder-engine.md` | 整理三人共用的提醒邏輯與倒數規則 |
+| `shared-modules/reminder-engine.md` | 整理課務與個案追蹤共用的提醒邏輯與倒數規則 |
 | `shared-modules/sheet-field-dictionary.md` | 整理 Google Sheet 欄位字典與欄位治理原則 |
 | `shared-modules/status-check-rules.md` | 整理跨系統狀態對帳與缺漏檢查 |
 | `shared-modules/message-draft-templates.md` | 整理 Line、Email、Calendar、補問與派課草稿模板 |
+| `shared-modules/settlement-workbench.md` | 整理月結試算、個人確認包、Ivy 輸出與匯款前檢查邊界 |
 
 ## 合併策略
 
@@ -54,7 +56,7 @@
 
 建議順序：
 
-1. 先在這裡維護三人需求總覽與共用模組。
+1. 先在這裡維護已整理需求總覽與共用模組。
 2. 等總覽穩定後，再回到原 repo README 補上新總覽連結。
 3. 若未來要做成正式工具，再把這個 repo 升級成 monorepo，加入資料讀取、排程、前端工作台與測試。
 
