@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>課務與個案行政自動化需求總覽</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f4ef;
+      --paper: #fffefa;
+      --ink: #202124;
+      --muted: #5f6368;
+      --line: #d8d3c8;
+      --green: #28635f;
+      --blue: #345a8a;
+      --wine: #8b4352;
+      --gold: #9a6b26;
+      --soft-green: #e8f1ef;
+      --soft-blue: #e9eef7;
+      --soft-wine: #f6eaee;
+      --soft-gold: #f5eddd;
+      --radius: 8px;
+      --shadow: 0 12px 36px rgba(31, 30, 26, 0.11);
+      font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.72;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .hero {
+      min-height: 74vh;
+      display: grid;
+      align-items: end;
+      padding: 9vw 5vw 5vw;
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(18, 25, 28, 0.1), rgba(18, 25, 28, 0.8)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=82") center / cover;
+    }
+
+    .hero-inner,
+    .shell {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      font-size: 0.94rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 980px;
+      font-size: clamp(2.4rem, 6vw, 5.2rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 780px;
+      margin: 24px 0 0;
+      font-size: clamp(1.06rem, 2vw, 1.34rem);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .shell {
+      width: min(1120px, calc(100% - 32px));
+      padding: 52px 0 88px;
+    }
+
+    .notice {
+      border: 1px solid #bdd3cf;
+      background: #edf6f4;
+      color: #224d49;
+      border-radius: var(--radius);
+      padding: 17px 19px;
+      margin: 0 0 42px;
+    }
+
+    .section {
+      margin: 54px 0;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: clamp(1.52rem, 3vw, 2.28rem);
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 1.22rem;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    .lede {
+      color: var(--muted);
+      font-size: 1.12rem;
+      max-width: 900px;
+    }
+
+    .metrics,
+    .cards,
+    .modules,
+    .checks {
+      display: grid;
+      gap: 16px;
+    }
+
+    .metrics {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 22px;
+    }
+
+    .metric,
+    .card,
+    .check {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 28px rgba(48, 42, 33, 0.06);
+    }
+
+    .metric {
+      padding: 18px;
+      min-height: 132px;
+    }
+
+    .metric b {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.9rem;
+      line-height: 1.1;
+    }
+
+    .metric:nth-child(1) b { color: var(--green); }
+    .metric:nth-child(2) b { color: var(--blue); }
+    .metric:nth-child(3) b { color: var(--wine); }
+    .metric:nth-child(4) b { color: var(--gold); }
+
+    .cards {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 22px;
+    }
+
+    .card {
+      padding: 22px;
+    }
+
+    .card.peixin { border-top: 5px solid var(--green); }
+    .card.siyi { border-top: 5px solid var(--blue); }
+    .card.yujun { border-top: 5px solid var(--wine); }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: 0.92rem;
+      font-weight: 900;
+      color: var(--muted);
+    }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .link-row a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 4px 10px;
+      border: 1px solid #c7d1dd;
+      border-radius: var(--radius);
+      background: #f7f9fb;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .modules {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 22px;
+    }
+
+    .module {
+      padding: 20px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+    }
+
+    .module:nth-child(1) { background: var(--soft-green); }
+    .module:nth-child(2) { background: var(--soft-blue); }
+    .module:nth-child(3) { background: var(--soft-wine); }
+    .module:nth-child(4) { background: var(--soft-gold); }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .step {
+      position: relative;
+      min-height: 118px;
+      padding: 16px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--green);
+    }
+
+    table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      border-collapse: collapse;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 28px rgba(48, 42, 33, 0.06);
+    }
+
+    th,
+    td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      min-width: 150px;
+    }
+
+    th {
+      background: #ece7dc;
+      color: #302a22;
+      font-weight: 900;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .checks {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 20px;
+    }
+
+    .check {
+      padding: 16px 17px;
+      border-left: 5px solid var(--blue);
+    }
+
+    .code-map {
+      margin: 18px 0 0;
+      padding: 17px 19px;
+      overflow-x: auto;
+      background: #202b2c;
+      color: #f8f5ee;
+      border-radius: var(--radius);
+      font-family: Consolas, "Liberation Mono", monospace;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .footer {
+      margin-top: 64px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        min-height: 68vh;
+        padding: 30vw 20px 38px;
+      }
+
+      .shell {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .metrics,
+      .cards,
+      .modules,
+      .flow,
+      .checks {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Course operations automation requirements</p>
+      <h1>課務與個案行政自動化需求總覽</h1>
+      <p class="hero-copy">把佩欣、思宜、瑜君的工作流放進同一個可維護架構：個別需求保留，共用能力集中，後續開發不再各做各的。</p>
+    </div>
+  </header>
+
+  <main class="shell">
+    <aside class="notice">
+      <strong>發布狀態：</strong>本頁設計為 public-with-noindex review。公開網址可跨裝置開啟，但 noindex 只是搜尋索引限制，不是隱私或權限保護。
+    </aside>
+
+    <section class="section">
+      <h2>總覽判斷</h2>
+      <p class="lede">可以只開一個 repo 統整三人的需求。更好的方式不是把三份報告壓成一頁，而是讓每位夥伴保留自己的需求頁，並把提醒、缺漏檢查、狀態對帳、訊息草稿抽成共用模組。</p>
+      <div class="metrics">
+        <div class="metric"><b>3</b><span>三位夥伴需求已匯入：佩欣、思宜、瑜君。</span></div>
+        <div class="metric"><b>4</b><span>四個共用模組：提醒、欄位字典、狀態檢查、訊息草稿。</span></div>
+        <div class="metric"><b>1</b><span>一個總覽 repo 作為後續討論與開發入口。</span></div>
+        <div class="metric"><b>0</b><span>不刪除舊 repo，不覆蓋既有公開頁。</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>三人需求定位</h2>
+      <div class="cards">
+        <article class="card peixin">
+          <span class="tag">佩欣</span>
+          <h3>每日行政工作台</h3>
+          <p>佩欣是多系統人工流程中樞。第一版應聚焦新申請、缺漏、到期、逾期、核銷、Calendar 與訊息草稿，不先全自動寫回。</p>
+          <div class="link-row">
+            <a href="people/peixin/needs-analysis.md">需求文件</a>
+            <a href="people/peixin/workflow-map.md">九大工作流</a>
+            <a href="https://peixin-needs-automation-report.vercel.app">原公開頁</a>
+          </div>
+        </article>
+        <article class="card siyi">
+          <span class="tag">思宜</span>
+          <h3>跨系統狀態對帳</h3>
+          <p>思宜需要知道誰有新狀態、誰要追、哪個欄位衝突。第一版應做每日提醒清單、欄位檢查報告與匯入模板。</p>
+          <div class="link-row">
+            <a href="people/siyi/needs-analysis.md">需求文件</a>
+            <a href="https://siyi-infocenter-codex-workflow-repo.vercel.app">原公開頁</a>
+          </div>
+        </article>
+        <article class="card yujun">
+          <span class="tag">瑜君</span>
+          <h3>南區課務提醒助理</h3>
+          <p>瑜君最在意的是提醒。第一版應用課程邀約 Sheet 篩出南區案件，產生課前 3-4 週、2 週、1 週的追蹤清單。</p>
+          <div class="link-row">
+            <a href="people/yujun/needs-analysis.md">需求文件</a>
+            <a href="https://course-admin-codex-automation.vercel.app">原公開頁</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>共用能力</h2>
+      <p class="lede">三人的工作看起來不同，但底層其實都是同一組能力：讀資料、找缺漏、判斷狀態、產生草稿、交給人確認。</p>
+      <div class="modules">
+        <article class="module">
+          <h3>提醒引擎</h3>
+          <p>處理新案件、到期、逾期、課前倒數與待人工確認。</p>
+          <a href="shared-modules/reminder-engine.md">查看模組</a>
+        </article>
+        <article class="module">
+          <h3>欄位字典</h3>
+          <p>整理 Sheet 欄位類型、必填欄、日期欄、狀態欄與敏感欄。</p>
+          <a href="shared-modules/sheet-field-dictionary.md">查看模組</a>
+        </article>
+        <article class="module">
+          <h3>狀態檢查</h3>
+          <p>比對 Google Sheet、InfoCenter、Calendar、Line 或其他紀錄是否一致。</p>
+          <a href="shared-modules/status-check-rules.md">查看模組</a>
+        </article>
+        <article class="module">
+          <h3>訊息草稿</h3>
+          <p>產生派課摘要、補問清單、課前確認、每日工作台等可審核草稿。</p>
+          <a href="shared-modules/message-draft-templates.md">查看模組</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>建議工作流</h2>
+      <div class="flow">
+        <div class="step"><strong>1. 匯入</strong>保留佩欣、思宜、瑜君個別需求文件。</div>
+        <div class="step"><strong>2. 抽象化</strong>把共同需求整理成模組，不重複寫規則。</div>
+        <div class="step"><strong>3. 回測</strong>用少量真實案件驗證提醒與缺漏判斷。</div>
+        <div class="step"><strong>4. 草稿化</strong>先產生摘要、補問與提醒，不自動外送。</div>
+        <div class="step"><strong>5. 產品化</strong>穩定後再接工作台、Calendar、Sheet 寫回。</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>開發優先序</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>優先序</th>
+            <th>模組</th>
+            <th>原因</th>
+            <th>第一版輸出</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Sheet 缺漏檢查</td>
+            <td>三人都需要先知道資料是否足夠。</td>
+            <td>缺欄、格式、語意不足清單。</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>提醒摘要</td>
+            <td>佩欣與瑜君的課務、思宜的追蹤都仰賴每日/每週提醒。</td>
+            <td>今日新增、到期、逾期、待確認。</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>訊息草稿</td>
+            <td>可立即省下整理文字與複製貼上的時間。</td>
+            <td>Line、Email、派課、補問、課前確認草稿。</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>狀態對帳</td>
+            <td>思宜與佩欣都有跨系統不同步問題。</td>
+            <td>InfoCenter / Sheet / Calendar mismatch list。</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>受控寫回</td>
+            <td>要等規則穩定後再做，避免誤寫外部系統。</td>
+            <td>人工核准後寫回 Sheet 或建立 Calendar。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>Repo 架構</h2>
+      <pre class="code-map">course-ops-automation-requirements/
+  README.md
+  index.html
+  robots.txt
+  vercel.json
+  people/
+    peixin/
+      needs-analysis.md
+      workflow-map.md
+    siyi/
+      needs-analysis.md
+    yujun/
+      needs-analysis.md
+  shared-modules/
+    reminder-engine.md
+    sheet-field-dictionary.md
+    status-check-rules.md
+    message-draft-templates.md
+  publication/
+    PUBLICATION_CHECKLIST.md
+    PRODUCTION_LOG.md</pre>
+    </section>
+
+    <section class="section">
+      <h2>治理邊界</h2>
+      <div class="checks">
+        <div class="check">第一版只讀取與產生草稿，不自動外部發送。</div>
+        <div class="check">Calendar、Google Sheet、InfoCenter 寫回都要人工核准。</div>
+        <div class="check">涉及個資、薪資、個案、敏感需求時，只保留必要摘要。</div>
+        <div class="check">noindex 不是隱私控管，公開頁不可放入完整敏感原文。</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>本頁由 Codex 整理為 public-with-noindex review artifact。舊 repo 與舊公開頁保留，新 repo 作為總覽入口與後續自動化開發基礎。</p>
+    </footer>
+  </main>
+</body>
+</html>
+
