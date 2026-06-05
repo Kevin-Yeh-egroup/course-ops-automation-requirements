@@ -86,6 +86,25 @@ Verification:
 - HTML meta robots confirmed: `<meta name="robots" content="noindex,nofollow,noarchive">`.
 - `robots.txt` confirmed `Disallow: /`.
 
+## Update: Office Common Needs Top 5
+
+- Date: 2026-06-05
+- Content commit: `b98ac8b` (`Add office common needs top five`)
+- Deployment ID: `dpl_CZenoR7WYpLhraqUWppjXXsHVMq7`
+- Deployment URL: `https://course-ops-automation-requirements-qlf1vog86.vercel.app`
+- Stable production alias: `https://course-ops-automation-requirements.vercel.app`
+- Target: `production`
+- Ready state: `READY`
+
+Verification:
+
+- Stable alias confirmed `辦公室工作常見需求 Top 5`.
+- Stable alias confirmed `每日/每週工作台與提醒清單`.
+- Stable alias confirmed `剩餘常見需求`.
+- Stable alias confirmed `shared-modules/office-common-needs.md`.
+- Header confirmed: `X-Robots-Tag: noindex, nofollow, noarchive`.
+- `robots.txt` confirmed `Disallow: /`.
+
 ## Remaining Work
 
 1. Keep public review content de-identified and noindex until explicitly approved otherwise.
