@@ -22,6 +22,7 @@
 - Local git repo: created.
 - Branch: `main`
 - Initial commit: `a5d652a` (`Create consolidated course ops automation requirements`)
+- Deployment log commit: `4d34ab4` (`Record production deployment status`)
 - GitHub target repo: `Kevin-Yeh-egroup/course-ops-automation-requirements`
 - GitHub status: pending, because this session has no repo-creation tool and `gh` is not installed.
 
@@ -30,8 +31,8 @@
 - Date: 2026-06-05
 - Team: `egroup-task3s-projects`
 - Project: `course-ops-automation-requirements`
-- Deployment ID: `dpl_7fjanRCwpAnsvjE4Ge3Bv1Exc9wG`
-- Deployment URL: `https://course-ops-automation-requirements-q7v5tb031.vercel.app`
+- Deployment ID: `dpl_HYjszBi5CkQCUAnb18bGwsjqUENr`
+- Deployment URL: `https://course-ops-automation-requirements-jiz43phyc.vercel.app`
 - Stable production alias: `https://course-ops-automation-requirements.vercel.app`
 - Target: `production`
 - Ready state: `READY`
