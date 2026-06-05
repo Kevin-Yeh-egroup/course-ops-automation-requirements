@@ -14,6 +14,7 @@
 | Peixin | `C:\Users\Kevin\Documents\Codex\2026-05-28\https-docs-google-com-spreadsheets-d\peixin-needs-automation-report` | `https://peixin-needs-automation-report.vercel.app` |
 | Siyi | `C:\Users\Kevin\Documents\Codex\2026-05-27\codex-info-line-infocenter-line-info` | `https://siyi-infocenter-codex-workflow-repo.vercel.app` |
 | Yujun | `C:\Users\Kevin\Documents\Codex\2026-05-28\codex-ai-ai-ppt-ivy-schedule` | `https://course-admin-codex-automation.vercel.app` |
+| Awan | `C:\Users\Kevin\Documents\Codex\2026-05-28\codex-routin-codex-match-mp3-infocenter` | `https://amaru-codex-automation-analysis.vercel.app` |
 | Sujing | `C:\Users\Kevin\Documents\Codex\2026-05-28\codex-info-info-info-info-key` | Prior local settlement workbench; not published as a public source link |
 
 ## External Publication

@@ -19,9 +19,9 @@
 | 已完成初版整理 | 佩欣 | `people/peixin/needs-analysis.md`、`people/peixin/workflow-map.md` | <https://peixin-needs-automation-report.vercel.app> |
 | 已完成初版整理 | 思宜 | `people/siyi/needs-analysis.md` | <https://siyi-infocenter-codex-workflow-repo.vercel.app> |
 | 已完成初版整理 | 瑜君 | `people/yujun/needs-analysis.md` | <https://course-admin-codex-automation.vercel.app> |
+| 已有既有材料整理 | 阿丸 | `people/awan/README.md`、`people/awan/needs-analysis.md` | <https://amaru-codex-automation-analysis.vercel.app> |
 | 已有既有材料整理 | 素菁 | `people/sujing/README.md`、`people/sujing/needs-analysis.md` | 先前月結工作台雛形，未公開連結 |
 | 已列入，待補整理 | 怡君 | `people/yijun/README.md` | - |
-| 已列入，待補整理 | 阿丸 | `people/awan/README.md` | - |
 | 後續預計加入 | 雨虹 | `people/yuhong/README.md` | - |
 | 後續預計加入 | 奕吟 | `people/yiyin/README.md` | - |
 | 後續預計加入 | 思璇 | `people/sixuan/README.md` | - |
@@ -35,10 +35,11 @@
 | 提醒節點過碎 | 課前、核銷、電訪、會議、補件與發票都有不同倒數時間。 |
 | 狀態不同步 | 一邊完成不代表另一邊已更新，需要跨系統對帳。 |
 | 重複文字整理 | 派課摘要、補問、提醒、核銷通知、課前確認都需要固定格式草稿。 |
+| 活動行政包耗時 | 候補比對、系統工作區搬移、簽到表、學員名單、分組座位表與工作流程表都需要固定產出。 |
 | 月結規則複雜 | 課務、諮詢、企劃、交通、補扣款與人員歷史累積會進到月結試算與 Ivy 輸出。 |
 | 外部動作風險 | 發送、寫回、勾完成、建立事件都可能影響個資、薪資、課務或對外承諾。 |
 
-這一版共同問題先根據已完成初版整理的佩欣、思宜、瑜君，以及先前素菁帳務/月結工具材料形成。怡君、阿丸與後續三位資料補齊後，需重新檢查與更新本段。
+這一版共同問題先根據已完成初版整理的佩欣、思宜、瑜君，以及先前阿丸活動行政、素菁帳務/月結工具材料形成。怡君與後續三位資料補齊後，需重新檢查與更新本段。
 
 ## 共用模組
 
@@ -48,6 +49,7 @@
 | `shared-modules/sheet-field-dictionary.md` | 整理 Google Sheet 欄位字典與欄位治理原則 |
 | `shared-modules/status-check-rules.md` | 整理跨系統狀態對帳與缺漏檢查 |
 | `shared-modules/message-draft-templates.md` | 整理 Line、Email、Calendar、補問與派課草稿模板 |
+| `shared-modules/event-admin-package.md` | 整理候補比對、系統工作區搬移建議、活動行政包與 InfoCenter 草稿 |
 | `shared-modules/settlement-workbench.md` | 整理月結試算、個人確認包、Ivy 輸出與匯款前檢查邊界 |
 
 ## 合併策略

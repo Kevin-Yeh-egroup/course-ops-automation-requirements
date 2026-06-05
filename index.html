@@ -201,6 +201,7 @@
     .card.peixin { border-top: 5px solid var(--green); }
     .card.siyi { border-top: 5px solid var(--blue); }
     .card.yujun { border-top: 5px solid var(--wine); }
+    .card.awan { border-top: 5px solid #72509a; }
     .card.sujing { border-top: 5px solid var(--gold); }
     .card.pending { border-top: 5px solid var(--gold); }
     .card.future { border-top: 5px solid #6c6f76; }
@@ -258,6 +259,7 @@
     .module:nth-child(3) { background: var(--soft-wine); }
     .module:nth-child(4) { background: var(--soft-gold); }
     .module:nth-child(5) { background: #eef0ec; }
+    .module:nth-child(6) { background: #f2edf4; }
 
     .flow {
       display: grid;
@@ -406,8 +408,8 @@
       </div>
       <div class="metrics">
         <div class="metric"><b>6</b><span>目前已列入資料蒐集名單：佩欣、思宜、怡君、瑜君、阿丸、素菁。</span></div>
-        <div class="metric"><b>4</b><span>已有可整理材料：佩欣、思宜、瑜君、素菁。</span></div>
-        <div class="metric"><b>2</b><span>已列入但待補整理：怡君、阿丸。</span></div>
+        <div class="metric"><b>5</b><span>已有可整理材料：佩欣、思宜、瑜君、阿丸、素菁。</span></div>
+        <div class="metric"><b>1</b><span>已列入但待補整理：怡君。</span></div>
         <div class="metric"><b>3</b><span>後續預計加入：雨虹、奕吟、思璇。</span></div>
       </div>
     </section>
@@ -427,13 +429,13 @@
         <tbody>
           <tr>
             <td>已完成初版整理 / 已有既有材料</td>
-            <td>佩欣、思宜、瑜君、素菁</td>
+            <td>佩欣、思宜、瑜君、阿丸、素菁</td>
             <td>已有需求分析、公開頁、可匯入文件或先前工具雛形。</td>
             <td>放入摘要卡、比較表、共用問題摘要與可公開文件連結。</td>
           </tr>
           <tr>
             <td>已列入，待補整理</td>
-            <td>怡君、阿丸</td>
+            <td>怡君</td>
             <td>已列入這一輪蒐集資料同仁名單，但尚未在本 repo 匯入完整整理。</td>
             <td>先建立待整理位置，不推論尚未提供的工作流內容。</td>
           </tr>
@@ -461,7 +463,7 @@
       <h2>蒐集資料同仁整理結果</h2>
       <p class="lede">這一段保留個別工作情境，不急著把不同人的需求混在一起。已整理者放摘要與文件連結；待整理者先放狀態卡。</p>
       <div class="cards">
-        <article class="card peixin">
+        <article class="card awan">
           <span class="tag">佩欣</span>
           <h3>每日行政工作台</h3>
           <p>佩欣是多系統人工流程中樞。第一版應聚焦新申請、缺漏、到期、逾期、核銷、Calendar 與訊息草稿，不先全自動寫回。</p>
@@ -517,17 +519,20 @@
             <a href="people/yijun/README.md">待整理頁</a>
           </div>
         </article>
-        <article class="card pending">
+        <article class="card peixin">
           <span class="tag">阿丸</span>
-          <h3>待整理</h3>
-          <p>阿丸已列入目前資料蒐集名單，但尚未在本 repo 匯入完整訪談或需求整理。</p>
+          <h3>活動行政包與候補比對</h3>
+          <p>阿丸先前已有需求分析與四項表單自動生成 MVP。重點是把候補詢問、候補名單、系統工作區、活動通知、活動前文件包與活動後 InfoCenter 建檔整理成可核准的流程。</p>
           <ul class="result-list">
-            <li>目前處理：建立 placeholder。</li>
-            <li>下一步：補入資料後，整理工作流、痛點、資料來源與可自動化任務。</li>
-            <li>治理原則：先保留名單，不把零散印象寫成需求結論。</li>
+            <li>整理結果：候補信件摘要、候補名單比對、系統工作區搬移建議、活動行政包與 InfoCenter 建檔草稿。</li>
+            <li>主要痛點：報名資料、候補表、活動文件、工作人員資訊與活動後紀錄分散，人工貼資料容易漏。</li>
+            <li>第一版產出：候補比對報表、人工操作清單、四份 Word 行政包草稿與待確認清單。</li>
           </ul>
           <div class="link-row">
-            <a href="people/awan/README.md">待整理頁</a>
+            <a href="people/awan/README.md">需求頁</a>
+            <a href="people/awan/needs-analysis.md">摘要文件</a>
+            <a href="shared-modules/event-admin-package.md">活動行政模組</a>
+            <a href="https://amaru-codex-automation-analysis.vercel.app">原公開頁</a>
           </div>
         </article>
         <article class="card sujing">
@@ -604,13 +609,19 @@
             <td>南區案件篩選、課前倒數、發票/交通/媒材提醒。</td>
           </tr>
           <tr>
+            <td>阿丸</td>
+            <td>候補比對、系統工作區、活動通知、活動行政包、InfoCenter 建檔</td>
+            <td>活動前後資料和文件分散，候補搬移、名單比對與四份 Word 文件都容易耗時或漏更新。</td>
+            <td>候補比對報表、系統工作區搬移建議、活動行政包產生器、InfoCenter 草稿。</td>
+          </tr>
+          <tr>
             <td>素菁</td>
             <td>月結帳務、人員勞務結算、Ivy 報帳輸出、匯款前檢查</td>
             <td>課務與工作紀錄最後要進入月結，但規則、歷史累積、補扣款與本人確認都很容易漏或算錯。</td>
             <td>月結 Dashboard、資料匯入檢查、試算、個人確認包、Ivy 輸出預覽。</td>
           </tr>
           <tr>
-            <td>怡君、阿丸</td>
+            <td>怡君</td>
             <td>待補資料後整理</td>
             <td>已列入名單，但尚未匯入完整需求，不先推論。</td>
             <td>先建立待整理頁，等資料到位後補摘要與共通問題。</td>
@@ -650,6 +661,11 @@
           <a href="shared-modules/message-draft-templates.md">查看模組</a>
         </article>
         <article class="module">
+          <h3>活動行政包</h3>
+          <p>整理候補比對、系統工作區搬移建議、四份 Word 文件草稿與活動後建檔草稿。</p>
+          <a href="shared-modules/event-admin-package.md">查看模組</a>
+        </article>
+        <article class="module">
           <h3>月結對帳</h3>
           <p>整理月結試算、個人確認包、Ivy 輸出預覽與匯款前檢查的人工核准邊界。</p>
           <a href="shared-modules/settlement-workbench.md">查看模組</a>
@@ -659,13 +675,14 @@
 
     <section class="section" id="problem-summary">
       <h2>統整後所有問題摘要</h2>
-      <p class="lede">先根據已完成初版整理的佩欣、思宜、瑜君資料，以及素菁先前帳務/月結工具材料統整。問題不是「要不要用 AI」，而是公司目前有一批行政流程都靠人腦記住狀態、靠手動搬資料、靠即時通訊補洞；到月底還會進入更高風險的月結、報帳、匯款與發票前檢查。怡君、阿丸與後續三位補齊後，這一段會再做第二輪統整。</p>
+      <p class="lede">先根據已完成初版整理的佩欣、思宜、瑜君資料，以及阿丸活動行政、素菁帳務/月結工具材料統整。問題不是「要不要用 AI」，而是公司目前有一批行政流程都靠人腦記住狀態、靠手動搬資料、靠即時通訊補洞；活動前會集中在名單、候補、文件包，到月底還會進入更高風險的月結、報帳、匯款與發票前檢查。怡君與後續三位補齊後，這一段會再做第二輪統整。</p>
       <div class="issue-grid">
         <div class="issue"><strong>資料分散</strong>Google Sheet、Excel、InfoCenter、Line、Calendar、Email 與文件資料夾分散，單一案件常要在多處重建脈絡。</div>
         <div class="issue"><strong>欄位品質不穩</strong>表單內容可能粗略、缺欄、格式不一致，導致後續派課、追蹤、匯入或統計都需要人工補判斷。</div>
         <div class="issue"><strong>提醒節點過碎</strong>課前、核銷、電訪、會議、補件與發票都有不同倒數時間，靠人工 schedule 容易漏。</div>
         <div class="issue"><strong>狀態不同步</strong>一邊完成不代表另一邊已更新，尤其 InfoCenter、Google Sheet、Calendar 與通訊紀錄之間需要對帳。</div>
         <div class="issue"><strong>重複文字整理</strong>派課摘要、補問、提醒、核銷通知、課前確認、匯入說明都需要固定格式草稿。</div>
+        <div class="issue"><strong>活動文件包耗時</strong>候補比對、系統工作區搬移、簽到表、學員名單、分組座位表、工作流程表都需要固定產出與人工確認。</div>
         <div class="issue"><strong>結算規則複雜</strong>課務、諮詢、企劃、交通、補扣款與人員歷史累積最後會影響月結試算、個人確認包與 Ivy 輸出。</div>
         <div class="issue"><strong>外部動作風險</strong>自動發送、寫回、勾完成、建立事件都可能影響個資、薪資、課務或對外承諾，必須保留人工確認。</div>
       </div>
@@ -709,18 +726,24 @@
           </tr>
           <tr>
             <td>5</td>
+            <td>候補與活動文件包人工整理耗時</td>
+            <td>活動行政包與候補比對工作台</td>
+            <td>阿丸已有四項表單 MVP，最適合先用匯出檔與範本產生清單、草稿與文件包。</td>
+          </tr>
+          <tr>
+            <td>6</td>
             <td>月結試算與報帳輸出風險高</td>
             <td>月結對帳工作台</td>
             <td>素菁的材料顯示，課務資料若前面沒留好，月底會在薪資、Ivy 輸出、匯款與發票前檢查集中爆發。</td>
           </tr>
           <tr>
-            <td>6</td>
+            <td>7</td>
             <td>跨系統狀態不同步</td>
             <td>狀態對帳與異常清單</td>
             <td>需要較多資料源權限，適合在欄位規則穩定後導入。</td>
           </tr>
           <tr>
-            <td>7</td>
+            <td>8</td>
             <td>人工確認後仍要回填</td>
             <td>受控寫回與 Calendar 草稿</td>
             <td>這是高價值但高風險功能，必須等前面規則回測穩定。</td>
@@ -759,6 +782,7 @@
       needs-analysis.md
     awan/
       README.md
+      needs-analysis.md
     sujing/
       README.md
       needs-analysis.md
@@ -773,6 +797,7 @@
     sheet-field-dictionary.md
     status-check-rules.md
     message-draft-templates.md
+    event-admin-package.md
     settlement-workbench.md
   publication/
     PUBLICATION_CHECKLIST.md
