@@ -23,6 +23,7 @@
 - Branch: `main`
 - Initial commit: `a5d652a` (`Create consolidated course ops automation requirements`)
 - Deployment log commit: `4d34ab4` (`Record production deployment status`)
+- Overview restructure commit: `2ae363f` (`Restructure overview page around colleague results and issue summary`)
 - GitHub target repo: `Kevin-Yeh-egroup/course-ops-automation-requirements`
 - GitHub status: pending, because this session has no repo-creation tool and `gh` is not installed.
 
@@ -31,8 +32,8 @@
 - Date: 2026-06-05
 - Team: `egroup-task3s-projects`
 - Project: `course-ops-automation-requirements`
-- Deployment ID: `dpl_HYjszBi5CkQCUAnb18bGwsjqUENr`
-- Deployment URL: `https://course-ops-automation-requirements-jiz43phyc.vercel.app`
+- Deployment ID: `dpl_2As2ibfqrynZeLuZVsHV92grze6f`
+- Deployment URL: `https://course-ops-automation-requirements-26waqns01.vercel.app`
 - Stable production alias: `https://course-ops-automation-requirements.vercel.app`
 - Target: `production`
 - Ready state: `READY`
@@ -42,7 +43,7 @@
 - Stable alias returned `HTTP/1.1 200 OK`.
 - Header confirmed: `X-Robots-Tag: noindex, nofollow, noarchive`.
 - HTML confirmed the title `課務與個案行政自動化需求總覽`.
-- HTML confirmed Peixin, Siyi, Yujun, and shared modules sections.
+- HTML confirmed Peixin, Siyi, Yujun, shared modules, colleague results, and consolidated problem summary sections.
 - HTML meta robots confirmed: `<meta name="robots" content="noindex,nofollow,noarchive">`.
 - `robots.txt` confirmed:
 
