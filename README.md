@@ -5,7 +5,7 @@
 首頁採三層架構：
 
 1. 總覽頁：說明這份統整頁要怎麼讀。
-2. 同仁整理結果：分別放入已完成初版整理的同仁需求，待整理者先建立位置。
+2. 同仁整理結果：分別放入已完成初版整理的同仁需求，後續新增者先建立位置。
 3. 統整問題摘要：把已整理需求合併後，整理共同問題、優先處理順序與治理邊界，後續隨名單補齊再更新。
 
 ## 一句話結論
@@ -18,10 +18,10 @@
 | --- | --- | --- | --- |
 | 已完成初版整理 | 佩欣 | `people/peixin/needs-analysis.md`、`people/peixin/workflow-map.md` | <https://peixin-needs-automation-report.vercel.app> |
 | 已完成初版整理 | 思宜 | `people/siyi/needs-analysis.md` | <https://siyi-infocenter-codex-workflow-repo.vercel.app> |
+| 已完成初版整理 | 怡君 | `people/yijun/README.md`、`people/yijun/needs-analysis.md` | - |
 | 已完成初版整理 | 瑜君 | `people/yujun/needs-analysis.md` | <https://course-admin-codex-automation.vercel.app> |
 | 已有既有材料整理 | 阿丸 | `people/awan/README.md`、`people/awan/needs-analysis.md` | <https://amaru-codex-automation-analysis.vercel.app> |
 | 已有既有材料整理 | 素菁 | `people/sujing/README.md`、`people/sujing/needs-analysis.md` | 先前月結工作台雛形，未公開連結 |
-| 已列入，待補整理 | 怡君 | `people/yijun/README.md` | - |
 | 後續預計加入 | 雨虹 | `people/yuhong/README.md` | - |
 | 後續預計加入 | 奕吟 | `people/yiyin/README.md` | - |
 | 後續預計加入 | 思璇 | `people/sixuan/README.md` | - |
@@ -35,7 +35,7 @@
 | 1 | 每日/每週工作台與提醒清單 | 把今日新增、到期、逾期、待確認工作浮出來。 |
 | 2 | 欄位缺漏、格式與資料品質檢查 | 表單、Sheet、InfoCenter、MIS 匯出常需要補欄位與校正格式。 |
 | 3 | 跨系統狀態對帳與下一步判斷 | 檢查不同系統是否同步，並標出下一步待辦。 |
-| 4 | 固定格式草稿與文件包產生 | 產生 Line/Email 草稿、派課摘要、Word 文件、上傳模板與月結確認包。 |
+| 4 | 固定格式草稿、內容再製與文件包產生 | 產生 Line/Email 草稿、派課摘要、分享會/Podcast 文章、社群文案、Word 文件、上傳模板與月結確認包。 |
 | 5 | 高風險動作前的人工核准與預覽 | 寄信、寫回、MIS 操作、薪資、匯款、發票都先做預覽和待核准清單。 |
 
 完整整理見 `shared-modules/office-common-needs.md`。
@@ -49,11 +49,13 @@
 | 提醒節點過碎 | 課前、核銷、電訪、會議、補件與發票都有不同倒數時間。 |
 | 狀態不同步 | 一邊完成不代表另一邊已更新，需要跨系統對帳。 |
 | 重複文字整理 | 派課摘要、補問、提醒、核銷通知、課前確認都需要固定格式草稿。 |
+| 內容再製耗時 | 分享會逐字稿、Podcast 音檔、文章、社群文案、Email 寄送與素材交接需要反覆整理。 |
 | 活動行政包耗時 | 候補比對、系統工作區搬移、簽到表、學員名單、分組座位表與工作流程表都需要固定產出。 |
 | 月結規則複雜 | 課務、諮詢、企劃、交通、補扣款與人員歷史累積會進到月結試算與 Ivy 輸出。 |
+| 交通核銷規則分散 | 兩地距離、不同單位每公里單價與月底核銷資料需要人工查找與試算。 |
 | 外部動作風險 | 發送、寫回、勾完成、建立事件都可能影響個資、薪資、課務或對外承諾。 |
 
-這一版共同問題先根據已完成初版整理的佩欣、思宜、瑜君，以及先前阿丸活動行政、素菁帳務/月結工具材料形成。怡君與後續三位資料補齊後，需重新檢查與更新本段。
+這一版共同問題先根據已完成初版整理的佩欣、思宜、怡君、瑜君，以及先前阿丸活動行政、素菁帳務/月結工具材料形成。後續三位資料補齊後，需重新檢查與更新本段。
 
 ## 共用模組
 
@@ -64,6 +66,7 @@
 | `shared-modules/sheet-field-dictionary.md` | 整理 Google Sheet 欄位字典與欄位治理原則 |
 | `shared-modules/status-check-rules.md` | 整理跨系統狀態對帳與缺漏檢查 |
 | `shared-modules/message-draft-templates.md` | 整理 Line、Email、Calendar、補問與派課草稿模板 |
+| `shared-modules/content-repurposing-workflow.md` | 整理分享會、Podcast、逐字稿、文章、社群文案與寄送草稿流程 |
 | `shared-modules/event-admin-package.md` | 整理候補比對、系統工作區搬移建議、活動行政包與 InfoCenter 草稿 |
 | `shared-modules/settlement-workbench.md` | 整理月結試算、個人確認包、Ivy 輸出與匯款前檢查邊界 |
 

@@ -200,6 +200,7 @@
 
     .card.peixin { border-top: 5px solid var(--green); }
     .card.siyi { border-top: 5px solid var(--blue); }
+    .card.yijun { border-top: 5px solid #2d6f8f; }
     .card.yujun { border-top: 5px solid var(--wine); }
     .card.awan { border-top: 5px solid #72509a; }
     .card.sujing { border-top: 5px solid var(--gold); }
@@ -260,6 +261,7 @@
     .module:nth-child(4) { background: var(--soft-gold); }
     .module:nth-child(5) { background: #eef0ec; }
     .module:nth-child(6) { background: #f2edf4; }
+    .module:nth-child(7) { background: #e8f4f6; }
 
     .flow {
       display: grid;
@@ -403,13 +405,13 @@
       <p class="lede">這個頁面分成三層：先看整體判斷與名單狀態，再看每位蒐集資料同仁的整理結果，最後看跨所有工作流統整出的共同問題摘要。</p>
       <div class="toc">
         <a href="#colleague-status"><strong>1. 名單與狀態</strong>目前 6 位同仁已列入，後續 3 位預計加入。</a>
-        <a href="#colleague-results"><strong>2. 同仁整理結果</strong>已完成者放摘要與文件，待整理者先保留位置。</a>
+        <a href="#colleague-results"><strong>2. 同仁整理結果</strong>已完成者放摘要與文件，後續新增者先保留位置。</a>
         <a href="#problem-summary"><strong>3. 問題統整摘要</strong>把已整理需求彙整成共同問題、優先順序與治理邊界。</a>
       </div>
       <div class="metrics">
         <div class="metric"><b>6</b><span>目前已列入資料蒐集名單：佩欣、思宜、怡君、瑜君、阿丸、素菁。</span></div>
-        <div class="metric"><b>5</b><span>已有可整理材料：佩欣、思宜、瑜君、阿丸、素菁。</span></div>
-        <div class="metric"><b>1</b><span>已列入但待補整理：怡君。</span></div>
+        <div class="metric"><b>6</b><span>已有可整理材料：佩欣、思宜、怡君、瑜君、阿丸、素菁。</span></div>
+        <div class="metric"><b>0</b><span>本輪名單已列入者皆有初版整理，後續待補為雨虹、奕吟、思璇。</span></div>
         <div class="metric"><b>3</b><span>後續預計加入：雨虹、奕吟、思璇。</span></div>
       </div>
     </section>
@@ -429,15 +431,9 @@
         <tbody>
           <tr>
             <td>已完成初版整理 / 已有既有材料</td>
-            <td>佩欣、思宜、瑜君、阿丸、素菁</td>
-            <td>已有需求分析、公開頁、可匯入文件或先前工具雛形。</td>
+            <td>佩欣、思宜、怡君、瑜君、阿丸、素菁</td>
+            <td>已有需求分析、公開頁、逐字稿摘要、可匯入文件或先前工具雛形。</td>
             <td>放入摘要卡、比較表、共用問題摘要與可公開文件連結。</td>
-          </tr>
-          <tr>
-            <td>已列入，待補整理</td>
-            <td>怡君</td>
-            <td>已列入這一輪蒐集資料同仁名單，但尚未在本 repo 匯入完整整理。</td>
-            <td>先建立待整理位置，不推論尚未提供的工作流內容。</td>
           </tr>
           <tr>
             <td>後續預計加入</td>
@@ -451,7 +447,7 @@
 
     <section class="section">
       <h2>整理狀態總覽</h2>
-      <p class="lede">已完成初版整理的人會有可閱讀的摘要與文件；尚未整理的人只標記狀態，避免把推測寫成事實。</p>
+      <p class="lede">已完成初版整理的人會有可閱讀的摘要與文件；後續新增者只標記狀態，避免把推測寫成事實。</p>
       <div class="toc">
         <a href="#shared-modules"><strong>2. 共用自動化模組</strong>把重複出現的提醒、缺漏、對帳、草稿能力抽出來。</a>
         <a href="#problem-summary"><strong>3. 統整問題摘要</strong>目前先根據已整理資料產出，之後隨名單補齊更新。</a>
@@ -461,9 +457,9 @@
 
     <section class="section" id="colleague-results">
       <h2>蒐集資料同仁整理結果</h2>
-      <p class="lede">這一段保留個別工作情境，不急著把不同人的需求混在一起。已整理者放摘要與文件連結；待整理者先放狀態卡。</p>
+      <p class="lede">這一段保留個別工作情境，不急著把不同人的需求混在一起。已整理者放摘要與文件連結；後續新增者先放狀態卡。</p>
       <div class="cards">
-        <article class="card awan">
+        <article class="card peixin">
           <span class="tag">佩欣</span>
           <h3>每日行政工作台</h3>
           <p>佩欣是多系統人工流程中樞。第一版應聚焦新申請、缺漏、到期、逾期、核銷、Calendar 與訊息草稿，不先全自動寫回。</p>
@@ -506,20 +502,22 @@
             <a href="https://course-admin-codex-automation.vercel.app">原公開頁</a>
           </div>
         </article>
-        <article class="card pending">
+        <article class="card yijun">
           <span class="tag">怡君</span>
-          <h3>待整理</h3>
-          <p>怡君已列入目前資料蒐集名單，但尚未在本 repo 匯入完整訪談或需求整理。</p>
+          <h3>分享會與 Podcast 內容助理</h3>
+          <p>怡君的需求集中在固定內容流程：線上分享會課前素材、課後逐字稿與文章寄送，每週 Podcast 摘要、社群文案與海報素材，以及交通核銷試算。</p>
           <ul class="result-list">
-            <li>目前處理：建立 placeholder。</li>
-            <li>下一步：補入逐字稿、訪談摘要或工作紀錄後，再整理角色定位與自動化可能。</li>
-            <li>治理原則：不先推論未提供的工作內容。</li>
+            <li>整理結果：每月分享會、每週 Podcast、逐字稿/文章/社群再製與交通核銷三條流程。</li>
+            <li>主要痛點：內容素材分散，Podcast 標題或檔名不一定早知道，月底交通公里數與費率需要手動核算。</li>
+            <li>第一版產出：內容素材 checklist、摘要/文章/FB 草稿、Canva 圖像提示、交接追蹤與交通費試算草稿。</li>
           </ul>
           <div class="link-row">
-            <a href="people/yijun/README.md">待整理頁</a>
+            <a href="people/yijun/README.md">需求頁</a>
+            <a href="people/yijun/needs-analysis.md">需求文件</a>
+            <a href="shared-modules/content-repurposing-workflow.md">內容再製模組</a>
           </div>
         </article>
-        <article class="card peixin">
+        <article class="card awan">
           <span class="tag">阿丸</span>
           <h3>活動行政包與候補比對</h3>
           <p>阿丸先前已有需求分析與四項表單自動生成 MVP。重點是把候補詢問、候補名單、系統工作區、活動通知、活動前文件包與活動後 InfoCenter 建檔整理成可核准的流程。</p>
@@ -603,6 +601,12 @@
             <td>狀態變更提醒、欄位檢查、匯入模板與待追清單。</td>
           </tr>
           <tr>
+            <td>怡君</td>
+            <td>線上分享會、Podcast、逐字稿文章再製、交通核銷試算</td>
+            <td>內容素材與發布任務分散，Podcast 可先處理內容但標題可能晚到，交通費需手動查公里數與費率。</td>
+            <td>素材 checklist、摘要/文章/FB 草稿、交接追蹤、交通費試算。</td>
+          </tr>
+          <tr>
             <td>瑜君</td>
             <td>南區課務、課前提醒、派課後行政追蹤</td>
             <td>真正痛點是課前行政節點太細，忙碌時容易漏設提醒。</td>
@@ -619,12 +623,6 @@
             <td>月結帳務、人員勞務結算、Ivy 報帳輸出、匯款前檢查</td>
             <td>課務與工作紀錄最後要進入月結，但規則、歷史累積、補扣款與本人確認都很容易漏或算錯。</td>
             <td>月結 Dashboard、資料匯入檢查、試算、個人確認包、Ivy 輸出預覽。</td>
-          </tr>
-          <tr>
-            <td>怡君</td>
-            <td>待補資料後整理</td>
-            <td>已列入名單，但尚未匯入完整需求，不先推論。</td>
-            <td>先建立待整理頁，等資料到位後補摘要與共通問題。</td>
           </tr>
           <tr>
             <td>雨虹、奕吟、思璇</td>
@@ -661,6 +659,11 @@
           <a href="shared-modules/message-draft-templates.md">查看模組</a>
         </article>
         <article class="module">
+          <h3>內容再製</h3>
+          <p>把分享會逐字稿、Podcast 音檔或文章轉成摘要、社群短文、Email 與發布 checklist。</p>
+          <a href="shared-modules/content-repurposing-workflow.md">查看模組</a>
+        </article>
+        <article class="module">
           <h3>活動行政包</h3>
           <p>整理候補比對、系統工作區搬移建議、四份 Word 文件草稿與活動後建檔草稿。</p>
           <a href="shared-modules/event-admin-package.md">查看模組</a>
@@ -675,22 +678,24 @@
 
     <section class="section" id="problem-summary">
       <h2>統整後所有問題摘要</h2>
-      <p class="lede">先根據已完成初版整理的佩欣、思宜、瑜君資料，以及阿丸活動行政、素菁帳務/月結工具材料統整。問題不是「要不要用 AI」，而是公司目前有一批行政流程都靠人腦記住狀態、靠手動搬資料、靠即時通訊補洞；活動前會集中在名單、候補、文件包，到月底還會進入更高風險的月結、報帳、匯款與發票前檢查。怡君與後續三位補齊後，這一段會再做第二輪統整。</p>
+      <p class="lede">先根據已完成初版整理的佩欣、思宜、怡君、瑜君資料，以及阿丸活動行政、素菁帳務/月結工具材料統整。問題不是「要不要用 AI」，而是公司目前有一批行政流程都靠人腦記住狀態、靠手動搬資料、靠即時通訊補洞；活動前會集中在名單、候補、文件包，內容發布會集中在逐字稿、文章、社群與寄送草稿，到月底還會進入更高風險的月結、報帳、匯款與發票前檢查。後續三位補齊後，這一段會再做第二輪統整。</p>
       <div class="issue-grid">
         <div class="issue"><strong>資料分散</strong>Google Sheet、Excel、InfoCenter、Line、Calendar、Email 與文件資料夾分散，單一案件常要在多處重建脈絡。</div>
         <div class="issue"><strong>欄位品質不穩</strong>表單內容可能粗略、缺欄、格式不一致，導致後續派課、追蹤、匯入或統計都需要人工補判斷。</div>
         <div class="issue"><strong>提醒節點過碎</strong>課前、核銷、電訪、會議、補件與發票都有不同倒數時間，靠人工 schedule 容易漏。</div>
         <div class="issue"><strong>狀態不同步</strong>一邊完成不代表另一邊已更新，尤其 InfoCenter、Google Sheet、Calendar 與通訊紀錄之間需要對帳。</div>
         <div class="issue"><strong>重複文字整理</strong>派課摘要、補問、提醒、核銷通知、課前確認、匯入說明都需要固定格式草稿。</div>
+        <div class="issue"><strong>內容再製耗時</strong>分享會逐字稿、Podcast 音檔、文章、社群文案、Email 與素材交接需要反覆整理。</div>
         <div class="issue"><strong>活動文件包耗時</strong>候補比對、系統工作區搬移、簽到表、學員名單、分組座位表、工作流程表都需要固定產出與人工確認。</div>
         <div class="issue"><strong>結算規則複雜</strong>課務、諮詢、企劃、交通、補扣款與人員歷史累積最後會影響月結試算、個人確認包與 Ivy 輸出。</div>
+        <div class="issue"><strong>交通核銷規則分散</strong>兩地公里數、不同單位每公里單價與月底核銷資料需要人工查找、比對與試算。</div>
         <div class="issue"><strong>外部動作風險</strong>自動發送、寫回、勾完成、建立事件都可能影響個資、薪資、課務或對外承諾，必須保留人工確認。</div>
       </div>
     </section>
 
     <section class="section" id="office-top-needs">
       <h2>辦公室工作常見需求 Top 5</h2>
-      <p class="lede">這裡先根據佩欣、思宜、瑜君、阿丸、素菁五份材料整理。排序標準不是誰的需求最大聲，而是跨角色重複出現、可共用、第一版能降低漏追與重工的程度。</p>
+      <p class="lede">這裡先根據佩欣、思宜、怡君、瑜君、阿丸、素菁六份材料整理。排序標準不是誰的需求最大聲，而是跨角色重複出現、可共用、第一版能降低漏追與重工的程度。</p>
       <table>
         <thead>
           <tr>
@@ -704,7 +709,7 @@
           <tr>
             <td>1</td>
             <td>每日/每週工作台與提醒清單</td>
-            <td>課務、核銷、個案追蹤、課前倒數、活動前準備、月結進度。</td>
+            <td>課務、核銷、個案追蹤、內容檔期、課前倒數、活動前準備、月結進度。</td>
             <td>只讀資料，列出今日新增、到期、逾期、待人工確認。</td>
           </tr>
           <tr>
@@ -721,9 +726,9 @@
           </tr>
           <tr>
             <td>4</td>
-            <td>固定格式草稿與文件包產生</td>
-            <td>Line/Email、派課摘要、課前確認、信扶模板、活動 Word、月結確認包。</td>
-            <td>產生可複製草稿與文件草稿，附來源註記，正式送出前人工確認。</td>
+            <td>固定格式草稿、內容再製與文件包產生</td>
+            <td>Line/Email、派課摘要、課前確認、分享會/Podcast 文章、社群短文、信扶模板、活動 Word、月結確認包。</td>
+            <td>產生可複製草稿、內容草稿與文件草稿，附來源註記，正式送出前人工確認。</td>
           </tr>
           <tr>
             <td>5</td>
@@ -739,6 +744,8 @@
       <h3>剩餘常見需求</h3>
       <ul class="result-list">
         <li>課前倒數時間軸、派課摘要與課程確認草稿。</li>
+        <li>分享會逐字稿、Podcast 音檔、文章、FB 短文、Canva 圖像提示與 Email 草稿。</li>
+        <li>內容交接追蹤，確認文章位置、若琪或其他夥伴是否取得素材。</li>
         <li>候補名單比對、系統工作區搬移建議、活動行政包。</li>
         <li>信扶或外部系統匯入模板、InfoCenter 建檔草稿。</li>
         <li>月結試算、個人確認包、發票與匯款前檢查。</li>
@@ -788,24 +795,30 @@
           </tr>
           <tr>
             <td>5</td>
+            <td>內容素材反覆再製與交接</td>
+            <td>內容再製與發布草稿工作台</td>
+            <td>怡君的分享會與 Podcast 流程固定、頻率高，先用逐字稿或音檔產草稿，能立即減少重複整理。</td>
+          </tr>
+          <tr>
+            <td>6</td>
             <td>候補與活動文件包人工整理耗時</td>
             <td>活動行政包與候補比對工作台</td>
             <td>阿丸已有四項表單 MVP，最適合先用匯出檔與範本產生清單、草稿與文件包。</td>
           </tr>
           <tr>
-            <td>6</td>
+            <td>7</td>
             <td>月結試算與報帳輸出風險高</td>
             <td>月結對帳工作台</td>
             <td>素菁的材料顯示，課務資料若前面沒留好，月底會在薪資、Ivy 輸出、匯款與發票前檢查集中爆發。</td>
           </tr>
           <tr>
-            <td>7</td>
+            <td>8</td>
             <td>跨系統狀態不同步</td>
             <td>狀態對帳與異常清單</td>
             <td>需要較多資料源權限，適合在欄位規則穩定後導入。</td>
           </tr>
           <tr>
-            <td>8</td>
+            <td>9</td>
             <td>人工確認後仍要回填</td>
             <td>受控寫回與 Calendar 草稿</td>
             <td>這是高價值但高風險功能，必須等前面規則回測穩定。</td>
@@ -840,6 +853,7 @@
       needs-analysis.md
     yijun/
       README.md
+      needs-analysis.md
     yujun/
       needs-analysis.md
     awan/
@@ -860,6 +874,7 @@
     status-check-rules.md
     message-draft-templates.md
     office-common-needs.md
+    content-repurposing-workflow.md
     event-admin-package.md
     settlement-workbench.md
   publication/
