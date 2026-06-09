@@ -130,3 +130,31 @@ Verification:
 
 1. Keep public review content de-identified and noindex until explicitly approved otherwise.
 2. After future pushes, verify that GitHub-backed Vercel deployments keep `X-Robots-Tag: noindex, nofollow, noarchive`.
+
+## Update: Supervisor Course Outline Page
+
+- Date: 2026-06-09
+- Content commit: `78775b4` (`Publish supervisor course outline page`)
+- Deployment ID: `dpl_CGyXGCAroprkjkjG3H8giFNtwDNd`
+- Deployment URL: `https://course-ops-automation-requirements-6b4uckmo6.vercel.app`
+- Stable production alias: `https://course-ops-automation-requirements.vercel.app`
+- Target: `production`
+- Ready state: `READY`
+- Vercel output directory: `public/`
+
+Verification:
+
+- Stable alias returned `HTTP/1.1 200 OK`.
+- Header confirmed: `X-Robots-Tag: noindex, nofollow, noarchive`.
+- HTML title confirmed `Codex 行政工作實驗課｜主管版課綱`.
+- HTML confirmed supervisor notice and did not contain the old demand-overview title.
+- HTML confirmed no colleague names from the prior needs overview appeared on the production root.
+- HTML meta robots confirmed: `<meta name="robots" content="noindex,nofollow,noarchive">`.
+- `robots.txt` confirmed `Disallow: /`.
+- Production path checks:
+  - `/people/siyi/needs-analysis.md`: `404`
+  - `/shared-modules/office-common-needs.md`: `404`
+  - `/training/codex-office-workshop-outline.md`: `404`
+  - `/outputs/codex-office-workshop/contact-sheet.png`: `404`
+  - `/publication/supervisor-course-outline.md`: `404`
+  - `/assets/course-workshop-contact-sheet.png`: `200`
