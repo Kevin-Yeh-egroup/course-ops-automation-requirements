@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>怡君需求整理</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1f2937;
+      --muted: #5f6b7a;
+      --paper: #fff;
+      --bg: #f6f8fb;
+      --line: #d8dee8;
+      --navy: #202a44;
+      --blue: #2f6bff;
+      --teal: #0e9f8b;
+      --wine: #8b3556;
+      --gold: #c58b25;
+      --green: #2e7d5f;
+      --sky: #eef5ff;
+      --mint: #e9f8f4;
+      --blush: #f8ecf1;
+      --amber: #fff6e0;
+      --radius: 8px;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.72; }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px clamp(14px, 3vw, 32px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+    }
+    .brand { font-weight: 900; color: var(--navy); }
+    .nav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+    .nav a, .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 12px;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .button-link.primary, .nav a.primary { border-color: var(--blue); background: var(--blue); color: #fff; }
+    .hero {
+      background: var(--navy);
+      color: #fff;
+      padding: clamp(42px, 8vw, 84px) 0;
+    }
+    .shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+    .hero .shell { display: grid; gap: 18px; }
+    .eyebrow { margin: 0; color: #9be1d5; font-size: 0.94rem; font-weight: 900; }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 { max-width: 900px; margin-bottom: 0; font-size: clamp(2.15rem, 5vw, 4rem); line-height: 1.1; letter-spacing: 0; }
+    .lead { max-width: 880px; margin-bottom: 0; color: rgba(255, 255, 255, 0.82); font-size: clamp(1.05rem, 2vw, 1.25rem); }
+    main.shell { padding: 42px 0 76px; }
+    .section { margin: 34px 0; }
+    .cards, .grid { display: grid; gap: 16px; }
+    .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card, .panel, .md article {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 8px 24px rgba(32, 42, 68, 0.06);
+    }
+    .card, .panel { padding: 20px; }
+    .card strong { display: block; margin-bottom: 8px; color: var(--navy); font-size: 1.08rem; }
+    .card p, .muted { color: var(--muted); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag { border: 1px solid var(--line); border-radius: var(--radius); padding: 4px 8px; background: var(--sky); color: var(--navy); font-size: 0.86rem; font-weight: 800; }
+    .notice {
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      background: #f0faf8;
+      color: #254d49;
+    }
+    .prompt {
+      overflow-x: auto;
+      white-space: pre-wrap;
+      border-radius: var(--radius);
+      padding: 18px;
+      background: #111827;
+      color: #e5e7eb;
+      font-size: 0.98rem;
+      line-height: 1.68;
+    }
+    .steps { counter-reset: step; display: grid; gap: 10px; }
+    .steps li { margin: 0 0 8px; }
+    .md { display: grid; gap: 20px; }
+    .md article { padding: clamp(20px, 4vw, 34px); }
+    .md h1 { color: var(--navy); font-size: clamp(1.9rem, 4vw, 3rem); }
+    .md h2 { margin-top: 34px; color: var(--navy); font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.25; }
+    .md h3 { margin-top: 24px; color: var(--navy); font-size: 1.22rem; }
+    .table-wrap { overflow-x: auto; margin: 16px 0 24px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+    table { width: 100%; min-width: 720px; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: #eef1f6; color: var(--navy); white-space: nowrap; }
+    pre { overflow-x: auto; border-radius: var(--radius); padding: 16px; background: #111827; color: #e5e7eb; }
+    pre.mermaid { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+    code { font-family: "Cascadia Code", Consolas, monospace; }
+    .muted-link { color: var(--muted); }
+    .accent-blue { border-top: 5px solid var(--blue); }
+    .accent-teal { border-top: 5px solid var(--teal); }
+    .accent-gold { border-top: 5px solid var(--gold); }
+    .accent-wine { border-top: 5px solid var(--wine); }
+    .accent-green { border-top: 5px solid var(--green); }
+    .soft-sky { background: var(--sky); }
+    .soft-mint { background: var(--mint); }
+    .soft-blush { background: var(--blush); }
+    .soft-amber { background: var(--amber); }
+    footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 860px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .nav { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
+      .cards, .grid.two { grid-template-columns: 1fr; }
+      table { min-width: 640px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Codex 行政工作實驗課</div>
+    <nav class="nav" aria-label="站內導覽">
+      <a href="/">課程頁</a>
+      <a href="/slides/">學員簡報</a>
+      <a href="/kit/">練習包</a>
+      <a href="/exercises/">四個練習</a>
+      <a class="primary" href="/needs/">需求整理</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="shell">
+      <p class="eyebrow">個別需求頁</p>
+      <h1>怡君需求整理</h1>
+      <p class="lead">需要內容素材工作台、逐字稿摘要、發布草稿與交通費試算，降低內容再製與月底核銷負擔。</p>
+    </div>
+  </section>
+  <main class="shell md-page">
+    
+    <section class="notice">
+      本頁來源：<code>people/yijun/needs-analysis.md</code>。內容是需求整理與工作流分析，不是正式系統規格；涉及外部發送、正式資料更新、個資、金額或月結的動作仍需人工確認。
+    </section>
+    <section class="section">
+      <div class="card accent-teal">
+        <strong>怡君｜分享會、Podcast 與交通核銷</strong>
+        <p>需要內容素材工作台、逐字稿摘要、發布草稿與交通費試算，降低內容再製與月底核銷負擔。</p>
+        <div class="tag-row"><span class="tag">內容再製</span><span class="tag">Podcast</span><span class="tag">分享會</span><span class="tag">交通核銷</span></div>
+      </div>
+    </section>
+    <section class="section md">
+      <article><h1 id="怡君工作流需求分析">怡君工作流需求分析</h1>
+<h2 id="來源與範圍">來源與範圍</h2>
+<p>本頁依據 Kevin 提供的「怡君討論內容與錄音檔逐字稿」整理。公開頁只保留流程與需求摘要，不放入完整逐字稿、學員名單、問卷回覆或可識別個資。</p>
+<h2 id="第一性原則判斷">第一性原則判斷</h2>
+<p>怡君的工作不是單純「做圖」或「寫文案」，而是把固定節目與分享會的內容資產一路轉成可發布、可寄送、可交接、可留存的行政成果。要降低負擔，第一版應先回答四個基本問題：</p>
+<div class="table-wrap"><table><thead><tr><th>基本問題</th><th>對應需求</th></tr></thead><tbody><tr><td>這次活動或節目的素材到了嗎？</td><td>報名表、海報、圖文、音檔、逐字稿、回饋問卷、文章位置</td></tr><tr><td>可以先產出哪些草稿？</td><td>Podcast 摘要、部落格文章、FB 短文、Canva 圖像提示、Email 草稿</td></tr><tr><td>哪些動作還需要人確認？</td><td>標題、公開日期、寄送對象、文章來源、社群發布內容</td></tr><tr><td>月底要怎麼核銷？</td><td>起訖地、公里數、單位費率、交通費試算、單據狀態</td></tr></tbody></table></div>
+<h2 id="可視化需求分析">可視化需求分析</h2>
+<h3 id="線上分享會">線上分享會</h3>
+<pre class="mermaid">flowchart LR
+  A[&quot;分享會主題/日期&quot;] --&gt; B[&quot;課前素材 checklist&quot;]
+  B --&gt; C[&quot;報名表&quot;]
+  B --&gt; D[&quot;海報與圖文&quot;]
+  C --&gt; E[&quot;課中執行&quot;]
+  D --&gt; E
+  E --&gt; F[&quot;課後語音轉文字&quot;]
+  F --&gt; G[&quot;好理家摘文章&quot;]
+  G --&gt; H[&quot;寄送給填寫回饋問卷的學員&quot;]
+  G --&gt; I[&quot;若琪提取重點&quot;]
+  I --&gt; J[&quot;好理家摘/循錢師社群內容&quot;]</pre>
+<h3 id="每週-podcast">每週 Podcast</h3>
+<pre class="mermaid">flowchart LR
+  A[&quot;固定檔期&quot;] --&gt; B[&quot;前一週音檔到位&quot;]
+  B --&gt; C[&quot;內容摘要&quot;]
+  C --&gt; D[&quot;文章草稿&quot;]
+  C --&gt; E[&quot;FB 短文&quot;]
+  C --&gt; F[&quot;Canva/海報素材提示&quot;]
+  D --&gt; G[&quot;標題與細節人工修正&quot;]
+  E --&gt; G
+  F --&gt; G
+  G --&gt; H[&quot;公開前確認&quot;]</pre>
+<h3 id="交通核銷">交通核銷</h3>
+<pre class="mermaid">flowchart LR
+  A[&quot;行事曆或工作紀錄&quot;] --&gt; B[&quot;起點/終點地址&quot;]
+  B --&gt; C[&quot;距離查詢&quot;]
+  C --&gt; D[&quot;單位費率表&quot;]
+  D --&gt; E[&quot;交通費試算&quot;]
+  E --&gt; F[&quot;月底核銷草稿&quot;]
+  F --&gt; G[&quot;人工確認後送出&quot;]</pre>
+<h2 id="需求摘要">需求摘要</h2>
+<div class="table-wrap"><table><thead><tr><th>面向</th><th>目前工作</th><th>痛點</th><th>自動化可能</th></tr></thead><tbody><tr><td>線上分享會課前</td><td>報名表、海報、圖文與報名啟動</td><td>每月固定但仍需逐項確認</td><td>checklist、素材缺漏提醒、文案草稿</td></tr><tr><td>線上分享會課後</td><td>語音轉文字、文章、寄送學員、社群重點再製</td><td>文章位置與交接對象要人工確認</td><td>逐字稿摘要、文章草稿、寄送草稿、交接追蹤</td></tr><tr><td>Podcast 公開前</td><td>剪輯、海報、FB 短文、文章</td><td>檔名/標題不一定早知道，但內容音檔可先處理</td><td>音檔摘要、文章草稿、短文、圖像提示、待補標題欄</td></tr><tr><td>工具使用</td><td>ChatGPT、Canva、GAA、Notebook LM</td><td>工具分散，成果需要人工整合</td><td>將輸出整理成同一份發布工作台</td></tr><tr><td>交通核銷</td><td>查兩地公里數，依單位費率算交通費</td><td>每月底重複查詢，且單位規則不同</td><td>地址距離試算、費率表、異常清單與月結草稿</td></tr></tbody></table></div>
+<h2 id="codex-自動化可能任務規劃">Codex 自動化可能任務規劃</h2>
+<div class="table-wrap"><table><thead><tr><th>優先序</th><th>任務</th><th>輸入</th><th>輸出</th><th>人工確認點</th></tr></thead><tbody><tr><td>P0</td><td>內容資產欄位盤點</td><td>分享會、Podcast、文章與社群流程</td><td>欄位字典與 checklist</td><td>哪些欄位必填、哪些可晚補</td></tr><tr><td>P1</td><td>分享會課後草稿包</td><td>逐字稿、活動資訊、回饋問卷名單</td><td>摘要、文章草稿、Email 草稿、社群重點</td><td>文章內容與寄送對象</td></tr><tr><td>P1</td><td>Podcast 公開前草稿包</td><td>音檔或逐字稿、固定檔期</td><td>摘要、文章草稿、FB 短文、海報提示</td><td>標題、公開日期、是否可發布</td></tr><tr><td>P2</td><td>內容交接追蹤</td><td>文章位置、負責夥伴、發布渠道</td><td>若琪/社群素材交接清單</td><td>素材是否可公開、來源是否正確</td></tr><tr><td>P2</td><td>交通核銷試算</td><td>起點、終點、單位、公里單價</td><td>公里數、交通費、異常清單</td><td>路線、費率與單據</td></tr><tr><td>P3</td><td>月底核銷彙整</td><td>行事曆、工作紀錄、核銷試算</td><td>月結草稿、待補單據與高風險項目</td><td>正式核銷送出</td></tr></tbody></table></div>
+<h2 id="可能的解決方案">可能的解決方案</h2>
+<div class="table-wrap"><table><thead><tr><th>方案</th><th>做法</th><th>優點</th><th>風險/限制</th></tr></thead><tbody><tr><td>內容發布工作台</td><td>用 Sheet 或輕量頁面管理分享會、Podcast 的素材狀態、草稿與發布清單</td><td>快速落地，能先減少漏交接與重複寫文</td><td>需要先定義欄位與命名規則</td></tr><tr><td>音檔/逐字稿摘要器</td><td>音檔到位後先轉摘要，再產生文章、FB 短文與 Canva prompt</td><td>能在標題未定時先處理內容</td><td>逐字稿品質不足時要人工校正</td></tr><tr><td>分享會課後套件</td><td>從逐字稿與回饋問卷產生寄送草稿、文章摘要與社群重點</td><td>每月固定流程最適合模板化</td><td>不可自動寄送，需確認收件對象</td></tr><tr><td>交通核銷小工具</td><td>輸入起訖地、單位與費率，產生公里數與金額試算</td><td>可直接減少月底查公里數時間</td><td>路線與費率涉及核銷規則，需人工審核</td></tr><tr><td>Calendar 輔助核銷</td><td>從行事曆讀活動地點，月底產生交通費候選清單</td><td>減少漏報與重複輸入</td><td>行事曆地點若不完整，仍需補地址</td></tr></tbody></table></div>
+<h2 id="第一版治理邊界">第一版治理邊界</h2>
+<ul>
+<li>不自動發布部落格、粉專或 Podcast 內容。</li>
+<li>不自動寄送逐字稿、文章或 Email 給學員。</li>
+<li>不在公開頁保留完整逐字稿、問卷回覆、學員資料或可識別個資。</li>
+<li>不自動認定交通費可以核銷；只提供公里數與金額試算。</li>
+<li>音檔、逐字稿、文章與社群文案皆需怡君或負責夥伴人工確認後才可外送。</li>
+</ul>
+<h2 id="建議第一輪實驗">建議第一輪實驗</h2>
+<p>先選一集 Podcast 與一場線上分享會回測：</p>
+<ol>
+<li>建立素材 checklist。</li>
+<li>匯入音檔或逐字稿。</li>
+<li>產生摘要、文章草稿、FB 短文與 Canva 圖像提示。</li>
+<li>產生「待補標題、待確認公開日期、待交接若琪」清單。</li>
+<li>讓怡君人工修正後，記錄哪些欄位與提示最有用。</li>
+</ol></article>
+    </section>
+  </main>
+  <footer>
+    <div class="shell">版本：2026.06.09｜狀態：public-with-noindex review｜本頁可用網址瀏覽，但 noindex 不是隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
+  </footer>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "default" });
+  </script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>思宜需求整理</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1f2937;
+      --muted: #5f6b7a;
+      --paper: #fff;
+      --bg: #f6f8fb;
+      --line: #d8dee8;
+      --navy: #202a44;
+      --blue: #2f6bff;
+      --teal: #0e9f8b;
+      --wine: #8b3556;
+      --gold: #c58b25;
+      --green: #2e7d5f;
+      --sky: #eef5ff;
+      --mint: #e9f8f4;
+      --blush: #f8ecf1;
+      --amber: #fff6e0;
+      --radius: 8px;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.72; }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px clamp(14px, 3vw, 32px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+    }
+    .brand { font-weight: 900; color: var(--navy); }
+    .nav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+    .nav a, .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 12px;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .button-link.primary, .nav a.primary { border-color: var(--blue); background: var(--blue); color: #fff; }
+    .hero {
+      background: var(--navy);
+      color: #fff;
+      padding: clamp(42px, 8vw, 84px) 0;
+    }
+    .shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+    .hero .shell { display: grid; gap: 18px; }
+    .eyebrow { margin: 0; color: #9be1d5; font-size: 0.94rem; font-weight: 900; }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 { max-width: 900px; margin-bottom: 0; font-size: clamp(2.15rem, 5vw, 4rem); line-height: 1.1; letter-spacing: 0; }
+    .lead { max-width: 880px; margin-bottom: 0; color: rgba(255, 255, 255, 0.82); font-size: clamp(1.05rem, 2vw, 1.25rem); }
+    main.shell { padding: 42px 0 76px; }
+    .section { margin: 34px 0; }
+    .cards, .grid { display: grid; gap: 16px; }
+    .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card, .panel, .md article {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 8px 24px rgba(32, 42, 68, 0.06);
+    }
+    .card, .panel { padding: 20px; }
+    .card strong { display: block; margin-bottom: 8px; color: var(--navy); font-size: 1.08rem; }
+    .card p, .muted { color: var(--muted); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag { border: 1px solid var(--line); border-radius: var(--radius); padding: 4px 8px; background: var(--sky); color: var(--navy); font-size: 0.86rem; font-weight: 800; }
+    .notice {
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      background: #f0faf8;
+      color: #254d49;
+    }
+    .prompt {
+      overflow-x: auto;
+      white-space: pre-wrap;
+      border-radius: var(--radius);
+      padding: 18px;
+      background: #111827;
+      color: #e5e7eb;
+      font-size: 0.98rem;
+      line-height: 1.68;
+    }
+    .steps { counter-reset: step; display: grid; gap: 10px; }
+    .steps li { margin: 0 0 8px; }
+    .md { display: grid; gap: 20px; }
+    .md article { padding: clamp(20px, 4vw, 34px); }
+    .md h1 { color: var(--navy); font-size: clamp(1.9rem, 4vw, 3rem); }
+    .md h2 { margin-top: 34px; color: var(--navy); font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.25; }
+    .md h3 { margin-top: 24px; color: var(--navy); font-size: 1.22rem; }
+    .table-wrap { overflow-x: auto; margin: 16px 0 24px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+    table { width: 100%; min-width: 720px; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: #eef1f6; color: var(--navy); white-space: nowrap; }
+    pre { overflow-x: auto; border-radius: var(--radius); padding: 16px; background: #111827; color: #e5e7eb; }
+    pre.mermaid { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+    code { font-family: "Cascadia Code", Consolas, monospace; }
+    .muted-link { color: var(--muted); }
+    .accent-blue { border-top: 5px solid var(--blue); }
+    .accent-teal { border-top: 5px solid var(--teal); }
+    .accent-gold { border-top: 5px solid var(--gold); }
+    .accent-wine { border-top: 5px solid var(--wine); }
+    .accent-green { border-top: 5px solid var(--green); }
+    .soft-sky { background: var(--sky); }
+    .soft-mint { background: var(--mint); }
+    .soft-blush { background: var(--blush); }
+    .soft-amber { background: var(--amber); }
+    footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 860px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .nav { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
+      .cards, .grid.two { grid-template-columns: 1fr; }
+      table { min-width: 640px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Codex 行政工作實驗課</div>
+    <nav class="nav" aria-label="站內導覽">
+      <a href="/">課程頁</a>
+      <a href="/slides/">學員簡報</a>
+      <a href="/kit/">練習包</a>
+      <a href="/exercises/">四個練習</a>
+      <a class="primary" href="/needs/">需求整理</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="shell">
+      <p class="eyebrow">個別需求頁</p>
+      <h1>思宜需求整理</h1>
+      <p class="lead">需要同意書與 LINE 狀態提醒、引導員電訪追蹤、欄位品質檢查與信扶匯入模板。</p>
+    </div>
+  </section>
+  <main class="shell md-page">
+    
+    <section class="notice">
+      本頁來源：<code>people/siyi/needs-analysis.md</code>。內容是需求整理與工作流分析，不是正式系統規格；涉及外部發送、正式資料更新、個資、金額或月結的動作仍需人工確認。
+    </section>
+    <section class="section">
+      <div class="card accent-teal">
+        <strong>思宜｜自行報名案、同意書、LINE 與匯入</strong>
+        <p>需要同意書與 LINE 狀態提醒、引導員電訪追蹤、欄位品質檢查與信扶匯入模板。</p>
+        <div class="tag-row"><span class="tag">狀態追蹤</span><span class="tag">欄位檢查</span><span class="tag">匯入模板</span><span class="tag">提醒</span></div>
+      </div>
+    </section>
+    <section class="section md">
+      <article><h1 id="思宜需求分析與-codex-自動化任務規劃">思宜需求分析與 Codex 自動化任務規劃</h1>
+<p>來源：訪談逐字稿與會後紀錄 目標：把思宜目前在「自行報名案、同意書、LINE、引導員電訪、信扶系統匯入」中的人工判斷工作，轉換成可檢查、可提醒、可半自動化的工作流。</p>
+<h2 id="1-任務分流">1. 任務分流</h2>
+<p>任務類型：Workflow / Operations / Documentation 完成定義：產出一份可讓 Kevin 與思宜討論的需求分析稿，包含可視化流程、Codex 自動化任務規劃、可能解法、風險與待確認事項。 建議代理視角：<code>task_router</code> 定義範圍、<code>context_scout</code> 抽取逐字稿事實、<code>workflow_designer</code> 設計流程、<code>automation_auditor</code> 劃出自動化邊界、<code>doc_scribe</code> 整理成可讀提案。 審核門檻：目前只做草案；任何外部系統寫入、LINE 發送、長期排程、帳號權限存取，都需要 Kevin 與業務端確認後才執行。</p>
+<h2 id="2-一頁摘要">2. 一頁摘要</h2>
+<p>思宜的核心需求不是「讓 AI 直接替她處理個案」，而是：</p>
+<ol>
+<li>幫她知道今天該看誰、該追誰、誰有新狀態。</li>
+<li>幫她找出關鍵欄位、異常欄位、衝突欄位。</li>
+<li>幫她把跨系統的資料搬移、欄位對齊、上傳格式整理先做好。</li>
+<li>保留人工判斷與外部發送的最後確認權。</li>
+</ol>
+<p>最適合先做的 MVP 是「每日提醒清單 + 欄位檢查報告 + 匯入模板產生器」，不建議一開始就做 LINE 自動回覆或直接寫入外部系統。</p>
+<h2 id="3-角色與系統地圖">3. 角色與系統地圖</h2>
+<div class="table-wrap"><table><thead><tr><th>類別</th><th>對象</th><th>目前角色</th></tr></thead><tbody><tr><td>人</td><td>個案</td><td>網站報名、回覆同意書、加入 LINE、參加說明會或看短片、接受電訪</td></tr><tr><td>人</td><td>雨虹</td><td>將網站報名資料匯入系統、發送同意書簡訊、開同意書事件</td></tr><tr><td>人</td><td>思宜</td><td>同意書追蹤、LINE 檢查、初步資格判斷、說明會/短片引導、引導員電訪後檢查、匯入信扶系統</td></tr><tr><td>人</td><td>引導員</td><td>於派案後完成第一次聯繫與電訪，填寫電訪結果/評論</td></tr><tr><td>系統</td><td>InfoCenter</td><td>個案資料、LINE 驗證狀態、欄位、歷史紀錄、事件</td></tr><tr><td>系統</td><td>LINE 官方帳號</td><td>個案加入與訊息往來，但目前缺少主動通知</td></tr><tr><td>系統</td><td>Google Sheet / 引導員通知表</td><td>各引導員名單、七天內聯繫追蹤、通知狀態、問題註記</td></tr><tr><td>系統</td><td>信扶專案系統 / 上傳模板</td><td>最終匯入與狀態更新</td></tr><tr><td>工具</td><td>Codex</td><td>讀取、比對、產生提醒、整理模板、輔助更新，但外部寫入需人工核准</td></tr></tbody></table></div>
+<h2 id="4-可視化流程圖">4. 可視化流程圖</h2>
+<pre class="mermaid">flowchart TD
+  A[&quot;網站自行報名&quot;] --&gt; B[&quot;雨虹匯入資料&quot;]
+  B --&gt; C[&quot;系統發同意書簡訊&quot;]
+  C --&gt; D{&quot;個案是否回覆同意書&quot;}
+  D -- &quot;未回覆/逾期&quot; --&gt; D1[&quot;提醒追蹤或視同取消&quot;]
+  D -- &quot;已回覆&quot; --&gt; E[&quot;個案加入 LINE 並回覆姓名電話&quot;]
+  E --&gt; F{&quot;LINE 驗證是否成功&quot;}
+  F -- &quot;未驗證/未加入&quot; --&gt; F1[&quot;思宜人工查看 LINE 與 InfoCenter&quot;]
+  F -- &quot;已驗證&quot; --&gt; G[&quot;思宜回覆收到並判斷說明會狀態&quot;]
+  G --&gt; H{&quot;是否參加說明會&quot;}
+  H -- &quot;已參加&quot; --&gt; I[&quot;初步資料檢查&quot;]
+  H -- &quot;未參加&quot; --&gt; J[&quot;詢問原因/口頭說明/提供短片&quot;]
+  J --&gt; K{&quot;看完後是否有意願&quot;}
+  K -- &quot;無意願&quot; --&gt; K1[&quot;記錄原因/不進入派案&quot;]
+  K -- &quot;有意願&quot; --&gt; L[&quot;請李彤或相關窗口派案&quot;]
+  I --&gt; L
+  L --&gt; M[&quot;引導員電訪&quot;]
+  M --&gt; N{&quot;電訪結果與欄位是否完成&quot;}
+  N -- &quot;未完成/逾期&quot; --&gt; N1[&quot;提醒引導員或列入追蹤&quot;]
+  N -- &quot;已完成&quot; --&gt; O[&quot;思宜檢查欄位與評論是否一致&quot;]
+  O --&gt; P{&quot;資料是否可匯入&quot;}
+  P -- &quot;需修正&quot; --&gt; P1[&quot;補欄位/確認衝突/追問&quot;]
+  P -- &quot;可匯入&quot; --&gt; Q[&quot;產生上傳模板&quot;]
+  Q --&gt; R[&quot;匯入信扶專案系統&quot;]
+  R --&gt; S[&quot;更新匯入日期與狀態&quot;]</pre>
+<h2 id="5-需求切片">5. 需求切片</h2>
+<h3 id="a-自行報名案-同意書-line-狀態判斷與通知">A. 自行報名案：同意書、LINE、狀態判斷與通知</h3>
+<p>目前流程：</p>
+<ul>
+<li>網站報名後，由雨虹匯入並開同意書事件。</li>
+<li>系統簡訊通知個案在期限前回覆輔導同意書。</li>
+<li>個案回覆後，理想情況是加入官方 LINE，回覆姓名與電話。</li>
+<li>LINE 驗證成功時，InfoCenter 會顯示 LINE 連結狀態。</li>
+<li>思宜目前需要三不五時人工檢查 LINE 與 InfoCenter，沒有主動通知。</li>
+</ul>
+<p>痛點：</p>
+<ul>
+<li>新加入 LINE 或新回覆同意書沒有即時通知。</li>
+<li>同意書、LINE 驗證、說明會狀態、個案資料散在不同地方。</li>
+<li>有些判斷高度仰賴思宜經驗，不適合一開始全自動。</li>
+</ul>
+<p>可自動化方向：</p>
+<div class="table-wrap"><table><thead><tr><th>條件</th><th>建議輸出</th><th>自動化等級</th></tr></thead><tbody><tr><td>已回覆同意書但未 LINE 驗證</td><td>每日提醒名單</td><td>讀取/提醒</td></tr><tr><td>已 LINE 驗證但尚未回覆歡迎訊息</td><td>今日待回覆清單</td><td>讀取/提醒</td></tr><tr><td>未參加說明會但可能仍有意願</td><td>提醒思宜詢問原因或提供短片</td><td>草稿提醒</td></tr><tr><td>警示帳戶</td><td>優先電話聯繫名單</td><td>高優先提醒</td></tr><tr><td>特殊境遇家庭</td><td>詢問是否有社會局公文</td><td>提醒或訊息草稿</td></tr></tbody></table></div>
+<h3 id="b-關鍵欄位與資料正確性檢查">B. 關鍵欄位與資料正確性檢查</h3>
+<p>思宜明確提到，比起前段 LINE 互動，欄位正確性更適合自動化。</p>
+<p>可檢查規則：</p>
+<div class="table-wrap"><table><thead><tr><th>欄位/情境</th><th>檢查目的</th><th>建議動作</th></tr></thead><tbody><tr><td>身分證字號與性別</td><td>例如身分證第二碼與性別欄衝突</td><td>列為資料錯誤</td></tr><tr><td>子女學齡與是否同住</td><td>思宜一定會問，可提醒尚未確認者</td><td>產生固定詢問清單</td></tr><tr><td>特殊境遇家庭</td><td>需確認是否有社會局公文</td><td>提醒 LINE 詢問</td></tr><tr><td>警示帳戶</td><td>影響是否能申請貸款相關資源</td><td>優先電話名單</td></tr><tr><td>InfoCenter 背景欄位 vs 電訪評論</td><td>避免評論有資料但欄位空白，或兩者衝突</td><td>產生欄位修正/衝突報告</td></tr><tr><td>有意願但事件未開或狀態未更新</td><td>避免行政流程漏接</td><td>列為待補事件</td></tr></tbody></table></div>
+<h3 id="c-引導員電訪追蹤">C. 引導員電訪追蹤</h3>
+<p>目前流程：</p>
+<ul>
+<li>有意願名單由相關窗口派案給引導員。</li>
+<li>20 多位引導員各自有提醒表，需在期限內完成第一次聯繫與電訪。</li>
+<li>引導員不一定主動回報，思宜要自己開表與 InfoCenter 查。</li>
+<li>電訪結果除了記錄在 InfoCenter，也需要填寫 Google Sheet，作為引導員通知與後續追蹤依據。</li>
+<li>電訪結果欄位可能由引導員、思宜、或其他角色填寫。</li>
+<li>思宜真正需要的是「引導員完成後，我要知道該檢查了」以及「逾期未完成，我要知道該追了」。</li>
+</ul>
+<p>重要限制：</p>
+<ul>
+<li>不能只看「電訪結果欄位有沒有資料」，因為思宜或內部人員也可能在前期填寫無意願、三通未接等結果。</li>
+<li>需要看歷史紀錄或最後填寫者，判斷是否為引導員完成。</li>
+<li>也不能只看 InfoCenter，因為 Google Sheet 通知表是否已更新，會影響引導員通知與追蹤。</li>
+<li>若系統可讀取歷史紀錄，Codex 可以用「最後更新者 + 更新時間 + 欄位值 + 案件狀態」來降低誤報。</li>
+</ul>
+<p>建議提醒邏輯：</p>
+<pre class="mermaid">flowchart LR
+  A[&quot;昨日快照&quot;] --&gt; C[&quot;Codex 比對&quot;]
+  B[&quot;今日 InfoCenter/表單資料&quot;] --&gt; C
+  D[&quot;歷史紀錄/最後填寫者&quot;] --&gt; C
+  E[&quot;Google Sheet 引導員通知表&quot;] --&gt; C
+  C --&gt; F{&quot;是否有新狀態&quot;}
+  F -- &quot;引導員新填電訪結果&quot; --&gt; G[&quot;待思宜檢查/同步 Google Sheet 清單&quot;]
+  F -- &quot;已派案但逾期未填&quot; --&gt; H[&quot;待催辦/待補通知清單&quot;]
+  F -- &quot;非引導員填寫/前期無意願&quot; --&gt; I[&quot;排除或低優先&quot;]
+  F -- &quot;欄位與評論衝突&quot; --&gt; J[&quot;資料衝突清單&quot;]</pre>
+<h3 id="d-信扶專案系統匯入">D. 信扶專案系統匯入</h3>
+<p>目前流程：</p>
+<ul>
+<li>思宜人工確認要匯入的名單。</li>
+<li>到 InfoCenter 搜尋名字、勾選名單、下載完整欄位資料。</li>
+<li>將資料複製到上傳模板。</li>
+<li>手動刪除多個空白欄位或不需要欄位，使答案與標題對齊。</li>
+<li>做少數欄位的額外判斷。</li>
+<li>上傳後，再回到系統更新子女欄位、匯入日期、狀態「已匯入」等。</li>
+</ul>
+<p>痛點：</p>
+<ul>
+<li>欄位對齊高度手工，容易貼錯、漏欄、格式錯。</li>
+<li>下載檔與上傳檔是兩種不同結構，形成「visual gap」。</li>
+<li>上傳後還要回寫狀態，容易漏掉行政收尾。</li>
+</ul>
+<p>可自動化方向：</p>
+<ol>
+<li>由 Codex 根據「名單 + InfoCenter 匯出檔 + 上傳模板」直接產生可上傳檔。</li>
+<li>產生前做欄位驗證報告：缺值、格式錯、衝突、需人工判斷欄位。</li>
+<li>上傳後，先產生「待更新狀態清單」；若未來確認瀏覽器自動化穩定，再做半自動回寫。</li>
+</ol>
+<h2 id="6-思宜目前工作流程">6. 思宜目前工作流程</h2>
+<p>從逐字稿來看，思宜現在的工作流程可以還原成六個主要步驟：</p>
+<div class="table-wrap"><table><thead><tr><th>步驟</th><th>現在怎麼做</th><th>主要負擔</th></tr></thead><tbody><tr><td>1. 報名與同意書</td><td>雨虹將網站報名資料匯入系統並開同意書事件，簡訊通知個案回覆輔導同意書</td><td>思宜需要知道誰已回覆、誰逾期、誰要進下一步</td></tr><tr><td>2. LINE 加入與驗證</td><td>個案加入官方 LINE，回覆姓名與電話；驗證成功後 InfoCenter 的 LINE 狀態會連結成綠色</td><td>沒有主動通知，需要人工反覆查看</td></tr><tr><td>3. 說明會與初篩</td><td>思宜確認是否參加說明會；未參加者詢問原因、口頭說明或提供短片</td><td>要判斷個案是否理解專案、是否仍有意願</td></tr><tr><td>4. 關鍵欄位確認</td><td>固定詢問子女學齡與是否同住；特殊境遇需問公文；警示帳戶通常直接電話說明</td><td>需要快速抓出會影響下一步的欄位</td></tr><tr><td>5. 派案與電訪追蹤</td><td>有意願者派案給引導員；引導員電訪後，思宜檢查電訪結果、評論與 InfoCenter 欄位，並回填 Google Sheet 作為引導員通知與追蹤依據</td><td>20 多位引導員不一定主動回報，InfoCenter 與 Google Sheet 也可能不同步</td></tr><tr><td>6. 匯入信扶系統</td><td>思宜確認可匯入名單，下載 InfoCenter 欄位資料，整理成信扶上傳模板，再回寫匯入日期與狀態</td><td>欄位刪減、對齊、格式確認耗時且容易出錯</td></tr></tbody></table></div>
+<p>這個流程的關鍵不是單點操作，而是「跨系統狀態追蹤」。思宜需要的是每天知道哪些個案狀態改變、哪些欄位有異常、哪些資料已經可以進下一步。</p>
+<h2 id="7-優化可能性判斷">7. 優化可能性判斷</h2>
+<p>有優化空間，而且最適合的方向是「先整理清單，再逐步半自動化」，不是一開始就全自動處理個案。</p>
+<div class="table-wrap"><table><thead><tr><th>優化方向</th><th>可行性</th><th>原因</th></tr></thead><tbody><tr><td>每日變更提醒</td><td>高</td><td>可比對昨日與今日資料，列出新回覆同意書、LINE 未驗證、引導員新完成電訪、逾期未完成電訪、Google Sheet 待更新通知</td></tr><tr><td>欄位品質檢查</td><td>高</td><td>身分證/性別、特殊境遇、警示帳戶、背景欄位與電訪評論衝突都適合規則化</td></tr><tr><td>信扶上傳模板產生器</td><td>高</td><td>現在手工欄位對齊成本高，且資料來源與目標模板相對固定</td></tr><tr><td>LINE 回覆草稿</td><td>中</td><td>可協助產生草稿，但不建議自動送出</td></tr><tr><td>事件開立或狀態回寫</td><td>中</td><td>規則穩定後可以半自動處理，但送出前應由人確認</td></tr><tr><td>自動資格判定/自動取消個案</td><td>低</td><td>個案情境複雜，容易需要人工判斷，不適合第一階段</td></tr></tbody></table></div>
+<p>建議先做讀取型 MVP：</p>
+<ol>
+<li>只產出每日提醒報告、欄位衝突報告、信扶上傳檔。</li>
+<li>不自動發 LINE、不自動取消、不自動判斷資格、不自動寫入外部系統。</li>
+<li>用 1 至 2 週核對誤報與漏報。</li>
+<li>規則穩定後，再考慮半自動回寫與瀏覽器助手。</li>
+</ol>
+<h2 id="8-可協助項目與資料準備">8. 可協助項目與資料準備</h2>
+<p>以下把可協助的方向轉成可執行模組。第一性原則是先確認資料來源、觸發條件與輸出物，讓 Codex 只做清單、判斷輔助與檔案產出；外部寫入與正式通知仍保留人工確認。</p>
+<div class="table-wrap"><table><thead><tr><th>可協助項目</th><th>觸發時機</th><th>資料來源</th><th>輸出物</th><th>需要準備</th></tr></thead><tbody><tr><td>每日讀取 InfoCenter 案件狀態與新增個案</td><td>每日固定時間，或思宜手動執行</td><td>InfoCenter API，資料範圍限「馴錢師財商顧問股份有限公司」單位內案件</td><td>新增個案、狀態變更、待追蹤清單</td><td>API base URL、認證方式、單位 ID、案件列表與詳情欄位</td></tr><tr><td>特殊欄位初步判斷與動作建議</td><td>新增個案或欄位更新後</td><td>InfoCenter 個案欄位、歷史紀錄、思宜提供的規則</td><td>例如警示帳戶需電話、特殊境遇需問公文、資料衝突需補問</td><td>思宜列出哪些特殊欄位會觸發哪些動作，以及例外情境</td></tr><tr><td>說明會前整理未參加名單</td><td>說明會前一天或指定時間</td><td>InfoCenter 說明會報名/參加狀態、同意書與 LINE 狀態</td><td>未參加說明會名單表格，含聯繫資訊、目前狀態、建議聯繫話術</td><td>說明會場次 ID、日期區間、未參加定義、表格欄位格式</td></tr><tr><td>派案後定期檢查引導員完成狀態</td><td>派案後每日或每週固定排程</td><td>InfoCenter 派案/電訪欄位、Google Sheet 引導員通知表</td><td>完成、逾期、待補欄位、InfoCenter 與 Google Sheet 不一致清單</td><td>派案日期欄位、逾期規則、Google Sheet 欄位、哪些狀態可自動更新</td></tr><tr><td>產生信扶系統可匯入檔案</td><td>思宜指定匯入名單與範圍後</td><td>InfoCenter 個案資料、信扶上傳模板、欄位 mapping</td><td>符合信扶模板的 Excel/CSV 檔，另附缺值與需人工確認清單</td><td>信扶模板、可匯入規則、固定範圍空間、欄位轉換規則</td></tr></tbody></table></div>
+<h2 id="9-codex-自動化可能的任務規劃">9. Codex 自動化可能的任務規劃</h2>
+<h3 id="phase-0-盤點與規則定義">Phase 0：盤點與規則定義</h3>
+<p>目的：先把目前流程變成可機器判讀的規則與欄位表。</p>
+<p>輸入：</p>
+<ul>
+<li>InfoCenter 個案匯出樣本。</li>
+<li>信扶系統上傳模板。</li>
+<li>Google Sheet 引導員通知表樣本。</li>
+<li>LINE 驗證欄位或 InfoCenter LINE 狀態樣本。</li>
+<li>歷史紀錄樣本，尤其是欄位更新者與更新時間。</li>
+</ul>
+<p>產出：</p>
+<ul>
+<li>欄位對照表。</li>
+<li>狀態定義表。</li>
+<li>自動化排除規則。</li>
+<li>第一版提醒規則。</li>
+</ul>
+<h3 id="phase-1-每日讀取型提醒報告">Phase 1：每日讀取型提醒報告</h3>
+<p>目的：先不改任何外部系統，只產生思宜每天可看的清單。</p>
+<p>建議排程：每天上午固定時間執行一次，或手動執行。</p>
+<p>輸出清單：</p>
+<div class="table-wrap"><table><thead><tr><th>清單</th><th>判斷條件</th><th>用途</th></tr></thead><tbody><tr><td>今日新同意書回覆</td><td>新增同意書回覆，但未完成下一步</td><td>追 LINE/說明會</td></tr><tr><td>已回覆但未 LINE 驗證</td><td>同意書完成，但 LINE 狀態未綠燈</td><td>補追加入 LINE</td></tr><tr><td>警示帳戶</td><td>欄位顯示警示帳戶</td><td>優先電話</td></tr><tr><td>特殊境遇家庭</td><td>身分別包含特殊境遇</td><td>詢問公文</td></tr><tr><td>引導員新完成電訪</td><td>InfoCenter 電訪欄位或 Google Sheet 通知狀態出現新完成紀錄</td><td>思宜檢查資料，並確認兩邊狀態一致</td></tr><tr><td>逾期未完成電訪</td><td>派案超過規定天數，InfoCenter 無電訪結果或 Google Sheet 尚未更新</td><td>催辦或追蹤引導員，必要時補更新通知表</td></tr><tr><td>欄位/評論衝突</td><td>背景欄位與電訪評論不一致</td><td>人工修正</td></tr></tbody></table></div>
+<h3 id="phase-2-資料品質檢查器">Phase 2：資料品質檢查器</h3>
+<p>目的：讓思宜不用逐筆閱讀才知道哪裡可能有問題。</p>
+<p>功能：</p>
+<ul>
+<li>身分證/性別一致性檢查。</li>
+<li>必問欄位是否已確認。</li>
+<li>特殊身份是否需補證明。</li>
+<li>警示帳戶是否需電話處理。</li>
+<li>電訪評論中提到的內容是否未回填欄位。</li>
+<li>有意願但事件/狀態未補。</li>
+<li>無意願或三通未接等前期結果是否應排除引導員完成清單。</li>
+</ul>
+<h3 id="phase-3-信扶上傳模板產生器">Phase 3：信扶上傳模板產生器</h3>
+<p>目的：減少複製貼上與欄位刪減。</p>
+<p>流程：</p>
+<pre class="mermaid">flowchart TD
+  A[&quot;思宜選定待匯入名單&quot;] --&gt; B[&quot;Codex 讀取 InfoCenter 匯出資料&quot;]
+  C[&quot;欄位對照表&quot;] --&gt; D[&quot;轉換引擎&quot;]
+  B --&gt; D
+  E[&quot;信扶上傳模板&quot;] --&gt; D
+  D --&gt; F[&quot;產生可上傳 Excel/CSV&quot;]
+  D --&gt; G[&quot;產生驗證報告&quot;]
+  G --&gt; H{&quot;是否有錯誤或需人工判斷&quot;}
+  H -- &quot;有&quot; --&gt; I[&quot;思宜修正後重跑&quot;]
+  H -- &quot;無&quot; --&gt; J[&quot;人工上傳信扶系統&quot;]</pre>
+<h3 id="phase-4-半自動外部系統更新">Phase 4：半自動外部系統更新</h3>
+<p>目的：在報告與模板穩定後，再考慮讓 Codex 開瀏覽器輔助更新。</p>
+<p>可做：</p>
+<ul>
+<li>開啟 InfoCenter 或信扶系統。</li>
+<li>根據已確認名單填入匯入日期。</li>
+<li>將狀態改成已匯入。</li>
+<li>開指定事件或勾選指定欄位。</li>
+</ul>
+<p>限制：</p>
+<ul>
+<li>每次送出前要人工確認。</li>
+<li>不自動發 LINE。</li>
+<li>不自動判定個案資格。</li>
+<li>不自動取消個案。</li>
+</ul>
+<h2 id="10-可能的解決方案">10. 可能的解決方案</h2>
+<h3 id="解法一-google-sheet-excel-版提醒儀表板">解法一：Google Sheet / Excel 版提醒儀表板</h3>
+<p>適合先做。</p>
+<p>做法：</p>
+<ul>
+<li>每天把 InfoCenter 匯出檔、Google Sheet 引導員通知表資料放入固定資料夾。</li>
+<li>Codex 或腳本讀取資料，與昨日快照比對。</li>
+<li>產生一份 Google Sheet / Excel 報告。</li>
+</ul>
+<p>優點：</p>
+<ul>
+<li>不需要一開始串接外部系統。</li>
+<li>容易驗證規則是否符合思宜實務。</li>
+<li>可用人工匯出資料降低權限風險。</li>
+</ul>
+<p>缺點：</p>
+<ul>
+<li>還是需要人工下載或整理來源檔。</li>
+<li>即時性較低，偏每日批次。</li>
+</ul>
+<h3 id="解法二-infocenter-sheets-半自動監控">解法二：InfoCenter + Sheets 半自動監控</h3>
+<p>適合 MVP 驗證後做。</p>
+<p>做法：</p>
+<ul>
+<li>Codex 以瀏覽器或既有 API 讀取 InfoCenter。</li>
+<li>讀取 Google Sheet 引導員通知表。</li>
+<li>保留昨日快照。</li>
+<li>每日產生變更清單。</li>
+</ul>
+<p>優點：</p>
+<ul>
+<li>降低人工打開 20 多份表的時間。</li>
+<li>可辨識「新完成」而不是只看欄位是否有值。</li>
+</ul>
+<p>缺點：</p>
+<ul>
+<li>需要確認登入、權限、資料欄位穩定性。</li>
+<li>歷史紀錄的讀取方式需要先測。</li>
+</ul>
+<h3 id="解法三-信扶匯入模板產生器">解法三：信扶匯入模板產生器</h3>
+<p>高價值，建議並行設計。</p>
+<p>做法：</p>
+<ul>
+<li>建立 InfoCenter 欄位到信扶模板欄位的 mapping。</li>
+<li>對每個欄位定義轉換規則。</li>
+<li>產生可上傳檔與錯誤報告。</li>
+</ul>
+<p>優點：</p>
+<ul>
+<li>直接減少最容易出錯的手工欄位對齊。</li>
+<li>可獨立於 LINE/提醒流程先完成。</li>
+</ul>
+<p>缺點：</p>
+<ul>
+<li>需要拿到真實或去識別化的範例檔。</li>
+<li>少數欄位的人工判斷規則需思宜確認。</li>
+</ul>
+<h3 id="解法四-人工核准式瀏覽器助手">解法四：人工核准式瀏覽器助手</h3>
+<p>適合後期。</p>
+<p>做法：</p>
+<ul>
+<li>Codex 打開系統、定位個案、預填欄位。</li>
+<li>在送出前停下，讓思宜確認。</li>
+</ul>
+<p>優點：</p>
+<ul>
+<li>可減少重複點擊與資料回填。</li>
+</ul>
+<p>缺點：</p>
+<ul>
+<li>對系統 UI 變更較敏感。</li>
+<li>涉及外部寫入，必須有清楚審核與 rollback 記錄。</li>
+</ul>
+<h2 id="11-建議優先順序">11. 建議優先順序</h2>
+<div class="table-wrap"><table><thead><tr><th>優先</th><th>項目</th><th>原因</th></tr></thead><tbody><tr><td>P0</td><td>每日引導員電訪變更/逾期提醒</td><td>思宜明確說目前沒時間追，且引導員不主動回報；電訪結果還需要同步 Google Sheet 通知表</td></tr><tr><td>P0</td><td>信扶上傳模板產生器</td><td>手工欄位對齊高耗時且高錯誤率</td></tr><tr><td>P1</td><td>欄位正確性與衝突檢查</td><td>思宜明確覺得這塊比 LINE 自動化更適合</td></tr><tr><td>P1</td><td>同意書/LINE/說明會狀態清單</td><td>有幫助，但前段仍需大量人工判斷</td></tr><tr><td>P2</td><td>自動開事件/回寫狀態</td><td>有價值，但要等規則穩定與權限確認</td></tr><tr><td>P2</td><td>LINE 訊息草稿</td><td>可做草稿，不建議一開始自動發送</td></tr></tbody></table></div>
+<h2 id="12-需要再確認的問題">12. 需要再確認的問題</h2>
+<ol>
+<li>InfoCenter 中同意書、LINE 驗證、說明會、警示帳戶、特殊境遇、子女學齡/同住、電訪結果的實際欄位名稱是什麼？</li>
+<li>歷史紀錄是否能看到「更新者、更新時間、更新欄位、更新前後值」？</li>
+<li>哪些帳號/角色算是引導員？哪些算是思宜或內部人員？</li>
+<li>「引導員完成電訪」的精準條件是什麼？只要有電訪結果，還是需要特定事件/狀態？</li>
+<li>Google Sheet 引導員通知表的欄位、更新責任與完成狀態定義是什麼？</li>
+<li>逾期規則是派案後 7 天、第一次聯繫後 7 天，還是其他日期基準？</li>
+<li>信扶上傳模板的固定欄位與必填欄位有哪些？</li>
+<li>哪些匯入欄位需要人工判斷，不能完全 mapping？</li>
+<li>上傳後需要回寫哪些系統欄位？例如匯入日期、已匯入狀態、子女欄位、事件。</li>
+<li>是否可以先使用去識別化樣本檔做測試？</li>
+<li>報告要給思宜在哪裡看最方便：Email、Google Sheet、Markdown、LINE 草稿，還是 Codex 產出的 HTML 報告？</li>
+</ol>
+<h2 id="13-mvp-建議">13. MVP 建議</h2>
+<p>第一輪不要做大系統，做「讀取型工具」：</p>
+<ol>
+<li>思宜或 Kevin 提供去識別化的 InfoCenter 匯出檔、信扶上傳模板、Google Sheet 引導員通知表樣本。</li>
+<li>建立欄位 mapping 與規則表。</li>
+<li>產生每日提醒報告範本。</li>
+<li>產生信扶上傳模板草稿。</li>
+<li>用 1 至 2 週人工核對誤報/漏報。</li>
+<li>規則穩定後，再決定是否做排程與瀏覽器半自動回寫。</li>
+</ol>
+<h2 id="14-governance-review-card">14. Governance Review Card</h2>
+<p>What changed：本文件只提出自動化候選與流程設計，尚未建立實際 automation。 Why needed：思宜工作橫跨 LINE、InfoCenter、Google Sheet、信扶系統，人工追蹤成本高。 Owner agent：<code>workflow_designer</code> 與 <code>automation_auditor</code>。 Trigger：每日固定檢查、手動匯入前檢查、引導員電訪完成後檢查。 Should not do：不自動發送 LINE、不自動取消個案、不自動判定資格、不自動寫入外部系統。 Proof：每日提醒報告、欄位衝突報告、上傳模板驗證結果、人工核對紀錄。 Approval required：外部寫入、長期排程、帳號權限、LINE 發送、正式上傳信扶系統前都需人工確認。 Source of truth：待建立欄位 mapping 表、規則表、樣本檔與 MVP 驗證記錄。 Promotion fit：目前應保持 local draft / MVP，不應直接升級為全自動長期流程。</p></article>
+    </section>
+  </main>
+  <footer>
+    <div class="shell">版本：2026.06.09｜狀態：public-with-noindex review｜本頁可用網址瀏覽，但 noindex 不是隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
+  </footer>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "default" });
+  </script>
+</body>
+</html>

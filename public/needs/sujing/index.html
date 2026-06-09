@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>素菁需求整理</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1f2937;
+      --muted: #5f6b7a;
+      --paper: #fff;
+      --bg: #f6f8fb;
+      --line: #d8dee8;
+      --navy: #202a44;
+      --blue: #2f6bff;
+      --teal: #0e9f8b;
+      --wine: #8b3556;
+      --gold: #c58b25;
+      --green: #2e7d5f;
+      --sky: #eef5ff;
+      --mint: #e9f8f4;
+      --blush: #f8ecf1;
+      --amber: #fff6e0;
+      --radius: 8px;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.72; }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px clamp(14px, 3vw, 32px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+    }
+    .brand { font-weight: 900; color: var(--navy); }
+    .nav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+    .nav a, .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 12px;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .button-link.primary, .nav a.primary { border-color: var(--blue); background: var(--blue); color: #fff; }
+    .hero {
+      background: var(--navy);
+      color: #fff;
+      padding: clamp(42px, 8vw, 84px) 0;
+    }
+    .shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+    .hero .shell { display: grid; gap: 18px; }
+    .eyebrow { margin: 0; color: #9be1d5; font-size: 0.94rem; font-weight: 900; }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 { max-width: 900px; margin-bottom: 0; font-size: clamp(2.15rem, 5vw, 4rem); line-height: 1.1; letter-spacing: 0; }
+    .lead { max-width: 880px; margin-bottom: 0; color: rgba(255, 255, 255, 0.82); font-size: clamp(1.05rem, 2vw, 1.25rem); }
+    main.shell { padding: 42px 0 76px; }
+    .section { margin: 34px 0; }
+    .cards, .grid { display: grid; gap: 16px; }
+    .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card, .panel, .md article {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 8px 24px rgba(32, 42, 68, 0.06);
+    }
+    .card, .panel { padding: 20px; }
+    .card strong { display: block; margin-bottom: 8px; color: var(--navy); font-size: 1.08rem; }
+    .card p, .muted { color: var(--muted); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag { border: 1px solid var(--line); border-radius: var(--radius); padding: 4px 8px; background: var(--sky); color: var(--navy); font-size: 0.86rem; font-weight: 800; }
+    .notice {
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      background: #f0faf8;
+      color: #254d49;
+    }
+    .prompt {
+      overflow-x: auto;
+      white-space: pre-wrap;
+      border-radius: var(--radius);
+      padding: 18px;
+      background: #111827;
+      color: #e5e7eb;
+      font-size: 0.98rem;
+      line-height: 1.68;
+    }
+    .steps { counter-reset: step; display: grid; gap: 10px; }
+    .steps li { margin: 0 0 8px; }
+    .md { display: grid; gap: 20px; }
+    .md article { padding: clamp(20px, 4vw, 34px); }
+    .md h1 { color: var(--navy); font-size: clamp(1.9rem, 4vw, 3rem); }
+    .md h2 { margin-top: 34px; color: var(--navy); font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.25; }
+    .md h3 { margin-top: 24px; color: var(--navy); font-size: 1.22rem; }
+    .table-wrap { overflow-x: auto; margin: 16px 0 24px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+    table { width: 100%; min-width: 720px; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: #eef1f6; color: var(--navy); white-space: nowrap; }
+    pre { overflow-x: auto; border-radius: var(--radius); padding: 16px; background: #111827; color: #e5e7eb; }
+    pre.mermaid { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+    code { font-family: "Cascadia Code", Consolas, monospace; }
+    .muted-link { color: var(--muted); }
+    .accent-blue { border-top: 5px solid var(--blue); }
+    .accent-teal { border-top: 5px solid var(--teal); }
+    .accent-gold { border-top: 5px solid var(--gold); }
+    .accent-wine { border-top: 5px solid var(--wine); }
+    .accent-green { border-top: 5px solid var(--green); }
+    .soft-sky { background: var(--sky); }
+    .soft-mint { background: var(--mint); }
+    .soft-blush { background: var(--blush); }
+    .soft-amber { background: var(--amber); }
+    footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 860px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .nav { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
+      .cards, .grid.two { grid-template-columns: 1fr; }
+      table { min-width: 640px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Codex 行政工作實驗課</div>
+    <nav class="nav" aria-label="站內導覽">
+      <a href="/">課程頁</a>
+      <a href="/slides/">學員簡報</a>
+      <a href="/kit/">練習包</a>
+      <a href="/exercises/">四個練習</a>
+      <a class="primary" href="/needs/">需求整理</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="shell">
+      <p class="eyebrow">個別需求頁</p>
+      <h1>素菁需求整理</h1>
+      <p class="lead">需要半自動月結助理，處理資料匯入、規則試算、個人確認包與匯款前檢查。</p>
+    </div>
+  </section>
+  <main class="shell md-page">
+    
+    <section class="notice">
+      本頁來源：<code>people/sujing/needs-analysis.md</code>。內容是需求整理與工作流分析，不是正式系統規格；涉及外部發送、正式資料更新、個資、金額或月結的動作仍需人工確認。
+    </section>
+    <section class="section">
+      <div class="card accent-teal">
+        <strong>素菁｜帳務、月結與對帳</strong>
+        <p>需要半自動月結助理，處理資料匯入、規則試算、個人確認包與匯款前檢查。</p>
+        <div class="tag-row"><span class="tag">月結</span><span class="tag">帳務</span><span class="tag">對帳</span><span class="tag">人工核准</span></div>
+      </div>
+    </section>
+    <section class="section md">
+      <article><h1 id="素菁帳務-月結需求摘要">素菁帳務/月結需求摘要</h1>
+<h2 id="一句話結論">一句話結論</h2>
+<p>素菁的需求不是「把一張表整理漂亮」，而是建立一個半自動的月結助理：把課務、諮詢、企劃、交通、補扣款與人員歷史累積整理成可追溯的月結試算、個人確認包、Ivy 報帳輸出與匯款前檢查。</p>
+<p>這份摘要依據先前「分析素菁帳務需求」聊天與已做過的月結工作台雛形整理。因為內容涉及薪資、發票與付款風險，公開版只放流程與需求結論，不放完整敏感原文。</p>
+<h2 id="核心工作流">核心工作流</h2>
+<pre class="mermaid">flowchart TD
+  A[&quot;課務與工作紀錄來源&quot;] --&gt; B[&quot;工作紀錄正規化&quot;]
+  B --&gt; C[&quot;價格規則與人員歷史比對&quot;]
+  C --&gt; D[&quot;月結試算&quot;]
+  D --&gt; E[&quot;異常與缺資料清單&quot;]
+  D --&gt; F[&quot;個人確認包&quot;]
+  E --&gt; G[&quot;素菁人工審核&quot;]
+  F --&gt; H[&quot;夥伴確認與修正&quot;]
+  G --&gt; D
+  H --&gt; D
+  D --&gt; I[&quot;Ivy 報帳輸出&quot;]
+  I --&gt; J[&quot;匯款前檢查&quot;]</pre>
+<h2 id="主要資料來源">主要資料來源</h2>
+<div class="table-wrap"><table><thead><tr><th>來源</th><th>可能內容</th><th>第一版處理方式</th></tr></thead><tbody><tr><td>Calendar / 課程紀錄</td><td>課程、訪視、講師、諮詢、內外部工作</td><td>匯入後轉成統一工作紀錄</td></tr><tr><td>Google 表單</td><td>規劃師工時、企劃工時、報帳資料</td><td>檢查欄位、日期區間與人名一致性</td></tr><tr><td>InfoCenter 匯出</td><td>薪資或案件相關匯出</td><td>當作來源之一，不直接視為最終正確</td></tr><tr><td>個人歷史表</td><td>累積趟數、級距、個人例外</td><td>用於判斷單價與升級狀態</td></tr><tr><td>專案/群組紀錄</td><td>企劃件數、稿件、小金句、粉專等</td><td>先建立待確認清單，避免自動判錯</td></tr><tr><td>補扣款資料</td><td>退款、補稅、差旅、設備扣款等</td><td>一律列入高風險人工審核</td></tr></tbody></table></div>
+<h2 id="主要痛點">主要痛點</h2>
+<div class="table-wrap"><table><thead><tr><th>痛點</th><th>影響</th></tr></thead><tbody><tr><td>資料來源太散</td><td>每月要跨 Calendar、表單、InfoCenter、個人表與訊息紀錄重建脈絡</td></tr><tr><td>計價規則複雜</td><td>同一人可能因角色、工作類型、內外部、歷史累積或專案而有不同規則</td></tr><tr><td>歷史累積不能斷</td><td>單價或級距可能依累積次數變動，不能只看本月資料</td></tr><tr><td>本人確認耗時</td><td>需要把明細整理給夥伴確認，錯誤回報後又要回頭修正</td></tr><tr><td>Ivy 輸出要可對帳</td><td>月結結果要能轉成 Ivy 需要的分類表與後續合併資料</td></tr><tr><td>匯款/發票風險高</td><td>不適合第一版直接自動送出或正式開立，必須先做預覽與檢查</td></tr></tbody></table></div>
+<h2 id="codex-可自動化的任務">Codex 可自動化的任務</h2>
+<div class="table-wrap"><table><thead><tr><th>階段</th><th>Codex 任務</th><th>產出</th></tr></thead><tbody><tr><td>P0 規則清冊</td><td>從既有表格與訪談整理人員、工作類型、計價規則、例外條件</td><td>規則草稿與缺資料清單</td></tr><tr><td>P1 資料匯入</td><td>讀取 Calendar、Google 表單、InfoCenter 匯出與人工清單</td><td>統一格式的工作紀錄</td></tr><tr><td>P2 缺漏檢查</td><td>檢查人名、日期、工作類型、數量、來源是否可對上</td><td>異常清單</td></tr><tr><td>P3 月結試算</td><td>依規則與歷史狀態計算本月明細</td><td>試算表、個人小計、差異報告</td></tr><tr><td>P4 個人確認包</td><td>產生每位夥伴可閱讀的月結摘要</td><td>可複製文字、PDF 或 Sheet 草稿</td></tr><tr><td>P5 Ivy 輸出</td><td>把確認後資料轉成 Ivy 需要的分類格式</td><td>Ivy 報帳輸出預覽</td></tr><tr><td>P6 匯款前檢查</td><td>檢查重複人名、負數、分類加總、帳戶缺漏</td><td>匯款前風險清單</td></tr></tbody></table></div>
+<h2 id="可能的解決方案">可能的解決方案</h2>
+<h3 id="方案-a-月結資料檢查包">方案 A：月結資料檢查包</h3>
+<p>先不做完整系統，只讓 Codex 每月讀取匯出檔，產生缺漏清單、異常清單、個人對帳草稿與 Ivy 輸出預覽。</p>
+<p>適合第一步，因為風險低、資料仍由素菁確認。</p>
+<h3 id="方案-b-素菁月結工作台">方案 B：素菁月結工作台</h3>
+<p>把先前雛形延伸成內部工作台，包含月結 Dashboard、類別工作價格、人員薪資檔案、待派薪草稿、Ivy 輸出預覽。</p>
+<p>適合在規則清冊穩定後推進。</p>
+<h3 id="方案-c-課務到月結的共用資料管線">方案 C：課務到月結的共用資料管線</h3>
+<p>把佩欣、瑜君等課務端整理出的課程狀態，轉成素菁月結端可吃的標準欄位，減少月底重新整理。</p>
+<p>適合在課務提醒工具與月結工作台都穩定後串接。</p>
+<h2 id="自動化邊界">自動化邊界</h2>
+<p>第一版可以做：</p>
+<ul>
+<li>匯入、整理、比對、試算。</li>
+<li>產生個人確認包、Ivy 輸出預覽、匯款前檢查表。</li>
+<li>標出缺規則、缺資料、疑似重複與金額異常。</li>
+</ul>
+<p>第一版不應直接做：</p>
+<ul>
+<li>自動匯款。</li>
+<li>自動發送薪資或對帳訊息。</li>
+<li>自動正式開發票。</li>
+<li>自動改寫薪資主檔或付款資料。</li>
+<li>在公開頁放真實個資、帳戶、完整薪資明細或原始逐字稿。</li>
+</ul></article>
+    </section>
+  </main>
+  <footer>
+    <div class="shell">版本：2026.06.09｜狀態：public-with-noindex review｜本頁可用網址瀏覽，但 noindex 不是隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
+  </footer>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "default" });
+  </script>
+</body>
+</html>

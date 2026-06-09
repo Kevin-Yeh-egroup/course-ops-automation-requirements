@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>同仁需求整理總覽</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1f2937;
+      --muted: #5f6b7a;
+      --paper: #fff;
+      --bg: #f6f8fb;
+      --line: #d8dee8;
+      --navy: #202a44;
+      --blue: #2f6bff;
+      --teal: #0e9f8b;
+      --wine: #8b3556;
+      --gold: #c58b25;
+      --green: #2e7d5f;
+      --sky: #eef5ff;
+      --mint: #e9f8f4;
+      --blush: #f8ecf1;
+      --amber: #fff6e0;
+      --radius: 8px;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.72; }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px clamp(14px, 3vw, 32px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+    }
+    .brand { font-weight: 900; color: var(--navy); }
+    .nav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+    .nav a, .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 12px;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .button-link.primary, .nav a.primary { border-color: var(--blue); background: var(--blue); color: #fff; }
+    .hero {
+      background: var(--navy);
+      color: #fff;
+      padding: clamp(42px, 8vw, 84px) 0;
+    }
+    .shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+    .hero .shell { display: grid; gap: 18px; }
+    .eyebrow { margin: 0; color: #9be1d5; font-size: 0.94rem; font-weight: 900; }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 { max-width: 900px; margin-bottom: 0; font-size: clamp(2.15rem, 5vw, 4rem); line-height: 1.1; letter-spacing: 0; }
+    .lead { max-width: 880px; margin-bottom: 0; color: rgba(255, 255, 255, 0.82); font-size: clamp(1.05rem, 2vw, 1.25rem); }
+    main.shell { padding: 42px 0 76px; }
+    .section { margin: 34px 0; }
+    .cards, .grid { display: grid; gap: 16px; }
+    .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card, .panel, .md article {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 8px 24px rgba(32, 42, 68, 0.06);
+    }
+    .card, .panel { padding: 20px; }
+    .card strong { display: block; margin-bottom: 8px; color: var(--navy); font-size: 1.08rem; }
+    .card p, .muted { color: var(--muted); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag { border: 1px solid var(--line); border-radius: var(--radius); padding: 4px 8px; background: var(--sky); color: var(--navy); font-size: 0.86rem; font-weight: 800; }
+    .notice {
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      background: #f0faf8;
+      color: #254d49;
+    }
+    .prompt {
+      overflow-x: auto;
+      white-space: pre-wrap;
+      border-radius: var(--radius);
+      padding: 18px;
+      background: #111827;
+      color: #e5e7eb;
+      font-size: 0.98rem;
+      line-height: 1.68;
+    }
+    .steps { counter-reset: step; display: grid; gap: 10px; }
+    .steps li { margin: 0 0 8px; }
+    .md { display: grid; gap: 20px; }
+    .md article { padding: clamp(20px, 4vw, 34px); }
+    .md h1 { color: var(--navy); font-size: clamp(1.9rem, 4vw, 3rem); }
+    .md h2 { margin-top: 34px; color: var(--navy); font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.25; }
+    .md h3 { margin-top: 24px; color: var(--navy); font-size: 1.22rem; }
+    .table-wrap { overflow-x: auto; margin: 16px 0 24px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+    table { width: 100%; min-width: 720px; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: #eef1f6; color: var(--navy); white-space: nowrap; }
+    pre { overflow-x: auto; border-radius: var(--radius); padding: 16px; background: #111827; color: #e5e7eb; }
+    pre.mermaid { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+    code { font-family: "Cascadia Code", Consolas, monospace; }
+    .muted-link { color: var(--muted); }
+    .accent-blue { border-top: 5px solid var(--blue); }
+    .accent-teal { border-top: 5px solid var(--teal); }
+    .accent-gold { border-top: 5px solid var(--gold); }
+    .accent-wine { border-top: 5px solid var(--wine); }
+    .accent-green { border-top: 5px solid var(--green); }
+    .soft-sky { background: var(--sky); }
+    .soft-mint { background: var(--mint); }
+    .soft-blush { background: var(--blush); }
+    .soft-amber { background: var(--amber); }
+    footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 860px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .nav { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
+      .cards, .grid.two { grid-template-columns: 1fr; }
+      table { min-width: 640px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Codex 行政工作實驗課</div>
+    <nav class="nav" aria-label="站內導覽">
+      <a href="/">課程頁</a>
+      <a href="/slides/">學員簡報</a>
+      <a href="/kit/">練習包</a>
+      <a href="/exercises/">四個練習</a>
+      <a class="primary" href="/needs/">需求整理</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="shell">
+      <p class="eyebrow">需求整理</p>
+      <h1>同仁需求整理總覽</h1>
+      <p class="lead">從佩欣、思宜、怡君、瑜君、阿丸、素菁的材料整理出個別需求頁，並保留後續待補名單。</p>
+    </div>
+  </section>
+  <main class="shell ">
+    
+    <section class="notice">
+      這裡放回每位夥伴的需求整理頁，並保留辦公室共通需求摘要。這些頁面是給內部討論與課程設計使用，仍維持 noindex。
+    </section>
+    <section class="section">
+      <h2>已整理的夥伴需求</h2>
+      <div class="cards"><article class="card accent-blue">
+    <strong>佩欣｜課務、核銷與跨系統追蹤</strong>
+    <p>需要每日工作台、缺漏檢查、課務與核銷草稿，先處理高頻跨系統重工。</p>
+    <div class="tag-row"><span class="tag">每日工作台</span><span class="tag">課務</span><span class="tag">核銷</span><span class="tag">草稿</span></div>
+    <p style="margin-top:16px"><a class="button-link primary" href="./peixin/">查看需求整理</a></p>
+  </article><article class="card accent-blue">
+    <strong>思宜｜自行報名案、同意書、LINE 與匯入</strong>
+    <p>需要同意書與 LINE 狀態提醒、引導員電訪追蹤、欄位品質檢查與信扶匯入模板。</p>
+    <div class="tag-row"><span class="tag">狀態追蹤</span><span class="tag">欄位檢查</span><span class="tag">匯入模板</span><span class="tag">提醒</span></div>
+    <p style="margin-top:16px"><a class="button-link primary" href="./siyi/">查看需求整理</a></p>
+  </article><article class="card accent-blue">
+    <strong>怡君｜分享會、Podcast 與交通核銷</strong>
+    <p>需要內容素材工作台、逐字稿摘要、發布草稿與交通費試算，降低內容再製與月底核銷負擔。</p>
+    <div class="tag-row"><span class="tag">內容再製</span><span class="tag">Podcast</span><span class="tag">分享會</span><span class="tag">交通核銷</span></div>
+    <p style="margin-top:16px"><a class="button-link primary" href="./yijun/">查看需求整理</a></p>
+  </article><article class="card accent-blue">
+    <strong>瑜君｜南區課務與課前提醒</strong>
+    <p>最在意課前提醒與資料不漏接，適合先做南區課程案件提醒與缺漏檢查。</p>
+    <div class="tag-row"><span class="tag">南區課務</span><span class="tag">提醒</span><span class="tag">課前時間軸</span><span class="tag">Sheet</span></div>
+    <p style="margin-top:16px"><a class="button-link primary" href="./yujun/">查看需求整理</a></p>
+  </article><article class="card accent-blue">
+    <strong>阿丸｜活動行政、候補與文件包</strong>
+    <p>需要候補比對、通知草稿、活動行政文件包與 InfoCenter 建檔草稿。</p>
+    <div class="tag-row"><span class="tag">候補</span><span class="tag">活動行政包</span><span class="tag">文件</span><span class="tag">名單比對</span></div>
+    <p style="margin-top:16px"><a class="button-link primary" href="./awan/">查看需求整理</a></p>
+  </article><article class="card accent-blue">
+    <strong>素菁｜帳務、月結與對帳</strong>
+    <p>需要半自動月結助理，處理資料匯入、規則試算、個人確認包與匯款前檢查。</p>
+    <div class="tag-row"><span class="tag">月結</span><span class="tag">帳務</span><span class="tag">對帳</span><span class="tag">人工核准</span></div>
+    <p style="margin-top:16px"><a class="button-link primary" href="./sujing/">查看需求整理</a></p>
+  </article></div>
+    </section>
+    <section class="section">
+      <h2>後續待補資料</h2>
+      <div class="cards"><article class="card accent-gold">
+    <strong>雨虹｜後續補資料</strong>
+    <p>已列入需求蒐集名單，等待逐字稿、訪談摘要或工作紀錄補齊。</p>
+    <div class="tag-row"><span class="tag">待補</span></div>
+    <p style="margin-top:16px"><a class="button-link primary" href="./yuhong/">查看需求整理</a></p>
+  </article><article class="card accent-gold">
+    <strong>奕吟｜後續補資料</strong>
+    <p>已列入需求蒐集名單，等待逐字稿、訪談摘要或工作紀錄補齊。</p>
+    <div class="tag-row"><span class="tag">待補</span></div>
+    <p style="margin-top:16px"><a class="button-link primary" href="./yiyin/">查看需求整理</a></p>
+  </article><article class="card accent-gold">
+    <strong>思璇｜後續補資料</strong>
+    <p>已列入需求蒐集名單，等待逐字稿、訪談摘要或工作紀錄補齊。</p>
+    <div class="tag-row"><span class="tag">待補</span></div>
+    <p style="margin-top:16px"><a class="button-link primary" href="./sixuan/">查看需求整理</a></p>
+  </article></div>
+    </section>
+    <section class="section md">
+      <article><h1 id="辦公室工作常見需求-top-5">辦公室工作常見需求 Top 5</h1>
+<h2 id="判斷基礎">判斷基礎</h2>
+<p>這份整理目前依據已完成或已有材料的六位同仁：佩欣、思宜、怡君、瑜君、阿丸、素菁。後續雨虹、奕吟、思璇資料尚未補齊，因此這版仍需隨資料更新。</p>
+<h2 id="top-5">Top 5</h2>
+<div class="table-wrap"><table><thead><tr><th>排名</th><th>常見需求</th><th>出現在哪些工作</th><th>為什麼重要</th><th>第一版適合怎麼做</th></tr></thead><tbody><tr><td>1</td><td>每日/每週工作台與提醒清單</td><td>佩欣課務/核銷、思宜個案追蹤、怡君分享會/Podcast 檔期、瑜君課前倒數、阿丸活動前準備、素菁月結進度</td><td>大家的共同痛點都是「事情散在各處，要靠人腦記得今天該看誰」。先把待辦浮出來，最能立刻減少漏追。</td><td>只讀資料，產生今日新增、今日到期、已逾期、待人工確認清單。</td></tr><tr><td>2</td><td>欄位缺漏、格式與資料品質檢查</td><td>Google 表單、Google Sheet、InfoCenter、MIS 匯出、核銷表、候補表、月結資料</td><td>多數後續卡關不是因為沒有資料，而是資料粗略、缺欄、格式不一、同名或單位名稱不一致。</td><td>建立欄位字典與缺漏規則，輸出補問清單與低信心資料。</td></tr><tr><td>3</td><td>跨系統狀態對帳與下一步判斷</td><td>InfoCenter vs Google Sheet、Calendar vs 課務表、候補表 vs MIS、工作紀錄 vs 月結表</td><td>一個系統完成不代表另一個系統已更新，最容易造成重工、漏標記、漏回填或月底重算。</td><td>先做只讀對帳報告，標出狀態衝突、疑似重複、已完成但未回填、已逾期未完成。</td></tr><tr><td>4</td><td>固定格式草稿、內容再製與文件包產生</td><td>Line/Email 草稿、派課摘要、補問清單、課前確認、分享會文章、Podcast 短文、信扶上傳模板、阿丸四份 Word、月結確認包</td><td>很多工作其實是把資料整理成固定格式給人看、寄出、貼到系統或列印。這類工作適合先讓 Codex 產生草稿。</td><td>產生可複製草稿、文章/社群/Word/PDF/Sheet 草稿與來源註記，送出或正式使用前人工確認。</td></tr><tr><td>5</td><td>高風險動作前的人工核准與預覽</td><td>寄信、Line 發送、Calendar 建立、Sheet/InfoCenter 寫回、MIS 報名搬移、月結/匯款/發票輸出</td><td>大家的自動化都會碰到對外承諾、個資、薪資、發票或報名狀態。真正需要的是「可檢查的半自動」，不是黑箱全自動。</td><td>所有外部送出、寫回、勾完成、付款/發票/MIS 動作先做預覽、差異報告與待核准清單。</td></tr></tbody></table></div>
+<h2 id="剩餘常見需求">剩餘常見需求</h2>
+<ul>
+<li>課前倒數時間軸：依課程日期倒推 3-4 週、2 週、1 週、3-5 天提醒。</li>
+<li>派課與課程摘要：把邀課單位需求轉成給 Ivy、素菁或講師可判斷的摘要。</li>
+<li>內容再製與發布草稿：把分享會逐字稿、Podcast 音檔或文章轉成摘要、部落格草稿、FB 短文、Canva 圖像提示與 Email 草稿。</li>
+<li>內容交接追蹤：確認文章位置、若琪或其他夥伴是否取得素材、社群提取重點是否完成。</li>
+<li>候補名單比對：比對候補表、正式場次、系統工作區、已上過課紀錄。</li>
+<li>活動行政包：工作流程表、簽到表、學員名單、分組座位表、物資/便當統計。</li>
+<li>信扶或外部系統匯入模板：把 InfoCenter 或表單資料轉成可上傳格式。</li>
+<li>月結試算與個人確認包：把工作紀錄、規則、補扣款轉成可對帳明細。</li>
+<li>發票與匯款前檢查：檢查金額、分類加總、帳戶/發票資料缺漏。</li>
+<li>核銷檢查：依專案分類、公里數、費率、單據狀態產生異常清單。</li>
+<li>交通費試算：依起點、終點、公里數與不同單位單價產生月底核銷草稿。</li>
+<li>單位名稱標準化與 alias map：處理同單位不同寫法，支援培力分析或候補比對。</li>
+<li>報名/問卷/成果報告分析：整理描述性統計、回饋摘要與邀約優先名單。</li>
+<li>Calendar 事件草稿：依課程、會議或活動資料產生日曆事件與提醒。</li>
+<li>InfoCenter 建檔草稿：活動後事件、個案欄位、附件上傳清單與摘要。</li>
+<li>文件範本與 DOCX 視覺 QA：確保產出的 Word/PDF 可列印、不破版。</li>
+<li>檔案命名與歸檔：家系圖、活動附件、簽到表、照片與紀錄檔依規則命名。</li>
+<li>庫存與教材追蹤：借出、歸還、未歸還、低庫存提醒。</li>
+<li>季刊訂閱整理：電子/紙本分類、地址更新、寄送名單。</li>
+<li>敏感資料遮罩與最小揭露：個資、身心議題、薪資、帳戶、發票資料不進公開頁。</li>
+<li>no-op 回報：沒有新資料、沒有到期、資料不足時，只回報無需動作或待補，不製造空通知。</li>
+</ul></article>
+    </section>
+  </main>
+  <footer>
+    <div class="shell">版本：2026.06.09｜狀態：public-with-noindex review｜本頁可用網址瀏覽，但 noindex 不是隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
+  </footer>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "default" });
+  </script>
+</body>
+</html>

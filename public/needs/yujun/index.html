@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>瑜君需求整理</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1f2937;
+      --muted: #5f6b7a;
+      --paper: #fff;
+      --bg: #f6f8fb;
+      --line: #d8dee8;
+      --navy: #202a44;
+      --blue: #2f6bff;
+      --teal: #0e9f8b;
+      --wine: #8b3556;
+      --gold: #c58b25;
+      --green: #2e7d5f;
+      --sky: #eef5ff;
+      --mint: #e9f8f4;
+      --blush: #f8ecf1;
+      --amber: #fff6e0;
+      --radius: 8px;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.72; }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px clamp(14px, 3vw, 32px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+    }
+    .brand { font-weight: 900; color: var(--navy); }
+    .nav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+    .nav a, .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 12px;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .button-link.primary, .nav a.primary { border-color: var(--blue); background: var(--blue); color: #fff; }
+    .hero {
+      background: var(--navy);
+      color: #fff;
+      padding: clamp(42px, 8vw, 84px) 0;
+    }
+    .shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+    .hero .shell { display: grid; gap: 18px; }
+    .eyebrow { margin: 0; color: #9be1d5; font-size: 0.94rem; font-weight: 900; }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 { max-width: 900px; margin-bottom: 0; font-size: clamp(2.15rem, 5vw, 4rem); line-height: 1.1; letter-spacing: 0; }
+    .lead { max-width: 880px; margin-bottom: 0; color: rgba(255, 255, 255, 0.82); font-size: clamp(1.05rem, 2vw, 1.25rem); }
+    main.shell { padding: 42px 0 76px; }
+    .section { margin: 34px 0; }
+    .cards, .grid { display: grid; gap: 16px; }
+    .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card, .panel, .md article {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 8px 24px rgba(32, 42, 68, 0.06);
+    }
+    .card, .panel { padding: 20px; }
+    .card strong { display: block; margin-bottom: 8px; color: var(--navy); font-size: 1.08rem; }
+    .card p, .muted { color: var(--muted); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag { border: 1px solid var(--line); border-radius: var(--radius); padding: 4px 8px; background: var(--sky); color: var(--navy); font-size: 0.86rem; font-weight: 800; }
+    .notice {
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      background: #f0faf8;
+      color: #254d49;
+    }
+    .prompt {
+      overflow-x: auto;
+      white-space: pre-wrap;
+      border-radius: var(--radius);
+      padding: 18px;
+      background: #111827;
+      color: #e5e7eb;
+      font-size: 0.98rem;
+      line-height: 1.68;
+    }
+    .steps { counter-reset: step; display: grid; gap: 10px; }
+    .steps li { margin: 0 0 8px; }
+    .md { display: grid; gap: 20px; }
+    .md article { padding: clamp(20px, 4vw, 34px); }
+    .md h1 { color: var(--navy); font-size: clamp(1.9rem, 4vw, 3rem); }
+    .md h2 { margin-top: 34px; color: var(--navy); font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.25; }
+    .md h3 { margin-top: 24px; color: var(--navy); font-size: 1.22rem; }
+    .table-wrap { overflow-x: auto; margin: 16px 0 24px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+    table { width: 100%; min-width: 720px; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: #eef1f6; color: var(--navy); white-space: nowrap; }
+    pre { overflow-x: auto; border-radius: var(--radius); padding: 16px; background: #111827; color: #e5e7eb; }
+    pre.mermaid { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+    code { font-family: "Cascadia Code", Consolas, monospace; }
+    .muted-link { color: var(--muted); }
+    .accent-blue { border-top: 5px solid var(--blue); }
+    .accent-teal { border-top: 5px solid var(--teal); }
+    .accent-gold { border-top: 5px solid var(--gold); }
+    .accent-wine { border-top: 5px solid var(--wine); }
+    .accent-green { border-top: 5px solid var(--green); }
+    .soft-sky { background: var(--sky); }
+    .soft-mint { background: var(--mint); }
+    .soft-blush { background: var(--blush); }
+    .soft-amber { background: var(--amber); }
+    footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 860px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .nav { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
+      .cards, .grid.two { grid-template-columns: 1fr; }
+      table { min-width: 640px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Codex 行政工作實驗課</div>
+    <nav class="nav" aria-label="站內導覽">
+      <a href="/">課程頁</a>
+      <a href="/slides/">學員簡報</a>
+      <a href="/kit/">練習包</a>
+      <a href="/exercises/">四個練習</a>
+      <a class="primary" href="/needs/">需求整理</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="shell">
+      <p class="eyebrow">個別需求頁</p>
+      <h1>瑜君需求整理</h1>
+      <p class="lead">最在意課前提醒與資料不漏接，適合先做南區課程案件提醒與缺漏檢查。</p>
+    </div>
+  </section>
+  <main class="shell md-page">
+    
+    <section class="notice">
+      本頁來源：<code>people/yujun/needs-analysis.md</code>。內容是需求整理與工作流分析，不是正式系統規格；涉及外部發送、正式資料更新、個資、金額或月結的動作仍需人工確認。
+    </section>
+    <section class="section">
+      <div class="card accent-teal">
+        <strong>瑜君｜南區課務與課前提醒</strong>
+        <p>最在意課前提醒與資料不漏接，適合先做南區課程案件提醒與缺漏檢查。</p>
+        <div class="tag-row"><span class="tag">南區課務</span><span class="tag">提醒</span><span class="tag">課前時間軸</span><span class="tag">Sheet</span></div>
+      </div>
+    </section>
+    <section class="section md">
+      <article><h1 id="瑜君需求分析與-codex-自動化規劃">瑜君需求分析與 Codex 自動化規劃</h1>
+<p>來源：Kevin 與瑜君訪談逐字稿 目的：將瑜君的工作痛點整理成可討論、可驗證、可分期開發的需求說明</p>
+<h2 id="1-一句話結論">1. 一句話結論</h2>
+<p>瑜君負責南區課務；她最需要的不是單一提醒工具，而是一套「南區課程案件推進助理」：從現有課程邀約 Google Sheet 讀取邀課資料，協助補齊需求摘要、派課後建立行事曆與課前任務時間軸，並把討論紀錄、課程資訊、後續分析資料留成可進 info 系統的乾淨資料。</p>
+<p>目前最適合先做 MVP 的範圍是「客戶/課程邀約的課前提醒與資料整理」，培力計畫的跨表比對與成果報告可以放在第二階段。</p>
+<h2 id="1-1-這次校正後的需求基礎">1-1. 這次校正後的需求基礎</h2>
+<p>這份需求不是只靠逐字稿整理。比較準確的判讀方式是：</p>
+<div class="table-wrap"><table><thead><tr><th>來源</th><th>角色</th><th>對需求的意義</th></tr></thead><tbody><tr><td>瑜君逐字稿</td><td>痛點與工作情境</td><td>說明她為什麼在意提醒、哪些節點容易漏、什麼情況會造成行政斷點</td></tr><tr><td>課程邀約 Google Sheet</td><td>自動化資料來源</td><td>提供 Codex 可以讀取、檢查、篩選、產生提醒的欄位基礎</td></tr><tr><td>佩欣與思宜需求整理</td><td>共用模組參照</td><td>幫助判斷哪些功能可以共用，例如缺漏檢查、狀態對帳、提醒摘要、人工核准</td></tr></tbody></table></div>
+<p>已讀到的 Google Sheet 欄位顯示，現有資料表足以支撐第一版提醒 MVP。可用欄位包含：單位與聯絡資訊、課程主題與目的、期待日期地點、授課型態、人數、主要對象、學員樣貌、鐘點費與交通住宿、發票資訊、講師安排、助教安排、授課日期時段、素菁發票紀錄、佩欣建檔備註、指派規劃師。</p>
+<p>因此第一版應該優先做「南區課務提醒與缺漏檢查」，而不是直接做完整派課系統。</p>
+<h2 id="2-需求總覽">2. 需求總覽</h2>
+<pre class="mermaid">mindmap
+  root((瑜君需求))
+    客戶課程流程 高優先
+      表單資料檢查
+      需求訪談摘要
+      派課資訊回填
+      行事曆建立
+      課前提醒時間軸
+      課程紀錄保留
+    培力計畫資料 中優先
+      報名資料整理
+      單位名稱標準化
+      社工與主管交叉比對
+      課前成員分析
+      問卷回饋分析
+      十月說明會邀約名單
+    成果報告 低到中優先
+      描述性統計
+      問卷摘要
+      質性觀察整合
+      Word或Excel報告草稿
+    info整合 中長期
+      合作單位歷史
+      黏著度判斷
+      服務延伸紀錄
+      欄位治理</pre>
+<h2 id="3-核心痛點">3. 核心痛點</h2>
+<div class="table-wrap"><table><thead><tr><th>類別</th><th>現況</th><th>痛點</th><th>影響</th></tr></thead><tbody><tr><td>課前提醒</td><td>瑜君手動在行事曆設 schedule</td><td>課程多、行政時段被壓縮時容易漏設</td><td>漏追成員樣貌、講師媒材、PPT、大綱、發票資訊</td></tr><tr><td>資料流轉</td><td>Google 表單/Sheet、Line 派課群、行事曆、口頭/錄音摘要分散</td><td>Ivy 回覆非同步，瑜君要再回頭補資料</td><td>同一案件要多次重建脈絡</td></tr><tr><td>表單資料品質</td><td>邀課單位填寫內容 rough 或不完整</td><td>需求不清、承辦也不確定自己要什麼</td><td>規劃師需花時間二次訪談與摘要</td></tr><tr><td>派課後回填</td><td>派課確認後需回填佩欣表格</td><td>瑜君容易漏，佩欣需補位</td><td>資料庫紀錄不完整</td></tr><tr><td>課程資訊保留</td><td>合作紀錄未來可能進 info</td><td>欄位仍在討論，資料來源可能分散</td><td>未來匯入成本升高</td></tr><tr><td>培力資料分析</td><td>報名、出席、問卷來自不同資料</td><td>單位名稱不一致，主管/社工難 match</td><td>難找出十月說明會優先邀約單位</td></tr><tr><td>成果報告</td><td>統計、問卷、質性觀察手動組裝</td><td>可由 AI 先產出描述性統計與草稿</td><td>目前可自動化但優先序低於客戶流程</td></tr></tbody></table></div>
+<h2 id="4-as-is-客戶課程流程">4. As-Is 客戶課程流程</h2>
+<pre class="mermaid">flowchart TD
+  A[邀課單位填 Google 表單] --&gt; B[佩欣彙整 Google Sheet]
+  B --&gt; C[規劃師與單位對焦需求]
+  C --&gt; D{需求是否清楚}
+  D -- 否 --&gt; C1[補問問題與再次確認]
+  C1 --&gt; C
+  D -- 是 --&gt; E[複製內容到 Line 派課群]
+  E --&gt; F[Ivy/素菁派課或媒合講師]
+  F --&gt; G[瑜君等待派課結果]
+  G --&gt; H[手動建立行事曆與提醒]
+  H --&gt; I[手動追成員樣貌/大綱/PPT/媒材/設備/發票]
+  I --&gt; J[手動更新 Google Sheet]
+  J --&gt; K[課程執行與紀錄保留]
+
+  G -. 非同步回覆造成斷點 .-&gt; H
+  H -. 忙碌時漏設 schedule .-&gt; I
+  J -. 漏回填時由佩欣補位 .-&gt; K</pre>
+<h2 id="5-to-be-客戶課程流程">5. To-Be 客戶課程流程</h2>
+<pre class="mermaid">flowchart TD
+  A[Google 表單/Sheet 新案件] --&gt; B[Codex 讀取並檢查必填欄位]
+  B --&gt; C{資料是否足夠}
+  C -- 不足 --&gt; C1[產出補問清單給規劃師]
+  C -- 足夠 --&gt; D[產出需求摘要與派課摘要]
+  C1 --&gt; D
+  D --&gt; E[規劃師確認摘要]
+  E --&gt; F[送入派課討論或貼到 Line 群]
+  F --&gt; G[派課結果回填：講師/時間/地點/聯絡人]
+  G --&gt; H[自動建立課程行事曆草稿]
+  H --&gt; I[自動產生課前任務時間軸]
+  I --&gt; J[提醒規劃師追蹤：成員樣貌/媒材/設備/發票]
+  J --&gt; K[同步更新主資料表]
+  K --&gt; L[保留乾淨案件資料，未來可匯入 info]
+
+  E -. 外部訊息送出前需 Kevin/使用者確認 .-&gt; F
+  H -. 行事曆寫入需權限與審核 .-&gt; I</pre>
+<h2 id="6-建議課前任務時間軸">6. 建議課前任務時間軸</h2>
+<div class="table-wrap"><table><thead><tr><th>時點</th><th>任務</th><th>對象</th><th>自動化產出</th><th>人工確認</th></tr></thead><tbody><tr><td>派課確認當天</td><td>建立課程主檔、行事曆草稿、任務清單</td><td>規劃師</td><td>課程摘要、欄位缺漏表、Calendar 草稿</td><td>課程時間、地點、講師</td></tr><tr><td>課前 3-4 週</td><td>確認成員樣貌與需求細節</td><td>邀課單位</td><td>補問清單、單位確認摘要</td><td>特殊需求與課程目標</td></tr><tr><td>課前 2 週</td><td>確認大綱、PPT、Ivy 對稿狀態</td><td>講師/Ivy</td><td>講師待辦提醒、素材追蹤欄位</td><td>大綱/PPT版本</td></tr><tr><td>課前 1 週</td><td>確認當日流程、發票開立內容</td><td>邀課單位/素菁</td><td>課前確認信草稿、發票資訊提醒</td><td>金額、抬頭、統編、寄送方式</td></tr><tr><td>課前 3-5 天</td><td>確認媒材、設備、桌椅、特殊狀況</td><td>講師/單位</td><td>設備檢核表</td><td>場地限制、ADHD/身心議題等敏感資訊處理</td></tr><tr><td>課後</td><td>補齊紀錄、問卷/回饋、合作標籤</td><td>規劃師</td><td>課後紀錄草稿、info 匯入欄位</td><td>是否延伸諮詢或其他服務</td></tr></tbody></table></div>
+<h2 id="6-1-以現有-sheet-可落地的提醒規則">6-1. 以現有 Sheet 可落地的提醒規則</h2>
+<div class="table-wrap"><table><thead><tr><th>提醒類型</th><th>判斷條件</th><th>需要讀取的欄位</th><th>輸出</th></tr></thead><tbody><tr><td>瑜君/南區案件篩選</td><td><code>指派規劃師</code> 為瑜君，或地點屬南區</td><td>指派規劃師、預計舉辦課程的地點</td><td>本週南區案件清單</td></tr><tr><td>待確認日期</td><td>有期待日期，但 <code>授課日期時段</code> 未填</td><td>期待的授課日期與時段、授課日期時段</td><td>待確認日期提醒</td></tr><tr><td>待派講師</td><td>日期或需求已可判斷，但 <code>講師安排</code> 未填</td><td>講師安排、規劃師溝通聚焦、期待課程目的</td><td>派課摘要草稿</td></tr><tr><td>成員樣貌待補</td><td>學員樣貌空白、過短或不具體</td><td>主要參與對象、學員樣貌描述</td><td>補問清單</td></tr><tr><td>課前倒數提醒</td><td><code>授課日期時段</code> 已確認</td><td>授課日期時段、講師安排、助教安排、地點</td><td>3-4 週、2 週、1 週提醒</td></tr><tr><td>發票行政提醒</td><td>課前一週且發票資訊或紀錄不足</td><td>發票抬頭統編、發票特殊備註、素菁發票開立紀錄</td><td>發票確認提醒</td></tr><tr><td>交通住宿提醒</td><td>跨區或早課可能需要行政安排</td><td>交通費補助、停車/接送、住宿費</td><td>交通住宿檢核</td></tr></tbody></table></div>
+<p>現有 Sheet 還沒有明確欄位可以直接追蹤「課綱已確認、PPT 已確認、媒材已確認、課前流程已回覆單位、Calendar 已建立」。若要讓提醒更準，建議新增輕量狀態欄，而不是另開多張表。</p>
+<h2 id="7-codex-自動化任務規劃">7. Codex 自動化任務規劃</h2>
+<h3 id="phase-0-資料盤點與欄位對齊">Phase 0：資料盤點與欄位對齊</h3>
+<div class="table-wrap"><table><thead><tr><th>項目</th><th>內容</th></tr></thead><tbody><tr><td>目標</td><td>確認目前 Google Sheet 欄位、必填欄位、派課欄位、未來 info 欄位的最小集合</td></tr><tr><td>Codex 可做</td><td>讀取 Sheet 結構、列出欄位、標示缺漏與重複、產出欄位對照表</td></tr><tr><td>需要權限</td><td>Google Sheet 檢視權限；如要寫回則需編輯權限</td></tr><tr><td>驗證</td><td>用 5-10 筆歷史案件測試是否能產出完整摘要</td></tr><tr><td>產出</td><td><code>課程案件欄位字典</code>、<code>缺漏檢查規則</code>、<code>MVP資料表設計</code></td></tr></tbody></table></div>
+<h3 id="phase-1-客戶課程-mvp">Phase 1：客戶課程 MVP</h3>
+<div class="table-wrap"><table><thead><tr><th>項目</th><th>內容</th></tr></thead><tbody><tr><td>目標</td><td>新案件或已派課案件可自動產生摘要、待補問題、課前任務時間軸</td></tr><tr><td>Codex 可做</td><td>讀取案件資料、生成需求摘要、生成 Line/Email 可貼上的確認稿、建立任務清單</td></tr><tr><td>人工介入</td><td>規劃師確認摘要後才貼給單位或派課群</td></tr><tr><td>驗證</td><td>以 2 個真實課程回測：是否抓到成員樣貌、媒材、PPT、發票、設備等提醒</td></tr><tr><td>產出</td><td><code>課程案件摘要</code>、<code>補問清單</code>、<code>課前提醒清單</code></td></tr></tbody></table></div>
+<h3 id="phase-2-行事曆與提醒整合">Phase 2：行事曆與提醒整合</h3>
+<div class="table-wrap"><table><thead><tr><th>項目</th><th>內容</th></tr></thead><tbody><tr><td>目標</td><td>派課完成後自動建立課程 Calendar 事件與多個提醒節點</td></tr><tr><td>Codex 可做</td><td>依課程日期倒推提醒日期、建立 Google Calendar 草稿或待確認事件</td></tr><tr><td>人工介入</td><td>第一次啟用需確認 calendar 寫入規則與通知對象</td></tr><tr><td>驗證</td><td>測試一筆課程是否能產生正確時間點與正確事件內容</td></tr><tr><td>產出</td><td><code>課程事件</code>、<code>3-4週/2週/1週/課前提醒事件</code></td></tr></tbody></table></div>
+<h3 id="phase-3-寫回-google-sheet-與-info-前置資料庫">Phase 3：寫回 Google Sheet 與 info 前置資料庫</h3>
+<div class="table-wrap"><table><thead><tr><th>項目</th><th>內容</th></tr></thead><tbody><tr><td>目標</td><td>派課結果、課前確認狀態、課後紀錄能回寫到同一份主表</td></tr><tr><td>Codex 可做</td><td>更新欄位、生成狀態標籤、建立可匯入 info 的乾淨資料</td></tr><tr><td>風險</td><td>info 欄位仍在討論，需避免先做死欄位</td></tr><tr><td>驗證</td><td>與素菁/阿丸欄位設計比對，不新增衝突欄位</td></tr><tr><td>產出</td><td><code>主資料表</code>、<code>info匯入候選欄位</code>、<code>合作紀錄摘要</code></td></tr></tbody></table></div>
+<h3 id="phase-4-培力計畫資料比對與報告輔助">Phase 4：培力計畫資料比對與報告輔助</h3>
+<div class="table-wrap"><table><thead><tr><th>項目</th><th>內容</th></tr></thead><tbody><tr><td>目標</td><td>比對社工/主管報名與回饋，找出十月說明會優先邀約單位</td></tr><tr><td>Codex 可做</td><td>單位名稱標準化、跨表比對、回饋摘要、描述性統計草稿</td></tr><tr><td>前置條件</td><td>報名表欄位需更固定：縣市、單位正式名稱、角色、職稱、是否願意揭露</td></tr><tr><td>驗證</td><td>人工抽查 20 筆單位 match 結果</td></tr><tr><td>產出</td><td><code>單位別參與矩陣</code>、<code>主管/社工回饋交叉分析</code>、<code>邀約優先名單</code></td></tr></tbody></table></div>
+<h2 id="8-自動化任務清單">8. 自動化任務清單</h2>
+<div class="table-wrap"><table><thead><tr><th>任務</th><th>觸發</th><th>Codex 動作</th><th>輸出</th><th>優先序</th></tr></thead><tbody><tr><td>新案件缺漏檢查</td><td>Sheet 新增/手動指定案件</td><td>檢查必填欄位與語意缺口</td><td>缺漏清單、補問句</td><td>高</td></tr><tr><td>需求訪談摘要</td><td>貼上逐字稿或錄音轉文字</td><td>摘要課程目標、對象、困難、建議方向</td><td>給單位確認的 summary</td><td>高</td></tr><tr><td>派課摘要</td><td>需求摘要完成</td><td>轉成 Ivy/素菁可判斷講師的派課資訊</td><td>Line 群可貼稿</td><td>高</td></tr><tr><td>派課後課程主檔</td><td>講師/時間/地點確認</td><td>產生課程主檔與行事曆內容</td><td>Calendar 事件草稿</td><td>高</td></tr><tr><td>課前提醒產生器</td><td>課程日期確定</td><td>倒推 3-4週、2週、1週、3-5天任務</td><td>提醒事件或任務表</td><td>高</td></tr><tr><td>Sheet 回填提醒</td><td>案件狀態改變</td><td>提醒或協助回填派課/課前確認結果</td><td>更新建議或直接寫回</td><td>中高</td></tr><tr><td>合作紀錄摘要</td><td>課後</td><td>摘要課程結果、延伸服務可能</td><td>info 匯入文字</td><td>中</td></tr><tr><td>培力單位名稱標準化</td><td>匯入報名/問卷資料</td><td>建立 alias map、標準化單位名</td><td>清理後資料表</td><td>中</td></tr><tr><td>培力交叉分析</td><td>社工與主管資料齊備</td><td>比對單位參與與問卷回饋</td><td>優先邀約名單</td><td>中</td></tr><tr><td>成果報告草稿</td><td>統計與質性材料齊備</td><td>產生描述性統計與段落草稿</td><td>Word/Excel 草稿</td><td>中低</td></tr></tbody></table></div>
+<h2 id="9-可能解決方案">9. 可能解決方案</h2>
+<h3 id="方案-a-google-sheet-codex-半自動助理">方案 A：Google Sheet + Codex 半自動助理</h3>
+<p>適合第一版。</p>
+<ul>
+<li>使用現有 Google 表單/Sheet 作為資料來源。</li>
+<li>Codex 讀取指定案件，產出摘要、補問清單、派課摘要、提醒時間軸。</li>
+<li>外部訊息由瑜君人工貼出，避免一開始就自動發送。</li>
+<li>優點：最快驗證、對現有流程干擾最小。</li>
+<li>限制：仍需人工觸發與人工貼訊息；提醒寫入需要第二階段才完整。</li>
+</ul>
+<h3 id="方案-b-google-sheet-calendar-任務狀態欄">方案 B：Google Sheet + Calendar + 任務狀態欄</h3>
+<p>適合第二版。</p>
+<ul>
+<li>在 Sheet 加上狀態欄位：需求待補、待派課、已派課、待課前確認、待發票、已完成。</li>
+<li>派課確認後自動建立 Calendar 事件與倒推提醒。</li>
+<li>課前任務完成後回寫狀態。</li>
+<li>優點：能直接降低漏追與漏回填。</li>
+<li>限制：需要 Google Calendar/Sheet 寫入權限與清楚的欄位規則。</li>
+</ul>
+<h3 id="方案-c-課程案件小後台">方案 C：課程案件小後台</h3>
+<p>適合流程穩定後。</p>
+<ul>
+<li>做一個簡單後台：案件列表、狀態看板、課程詳細頁、提醒時間軸、摘要產生器。</li>
+<li>Google Sheet 可以先當資料庫，之後再換正式資料庫或 info。</li>
+<li>優點：比 Sheet 更適合多人協作與狀態追蹤。</li>
+<li>限制：需要維護介面、權限與資料同步。</li>
+</ul>
+<h3 id="方案-d-info-整合前置資料層">方案 D：info 整合前置資料層</h3>
+<p>適合中長期。</p>
+<ul>
+<li>先將課程、單位、講師、合作紀錄整理成乾淨資料模型。</li>
+<li>等素菁/阿丸確定 info 欄位後，再做匯入或同步。</li>
+<li>優點：避免五六份表單分散後再痛苦合併。</li>
+<li>限制：需等待 info 欄位與權限確認。</li>
+</ul>
+<h2 id="10-建議-mvp-範圍">10. 建議 MVP 範圍</h2>
+<p>第一版不要先做完整派課系統，先做「南區課程案件提醒助理」：</p>
+<ol>
+<li>讀取或貼上一筆課程案件資料。</li>
+<li>產出三種文字：</li>
+</ol>
+<ul>
+<li>給邀課單位的需求確認摘要。</li>
+<li>給 Ivy/素菁的派課摘要。</li>
+<li>給瑜君自己的課前任務時間軸。</li>
+</ul>
+<ol>
+<li>標示資料缺漏：</li>
+</ol>
+<ul>
+<li>成員樣貌。</li>
+<li>課程目標。</li>
+<li>日期/時間/地點/地址。</li>
+<li>聯絡人與電話。</li>
+<li>講師媒材/設備需求。</li>
+<li>發票資訊。</li>
+</ul>
+<ol>
+<li>允許瑜君人工微調。</li>
+<li>先不自動發送 Line、Email，也先不直接寫入正式 info。</li>
+</ol>
+<h2 id="10-1-和佩欣-思宜需求的合併策略">10-1. 和佩欣、思宜需求的合併策略</h2>
+<p>可以把大家的需求統整到一個 repo，而且長期來看會比較好維護。建議不要把「佩欣 repo、思宜 repo、瑜君 repo」硬合成一頁，而是做成一個總覽型 repo：</p>
+<pre><code>course-ops-automation-requirements/
+  README.md
+  people/
+    peixin/
+      needs-analysis.md
+      workflow-map.md
+    siyi/
+      needs-analysis.md
+      workflow-map.md
+    yujun/
+      needs-analysis.md
+      workflow-map.md
+  shared-modules/
+    reminder-engine.md
+    sheet-field-dictionary.md
+    status-check-rules.md
+    message-draft-templates.md
+  public-site/
+    index.html
+    peixin.html
+    siyi.html
+    yujun.html</code></pre>
+<p>合併後的好處：</p>
+<div class="table-wrap"><table><thead><tr><th>好處</th><th>說明</th></tr></thead><tbody><tr><td>共用需求不會重複寫</td><td>三人的缺漏檢查、提醒、狀態對帳、摘要草稿可以共用</td></tr><tr><td>個別工作流仍保留差異</td><td>佩欣、思宜、瑜君可以各自有頁面，不會被總表吃掉細節</td></tr><tr><td>比較容易規劃開發順序</td><td>可先做共用模組，再接個別角色流程</td></tr><tr><td>公開網址更好分享</td><td>一個首頁導向三個需求頁與共用自動化模組</td></tr></tbody></table></div>
+<p>不建議一開始就刪掉原本佩欣與思宜 repo。比較安全的做法是：</p>
+<ol>
+<li>先建立新的總覽 repo。</li>
+<li>把佩欣、思宜、瑜君的需求整理複製或匯入到 <code>people/</code>。</li>
+<li>保留原 repo 作為歷史版本與舊連結。</li>
+<li>在原 repo README 加上「已整合到總覽 repo」的連結。</li>
+<li>等總覽 repo 穩定後，再決定是否封存原 repo。</li>
+</ol>
+<p>如果未來要做真正的產品或內部工具，單一 repo 也可以升級成 monorepo，把需求文件、資料表欄位字典、提醒規則、前端頁面與自動化腳本放在一起。</p>
+<h2 id="11-待確認問題">11. 待確認問題</h2>
+<div class="table-wrap"><table><thead><tr><th>問題</th><th>為什麼重要</th></tr></thead><tbody><tr><td><code>指派規劃師</code> 是否可靠標記瑜君案件？</td><td>若不可靠，就要用地點推估南區案件</td></tr><tr><td>哪些欄位是派課前必填？哪些可派課後補？</td><td>避免過度卡流程</td></tr><tr><td>派課結果要由誰輸入？瑜君、Ivy、素菁或佩欣？</td><td>決定寫回權限與責任分工</td></tr><tr><td>Calendar 事件要建立在哪個日曆？邀請誰？</td><td>涉及權限與通知噪音</td></tr><tr><td>課前提醒要放 Calendar、Sheet、Slack/Line，還是每日摘要？</td><td>決定提醒介面</td></tr><tr><td>給單位的 summary 是否可由 AI 草稿後人工送出？</td><td>外部溝通需審核</td></tr><tr><td>敏感資訊如孩子身心議題要如何記錄？</td><td>需最小化揭露與權限控管</td></tr><tr><td>info 欄位目前討論到哪個版本？</td><td>避免和素菁/阿丸重工</td></tr><tr><td>培力報名表是否能改成固定單位欄位？</td><td>影響後續跨表分析可行性</td></tr></tbody></table></div>
+<h2 id="12-風險與治理">12. 風險與治理</h2>
+<div class="table-wrap"><table><thead><tr><th>風險</th><th>建議處理</th></tr></thead><tbody><tr><td>自動發送錯誤訊息給單位</td><td>MVP 階段只產生草稿，不自動外送</td></tr><tr><td>Calendar 提醒過多造成噪音</td><td>先用單筆課程測試，再定義 no-op 規則</td></tr><tr><td>Sheet 欄位還沒穩定就做死</td><td>用欄位字典與對照表，不直接綁死 info</td></tr><tr><td>個資或敏感需求外流</td><td>摘要中避免寫入不必要敏感細節，設定權限</td></tr><tr><td>單位名稱無法自動 match</td><td>建立 alias 字典，低信心比對交給人工確認</td></tr><tr><td>和公司現有沙盒/報表工具重工</td><td>成果報告放後期，先聚焦客戶流程</td></tr></tbody></table></div>
+<h2 id="13-建議下一步">13. 建議下一步</h2>
+<ol>
+<li>向素菁確認是否可取得客戶 Google Sheet 檢視權限。</li>
+<li>匯出或讀取 5-10 筆代表性課程案件。</li>
+<li>定義「派課前必填欄位」與「課前提醒預設時間軸」。</li>
+<li>用 Codex 產生第一版：</li>
+</ol>
+<ul>
+<li>案件摘要。</li>
+<li>缺漏問題。</li>
+<li>派課摘要。</li>
+<li>課前任務時間軸。</li>
+</ul>
+<ol>
+<li>請瑜君用兩筆真實案件回饋：哪些有幫助、哪些太吵、哪些需要人工判斷。</li>
+</ol>
+<h2 id="14-expansion-review-card">14. Expansion Review Card</h2>
+<div class="table-wrap"><table><thead><tr><th>項目</th><th>判斷</th></tr></thead><tbody><tr><td>What changed</td><td>目前只是提出 local automation/workflow proposal，尚未建立長期自動化</td></tr><tr><td>Why needed</td><td>瑜君的課程行政流程有高重複、高漏失風險、跨工具資料斷點</td></tr><tr><td>Owner agent</td><td>workflow_designer + automation_auditor</td></tr><tr><td>Trigger</td><td>新課程案件、派課確認、課前倒數節點、培力資料分析</td></tr><tr><td>Should not do</td><td>不在未審核時自動發送外部訊息；不直接寫入 info；不處理不必要敏感資料</td></tr><tr><td>Proof</td><td>以歷史案件回測摘要與提醒清單是否正確</td></tr><tr><td>Approval required</td><td>Google 權限、Calendar 寫入、外部訊息、自動化排程、info 匯入</td></tr><tr><td>Source of truth</td><td>初期為客戶 Google Sheet；中期為主資料表/欄位字典；長期依 info 欄位</td></tr><tr><td>Local/global</td><td>先保持 local workflow proposal，跑過多次有效後再考慮自動化</td></tr><tr><td>No-op rule</td><td>案件資料不足、日期未確認、派課未完成時，只產生補問清單，不建立提醒</td></tr></tbody></table></div></article>
+    </section>
+  </main>
+  <footer>
+    <div class="shell">版本：2026.06.09｜狀態：public-with-noindex review｜本頁可用網址瀏覽，但 noindex 不是隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
+  </footer>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "default" });
+  </script>
+</body>
+</html>

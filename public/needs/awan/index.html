@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>阿丸需求整理</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1f2937;
+      --muted: #5f6b7a;
+      --paper: #fff;
+      --bg: #f6f8fb;
+      --line: #d8dee8;
+      --navy: #202a44;
+      --blue: #2f6bff;
+      --teal: #0e9f8b;
+      --wine: #8b3556;
+      --gold: #c58b25;
+      --green: #2e7d5f;
+      --sky: #eef5ff;
+      --mint: #e9f8f4;
+      --blush: #f8ecf1;
+      --amber: #fff6e0;
+      --radius: 8px;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.72; }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px clamp(14px, 3vw, 32px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+    }
+    .brand { font-weight: 900; color: var(--navy); }
+    .nav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+    .nav a, .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 12px;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .button-link.primary, .nav a.primary { border-color: var(--blue); background: var(--blue); color: #fff; }
+    .hero {
+      background: var(--navy);
+      color: #fff;
+      padding: clamp(42px, 8vw, 84px) 0;
+    }
+    .shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+    .hero .shell { display: grid; gap: 18px; }
+    .eyebrow { margin: 0; color: #9be1d5; font-size: 0.94rem; font-weight: 900; }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 { max-width: 900px; margin-bottom: 0; font-size: clamp(2.15rem, 5vw, 4rem); line-height: 1.1; letter-spacing: 0; }
+    .lead { max-width: 880px; margin-bottom: 0; color: rgba(255, 255, 255, 0.82); font-size: clamp(1.05rem, 2vw, 1.25rem); }
+    main.shell { padding: 42px 0 76px; }
+    .section { margin: 34px 0; }
+    .cards, .grid { display: grid; gap: 16px; }
+    .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card, .panel, .md article {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 8px 24px rgba(32, 42, 68, 0.06);
+    }
+    .card, .panel { padding: 20px; }
+    .card strong { display: block; margin-bottom: 8px; color: var(--navy); font-size: 1.08rem; }
+    .card p, .muted { color: var(--muted); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag { border: 1px solid var(--line); border-radius: var(--radius); padding: 4px 8px; background: var(--sky); color: var(--navy); font-size: 0.86rem; font-weight: 800; }
+    .notice {
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      background: #f0faf8;
+      color: #254d49;
+    }
+    .prompt {
+      overflow-x: auto;
+      white-space: pre-wrap;
+      border-radius: var(--radius);
+      padding: 18px;
+      background: #111827;
+      color: #e5e7eb;
+      font-size: 0.98rem;
+      line-height: 1.68;
+    }
+    .steps { counter-reset: step; display: grid; gap: 10px; }
+    .steps li { margin: 0 0 8px; }
+    .md { display: grid; gap: 20px; }
+    .md article { padding: clamp(20px, 4vw, 34px); }
+    .md h1 { color: var(--navy); font-size: clamp(1.9rem, 4vw, 3rem); }
+    .md h2 { margin-top: 34px; color: var(--navy); font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.25; }
+    .md h3 { margin-top: 24px; color: var(--navy); font-size: 1.22rem; }
+    .table-wrap { overflow-x: auto; margin: 16px 0 24px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+    table { width: 100%; min-width: 720px; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: #eef1f6; color: var(--navy); white-space: nowrap; }
+    pre { overflow-x: auto; border-radius: var(--radius); padding: 16px; background: #111827; color: #e5e7eb; }
+    pre.mermaid { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+    code { font-family: "Cascadia Code", Consolas, monospace; }
+    .muted-link { color: var(--muted); }
+    .accent-blue { border-top: 5px solid var(--blue); }
+    .accent-teal { border-top: 5px solid var(--teal); }
+    .accent-gold { border-top: 5px solid var(--gold); }
+    .accent-wine { border-top: 5px solid var(--wine); }
+    .accent-green { border-top: 5px solid var(--green); }
+    .soft-sky { background: var(--sky); }
+    .soft-mint { background: var(--mint); }
+    .soft-blush { background: var(--blush); }
+    .soft-amber { background: var(--amber); }
+    footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 860px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .nav { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
+      .cards, .grid.two { grid-template-columns: 1fr; }
+      table { min-width: 640px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Codex 行政工作實驗課</div>
+    <nav class="nav" aria-label="站內導覽">
+      <a href="/">課程頁</a>
+      <a href="/slides/">學員簡報</a>
+      <a href="/kit/">練習包</a>
+      <a href="/exercises/">四個練習</a>
+      <a class="primary" href="/needs/">需求整理</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="shell">
+      <p class="eyebrow">個別需求頁</p>
+      <h1>阿丸需求整理</h1>
+      <p class="lead">需要候補比對、通知草稿、活動行政文件包與 InfoCenter 建檔草稿。</p>
+    </div>
+  </section>
+  <main class="shell md-page">
+    
+    <section class="notice">
+      本頁來源：<code>people/awan/needs-analysis.md</code>。內容是需求整理與工作流分析，不是正式系統規格；涉及外部發送、正式資料更新、個資、金額或月結的動作仍需人工確認。
+    </section>
+    <section class="section">
+      <div class="card accent-teal">
+        <strong>阿丸｜活動行政、候補與文件包</strong>
+        <p>需要候補比對、通知草稿、活動行政文件包與 InfoCenter 建檔草稿。</p>
+        <div class="tag-row"><span class="tag">候補</span><span class="tag">活動行政包</span><span class="tag">文件</span><span class="tag">名單比對</span></div>
+      </div>
+    </section>
+    <section class="section md">
+      <article><h1 id="阿丸活動行政與候補比對需求摘要">阿丸活動行政與候補比對需求摘要</h1>
+<h2 id="一句話結論">一句話結論</h2>
+<p>阿丸需要的不是單一工具，而是一套能保留現有 MIS、Google 表單、Excel、Word 操作習慣，又能把「候補判斷、名單比對、通知草稿、活動行政文件產出、活動後紀錄」整理成可追蹤、可核准、可重複執行的工作流程。</p>
+<p>這份摘要依據先前「分析阿丸需求」與四項表單自動生成 MVP 整理。公開版不放真實學員名單、手機、單位、報名資料或原始逐字稿。</p>
+<h2 id="核心工作流">核心工作流</h2>
+<pre class="mermaid">flowchart TD
+  A[&quot;候補/報名詢問&quot;] --&gt; B[&quot;分類：候補、一般問題、不確定&quot;]
+  B --&gt; C[&quot;候補回覆草稿&quot;]
+  C --&gt; D[&quot;Google 候補表&quot;]
+  D --&gt; E[&quot;候補名單比對&quot;]
+  E --&gt; F[&quot;可通知、已上過課、已完成報名、待確認&quot;]
+  F --&gt; G[&quot;系統工作區報名比對&quot;]
+  G --&gt; H[&quot;搬移建議與取消暫存清單&quot;]
+  H --&gt; I[&quot;活動前行政準備&quot;]
+  I --&gt; J[&quot;行前通知草稿&quot;]
+  I --&gt; K[&quot;活動行政包&quot;]
+  K --&gt; L[&quot;工作流程表、簽到表、學員名單、分組座位表&quot;]
+  L --&gt; M[&quot;阿丸/規劃師確認&quot;]
+  M --&gt; N[&quot;活動執行&quot;]
+  N --&gt; O[&quot;InfoCenter 建檔草稿與附件清單&quot;]</pre>
+<h2 id="主要資料來源">主要資料來源</h2>
+<div class="table-wrap"><table><thead><tr><th>來源</th><th>可能內容</th><th>第一版處理方式</th></tr></thead><tbody><tr><td>MIS 報名匯出</td><td>正式場次、報名者、系統工作區、報名狀態</td><td>轉成統一名單，保留來源列</td></tr><tr><td>Google 候補表</td><td>候補者、希望場次、聯絡方式、通知狀態</td><td>比對可通知/排除/待確認</td></tr><tr><td>Email / 聯絡訊息</td><td>候補詢問、一般問題</td><td>先分類與產生回覆草稿，不自動寄出</td></tr><tr><td>Excel</td><td>既有清理公式、分組或統計工作表</td><td>第一版沿用，不急著重寫</td></tr><tr><td>Word 範本</td><td>工作流程表、簽到表、學員名單、分組座位表</td><td>由結構化資料產生 docx 草稿</td></tr><tr><td>InfoCenter</td><td>活動後事件、附件、照片、簽到表</td><td>產生建檔草稿與上傳清單</td></tr></tbody></table></div>
+<h2 id="主要痛點">主要痛點</h2>
+<div class="table-wrap"><table><thead><tr><th>痛點</th><th>影響</th></tr></thead><tbody><tr><td>候補與一般問題混在一起</td><td>每天要人工判斷哪些信件需要候補回覆</td></tr><tr><td>名單分散</td><td>候補表、正式場次、系統工作區、已上課紀錄分散，容易漏標記</td></tr><tr><td>系統工作區是暫存流程</td><td>被通知者先報名系統工作區後，仍要人工搬回正式場次並取消暫存報名</td></tr><tr><td>活動前文件多</td><td>工作流程、簽到、學員名單、分組座位、物資/便當都要手工整理</td></tr><tr><td>人力資訊來源分散</td><td>講師、規劃師、工讀生、志工常來自 Line 或人工確認</td></tr><tr><td>活動後建檔手動</td><td>InfoCenter 事件欄位、附件與摘要仍要重新整理</td></tr><tr><td>個資風險高</td><td>學員姓名、手機、單位、報名狀態不能放到公開 repo 或公開頁</td></tr></tbody></table></div>
+<h2 id="codex-可自動化的任務">Codex 可自動化的任務</h2>
+<div class="table-wrap"><table><thead><tr><th>階段</th><th>Codex 任務</th><th>產出</th></tr></thead><tbody><tr><td>P0 欄位盤點</td><td>盤點 MIS、Google 表、Excel、Word 範本欄位</td><td>欄位對照表與待確認問題</td></tr><tr><td>P1 候補信件助理</td><td>分類候補/一般問題/不確定，產生回覆草稿</td><td>每日候補摘要與草稿</td></tr><tr><td>P2 候補名單比對</td><td>比對姓名、Email、電話、場次、是否上過課</td><td>可通知、排除、已完成、待確認清單</td></tr><tr><td>P3 系統工作區比對</td><td>找出誰應搬到哪個正式場次、是否取消暫存</td><td>搬移建議與人工操作清單</td></tr><tr><td>P4 活動行政包</td><td>由課程資料與名單產出四份 Word 草稿</td><td>工作流程表、簽到表、學員名單、分組座位表</td></tr><tr><td>P5 行前通知助理</td><td>依場次產生通知內容與收件名單</td><td>寄送前草稿與送達檢查提醒</td></tr><tr><td>P6 InfoCenter 建檔包</td><td>活動後產生活動摘要、欄位內容、附件清單</td><td>InfoCenter 草稿</td></tr></tbody></table></div>
+<h2 id="既有-mvp">既有 MVP</h2>
+<p>先前已建立一版 local-only 文件生成 MVP：</p>
+<pre><code>course_data.example.json -&gt; generate_amaru_forms.py -&gt; 四份 .docx</code></pre>
+<p>已驗證方向：</p>
+<ul>
+<li>四份 Word 都是固定版型加結構化資料填入。</li>
+<li>學員名單與分組座位表可以共用同一份學員資料。</li>
+<li>簽到表可由每日講師、工作人員、工讀生、志工名單生成。</li>
+<li>工作流程表可由活動基本資訊、場地廠商資訊、人力統計、活動流程與物資清單生成。</li>
+</ul>
+<p>尚待補強：</p>
+<ul>
+<li>DOCX render QA。</li>
+<li>原版格式與頁面視覺比對。</li>
+<li>MIS/Google Sheet/Excel 欄位正規化。</li>
+<li>真實個資留在 local/private，不進 public repo。</li>
+</ul>
+<h2 id="可能的解決方案">可能的解決方案</h2>
+<h3 id="方案-a-草稿與報表助理">方案 A：草稿與報表助理</h3>
+<p>Codex 只產生候補摘要、回覆草稿、比對表與活動文件草稿，阿丸仍在 MIS、Google 表單、Excel、Word 中操作。</p>
+<p>適合第一步，風險最低。</p>
+<h3 id="方案-b-本機活動行政包產生器">方案 B：本機活動行政包產生器</h3>
+<p>建立固定資料夾或小型本機工具，放入 MIS 匯出、Google Sheet 匯出、範本檔後，一鍵產生候補清單與活動行政包。</p>
+<p>適合把四項表單 MVP 變成可反覆使用的工具。</p>
+<h3 id="方案-c-gmail-google-sheets-drive-排程摘要">方案 C：Gmail / Google Sheets / Drive 排程摘要</h3>
+<p>若取得授權，Codex 定期讀候補信件、Google 表單與 Drive 範本，產生每日摘要、場次提醒、文件草稿。</p>
+<p>適合在欄位穩定與隱私流程確認後推進。</p>
+<h3 id="方案-d-mis-infocenter-深度自動化">方案 D：MIS / InfoCenter 深度自動化</h3>
+<p>只有在流程回測穩定、具備測試環境與錯誤回復機制後，才考慮半自動搬移報名、取消系統工作區或寫入 InfoCenter。</p>
+<p>這是後期，不是第一版。</p>
+<h2 id="自動化邊界">自動化邊界</h2>
+<p>第一版可以做：</p>
+<ul>
+<li>讀取匯出檔與範本。</li>
+<li>產生清單、草稿、文件包、待確認項。</li>
+<li>標出重複、缺欄、低信心、個資風險。</li>
+</ul>
+<p>第一版不應直接做：</p>
+<ul>
+<li>自動寄信。</li>
+<li>自動修改 MIS 報名或取消報名。</li>
+<li>自動修改 Google 表單/Sheet 狀態。</li>
+<li>自動寫入 InfoCenter 或上傳活動附件。</li>
+<li>在公開頁放真實學員個資、報名資料或原始逐字稿。</li>
+</ul></article>
+    </section>
+  </main>
+  <footer>
+    <div class="shell">版本：2026.06.09｜狀態：public-with-noindex review｜本頁可用網址瀏覽，但 noindex 不是隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
+  </footer>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "default" });
+  </script>
+</body>
+</html>

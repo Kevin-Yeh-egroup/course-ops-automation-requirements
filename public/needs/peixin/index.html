@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>佩欣需求整理</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1f2937;
+      --muted: #5f6b7a;
+      --paper: #fff;
+      --bg: #f6f8fb;
+      --line: #d8dee8;
+      --navy: #202a44;
+      --blue: #2f6bff;
+      --teal: #0e9f8b;
+      --wine: #8b3556;
+      --gold: #c58b25;
+      --green: #2e7d5f;
+      --sky: #eef5ff;
+      --mint: #e9f8f4;
+      --blush: #f8ecf1;
+      --amber: #fff6e0;
+      --radius: 8px;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.72; }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px clamp(14px, 3vw, 32px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+    }
+    .brand { font-weight: 900; color: var(--navy); }
+    .nav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+    .nav a, .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 12px;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .button-link.primary, .nav a.primary { border-color: var(--blue); background: var(--blue); color: #fff; }
+    .hero {
+      background: var(--navy);
+      color: #fff;
+      padding: clamp(42px, 8vw, 84px) 0;
+    }
+    .shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+    .hero .shell { display: grid; gap: 18px; }
+    .eyebrow { margin: 0; color: #9be1d5; font-size: 0.94rem; font-weight: 900; }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 { max-width: 900px; margin-bottom: 0; font-size: clamp(2.15rem, 5vw, 4rem); line-height: 1.1; letter-spacing: 0; }
+    .lead { max-width: 880px; margin-bottom: 0; color: rgba(255, 255, 255, 0.82); font-size: clamp(1.05rem, 2vw, 1.25rem); }
+    main.shell { padding: 42px 0 76px; }
+    .section { margin: 34px 0; }
+    .cards, .grid { display: grid; gap: 16px; }
+    .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card, .panel, .md article {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 8px 24px rgba(32, 42, 68, 0.06);
+    }
+    .card, .panel { padding: 20px; }
+    .card strong { display: block; margin-bottom: 8px; color: var(--navy); font-size: 1.08rem; }
+    .card p, .muted { color: var(--muted); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag { border: 1px solid var(--line); border-radius: var(--radius); padding: 4px 8px; background: var(--sky); color: var(--navy); font-size: 0.86rem; font-weight: 800; }
+    .notice {
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      background: #f0faf8;
+      color: #254d49;
+    }
+    .prompt {
+      overflow-x: auto;
+      white-space: pre-wrap;
+      border-radius: var(--radius);
+      padding: 18px;
+      background: #111827;
+      color: #e5e7eb;
+      font-size: 0.98rem;
+      line-height: 1.68;
+    }
+    .steps { counter-reset: step; display: grid; gap: 10px; }
+    .steps li { margin: 0 0 8px; }
+    .md { display: grid; gap: 20px; }
+    .md article { padding: clamp(20px, 4vw, 34px); }
+    .md h1 { color: var(--navy); font-size: clamp(1.9rem, 4vw, 3rem); }
+    .md h2 { margin-top: 34px; color: var(--navy); font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.25; }
+    .md h3 { margin-top: 24px; color: var(--navy); font-size: 1.22rem; }
+    .table-wrap { overflow-x: auto; margin: 16px 0 24px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+    table { width: 100%; min-width: 720px; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: #eef1f6; color: var(--navy); white-space: nowrap; }
+    pre { overflow-x: auto; border-radius: var(--radius); padding: 16px; background: #111827; color: #e5e7eb; }
+    pre.mermaid { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+    code { font-family: "Cascadia Code", Consolas, monospace; }
+    .muted-link { color: var(--muted); }
+    .accent-blue { border-top: 5px solid var(--blue); }
+    .accent-teal { border-top: 5px solid var(--teal); }
+    .accent-gold { border-top: 5px solid var(--gold); }
+    .accent-wine { border-top: 5px solid var(--wine); }
+    .accent-green { border-top: 5px solid var(--green); }
+    .soft-sky { background: var(--sky); }
+    .soft-mint { background: var(--mint); }
+    .soft-blush { background: var(--blush); }
+    .soft-amber { background: var(--amber); }
+    footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 860px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .nav { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
+      .cards, .grid.two { grid-template-columns: 1fr; }
+      table { min-width: 640px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Codex 行政工作實驗課</div>
+    <nav class="nav" aria-label="站內導覽">
+      <a href="/">課程頁</a>
+      <a href="/slides/">學員簡報</a>
+      <a href="/kit/">練習包</a>
+      <a href="/exercises/">四個練習</a>
+      <a class="primary" href="/needs/">需求整理</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="shell">
+      <p class="eyebrow">個別需求頁</p>
+      <h1>佩欣需求整理</h1>
+      <p class="lead">需要每日工作台、缺漏檢查、課務與核銷草稿，先處理高頻跨系統重工。</p>
+    </div>
+  </section>
+  <main class="shell md-page">
+    
+    <section class="notice">
+      本頁來源：<code>people/peixin/needs-analysis.md</code>。內容是需求整理與工作流分析，不是正式系統規格；涉及外部發送、正式資料更新、個資、金額或月結的動作仍需人工確認。
+    </section>
+    <section class="section">
+      <div class="card accent-teal">
+        <strong>佩欣｜課務、核銷與跨系統追蹤</strong>
+        <p>需要每日工作台、缺漏檢查、課務與核銷草稿，先處理高頻跨系統重工。</p>
+        <div class="tag-row"><span class="tag">每日工作台</span><span class="tag">課務</span><span class="tag">核銷</span><span class="tag">草稿</span></div>
+      </div>
+    </section>
+    <section class="section md">
+      <article><h1 id="佩欣需求分析與-codex-自動化規劃">佩欣需求分析與 Codex 自動化規劃</h1>
+<p>日期：2026-05-27 來源：Kevin 提供的訪談逐字稿與九項工作紀錄 狀態：需求分析草案，尚未接觸實際表單、Line、Info 或個資資料</p>
+<p>補充文件：</p>
+<ul>
+<li><span class="muted-link">佩欣九大工作流流程表</span>：記錄課務待確認事項，並把九大工作流整理成逐項討論用流程表。</li>
+</ul>
+<h2 id="1-一句話結論">1. 一句話結論</h2>
+<p>佩欣目前不是單純在「填表」或「提醒人」，而是在多個系統之間扮演人工流程中樞：每天接收表單、檢查資料完整性、轉貼 Line、開行事曆、追課綱與講師資料、核對金額、整理流水帳、通知未完成者、更新 Info、改檔名、維護 Excel 總表。</p>
+<p>因此自動化不應該第一步就追求「全自動發送」或「全面取代 Excel」，而應先做一個可審閱的「佩欣工作台」：每天列出待處理、待追蹤、待通知、可直接產生草稿的事項，再逐步開放寫回與發送。</p>
+<h2 id="2-可視化需求總覽">2. 可視化需求總覽</h2>
+<pre class="mermaid">flowchart LR
+  A[外部單位 / 講師 / 引導員 / 諮詢師 / 訂閱者] --&gt; B[Google 表單]
+  A --&gt; C[Line 群組]
+  A --&gt; D[Email / 電話]
+  B --&gt; P[佩欣人工檢核與追蹤]
+  C --&gt; P
+  D --&gt; P
+  P --&gt; E[Google Sheet / Excel 總表]
+  P --&gt; F[Google Calendar]
+  P --&gt; G[Info 系統]
+  P --&gt; H[Line 通知 / 訊息草稿]
+  P --&gt; I[Word / 課綱 / 會議紀錄 / 檔案命名]
+  P --&gt; J[素菁 / Ivy / 講師 / 單位 / 廠商]
+
+  classDef pain fill:#ffe2e2,stroke:#d33,color:#111;
+  class P pain;</pre>
+<p>佩欣的核心工作可整理成四種反覆動作：</p>
+<div class="table-wrap"><table><thead><tr><th>動作類型</th><th>逐字稿中的例子</th><th>自動化機會</th></tr></thead><tbody><tr><td>收件與完整性檢查</td><td>課務申請、財務諮詢轉介、核銷表單、季刊訂閱</td><td>欄位缺漏偵測、待補清單、通知草稿</td></tr><tr><td>狀態同步</td><td>Google Sheet 記備註、Info 更新、Calendar 建立、Line 群組通知</td><td>工作台、狀態欄寫回、跨表比對</td></tr><tr><td>到期提醒</td><td>課綱、簡報、核銷截止、分區會議、諮詢紀錄補件</td><td>每日/每月 due list、提醒草稿、逾期追蹤</td></tr><tr><td>格式化產物</td><td>Line 固定格式、核銷訊息、課綱外部版、會議紀錄、家系圖檔名</td><td>模板產生、檔名規則、草稿輸出</td></tr></tbody></table></div>
+<h2 id="3-九大工作流拆解">3. 九大工作流拆解</h2>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>工作流</th><th>頻率</th><th>主要來源</th><th>主要輸出</th><th>痛點</th><th>自動化優先</th></tr></thead><tbody><tr><td>1</td><td>課務 / 客戶申請</td><td>每日</td><td>Google 表單、Line、Email</td><td>內部派課訊息、Calendar、課綱/講師資料追蹤</td><td>欄位檢查、複製貼上、課綱與簡報 due date 容易散落</td><td>最高</td></tr><tr><td>2</td><td>單據核銷</td><td>月初 / 月底</td><td>核銷表單、單據、Excel</td><td>金額核對、個別通知、流水帳、扣繳清單</td><td>分專案篩選、公里數計算、訊息逐則整理</td><td>最高</td></tr><tr><td>3</td><td>庫存管理</td><td>每日或不定期</td><td>教材表單、Excel</td><td>教材數量、借出單位、歸還狀態</td><td>借出/未歸還追蹤人工記</td><td>中</td></tr><tr><td>4</td><td>季刊訂閱</td><td>每日或出刊期</td><td>Google 表單、Excel</td><td>電子季刊寄送名單、紙本名單、地址更新</td><td>表單資料再手動搬到總表、電子版想自動寄</td><td>中高</td></tr><tr><td>5</td><td>分區會議</td><td>兩個月一次</td><td>Excel 登記、會議錄音/逐字稿、Info</td><td>會議提醒、會議紀錄、未更新名單</td><td>名字校正、個案狀態比對、截圖通知</td><td>中高</td></tr><tr><td>6</td><td>財務諮詢紀錄</td><td>每日</td><td>Info/評論/欄位</td><td>缺漏提醒、諮詢完成勾選</td><td>補件拖很久，影響 15 號發薪依據</td><td>高</td></tr><tr><td>7</td><td>引導員小老闆日誌 / 郵寄</td><td>每日</td><td>Google 表單、Info</td><td>寄送日期、完成狀態</td><td>完成勾選與日期更新重複</td><td>中</td></tr><tr><td>8</td><td>粉絲團文章</td><td>每日</td><td>FB 文章、Info</td><td>建立事件、評論、送審</td><td>主要是存檔，但每天做很碎</td><td>中</td></tr><tr><td>9</td><td>個案轉介與家系圖</td><td>每日/不定期</td><td>轉介表單、Line、檔案</td><td>電訪行事曆、表單時間欄位、家系圖改名</td><td>個資敏感，檔案命名與時間同步人工</td><td>中高但需保守</td></tr></tbody></table></div>
+<h2 id="3-1-佩欣現在的工作流程與優化可能">3.1 佩欣現在的工作流程與優化可能</h2>
+<p>這段補在痛點之後，是為了讓讀者先看見「她現在到底怎麼做」，再判斷哪些地方值得先優化。</p>
+<div class="table-wrap"><table><thead><tr><th>工作流</th><th>她現在的工作流程</th><th>優化可能</th></tr></thead><tbody><tr><td>課務 / 客戶申請</td><td>單位填 Google 表單後，佩欣檢查欄位是否完整；完整就整理成固定格式貼到客戶/內部 Line 群組，等 Ivy 或素菁派講師；講師確認後建立 Google Calendar；後續再追講師資料、課綱、簡報與單位需求。</td><td>先做「新申請 + 缺漏 + 待派課 + 待開行事曆 + 課綱/簡報 due list」工作台，並產生 Line 草稿。課綱可再加內部版轉外部版模板。</td></tr><tr><td>單據核銷</td><td>引導員、講師或辦公室成員填核銷表單；佩欣依星展、中信培力、信扶專案、公司課程、辦公室分類篩選；核對公里數、費率、金額與單據；星展還要 key 流水帳與扣繳資料；月底/月初再提醒與逐人回覆核銷金額。</td><td>先做「核銷檢查器」：依專案分類、套費率、標出金額疑似錯誤與缺件，產生逐人通知草稿。星展流水帳與扣繳清單可做半自動匯入。</td></tr><tr><td>庫存管理</td><td>佩欣維護一份 Excel，記錄教材/道具數量、借出日期、活動、借出單位、歸還或未歸還狀態。</td><td>建立庫存 dashboard，讓借出、歸還、低庫存、未歸還清單自動浮出；先不改原 Excel，只產生提醒清單。</td></tr><tr><td>季刊訂閱</td><td>訂閱者透過 QR Code/Google 表單登記紙本或電子版；佩欣把資料搬到季刊總表；電子版要寄連結，紙本要整理地址、續訂、退件與地址異動。</td><td>新訂閱自動分類電子/紙本；電子版先產生 Email 草稿，未來可審核後自動寄送；地址異動可做重複資料比對。</td></tr><tr><td>分區會議</td><td>引導員到 Excel 登記時段；會前一天佩欣提醒並提供會議連結；會後用錄音/逐字稿做會議紀錄，校正個案名字與狀態，再檢查引導員是否更新 Info 欄位，未更新就截圖通知。</td><td>建立會議包：會前提醒草稿、會後逐字稿校名單、與進度提醒表比對、未更新清單與提醒草稿。</td></tr><tr><td>財務諮詢紀錄</td><td>轉介後諮詢師約訪並填諮詢記錄；Info/評論與欄位常不同步，佩欣要檢查缺漏、駁回原因與補件狀態；確認都完成後才勾諮詢完成，素菁才有發薪依據。</td><td>建立補件追蹤清單：列出諮詢師、案子、缺欄位、拖延天數與提醒草稿。勾選諮詢完成仍保留人工確認。</td></tr><tr><td>引導員小老闆日誌 / 郵寄</td><td>有人填表單申請寄送手冊或小老闆資料後，佩欣寄出並在 Google 表單/Info 補完成狀態與寄送日期。</td><td>自動列出待寄送、待回填日期、待勾完成的清單；低風險狀態欄可後續考慮半自動寫回。</td></tr><tr><td>粉絲團文章</td><td>佩欣每天把粉絲團文章存到 Info，建立事件、評論並送審，主要作為紀錄與補助/行政依據。</td><td>建立貼文收件清單與 Info 建檔 checklist；若欄位固定，可產生貼文摘要與待填欄位草稿。</td></tr><tr><td>個案轉介與家系圖</td><td>社工/單位先填轉介表單並進 Line；佩欣核對資料是否有填、安排宇宏電訪行事曆、回填 Line 進入時間與電訪時間；家系圖檔案要依固定格式改名並存到資料夾。</td><td>先做資料完整性與檔名建議，不自動寫回個案資料。Calendar 草稿可半自動建立；家系圖改名需保留人工確認。</td></tr></tbody></table></div>
+<h2 id="4-佩欣真正需要的不是單點工具-而是三層能力">4. 佩欣真正需要的不是單點工具，而是三層能力</h2>
+<pre class="mermaid">flowchart TB
+  L1[第一層：每日工作台\n讀取各表單與 Excel，整理待辦、缺漏、逾期] --&gt; L2[第二層：草稿產生器\nLine / Email / Calendar / 會議紀錄 / 核銷訊息草稿]
+  L2 --&gt; L3[第三層：受控寫回\n經佩欣確認後寫回 Sheet、Info、寄信、建立 Calendar]
+
+  R[風險控管\n個資、外部發送、發薪依據、Info 寫入都要先人工確認] -.-&gt; L2
+  R -.-&gt; L3</pre>
+<p>建議的原則：</p>
+<ul>
+<li>第一階段只讀取、不發送、不改外部系統。</li>
+<li>第二階段產生草稿，佩欣複製貼上或人工確認。</li>
+<li>第三階段才串接 Google Calendar、Gmail、Sheet 寫回、Info 寫入或 Line 發送。</li>
+<li>涉及個案、財務諮詢、戶籍地址、發薪依據者，都需要更嚴格的權限與紀錄。</li>
+</ul>
+<h2 id="5-codex-自動化可能的任務規劃">5. Codex 自動化可能的任務規劃</h2>
+<h3 id="phase-0-資料盤點與權限最小化">Phase 0：資料盤點與權限最小化</h3>
+<p>目的：先看欄位結構，不處理真實外部動作。</p>
+<p>任務：</p>
+<ul>
+<li>取得課務表單、教材表單、核銷表單的檢視權限。</li>
+<li>建立資料字典：每張表有哪些欄位、哪些是狀態欄、哪些是日期欄、哪些欄位是個資。</li>
+<li>定義每個流程的「完成」與「阻塞」條件。</li>
+<li>整理訊息模板：課務 Line 格式、核銷通知格式、補件提醒格式、會議提醒格式。</li>
+</ul>
+<p>驗證：</p>
+<ul>
+<li>產出欄位地圖。</li>
+<li>產出一份不含個資的範例日報。</li>
+<li>佩欣確認欄位理解正確。</li>
+</ul>
+<h3 id="phase-1-佩欣每日工作台">Phase 1：佩欣每日工作台</h3>
+<p>目的：每天自動整理「今天要看什麼」。</p>
+<p>任務：</p>
+<ul>
+<li>課務：新申請、欄位缺漏、已派課未開 Calendar、課綱/簡報/講師資料 due date。</li>
+<li>核銷：本月待核對、缺公里數、金額可能錯誤、月底提醒名單。</li>
+<li>財務諮詢：已送審但欄位未填、被駁回、逾期未修正。</li>
+<li>季刊：新訂閱、電子/紙本分類、地址異動。</li>
+<li>分區會議：下次會議、未登記時段、會後未更新 Info。</li>
+</ul>
+<p>輸出：</p>
+<ul>
+<li>每日清單：今日新增、今日到期、已逾期、需要問人的事項。</li>
+<li>每一項附「下一步」與「草稿」。</li>
+</ul>
+<h3 id="phase-2-訊息與文件草稿產生器">Phase 2：訊息與文件草稿產生器</h3>
+<p>目的：降低佩欣複製貼上與重寫訊息的時間。</p>
+<p>任務：</p>
+<ul>
+<li>課務申請轉 Line 群組固定格式。</li>
+<li>單據核銷逐人金額說明草稿。</li>
+<li>課綱/簡報/講師資料提醒草稿。</li>
+<li>財務諮詢補件提醒草稿。</li>
+<li>分區會議前一日提醒與會後未更新提醒草稿。</li>
+<li>家系圖檔名建議。</li>
+</ul>
+<p>驗證：</p>
+<ul>
+<li>每份草稿保留來源列號或資料來源。</li>
+<li>不自動發送，先由佩欣審核。</li>
+</ul>
+<h3 id="phase-3-受控寫回與半自動操作">Phase 3：受控寫回與半自動操作</h3>
+<p>目的：在草稿穩定後，把低風險動作自動化。</p>
+<p>可寫回項目：</p>
+<ul>
+<li>Google Calendar 事件草稿或建立。</li>
+<li>Google Sheet 狀態欄：已提醒、已完成、缺資料。</li>
+<li>季刊電子版寄送，需先確認名單與寄送內容。</li>
+<li>檔案改名與搬入指定資料夾。</li>
+</ul>
+<p>暫不建議直接全自動：</p>
+<ul>
+<li>Info 系統發薪相關狀態。</li>
+<li>個案、財務諮詢、家系圖相關資料寫入。</li>
+<li>Line 群組自動發送。</li>
+<li>任何外部通知或會造成金流/薪資影響的勾選。</li>
+</ul>
+<h2 id="6-建議優先做的三個小實驗">6. 建議優先做的三個小實驗</h2>
+<h3 id="實驗-a-課務每日追蹤工作台">實驗 A：課務每日追蹤工作台</h3>
+<p>範圍：</p>
+<ul>
+<li>只接課務 Google Sheet、教材表單。</li>
+<li>產出新申請、缺欄位、待派講師、待開 Calendar、課綱/講師資料/簡報 due list。</li>
+<li>產生 Line 內部派課草稿與提醒草稿。</li>
+</ul>
+<p>預期效益：</p>
+<ul>
+<li>先處理佩欣每天都會看的流程。</li>
+<li>可以快速驗證「表單欄位 + 日期提醒 + 草稿」是否真的省時間。</li>
+</ul>
+<p>風險：</p>
+<ul>
+<li>欄位定義可能與實際表單不同。</li>
+<li>課綱內外版轉換需要實際模板才能準確。</li>
+</ul>
+<h3 id="實驗-b-核銷金額檢查與通知草稿">實驗 B：核銷金額檢查與通知草稿</h3>
+<p>範圍：</p>
+<ul>
+<li>只讀核銷表單匯出資料。</li>
+<li>依專案分類：星展、中信培力、信扶專案、公司課程、辦公室。</li>
+<li>檢查公里數、費率、總金額，產出逐人通知草稿。</li>
+</ul>
+<p>預期效益：</p>
+<ul>
+<li>金額核對是高重複、高錯誤成本工作。</li>
+<li>不必一開始串接付款或 Info，只做檢查與訊息。</li>
+</ul>
+<p>風險：</p>
+<ul>
+<li>星展與中信費率、進位規則要先明確化。</li>
+<li>有些單據資訊不完整，仍需人工問人。</li>
+</ul>
+<h3 id="實驗-c-財務諮詢補件追蹤">實驗 C：財務諮詢補件追蹤</h3>
+<p>範圍：</p>
+<ul>
+<li>先不寫回 Info。</li>
+<li>每天列出：哪位諮詢師、哪個案子、缺哪個欄位、已拖幾天、建議提醒文字。</li>
+</ul>
+<p>預期效益：</p>
+<ul>
+<li>直接打到「拖到二月諮詢現在才完成」這種痛點。</li>
+<li>讓發薪前的完成狀態更可控。</li>
+</ul>
+<p>風險：</p>
+<ul>
+<li>個案資料敏感，需權限與遮罩。</li>
+<li>不能自動勾「諮詢完成」，必須佩欣確認。</li>
+</ul>
+<h2 id="7-可能的解決方案">7. 可能的解決方案</h2>
+<h3 id="方案-1-google-sheets-apps-script-輕量自動化">方案 1：Google Sheets + Apps Script 輕量自動化</h3>
+<p>適合：</p>
+<ul>
+<li>課務、教材、季刊、核銷、Calendar、Gmail。</li>
+</ul>
+<p>做法：</p>
+<ul>
+<li>表單回覆進 Sheet 後自動標記狀態。</li>
+<li>用 Apps Script 產出提醒清單、Email 草稿、Calendar 事件。</li>
+<li>每天固定時間寄一份「佩欣工作台」到 Email 或寫到一張 Dashboard Sheet。</li>
+</ul>
+<p>優點：</p>
+<ul>
+<li>貼近既有 Google 表單工作流。</li>
+<li>成本低，上手快。</li>
+</ul>
+<p>限制：</p>
+<ul>
+<li>Info、Line、複雜檔案處理不一定能完整處理。</li>
+<li>權限與觸發器管理要清楚。</li>
+</ul>
+<h3 id="方案-2-codex-本地半自動工作台">方案 2：Codex 本地半自動工作台</h3>
+<p>適合：</p>
+<ul>
+<li>欄位盤點、Excel 檢查、文件草稿、會議紀錄、檔名整理、核銷金額檢查。</li>
+</ul>
+<p>做法：</p>
+<ul>
+<li>Codex 讀取匯出的 Excel/CSV。</li>
+<li>產生每日報告、核銷檢查表、Line/Email 草稿、會議紀錄初稿。</li>
+<li>需要寫回時由佩欣確認後再執行。</li>
+</ul>
+<p>優點：</p>
+<ul>
+<li>很適合先做「草稿/報告-first」。</li>
+<li>個資可以先在本機處理，不必一開始建新系統。</li>
+</ul>
+<p>限制：</p>
+<ul>
+<li>若要每天自動跑，需要後續設計排程與權限。</li>
+<li>若資料只在網頁 Info 裡，仍需匯出或瀏覽器自動化。</li>
+</ul>
+<h3 id="方案-3-專用-佩欣工作台-web-小工具">方案 3：專用「佩欣工作台」Web 小工具</h3>
+<p>適合：</p>
+<ul>
+<li>長期整合九大工作流。</li>
+</ul>
+<p>做法：</p>
+<ul>
+<li>建一個內部頁面，分成：今日待辦、課務、核銷、財諮、季刊、會議、庫存。</li>
+<li>每個待辦有狀態、來源、下一步、草稿按鈕、完成紀錄。</li>
+<li>先用 Google Sheet 當資料源，未來再串 Info。</li>
+</ul>
+<p>優點：</p>
+<ul>
+<li>長期最清楚，也最能降低遺漏。</li>
+<li>可以把「流程狀態」從佩欣腦中移到系統上。</li>
+</ul>
+<p>限制：</p>
+<ul>
+<li>開發量較大。</li>
+<li>需要處理登入、權限、個資遮罩與稽核紀錄。</li>
+</ul>
+<h3 id="方案-4-info-瀏覽器-rpa-輔助">方案 4：Info 瀏覽器/RPA 輔助</h3>
+<p>適合：</p>
+<ul>
+<li>Info 沒有 API，但每天都要查欄位、建事件、送審、截圖通知。</li>
+</ul>
+<p>做法：</p>
+<ul>
+<li>以瀏覽器自動化讀取 Info 頁面。</li>
+<li>先只做檢查與截圖證據。</li>
+<li>確認穩定後才加入「填入草稿」「點擊前確認」。</li>
+</ul>
+<p>優點：</p>
+<ul>
+<li>能處理現有系統無 API 的限制。</li>
+</ul>
+<p>限制：</p>
+<ul>
+<li>最容易受畫面變動影響。</li>
+<li>涉及個案與發薪狀態時，必須保留人工確認。</li>
+</ul>
+<h2 id="8-推薦實施順序">8. 推薦實施順序</h2>
+<pre class="mermaid">gantt
+  title 建議導入節奏
+  dateFormat  YYYY-MM-DD
+  section 第 1 週
+  欄位盤點與模板整理           :a1, 2026-05-27, 3d
+  課務每日工作台原型           :a2, after a1, 3d
+  section 第 2 週
+  核銷檢查與訊息草稿           :b1, 2026-06-03, 4d
+  課務工作台修正               :b2, 2026-06-03, 4d
+  section 第 3 週
+  財務諮詢補件追蹤             :c1, 2026-06-10, 4d
+  季刊電子名單整理             :c2, 2026-06-10, 3d
+  section 第 4 週
+  分區會議紀錄與未更新提醒     :d1, 2026-06-17, 4d
+  寫回/發送權限評估            :d2, 2026-06-17, 3d</pre>
+<h2 id="9-需要向佩欣或素菁確認的問題">9. 需要向佩欣或素菁確認的問題</h2>
+<ol>
+<li>課務表單、教材表單、核銷表單的欄位名稱與實際狀態欄有哪些？</li>
+<li>各專案交通費費率與進位規則是否固定？星展汽車/機車、中信 5.5 元規則要確認。</li>
+<li>課綱、講師資料、簡報的標準 due date 是固定規則，還是依單位需求不同？</li>
+<li>Line 通知目前能否接受「草稿由佩欣貼上」，還是未來希望系統發送？</li>
+<li>Info 是否有匯出、API、批次匯入或只能人工操作？</li>
+<li>財務諮詢與個案轉介資料中，哪些欄位可讓 Codex 讀？哪些需要遮罩？</li>
+<li>季刊電子版是否有固定連結、固定寄送信件模板、退訂機制？</li>
+<li>家系圖命名格式的完整規則是什麼？</li>
+</ol>
+<h2 id="10-治理與安全邊界">10. 治理與安全邊界</h2>
+<p>在正式自動化前，建議遵守以下邊界：</p>
+<ul>
+<li>所有外部發送先採草稿模式。</li>
+<li>涉及個案、戶籍、家系圖、財務諮詢紀錄，先做遮罩與最小權限。</li>
+<li>涉及薪資、諮詢完成、Info 送審，不做無人確認的全自動點擊。</li>
+<li>每次自動化輸出都保留來源列號、產生時間、操作人與是否已人工確認。</li>
+<li>先讓自動化跑 1-2 週，確認沒有漏報、誤報、噪音過多，再考慮寫回或發送。</li>
+</ul>
+<h2 id="11-建議的第一個可交付版本">11. 建議的第一個可交付版本</h2>
+<p>第一版不要做大系統，先做：</p>
+<p>「課務 + 核銷」雙工作台。</p>
+<p>內容：</p>
+<ul>
+<li>課務：每日新申請、缺漏欄位、派課狀態、Calendar 狀態、課綱/簡報/講師資料 due list、Line 草稿。</li>
+<li>核銷：依專案分類、金額檢查、公里數檢查、缺件清單、逐人通知草稿。</li>
+<li>產出：一份每日 Markdown/Google Doc 報告，或一張 Dashboard Sheet。</li>
+</ul>
+<p>這會剛好對應訪談最後已經提到的下一步：先請佩欣開「客戶那段」與「核銷那段」的檢視權限。</p></article>
+    </section>
+  </main>
+  <footer>
+    <div class="shell">版本：2026.06.09｜狀態：public-with-noindex review｜本頁可用網址瀏覽，但 noindex 不是隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
+  </footer>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "default" });
+  </script>
+</body>
+</html>
