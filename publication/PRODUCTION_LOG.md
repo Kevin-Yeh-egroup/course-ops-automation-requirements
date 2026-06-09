@@ -158,3 +158,26 @@ Verification:
   - `/outputs/codex-office-workshop/contact-sheet.png`: `404`
   - `/publication/supervisor-course-outline.md`: `404`
   - `/assets/course-workshop-contact-sheet.png`: `200`
+
+## Update: Course Outcome-Focused Wording
+
+- Date: 2026-06-09
+- Content commits:
+  - `a794d4a` (`Clarify course participant outcomes`)
+  - `9fdd0c2` (`Make course positioning outcome focused`)
+- Deployment ID: `dpl_7wzriwSexaVKgr4axdaeZNFP7fyB`
+- Deployment URL: `https://course-ops-automation-requirements-baxp77ow2.vercel.app`
+- Stable production alias: `https://course-ops-automation-requirements.vercel.app`
+- Target: `production`
+- Ready state: `READY`
+- Vercel output directory: `public/`
+
+Verification:
+
+- Stable alias returned `HTTP 200 OK` through Vercel fetch.
+- Header confirmed: `X-Robots-Tag: noindex, nofollow, noarchive`.
+- HTML confirmed `帶走可用成果`.
+- HTML confirmed `會練會`, `會標出`, and `會帶走`.
+- HTML confirmed `說明本課會完成的練習包與可檢查成果`.
+- HTML confirmed the old phrases `第一堂不做`, `第一堂不寄出`, `不改正式資料`, `不做付款`, and `不是正式自動化建置` were removed from the public page.
+- Taiwan tool-fit gate result: `revise`; wording was revised from restriction-focused to participant-outcome-focused before final delivery.
