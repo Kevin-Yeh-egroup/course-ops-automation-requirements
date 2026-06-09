@@ -248,6 +248,43 @@
       white-space: pre-wrap;
     }
 
+    .prompt.compact {
+      padding: 16px;
+      font-size: 0.98rem;
+      line-height: 1.58;
+    }
+
+    .exercise-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .step-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      background: #fff;
+    }
+
+    .step-panel strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 1.08rem;
+    }
+
+    .step-panel ol {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    .step-panel li {
+      margin: 8px 0;
+      color: var(--muted);
+    }
+
     .checklist {
       margin: 0;
       padding-left: 1.2rem;
@@ -288,6 +325,7 @@
 
       .grid,
       .grid.two,
+      .exercise-layout,
       .steps {
         grid-template-columns: 1fr;
       }
@@ -425,13 +463,16 @@
     <section class="slide" id="slide-8">
       <div class="canvas">
         <p class="eyebrow">四個可選題目</p>
-        <h2>選最接近自己工作的題目</h2>
-        <p class="lead">每題都照同一個節奏：先準備資料、請 Codex 產出、再用人工確認清單檢查。</p>
+        <h2>四題都照同一個節奏操作</h2>
+        <p class="lead">學員不用四題全做。共同示範後，每個人選最接近自己工作的一題，照下面三步跑一次。</p>
+        <div class="grid">
+          <div class="card accent-blue"><strong>1. 選題與貼資料</strong><p>選一段低風險、明天就可能用到的工作，貼上範例或副本。</p></div>
+          <div class="card accent-teal"><strong>2. 用短版指令產出</strong><p>說清楚要整理、檢查或產草稿，要求 Codex 列出人工確認點。</p></div>
+          <div class="card accent-gold"><strong>3. 人工檢查後修正</strong><p>檢查日期、金額、人名、外部發送與正式資料更新，再要求修正版。</p></div>
+        </div>
         <div class="grid two">
-          <div class="card accent-blue"><strong>課程提醒與每日工作台</strong><p>倒推提醒、整理待辦、列出等待回覆與人工確認事項。</p></div>
-          <div class="card accent-teal"><strong>逐字稿與內容草稿</strong><p>把紀錄整理成摘要、公告、文章骨架或社群文案草稿。</p></div>
-          <div class="card accent-gold"><strong>表格狀態與核銷檢查</strong><p>只讀檢查缺漏、重複、衝突與異常，整理確認清單。</p></div>
-          <div class="card accent-wine"><strong>活動行政包</strong><p>整理流程、分工、通知草稿、風險清單與可交接 checklist。</p></div>
+          <div class="card soft-sky"><strong>可選題目</strong><p>課程提醒、逐字稿內容、表格檢查、活動行政包。</p></div>
+          <div class="card soft-mint"><strong>下課留下</strong><p>一段可重複指令、一份 Codex 產出、一份人工確認清單。</p></div>
         </div>
         <p class="footer-note"><a href="../exercises/">開啟四個練習操作說明</a>，可查看每題的準備資料、操作步驟與可複製指令。</p>
       </div>
@@ -441,12 +482,28 @@
       <div class="canvas">
         <p class="eyebrow">題目一</p>
         <h2>課程提醒與每日工作台</h2>
-        <div class="grid">
-          <div class="card"><strong>先準備</strong><p>一筆課程資料、日期時間地點、目前已知狀態與等待回覆事項。</p></div>
-          <div class="card"><strong>照這樣做</strong><p>請 Codex 分成今日到期、已逾期、等待回覆、需要人工確認，並寫提醒草稿。</p></div>
-          <div class="card"><strong>檢查成果</strong><p>確認日期、對象、提醒文字與是否涉及外部發送或正式資料更新。</p></div>
+        <p class="lead">把課程資料整理成今天可以處理的待辦與提醒草稿。</p>
+        <div class="exercise-layout">
+          <div class="step-panel">
+            <strong>學員怎麼做</strong>
+            <ol>
+              <li>貼上一筆課程或活動資料。</li>
+              <li>補上日期、地點、對象、負責人與目前狀態。</li>
+              <li>請 Codex 分成今日到期、已逾期、等待回覆、需確認。</li>
+              <li>檢查日期與對象，再把提醒草稿改成自己的語氣。</li>
+            </ol>
+          </div>
+          <div class="prompt compact">請把以下課程資料整理成今日課務工作台。
+請輸出：今日到期、已逾期、等待回覆、需要人工確認、可修改提醒草稿。
+如果資料不足，請列出補問問題，不要自己猜。
+
+資料：</div>
         </div>
-        <p class="footer-note">練習重點：把行事曆和表格資訊整理成可人工確認、可貼上使用的提醒。</p>
+        <div class="grid">
+          <div class="card soft-sky"><strong>先準備</strong><p>課程資料、日期時間地點、負責人、等待回覆事項。</p></div>
+          <div class="card soft-mint"><strong>會產出</strong><p>工作台、提醒清單、等待回覆追蹤、提醒草稿。</p></div>
+          <div class="card soft-amber"><strong>要檢查</strong><p>日期、對象、提醒文字、外部發送與正式資料更新。</p></div>
+        </div>
       </div>
     </section>
 
@@ -454,12 +511,28 @@
       <div class="canvas">
         <p class="eyebrow">題目二</p>
         <h2>逐字稿與內容草稿</h2>
-        <div class="grid">
-          <div class="card"><strong>先準備</strong><p>一段逐字稿或音檔摘要、活動名稱、讀者與希望輸出的格式。</p></div>
-          <div class="card"><strong>照這樣做</strong><p>請 Codex 先抓主題與待確認事實，再產出摘要、文章草稿或社群短文。</p></div>
-          <div class="card"><strong>檢查成果</strong><p>確認專有名詞、日期、人名、對外可發布程度與台灣職場語氣。</p></div>
+        <p class="lead">把逐字稿先整理成摘要與可修改草稿，再由人確認事實與語氣。</p>
+        <div class="exercise-layout">
+          <div class="step-panel">
+            <strong>學員怎麼做</strong>
+            <ol>
+              <li>貼上一段逐字稿、會議紀錄或音檔摘要。</li>
+              <li>說明讀者是同仁、學員、合作單位或社群。</li>
+              <li>請 Codex 先抓重點與待確認事實，再產草稿。</li>
+              <li>人工確認人名、日期、專有名詞與可發布程度。</li>
+            </ol>
+          </div>
+          <div class="prompt compact">請將以下逐字稿整理成內容草稿。
+請輸出：一段摘要、三個重點、文章草稿、社群短文、需要人工確認的事實清單。
+請使用台灣職場常用的繁體中文語氣。
+
+資料：</div>
         </div>
-        <p class="footer-note">練習重點：讓內容先成形，再由人確認語氣、事實與可發布程度。</p>
+        <div class="grid">
+          <div class="card soft-sky"><strong>先準備</strong><p>逐字稿或摘要、活動名稱、讀者、輸出格式。</p></div>
+          <div class="card soft-mint"><strong>會產出</strong><p>摘要、文章草稿、社群短文、待確認清單。</p></div>
+          <div class="card soft-amber"><strong>要檢查</strong><p>事實、語氣、可公開程度、是否忠於原意。</p></div>
+        </div>
       </div>
     </section>
 
@@ -467,12 +540,28 @@
       <div class="canvas">
         <p class="eyebrow">題目三</p>
         <h2>表格狀態與核銷檢查</h2>
-        <div class="grid">
-          <div class="card"><strong>先準備</strong><p>一份表格或 CSV、必要欄位、日期/狀態/金額的檢查規則。</p></div>
-          <div class="card"><strong>照這樣做</strong><p>請 Codex 只讀檢查缺漏、重複、格式錯、狀態衝突與低信心資料。</p></div>
-          <div class="card"><strong>檢查成果</strong><p>確認來源列、異常原因與需要人工補問的欄位；金額只做試算。</p></div>
+        <p class="lead">先做只讀檢查，把缺漏、衝突、低信心資料列出來，不直接下正式結論。</p>
+        <div class="exercise-layout">
+          <div class="step-panel">
+            <strong>學員怎麼做</strong>
+            <ol>
+              <li>貼上表格片段或上傳表格副本。</li>
+              <li>說明哪些欄位必填、哪些規則要檢查。</li>
+              <li>請 Codex 找缺漏、重複、格式錯與狀態衝突。</li>
+              <li>保留來源列，逐項確認哪些要補問或修正。</li>
+            </ol>
+          </div>
+          <div class="prompt compact">請只讀檢查以下表格資料。
+請列出：缺漏欄位、格式異常、重複資料、狀態衝突、需要人工確認的金額或日期。
+若資料不足，請列出補問問題，不要做正式核銷或付款結論。
+
+資料：</div>
         </div>
-        <p class="footer-note">練習重點：先做只讀檢查，把要問人的地方清楚列出來。</p>
+        <div class="grid">
+          <div class="card soft-sky"><strong>先準備</strong><p>表格副本、必要欄位、日期/狀態/金額規則。</p></div>
+          <div class="card soft-mint"><strong>會產出</strong><p>異常清單、補問清單、人工確認清單。</p></div>
+          <div class="card soft-amber"><strong>要檢查</strong><p>來源列、異常原因、金額只做試算。</p></div>
+        </div>
       </div>
     </section>
 
@@ -480,12 +569,28 @@
       <div class="canvas">
         <p class="eyebrow">題目四</p>
         <h2>活動行政包</h2>
-        <div class="grid">
-          <div class="card"><strong>先準備</strong><p>活動日期地點、對象人數、工作人員、物資、場地資訊與既有範本。</p></div>
-          <div class="card"><strong>照這樣做</strong><p>請 Codex 拆成課前、課中、課後，產出分工、通知、物資與風險清單。</p></div>
-          <div class="card"><strong>檢查成果</strong><p>確認場地、餐食、名單、外部通知、個資揭露與課後建檔事項。</p></div>
+        <p class="lead">把活動拆成課前、課中、課後，產生可交接的流程與清單。</p>
+        <div class="exercise-layout">
+          <div class="step-panel">
+            <strong>學員怎麼做</strong>
+            <ol>
+              <li>貼上活動日期、地點、對象、人數與人力資訊。</li>
+              <li>列出物資、場地、餐食、通知與既有範本。</li>
+              <li>請 Codex 拆成課前、課中、課後，產出分工與 checklist。</li>
+              <li>人工確認外部通知、個資揭露、場地餐食與課後建檔。</li>
+            </ol>
+          </div>
+          <div class="prompt compact">請把以下活動資料整理成活動行政包。
+請輸出：課前/課中/課後流程、分工表、通知草稿、物資清單、風險清單、可交接 checklist。
+請把需要人工確認的項目另外列出。
+
+資料：</div>
         </div>
-        <p class="footer-note">練習重點：把活動行政拆成可交接的清單，降低漏項。</p>
+        <div class="grid">
+          <div class="card soft-sky"><strong>先準備</strong><p>活動資訊、人力、物資、場地與既有範本。</p></div>
+          <div class="card soft-mint"><strong>會產出</strong><p>流程、分工、通知草稿、物資與風險清單。</p></div>
+          <div class="card soft-amber"><strong>要檢查</strong><p>場地餐食、名單、外部通知、個資與建檔事項。</p></div>
+        </div>
       </div>
     </section>
 
