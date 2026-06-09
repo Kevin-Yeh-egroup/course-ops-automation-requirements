@@ -124,6 +124,8 @@
       padding: 16px 18px;
       background: var(--sky);
     }
+    section[id] { scroll-margin-top: 92px; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
     .prompt {
       overflow-x: auto;
       white-space: pre-wrap;
@@ -196,7 +198,10 @@
         <strong>你現在在第 2 步：打開練習包。</strong>
         <p class="muted">先填工作流程整理卡與共用指令模板；填完後，到操作題目頁選一題實作。</p>
       </div>
-      <a class="button-link primary" href="/exercises/">下一步：選操作題目</a>
+      <div class="button-row">
+        <a class="button-link" href="/slides/#slide-2">回簡報：完成品</a>
+        <a class="button-link primary" href="/exercises/">下一步：選操作題目</a>
+      </div>
     </section>
     <section class="section">
       <h2>練習包內容</h2>
@@ -209,7 +214,7 @@
         <article class="card accent-blue"><strong>6. 效果記錄表</strong><p>記錄原本花多久、Codex 幫到哪裡、下一次要怎麼改。</p></article>
       </div>
     </section>
-    <section class="section grid two">
+    <section class="section grid two" id="workflow-card">
       <article class="panel">
         <h2>工作流程整理卡</h2>
         <ol>
@@ -219,6 +224,7 @@
           <li>哪些地方最容易漏，或需要人判斷？</li>
           <li>最後要交付提醒、草稿、表格、文件或 checklist？</li>
         </ol>
+        <p><a class="button-link" href="/slides/#slide-5">回簡報：把工作講清楚卡</a></p>
       </article>
       <article class="panel">
         <h2>成果檢查表</h2>
@@ -229,9 +235,10 @@
           <li>下次再跑時，資料與指令是否足夠清楚？</li>
           <li>這次有沒有省下重複整理或找缺漏的時間？</li>
         </ol>
+        <p><a class="button-link" href="/slides/#slide-13">回簡報：檢查輸出</a></p>
       </article>
     </section>
-    <section class="section">
+    <section class="section" id="prompt-template">
       <h2>共用指令模板</h2>
       <div class="prompt">我要處理的工作是：
 我提供的資料是：
@@ -245,14 +252,16 @@
 1. 可修改使用
 2. 需要人工確認
 3. 需要補資料或暫時不適合處理</div>
+      <p><a class="button-link" href="/slides/#slide-4">回簡報：共用操作句型</a></p>
     </section>
-    <section class="section">
+    <section class="section" id="human-checklist">
       <h2>人工確認清單</h2>
       <div class="cards">
         <article class="card soft-mint"><strong>可修改使用</strong><p>摘要、清單、草稿、檢查表、流程草圖。</p></article>
         <article class="card soft-amber"><strong>需要人工確認</strong><p>日期、金額、稱謂、收件人、對外語氣、正式欄位。</p></article>
         <article class="card soft-blush"><strong>需要保留人工決策</strong><p>外部發送、正式資料更新、個資揭露、金流、核銷或月結相關判斷。</p></article>
       </div>
+      <p><a class="button-link" href="/slides/#slide-7">回簡報：安全使用方式</a></p>
     </section>
     <section class="section" id="review">
       <h2>效果記錄表</h2>
@@ -268,6 +277,7 @@
           </tbody>
         </table>
       </div>
+      <p><a class="button-link" href="/slides/#slide-16">回簡報：收尾</a></p>
     </section>
   </main>
   <footer>

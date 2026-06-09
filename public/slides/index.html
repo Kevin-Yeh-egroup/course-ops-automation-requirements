@@ -255,6 +255,33 @@
       line-height: 1.58;
     }
 
+    .inline-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .slide-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 14px;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .slide-link.primary {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #fff;
+    }
+
     .exercise-layout {
       display: grid;
       grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
@@ -381,6 +408,11 @@
           <div class="card accent-blue"><strong>6. 後續改善清單</strong><p>知道下一次指令、資料或流程可以怎麼調整。</p></div>
         </div>
         <p class="footer-note"><a href="../kit/">開啟完整練習包</a>，可直接照著填工作流程整理卡、共用指令模板與成果檢查表。</p>
+        <div class="inline-actions" aria-label="學習頁快速連結">
+          <a class="slide-link" href="../learn/">上課入口</a>
+          <a class="slide-link primary" href="../kit/">打開練習包</a>
+          <a class="slide-link" href="../exercises/">選操作題目</a>
+        </div>
       </div>
     </section>
 
@@ -432,6 +464,10 @@
 1. 可修改使用
 2. 需要人工確認
 3. 需要補資料或暫時不適合處理</div>
+        <div class="inline-actions" aria-label="共用指令學習連結">
+          <a class="slide-link primary" href="../kit/#prompt-template">到練習包複製指令模板</a>
+          <a class="slide-link" href="../learn/">回上課入口</a>
+        </div>
       </div>
     </section>
 
@@ -445,6 +481,10 @@
           <div class="step"><span class="num">3</span><h3>處理</h3><p>平常會怎麼整理、檢查或轉換？</p></div>
           <div class="step"><span class="num">4</span><h3>確認</h3><p>哪些地方容易漏，或需要人判斷？</p></div>
           <div class="step"><span class="num">5</span><h3>輸出</h3><p>最後要交付提醒、草稿、表格或 checklist？</p></div>
+        </div>
+        <div class="inline-actions" aria-label="工作流程卡學習連結">
+          <a class="slide-link primary" href="../kit/#workflow-card">到練習包填工作流程卡</a>
+          <a class="slide-link" href="../kit/#review">看成果檢查表</a>
         </div>
       </div>
     </section>
@@ -475,6 +515,10 @@
           <div class="card soft-blush"><strong>會帶走</strong><p>一份可重複指令、一份工作檢查表與後續改善清單。</p></div>
         </div>
         <p class="footer-note">安全不是把事情停住，而是讓下一步更清楚、更好交接。</p>
+        <div class="inline-actions" aria-label="人工確認清單學習連結">
+          <a class="slide-link primary" href="../kit/#human-checklist">到練習包看人工確認清單</a>
+          <a class="slide-link" href="../kit/#review">看成果檢查表</a>
+        </div>
       </div>
     </section>
 
@@ -493,6 +537,12 @@
           <div class="card soft-mint"><strong>下課留下</strong><p>一段可重複指令、一份 Codex 產出、一份人工確認清單。</p></div>
         </div>
         <p class="footer-note"><a href="../exercises/">開啟四個練習操作說明</a>，可查看每題的準備資料、操作步驟與可複製指令。</p>
+        <div class="inline-actions" aria-label="四個練習快速連結">
+          <a class="slide-link primary" href="../exercises/#course-reminder">練習 1 課務提醒</a>
+          <a class="slide-link" href="../exercises/#transcript-content">練習 2 逐字稿</a>
+          <a class="slide-link" href="../exercises/#sheet-status">練習 3 表格檢查</a>
+          <a class="slide-link" href="../exercises/#event-admin">練習 4 活動行政</a>
+        </div>
       </div>
     </section>
 
@@ -521,6 +571,10 @@
           <div class="card soft-sky"><strong>先準備</strong><p>課程資料、日期時間地點、負責人、等待回覆事項。</p></div>
           <div class="card soft-mint"><strong>會產出</strong><p>工作台、提醒清單、等待回覆追蹤、提醒草稿。</p></div>
           <div class="card soft-amber"><strong>要檢查</strong><p>日期、對象、提醒文字、外部發送與正式資料更新。</p></div>
+        </div>
+        <div class="inline-actions" aria-label="練習一對應頁面">
+          <a class="slide-link primary" href="../exercises/#course-reminder">到練習 1 操作頁</a>
+          <a class="slide-link" href="../kit/#review">完成後填成果檢查</a>
         </div>
       </div>
     </section>
@@ -551,6 +605,10 @@
           <div class="card soft-mint"><strong>會產出</strong><p>摘要、文章草稿、社群短文、待確認清單。</p></div>
           <div class="card soft-amber"><strong>要檢查</strong><p>事實、語氣、可公開程度、是否忠於原意。</p></div>
         </div>
+        <div class="inline-actions" aria-label="練習二對應頁面">
+          <a class="slide-link primary" href="../exercises/#transcript-content">到練習 2 操作頁</a>
+          <a class="slide-link" href="../kit/#review">完成後填成果檢查</a>
+        </div>
       </div>
     </section>
 
@@ -580,6 +638,10 @@
           <div class="card soft-mint"><strong>會產出</strong><p>異常清單、補問清單、人工確認清單。</p></div>
           <div class="card soft-amber"><strong>要檢查</strong><p>來源列、異常原因、金額只做試算。</p></div>
         </div>
+        <div class="inline-actions" aria-label="練習三對應頁面">
+          <a class="slide-link primary" href="../exercises/#sheet-status">到練習 3 操作頁</a>
+          <a class="slide-link" href="../kit/#review">完成後填成果檢查</a>
+        </div>
       </div>
     </section>
 
@@ -608,6 +670,10 @@
           <div class="card soft-sky"><strong>先準備</strong><p>活動資訊、人力、物資、場地與既有範本。</p></div>
           <div class="card soft-mint"><strong>會產出</strong><p>流程、分工、通知草稿、物資與風險清單。</p></div>
           <div class="card soft-amber"><strong>要檢查</strong><p>場地餐食、名單、外部通知、個資與建檔事項。</p></div>
+        </div>
+        <div class="inline-actions" aria-label="練習四對應頁面">
+          <a class="slide-link primary" href="../exercises/#event-admin">到練習 4 操作頁</a>
+          <a class="slide-link" href="../kit/#review">完成後填成果檢查</a>
         </div>
       </div>
     </section>
@@ -659,6 +725,10 @@
           <li>一份人工確認清單，知道下一步要問誰、補什麼、改哪裡。</li>
         </ul>
         <p class="lead">穩定跑過幾次後，再評估要不要整理成方法小抄、助理角色卡、表格工具或正式流程。</p>
+        <div class="inline-actions" aria-label="課後回到學習頁">
+          <a class="slide-link primary" href="../kit/#review">回練習包填成果檢查</a>
+          <a class="slide-link" href="../learn/">回上課入口</a>
+        </div>
       </div>
     </section>
   </main>
