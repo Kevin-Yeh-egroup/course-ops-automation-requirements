@@ -93,6 +93,37 @@
       background: #f0faf8;
       color: #254d49;
     }
+    .path {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .path-card {
+      position: relative;
+      min-height: 188px;
+      display: grid;
+      align-content: space-between;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(32, 42, 68, 0.06);
+    }
+    .path-card small {
+      color: var(--muted);
+      font-weight: 900;
+    }
+    .next-strip {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      background: var(--sky);
+    }
     .prompt {
       overflow-x: auto;
       white-space: pre-wrap;
@@ -131,7 +162,7 @@
     @media (max-width: 860px) {
       .topbar { align-items: flex-start; flex-direction: column; }
       .nav { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
-      .cards, .grid.two { grid-template-columns: 1fr; }
+      .cards, .grid.two, .path, .next-strip { grid-template-columns: 1fr; }
       table { min-width: 640px; }
     }
   </style>
@@ -140,11 +171,12 @@
   <header class="topbar">
     <div class="brand">Codex 行政工作實驗課</div>
     <nav class="nav" aria-label="站內導覽">
-      <a href="/">課程頁</a>
-      <a href="/slides/">學員簡報</a>
+      <a href="/">首頁</a>
+      <a href="/learn/">上課入口</a>
+      <a href="/slides/">課程簡報</a>
       <a href="/kit/">練習包</a>
-      <a href="/exercises/">四個練習</a>
-      <a class="primary" href="/needs/">需求整理</a>
+      <a class="primary" href="/exercises/">操作題目</a>
+      <a href="/needs/">需求資料</a>
     </nav>
   </header>
   <section class="hero">
@@ -158,6 +190,13 @@
     
     <section class="notice">
       四個練習都用同一個基本方法：說明工作、提供資料、指定輸出、標出人工確認、檢查後修正。課堂共同示範後，每位學員選最接近自己工作的一題操作。
+    </section>
+    <section class="section next-strip">
+      <div>
+        <strong>你現在在第 3 步：選一題操作。</strong>
+        <p class="muted">選最接近自己工作的題目，照操作步驟跑一次；完成後回到練習包做成果檢查。</p>
+      </div>
+      <a class="button-link primary" href="/kit/#review">完成後：檢查成果</a>
     </section>
     <section class="section">
       <h2>四個練習題目</h2>

@@ -149,6 +149,14 @@ const exercises = [
 ];
 
 const commonNeedsPath = "shared-modules/office-common-needs.md";
+const navItems = [
+  { key: "home", label: "首頁", href: "/" },
+  { key: "learn", label: "上課入口", href: "/learn/" },
+  { key: "slides", label: "課程簡報", href: "/slides/" },
+  { key: "kit", label: "練習包", href: "/kit/" },
+  { key: "exercises", label: "操作題目", href: "/exercises/" },
+  { key: "needs", label: "需求資料", href: "/needs/" },
+];
 
 function ensureDir(path) {
   mkdirSync(dirname(path), { recursive: true });
@@ -295,7 +303,12 @@ function markdownToHtml(markdown) {
   return out.join("\n");
 }
 
-function pageShell({ title, eyebrow, intro, body, sectionClass = "" }) {
+function pageShell({ title, eyebrow, intro, body, sectionClass = "", active = "home" }) {
+  const nav = navItems.map((item) => {
+    const activeClass = item.key === active ? ' class="primary"' : "";
+    return `<a${activeClass} href="${item.href}">${item.label}</a>`;
+  }).join("\n      ");
+
   return `<!doctype html>
 <html lang="zh-Hant">
 <head>
@@ -391,6 +404,37 @@ function pageShell({ title, eyebrow, intro, body, sectionClass = "" }) {
       background: #f0faf8;
       color: #254d49;
     }
+    .path {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .path-card {
+      position: relative;
+      min-height: 188px;
+      display: grid;
+      align-content: space-between;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(32, 42, 68, 0.06);
+    }
+    .path-card small {
+      color: var(--muted);
+      font-weight: 900;
+    }
+    .next-strip {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      background: var(--sky);
+    }
     .prompt {
       overflow-x: auto;
       white-space: pre-wrap;
@@ -429,7 +473,7 @@ function pageShell({ title, eyebrow, intro, body, sectionClass = "" }) {
     @media (max-width: 860px) {
       .topbar { align-items: flex-start; flex-direction: column; }
       .nav { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
-      .cards, .grid.two { grid-template-columns: 1fr; }
+      .cards, .grid.two, .path, .next-strip { grid-template-columns: 1fr; }
       table { min-width: 640px; }
     }
   </style>
@@ -438,11 +482,7 @@ function pageShell({ title, eyebrow, intro, body, sectionClass = "" }) {
   <header class="topbar">
     <div class="brand">Codex 行政工作實驗課</div>
     <nav class="nav" aria-label="站內導覽">
-      <a href="/">課程頁</a>
-      <a href="/slides/">學員簡報</a>
-      <a href="/kit/">練習包</a>
-      <a href="/exercises/">四個練習</a>
-      <a class="primary" href="/needs/">需求整理</a>
+      ${nav}
     </nav>
   </header>
   <section class="hero">
@@ -471,8 +511,58 @@ function personCard(person) {
     <strong>${escapeHtml(person.name)}｜${escapeHtml(person.role)}</strong>
     <p>${escapeHtml(person.summary)}</p>
     <div class="tag-row">${person.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>
-    <p style="margin-top:16px"><a class="button-link primary" href="./${person.slug}/">查看需求整理</a></p>
+    <p style="margin-top:16px"><a class="button-link primary" href="./${person.slug}/">查看${escapeHtml(person.name)}需求</a></p>
   </article>`;
+}
+
+function buildLearnPage() {
+  const body = `
+    <section class="notice">
+      這頁是給上課當天使用的入口。照順序走就好：先看簡報，再打開練習包，最後選一題操作；需求資料放在另一區，課堂中不需要來回找。
+    </section>
+    <section class="section">
+      <h2>上課照這四步走</h2>
+      <div class="path">
+        <article class="path-card accent-blue">
+          <small>第 1 步</small>
+          <div><strong>看課程簡報</strong><p class="muted">先理解 Codex 能協助什麼，以及今天會完成哪些成果。</p></div>
+          <a class="button-link primary" href="/slides/">開始看簡報</a>
+        </article>
+        <article class="path-card accent-teal">
+          <small>第 2 步</small>
+          <div><strong>打開練習包</strong><p class="muted">把自己的工作填進流程卡、共用指令與人工確認清單。</p></div>
+          <a class="button-link primary" href="/kit/">打開練習包</a>
+        </article>
+        <article class="path-card accent-gold">
+          <small>第 3 步</small>
+          <div><strong>選一題操作</strong><p class="muted">從課程提醒、逐字稿、表格檢查、活動行政包中選一題。</p></div>
+          <a class="button-link primary" href="/exercises/">選操作題目</a>
+        </article>
+        <article class="path-card accent-green">
+          <small>第 4 步</small>
+          <div><strong>檢查與收尾</strong><p class="muted">留下可重複指令、Codex 產出、人工確認清單與下一次修正方向。</p></div>
+          <a class="button-link primary" href="/kit/#review">檢查成果</a>
+        </article>
+      </div>
+    </section>
+    <section class="section grid two">
+      <article class="panel">
+        <h2>我現在要點哪裡？</h2>
+        <p>如果你是學員，優先使用這三個頁面：課程簡報、練習包、操作題目。每個頁面上方都有同一組導覽，迷路時回到「上課入口」。</p>
+      </article>
+      <article class="panel">
+        <h2>需求資料放哪裡？</h2>
+        <p>同仁需求整理是課程設計與後續工具規劃用，不是學員上課的主要路徑。需要回看來源時再進入需求資料。</p>
+        <p><a class="button-link" href="/needs/">查看需求資料</a></p>
+      </article>
+    </section>`;
+  return pageShell({
+    title: "學員上課入口",
+    eyebrow: "上課入口",
+    intro: "把課程簡報、練習包與四個操作題目整理成一條路徑，降低來回跳頁的不確定感。",
+    body,
+    active: "learn",
+  });
 }
 
 function buildNeedsIndex() {
@@ -496,9 +586,10 @@ function buildNeedsIndex() {
     </section>`;
   return pageShell({
     title: "同仁需求整理總覽",
-    eyebrow: "需求整理",
-    intro: "從佩欣、思宜、怡君、瑜君、阿丸、素菁的材料整理出個別需求頁，並保留後續待補名單。",
+    eyebrow: "需求資料",
+    intro: "這一區是課程設計與後續工具規劃資料，不是學員上課的主要操作路徑。",
     body,
+    active: "needs",
   });
 }
 
@@ -522,10 +613,11 @@ function buildPersonPage(person) {
     </section>`;
   return pageShell({
     title: `${person.name}需求整理`,
-    eyebrow: "個別需求頁",
+    eyebrow: "個別需求資料",
     intro: person.summary,
     body,
     sectionClass: "md-page",
+    active: "needs",
   });
 }
 
@@ -533,6 +625,13 @@ function buildKitPage() {
   const body = `
     <section class="notice">
       這份練習包不是下載檔，而是課堂中可以直接打開、照著填的材料。學員可以把自己的低風險工作片段放進去操作，課後留下可重複指令與人工確認清單。
+    </section>
+    <section class="section next-strip">
+      <div>
+        <strong>你現在在第 2 步：打開練習包。</strong>
+        <p class="muted">先填工作流程整理卡與共用指令模板；填完後，到操作題目頁選一題實作。</p>
+      </div>
+      <a class="button-link primary" href="/exercises/">下一步：選操作題目</a>
     </section>
     <section class="section">
       <h2>練習包內容</h2>
@@ -590,7 +689,7 @@ function buildKitPage() {
         <article class="card soft-blush"><strong>需要保留人工決策</strong><p>外部發送、正式資料更新、個資揭露、金流、核銷或月結相關判斷。</p></article>
       </div>
     </section>
-    <section class="section">
+    <section class="section" id="review">
       <h2>效果記錄表</h2>
       <div class="table-wrap">
         <table>
@@ -610,6 +709,7 @@ function buildKitPage() {
     eyebrow: "學員操作材料",
     intro: "一份可直接在課堂上照著填的練習包，協助同仁把工作流講清楚、操作一次、留下可檢查成果。",
     body,
+    active: "kit",
   });
 }
 
@@ -643,6 +743,13 @@ function buildExercisePage() {
     <section class="notice">
       四個練習都用同一個基本方法：說明工作、提供資料、指定輸出、標出人工確認、檢查後修正。課堂共同示範後，每位學員選最接近自己工作的一題操作。
     </section>
+    <section class="section next-strip">
+      <div>
+        <strong>你現在在第 3 步：選一題操作。</strong>
+        <p class="muted">選最接近自己工作的題目，照操作步驟跑一次；完成後回到練習包做成果檢查。</p>
+      </div>
+      <a class="button-link primary" href="/kit/#review">完成後：檢查成果</a>
+    </section>
     <section class="section">
       <h2>四個練習題目</h2>
       <div class="cards">${exercises.map(exerciseCard).join("")}</div>
@@ -653,6 +760,7 @@ function buildExercisePage() {
     eyebrow: "課堂實作題目",
     intro: "每題都列出準備資料、操作步驟、可複製指令與檢查方式，學員可以直接挑一題開始做。",
     body,
+    active: "exercises",
   });
 }
 
@@ -662,6 +770,7 @@ function writePage(path, html) {
 }
 
 writePage("public/needs/index.html", buildNeedsIndex());
+writePage("public/learn/index.html", buildLearnPage());
 for (const person of people) {
   writePage(join("public/needs", person.slug, "index.html"), buildPersonPage(person));
 }
