@@ -170,6 +170,34 @@
       color: #254d49;
     }
 
+    .notice-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      align-items: center;
+      margin-top: 14px;
+    }
+
+    .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      border: 1px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 0 16px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 800;
+      line-height: 1.2;
+      text-decoration: none;
+    }
+
+    .notice-note {
+      color: #345f5a;
+      font-size: 0.98rem;
+    }
+
     .quick-grid,
     .cards,
     .topics,
@@ -436,6 +464,10 @@
   <main class="shell">
     <section class="notice">
       本頁是內部審閱用的課程渲染頁。這是內部訓練課程，不對外招生、不收費；頁面只保留課程目的、學習成果、安排與治理邊界，不放同仁逐字稿、個別需求細節、內部系統操作細節或正式資料。
+      <div class="notice-actions">
+        <a class="button-link" href="slides/">開啟學員簡報</a>
+        <span class="notice-note">學員可直接用網址觀看，不需要下載 PPT；手機、平板與電腦皆可瀏覽。</span>
+      </div>
     </section>
 
     <section class="section" id="decision">
