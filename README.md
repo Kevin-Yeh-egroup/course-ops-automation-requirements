@@ -28,6 +28,14 @@
 
 先前同仁需求與共用模組仍保留在 repo 內，作為內部整理與後續開發討論基礎。這些材料不應直接作為 production 分享入口。
 
+工作流蒐集與 AI 評估模板位於：
+
+`shared-modules/workflow-intake-ai-evaluation-template.md`
+
+公開審閱頁位於：
+
+`/needs/workflow-intake/`
+
 ## 治理原則
 
 - 第一階段只讀取、整理、產生草稿，不自動發送。

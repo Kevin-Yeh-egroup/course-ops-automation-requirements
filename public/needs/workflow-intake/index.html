@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>工作流蒐集與 AI 評估模板</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1f2937;
+      --muted: #5f6b7a;
+      --paper: #fff;
+      --bg: #f6f8fb;
+      --line: #d8dee8;
+      --navy: #202a44;
+      --blue: #2f6bff;
+      --teal: #0e9f8b;
+      --wine: #8b3556;
+      --gold: #c58b25;
+      --green: #2e7d5f;
+      --sky: #eef5ff;
+      --mint: #e9f8f4;
+      --blush: #f8ecf1;
+      --amber: #fff6e0;
+      --radius: 8px;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; overflow-x: hidden; background: var(--bg); color: var(--ink); line-height: 1.72; }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px clamp(14px, 3vw, 32px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+    }
+    .brand { font-weight: 900; color: var(--navy); }
+    .nav { max-width: 100%; min-width: 0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+    .nav a, .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 12px;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .button-link.primary, .nav a.primary { border-color: var(--blue); background: var(--blue); color: #fff; }
+    .hero {
+      background: var(--navy);
+      color: #fff;
+      padding: clamp(42px, 8vw, 84px) 0;
+    }
+    .shell { width: min(1120px, calc(100% - 36px)); min-width: 0; margin: 0 auto; }
+    .hero .shell { display: grid; gap: 18px; }
+    .eyebrow { margin: 0; color: #9be1d5; font-size: 0.94rem; font-weight: 900; }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 { max-width: 900px; margin-bottom: 0; font-size: clamp(2.15rem, 5vw, 4rem); line-height: 1.1; letter-spacing: 0; }
+    .lead { max-width: 880px; margin-bottom: 0; color: rgba(255, 255, 255, 0.82); font-size: clamp(1.05rem, 2vw, 1.25rem); }
+    main.shell { padding: 42px 0 76px; }
+    .section { margin: 34px 0; }
+    .cards, .grid { min-width: 0; display: grid; gap: 16px; }
+    .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card, .panel, .md article {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 8px 24px rgba(32, 42, 68, 0.06);
+    }
+    .card, .panel { padding: 20px; }
+    .card strong { display: block; margin-bottom: 8px; color: var(--navy); font-size: 1.08rem; }
+    .card p, .muted { color: var(--muted); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag { border: 1px solid var(--line); border-radius: var(--radius); padding: 4px 8px; background: var(--sky); color: var(--navy); font-size: 0.86rem; font-weight: 800; }
+    .notice {
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      background: #f0faf8;
+      color: #254d49;
+    }
+    .path {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+    .path-card {
+      position: relative;
+      min-height: 188px;
+      display: grid;
+      align-content: space-between;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(32, 42, 68, 0.06);
+    }
+    .path-card small {
+      color: var(--muted);
+      font-weight: 900;
+    }
+    .next-strip {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      background: var(--sky);
+    }
+    .deploy-flow {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+      align-items: stretch;
+    }
+    .deploy-step {
+      min-height: 158px;
+      display: grid;
+      align-content: space-between;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(32, 42, 68, 0.06);
+    }
+    .deploy-step small {
+      color: var(--muted);
+      font-weight: 900;
+    }
+    .deploy-step strong {
+      display: block;
+      color: var(--navy);
+      line-height: 1.35;
+    }
+    .account-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .callout-row {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .prompt {
+      overflow-x: auto;
+      white-space: pre-wrap;
+      border-radius: var(--radius);
+      padding: 18px;
+      background: #111827;
+      color: #e5e7eb;
+      font-size: 0.98rem;
+      line-height: 1.68;
+    }
+    .steps { counter-reset: step; display: grid; gap: 10px; }
+    .steps li { margin: 0 0 8px; }
+    .md { min-width: 0; display: grid; gap: 20px; }
+    .md article { padding: clamp(20px, 4vw, 34px); }
+    .md h1 { color: var(--navy); font-size: clamp(1.9rem, 4vw, 3rem); }
+    .md h2 { margin-top: 34px; color: var(--navy); font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.25; }
+    .md h3 { margin-top: 24px; color: var(--navy); font-size: 1.22rem; }
+    .table-wrap { max-width: 100%; min-width: 0; overflow-x: auto; margin: 16px 0 24px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+    table { width: 100%; min-width: 720px; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: #eef1f6; color: var(--navy); white-space: nowrap; }
+    pre { overflow-x: auto; border-radius: var(--radius); padding: 16px; background: #111827; color: #e5e7eb; }
+    pre.mermaid { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+    code { font-family: "Cascadia Code", Consolas, monospace; }
+    .muted-link { color: var(--muted); }
+    .accent-blue { border-top: 5px solid var(--blue); }
+    .accent-teal { border-top: 5px solid var(--teal); }
+    .accent-gold { border-top: 5px solid var(--gold); }
+    .accent-wine { border-top: 5px solid var(--wine); }
+    .accent-green { border-top: 5px solid var(--green); }
+    .soft-sky { background: var(--sky); }
+    .soft-mint { background: var(--mint); }
+    .soft-blush { background: var(--blush); }
+    .soft-amber { background: var(--amber); }
+    footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 860px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .nav { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
+      .cards, .grid.two, .path, .next-strip, .deploy-flow, .account-grid, .callout-row, .check-grid { grid-template-columns: 1fr; }
+      table { min-width: 640px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Codex 行政工作實驗課</div>
+    <nav class="nav" aria-label="站內導覽">
+      <a href="/">首頁</a>
+      <a href="/learn/">上課入口</a>
+      <a href="/slides/">課程簡報</a>
+      <a href="/guide/">操作說明</a>
+      <a href="/kit/">練習包</a>
+      <a href="/exercises/">操作題目</a>
+      <a href="/publish/">公開部署</a>
+      <a class="primary" href="/needs/">需求資料</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="shell">
+      <p class="eyebrow">需求資料</p>
+      <h1>工作流蒐集與 AI 評估模板</h1>
+      <p class="lead">陪夥伴把真實工作講清楚，再判斷哪些段落適合 AI 協助、哪些必須保留人工確認。</p>
+    </div>
+  </section>
+  <main class="shell md-page">
+    
+    <section class="notice">
+      本頁來源：<code>shared-modules/workflow-intake-ai-evaluation-template.md</code>。這是陪伴夥伴蒐集工作細節的共用模板，不是正式系統規格；涉及個資、帳務、個案、外部發送或正式寫回時，仍需保留人工確認。
+    </section>
+    <section class="section grid two">
+      <article class="card accent-blue">
+        <strong>先整理工作，不先導入工具</strong>
+        <p>每次只挑一項真實工作，補齊觸發、資料來源、步驟、產出、例外與確認責任。</p>
+      </article>
+      <article class="card accent-teal">
+        <strong>先判斷 AI 協助邊界</strong>
+        <p>從摘要、缺漏檢查、提醒、草稿開始；外部發送、正式寫回、薪資、發票與個案判斷保留人工核准。</p>
+      </article>
+    </section>
+    <section class="section md">
+      <article><h1 id="工作流蒐集與-ai-評估模板">工作流蒐集與 AI 評估模板</h1>
+<h2 id="目的">目的</h2>
+<p>這份模板用來陪伴夥伴把真實工作講清楚。重點不是一開始就問「要不要自動化」，而是先整理工作怎麼開始、資料從哪裡來、現在怎麼處理、哪裡需要人判斷，以及什麼樣的 AI 協助才不會增加風險。</p>
+<h2 id="使用時機">使用時機</h2>
+<div class="table-wrap"><table><thead><tr><th>情境</th><th>適合怎麼用</th></tr></thead><tbody><tr><td>新夥伴第一次整理工作</td><td>先挑一項最常做、最容易漏或最耗時間的工作，不一次問完全部職務</td></tr><tr><td>已整理過的夥伴要補細節</td><td>回到單一工作流，補觸發條件、資料來源、例外、確認人與輸出物</td></tr><tr><td>準備做 AI 沙盒實驗</td><td>先確認資料是否可去識別化、是否只能只讀、是否需要人工核准</td></tr><tr><td>準備給主管或團隊看</td><td>只呈現流程、痛點、預期效益與風險邊界，不放原始個資或完整逐字稿</td></tr></tbody></table></div>
+<h2 id="訪談前先確認">訪談前先確認</h2>
+<div class="table-wrap"><table><thead><tr><th>確認項目</th><th>建議問法</th></tr></thead><tbody><tr><td>這次只談哪一項工作</td><td>今天先挑一件你最常做、最怕漏或最希望有人幫忙整理的工作，可以嗎？</td></tr><tr><td>資料能不能拿出來</td><td>你可以提供去識別化範例、欄位名稱、假資料或截圖描述嗎？</td></tr><tr><td>哪些資訊不能進公開頁</td><td>有沒有姓名、電話、帳戶、身分證、薪資、個案狀態、發票或內部連結？</td></tr><tr><td>這件事的完成定義</td><td>你做到哪一步會覺得這件事算完成？誰還需要確認？</td></tr><tr><td>目前能接受的協助方式</td><td>你比較希望 AI 幫你整理清單、找缺漏、產草稿，還是只做提醒？</td></tr></tbody></table></div>
+<h2 id="工作流蒐集卡">工作流蒐集卡</h2>
+<div class="table-wrap"><table><thead><tr><th>欄位</th><th>要填什麼</th><th>範例提示</th></tr></thead><tbody><tr><td>工作名稱</td><td>用夥伴聽得懂的名稱，不用系統名稱</td><td>課前提醒、候補名單比對、月結確認包</td></tr><tr><td>主要負責人</td><td>誰每天或每週實際處理</td><td>佩欣、思宜、瑜君、阿丸、素菁等</td></tr><tr><td>觸發條件</td><td>什麼事情發生後，這項工作就要開始</td><td>新表單、新課程、月底、活動前一週、有人回覆</td></tr><tr><td>資料來源</td><td>原始資料在哪裡</td><td>Google Sheet、表單、InfoCenter、MIS、Email、LINE、Excel、Word 範本</td></tr><tr><td>現在步驟</td><td>夥伴現在實際怎麼做</td><td>先下載、再篩選、貼到群組、人工確認、回填狀態</td></tr><tr><td>主要產出</td><td>最後要交出什麼</td><td>提醒清單、課務摘要、匯入模板、文件包、對帳草稿</td></tr><tr><td>頻率與時間點</td><td>多久做一次、何時最急</td><td>每日、每週、月底、課前 2 週、活動後 3 天</td></tr><tr><td>常見痛點</td><td>最容易花時間、出錯或漏掉的地方</td><td>欄位缺漏、狀態不同步、重複貼上、金額規則複雜</td></tr><tr><td>例外情況</td><td>哪些情況不能照一般規則跑</td><td>日期未定、講師未派、個案敏感、金額不合理、同名無法判斷</td></tr><tr><td>人工確認點</td><td>哪些地方一定要人看過</td><td>對外發送、正式寫回、匯款、發票、資格判斷、個案處置</td></tr><tr><td>可接受的 AI 協助</td><td>夥伴願意先試哪一種</td><td>摘要、缺漏檢查、提醒、比對、草稿、試算、文件產生</td></tr><tr><td>不適合 AI 的部分</td><td>暫時不交給 AI 判斷或執行</td><td>自動取消、自動核准、自動匯款、自動寄出、自動改正式資料</td></tr></tbody></table></div>
+<h2 id="陪伴式訪談問題">陪伴式訪談問題</h2>
+<ol>
+<li>你今天如果沒有做這件事，最可能會造成什麼問題？</li>
+<li>這件事現在最花時間的是「找資料」、「判斷狀態」、「寫訊息」、「整理格式」，還是「等別人回覆」？</li>
+<li>你通常會看哪幾個地方才敢判斷下一步？</li>
+<li>哪些欄位缺了，你就不能繼續做？</li>
+<li>哪些情況你一定會停下來問主管、會計、規劃師、講師或同事？</li>
+<li>如果 AI 只幫你產一張清單或草稿，哪一種最有幫助？</li>
+<li>你最不希望 AI 自動做什麼？</li>
+<li>這件工作如果先用假資料測試，怎麼判斷它真的有幫到你？</li>
+</ol>
+<h2 id="ai-協助成熟度">AI 協助成熟度</h2>
+<div class="table-wrap"><table><thead><tr><th>等級</th><th>說明</th><th>適合例子</th><th>邊界</th></tr></thead><tbody><tr><td>L0 先不使用 AI</td><td>流程尚不清楚，或資料太敏感</td><td>個案資格判斷、正式薪資結論</td><td>先只整理工作流，不做工具</td></tr><tr><td>L1 整理與摘要</td><td>把散落資料整理成可讀摘要</td><td>逐字稿摘要、活動紀錄、課務需求摘要</td><td>必須保留來源與待確認事項</td></tr><tr><td>L2 缺漏與提醒</td><td>找出缺欄、到期、逾期、等待回覆</td><td>課前提醒、LINE 未驗證、欄位缺漏</td><td>不自動催人或寫回正式系統</td></tr><tr><td>L3 草稿與文件</td><td>產生可修改的文字或文件</td><td>Line/Email 草稿、活動行政包、月結確認包</td><td>人工確認後才使用或送出</td></tr><tr><td>L4 受控半自動</td><td>在規則穩定後，輔助低風險寫回</td><td>Calendar 草稿、狀態欄更新建議、檔案命名</td><td>每次送出前要有預覽、核准與紀錄</td></tr></tbody></table></div>
+<h2 id="ai-沙盒前檢查">AI 沙盒前檢查</h2>
+<div class="table-wrap"><table><thead><tr><th>檢查</th><th>通過條件</th></tr></thead><tbody><tr><td>資料安全</td><td>使用假資料、去識別化資料，或只保留欄位名稱與描述</td></tr><tr><td>原始資料</td><td>AI 輸出不能取代原始表單、Sheet、InfoCenter 或正式紀錄</td></tr><tr><td>人工確認</td><td>對外訊息、寫回、金額、個案、薪資、發票都有人審點</td></tr><tr><td>no-op 規則</td><td>資料不足、日期未定、低信心比對時，只產生待補清單</td></tr><tr><td>成效判斷</td><td>先定義這次要驗證省時間、少漏件、少重複，或更容易交接</td></tr></tbody></table></div>
+<h2 id="可交給不同觀點檢視的問題">可交給不同觀點檢視的問題</h2>
+<div class="table-wrap"><table><thead><tr><th>觀點</th><th>主要看什麼</th></tr></thead><tbody><tr><td>流程拆解</td><td>觸發、輸入、步驟、產出與例外是否清楚</td></tr><tr><td>資料欄位</td><td>來源欄位、必填欄位、狀態欄、日期欄、敏感欄位是否可判讀</td></tr><tr><td>風險控管</td><td>哪些地方會影響個資、金額、外部承諾或正式系統</td></tr><tr><td>AI 可行性</td><td>哪些適合摘要、比對、提醒、草稿，哪些不適合自動化</td></tr><tr><td>夥伴接受度</td><td>這個協助方式是否真的減少負擔，還是增加檢查成本</td></tr></tbody></table></div>
+<h2 id="agent-討論前置卡">Agent 討論前置卡</h2>
+<p>若需要用多個 agent 或不同觀點協助討論，先填這張卡，再啟動討論。</p>
+<div class="table-wrap"><table><thead><tr><th>欄位</th><th>填寫內容</th></tr></thead><tbody><tr><td>討論目的</td><td>這次要判斷哪一項工作是否適合 AI 協助</td></tr><tr><td>必須做出的決定</td><td>採用、先驗證、暫停，或需要再訪談</td></tr><tr><td>停止條件</td><td>已能列出下一個最小實驗，或確認資料不足</td></tr><tr><td>輸出格式</td><td>強訊號、有用的分歧、現在採用、下一步驗證、暫停項目、證據產物</td></tr><tr><td>需要的證據</td><td>工作卡、欄位樣本、去識別化資料、夥伴回饋、現有範本</td></tr><tr><td>不在範圍</td><td>不做外部發送、不寫回正式系統、不做薪資或個案結論</td></tr><tr><td>核准門檻</td><td>涉及帳號、正式資料、外部系統、排程或發送前需人工核准</td></tr></tbody></table></div>
+<h2 id="建議的第一批證據產物">建議的第一批證據產物</h2>
+<div class="table-wrap"><table><thead><tr><th>產物</th><th>用途</th></tr></thead><tbody><tr><td>一頁式工作流卡</td><td>讓夥伴確認「這是不是你真正在做的事」</td></tr><tr><td>欄位地圖</td><td>確認資料來源、必填、日期、狀態與敏感欄位</td></tr><tr><td>只讀檢查報告</td><td>用假資料或去識別資料產生缺漏、逾期、衝突清單</td></tr><tr><td>草稿包</td><td>產生提醒、補問、派課摘要、活動通知或月結確認草稿</td></tr><tr><td>回饋紀錄</td><td>請夥伴標記有幫助、太吵、判斷錯誤、需要補資料的地方</td></tr></tbody></table></div>
+<h2 id="下一步建議">下一步建議</h2>
+<div class="table-wrap"><table><thead><tr><th>順序</th><th>工作</th></tr></thead><tbody><tr><td>1</td><td>先用這份模板補雨虹、奕吟、思璇三位待補資料</td></tr><tr><td>2</td><td>從既有六位夥伴中，各挑一項最清楚的工作流回訪補細節</td></tr><tr><td>3</td><td>用去識別化資料建立一份只讀提醒/缺漏/草稿範例</td></tr><tr><td>4</td><td>請夥伴回饋範例是否真的減少工作負擔</td></tr><tr><td>5</td><td>再決定是否進入 Google Sheet、Apps Script、Codex 本機工具或內部工作台</td></tr></tbody></table></div></article>
+    </section>
+  </main>
+  <footer>
+    <div class="shell">版本：2026.06.10｜內部複核版：可用網址瀏覽，但不代表隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
+  </footer>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "default" });
+  </script>
+</body>
+</html>

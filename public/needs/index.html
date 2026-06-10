@@ -27,7 +27,7 @@
       font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
     }
     * { box-sizing: border-box; }
-    body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.72; }
+    body { margin: 0; overflow-x: hidden; background: var(--bg); color: var(--ink); line-height: 1.72; }
     a { color: inherit; }
     .topbar {
       position: sticky;
@@ -43,7 +43,7 @@
       backdrop-filter: blur(10px);
     }
     .brand { font-weight: 900; color: var(--navy); }
-    .nav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+    .nav { max-width: 100%; min-width: 0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
     .nav a, .button-link {
       display: inline-flex;
       align-items: center;
@@ -64,7 +64,7 @@
       color: #fff;
       padding: clamp(42px, 8vw, 84px) 0;
     }
-    .shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+    .shell { width: min(1120px, calc(100% - 36px)); min-width: 0; margin: 0 auto; }
     .hero .shell { display: grid; gap: 18px; }
     .eyebrow { margin: 0; color: #9be1d5; font-size: 0.94rem; font-weight: 900; }
     h1, h2, h3, h4, p { margin-top: 0; }
@@ -72,10 +72,11 @@
     .lead { max-width: 880px; margin-bottom: 0; color: rgba(255, 255, 255, 0.82); font-size: clamp(1.05rem, 2vw, 1.25rem); }
     main.shell { padding: 42px 0 76px; }
     .section { margin: 34px 0; }
-    .cards, .grid { display: grid; gap: 16px; }
+    .cards, .grid { min-width: 0; display: grid; gap: 16px; }
     .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .card, .panel, .md article {
+      min-width: 0;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--paper);
@@ -178,12 +179,12 @@
     }
     .steps { counter-reset: step; display: grid; gap: 10px; }
     .steps li { margin: 0 0 8px; }
-    .md { display: grid; gap: 20px; }
+    .md { min-width: 0; display: grid; gap: 20px; }
     .md article { padding: clamp(20px, 4vw, 34px); }
     .md h1 { color: var(--navy); font-size: clamp(1.9rem, 4vw, 3rem); }
     .md h2 { margin-top: 34px; color: var(--navy); font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.25; }
     .md h3 { margin-top: 24px; color: var(--navy); font-size: 1.22rem; }
-    .table-wrap { overflow-x: auto; margin: 16px 0 24px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+    .table-wrap { max-width: 100%; min-width: 0; overflow-x: auto; margin: 16px 0 24px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
     table { width: 100%; min-width: 720px; border-collapse: collapse; }
     th, td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
     th { background: #eef1f6; color: var(--navy); white-space: nowrap; }
@@ -234,6 +235,13 @@
     
     <section class="notice">
       這裡放回每位夥伴的需求整理頁，並保留辦公室共通需求摘要。這些頁面是給內部討論與課程設計使用，仍維持 noindex。
+    </section>
+    <section class="section next-strip">
+      <div>
+        <strong>工作流蒐集與 AI 評估模板</strong>
+        <p class="muted">後續陪夥伴補工作細節時，先用同一份模板整理觸發、資料來源、步驟、產出、人工確認與 AI 協助邊界，再決定是否進入沙盒實驗。</p>
+      </div>
+      <a class="button-link primary" href="/needs/workflow-intake/">打開蒐集模板</a>
     </section>
     <section class="section">
       <h2>已整理的夥伴需求</h2>
