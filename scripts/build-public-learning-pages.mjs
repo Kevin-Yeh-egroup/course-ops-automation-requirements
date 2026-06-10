@@ -926,27 +926,41 @@ function buildPublishPage() {
       </div>
     </section>
     <section class="section" id="authorization">
-      <h2>遇到授權或確認畫面怎麼選</h2>
-      <p class="muted">以這個課程網站目前的做法來看，安全作法是：GitHub 用自己的帳號登入，Vercel 只連到本次要部署的 repo，Codex 需要外部寫入或公開發布前，都先列出會做什麼，等本人確認後再執行。</p>
+      <h2>遇到任何確認畫面怎麼判斷</h2>
+      <p class="muted">學員不需要記住每個工具的按鈕，但要養成同一個判斷習慣：先問「會改哪裡、會送去哪裡、能不能復原」。凡是會改檔案、登入授權、公開發布、外部寄送、刪除、安裝、付款或碰到密碼金鑰，都要先停下來請 Codex 說明，再由本人確認。</p>
+      <div class="cards">
+        <article class="card accent-blue"><strong>可以先同意</strong><p>只讀檢查、整理草稿、產生本機檔案、開本機預覽，且沒有外部傳送或正式資料變更。</p></article>
+        <article class="card accent-gold"><strong>先看清楚再同意</strong><p>會修改檔案、commit、push、啟用外掛、登入 GitHub/Vercel、部署公開頁。</p></article>
+        <article class="card accent-wine"><strong>先停下來問人</strong><p>付款、改公司權限、刪除資料、上傳個資、寄外部訊息、貼密碼或金鑰、連正式系統。</p></article>
+      </div>
       <div class="table-wrap">
         <table>
           <thead><tr><th>畫面或問題</th><th>建議怎麼選</th><th>先停下來的情況</th></tr></thead>
           <tbody>
+            <tr><td>Codex 要修改檔案</td><td>請 Codex 先說明會改哪些檔案、為什麼改、是否能復原；小範圍教學檔可確認後同意。</td><td>改到不認識的資料夾、正式資料、多人共用檔，或沒有說明修改內容。</td></tr>
+            <tr><td>Codex 要刪除或搬移檔案</td><td>先請它列出完整路徑與原因；確認只是測試檔或可重建檔案才同意。</td><td>任何正式資料、原始逐字稿、客戶資料、帳務資料、工作成果檔。</td></tr>
+            <tr><td>Codex 要安裝工具或套件</td><td>先問用途、安裝到哪裡、是否需要管理員權限；課堂除非必要，不以安裝新工具為優先。</td><td>要求系統管理員權限、安裝不熟悉軟體、改全域設定或瀏覽器擴充功能。</td></tr>
+            <tr><td>Codex 要啟用外掛或連接帳號</td><td>請 Codex 先說明外掛用途與需要的權限；確認是本次任務需要，再依畫面登入授權。</td><td>要求貼上密碼、token、金鑰，或要求授權不相關服務。</td></tr>
             <tr><td>GitHub 要登入或授權</td><td>用自己的 GitHub 帳號登入；若可以選權限，選「Only select repositories」，只勾本次要用的 repo。</td><td>畫面要求存取所有 repo、組織管理權限、付款資訊，或帳號不是自己的。</td></tr>
             <tr><td>GitHub 要建立 repo</td><td>練習用可以先選自己的帳號；visibility 不確定時選 Private，要公開展示才選 Public。</td><td>repo 名稱含個資、客戶名稱、內部案名，或檔案內有未確認資料。</td></tr>
             <tr><td>Codex 要 commit / push</td><td>請 Codex 先列出會提交的檔案與摘要，確認沒有敏感資料後，再同意 commit / push。</td><td>Codex 沒說會改哪些檔案、要推到不熟的 repo，或包含 .env、金鑰、內部表單。</td></tr>
             <tr><td>Vercel 要 Import Git Repository</td><td>選剛剛建立的那個 repo；不要一次授權所有 repo。練習時選個人或課堂測試 workspace。</td><td>要選公司 team、正式 domain、付費方案，或畫面看起來不是本次 repo。</td></tr>
             <tr><td>Vercel 要 Deploy / Production</td><td>先請 Codex 檢查公開內容與 noindex；確認後再部署。靜態 HTML 專案通常先沿用預設設定。</td><td>內容還有個資、內部逐字稿、正式金額，或需要付款、改 domain、改權限。</td></tr>
-            <tr><td>Codex 要啟用 GitHub / Vercel 外掛</td><td>請 Codex 先說明外掛用途與需要的權限；確認是本次任務需要，再依畫面登入授權。</td><td>要求貼上密碼、token、金鑰，或要求授權不相關服務。</td></tr>
+            <tr><td>瀏覽器要求登入、授權或允許權限</td><td>確認網站網址、帳號是否正確；只允許本次任務需要的權限。</td><td>要求相機、麥克風、定位、下載、通知、儲存密碼，或登入不明帳號。</td></tr>
+            <tr><td>要寄 Email、Slack、表單或外部訊息</td><td>先讓 Codex 只產生草稿，收件人、內容、附件都由本人檢查後再送出。</td><td>任何外部寄送、群組發文、上傳附件、表單送出、改公開分享權限。</td></tr>
+            <tr><td>要處理個資、金額、正式資料</td><td>先做去識別化或只讀檢查，輸出標成草稿或待確認。</td><td>要下結論、付款、月結、正式核銷、改正式資料庫或公開個資。</td></tr>
+            <tr><td>要求輸入密碼、API key、token、金鑰</td><td>不要貼給 Codex 或公開頁；需要時改用官方登入畫面或環境變數管理。</td><td>任何要求把密碼、簡訊碼、金鑰直接貼到聊天或檔案裡。</td></tr>
+            <tr><td>付款、升級方案、改 domain 或公司 team</td><td>課堂不直接操作；先截圖或記下問題，回頭找主管或帳號管理者確認。</td><td>任何費用、公司設定、正式 domain、權限管理、production protection 變更。</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="prompt">如果畫面跳出授權或確認，請先不要急著按。
+      <div class="prompt">如果畫面跳出任何授權、確認、允許、送出、刪除、安裝、部署或付款提示，請先不要急著按。
 請你幫我判斷這個畫面：
-1. 這是在要求 GitHub、Vercel，還是 Codex 外掛授權？
-2. 我應該選自己的帳號、公司 team，還是只選本次 repo？
-3. 這個選項會不會讓內容公開、改正式設定或產生費用？
-4. 如果安全，請告訴我應該選哪一個；如果不安全，請叫我停下來。</div>
+1. 這個動作會改哪裡？本機、GitHub、Vercel、公司系統，還是外部服務？
+2. 這個動作會把資料送去哪裡？會不會公開、寄出、上傳或分享？
+3. 這個動作能不能復原？如果失敗，怎麼回到原狀？
+4. 這個動作會不會碰到個資、正式資料、金額、密碼、金鑰或費用？
+5. 如果安全，請告訴我應該選哪一個；如果不安全，請叫我停下來。</div>
     </section>
     <section class="section callout-row">
       <article class="panel">
