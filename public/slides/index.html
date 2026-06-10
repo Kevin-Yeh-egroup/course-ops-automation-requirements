@@ -131,6 +131,34 @@
       color: #fff;
     }
 
+    .canvas.hero-visual {
+      position: relative;
+      overflow: hidden;
+      min-height: min(760px, calc(100vh - 98px));
+      background:
+        linear-gradient(90deg, rgba(32, 42, 68, 0.96) 0%, rgba(32, 42, 68, 0.82) 43%, rgba(32, 42, 68, 0.18) 100%),
+        url("../assets/codex-meeting-hero.png") center / cover;
+    }
+
+    .canvas.hero-visual > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .canvas.hero-visual .lead {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .canvas.hero-visual .card {
+      border-color: rgba(255, 255, 255, 0.24);
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 16px 40px rgba(12, 20, 38, 0.2);
+    }
+
+    .canvas.hero-visual .card p {
+      color: var(--muted);
+    }
+
     .canvas.dark p,
     .canvas.dark li,
     .canvas.dark .eyebrow {
@@ -282,6 +310,21 @@
       color: #fff;
     }
 
+    .visual-frame {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: 0 14px 36px rgba(32, 42, 68, 0.09);
+    }
+
+    .visual-frame img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      object-fit: cover;
+    }
+
     .exercise-layout {
       display: grid;
       grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
@@ -382,7 +425,7 @@
 
   <main class="deck">
     <section class="slide" id="slide-1">
-      <div class="canvas dark">
+      <div class="canvas dark hero-visual">
         <p class="eyebrow">課程開始</p>
         <h1>Codex 行政工作實驗課</h1>
         <p class="lead">用真實行政問題，練習和 Codex 開一場能產出成果的工作會議。</p>
@@ -527,6 +570,9 @@
         <p class="eyebrow">四個可選題目</p>
         <h2>四題都照同一個節奏操作</h2>
         <p class="lead">學員不用四題全做。共同示範後，每個人選最接近自己工作的一題，照下面三步跑一次。</p>
+        <figure class="visual-frame">
+          <img src="../assets/codex-practice-tracks.png" alt="四個練習題目整理成課程提醒、逐字稿、表格檢查與活動行政四個工作區塊">
+        </figure>
         <div class="grid">
           <div class="card accent-blue"><strong>1. 選題與貼資料</strong><p>選一段低風險、明天就可能用到的工作，貼上範例或副本。</p></div>
           <div class="card accent-teal"><strong>2. 用短版指令產出</strong><p>說清楚要整理、檢查或產草稿，要求 Codex 列出人工確認點。</p></div>
