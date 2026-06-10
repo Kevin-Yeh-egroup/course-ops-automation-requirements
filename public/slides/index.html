@@ -373,15 +373,29 @@
     @media (max-width: 820px) {
       html { scroll-snap-type: none; }
 
+      body {
+        overflow-x: hidden;
+      }
+
       .topbar {
         align-items: flex-start;
         flex-direction: column;
       }
 
       .nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         width: 100%;
-        overflow-x: auto;
-        padding-bottom: 2px;
+        overflow-x: visible;
+        padding-bottom: 0;
+        white-space: normal;
+      }
+
+      .nav a,
+      .nav button {
+        width: 100%;
+        padding: 0 8px;
+        white-space: normal;
       }
 
       .slide {
@@ -389,9 +403,44 @@
         padding: 16px 0;
       }
 
+      .deck {
+        width: calc(100vw - 28px);
+      }
+
       .canvas {
         min-height: auto;
+        overflow: hidden;
         padding: 22px;
+      }
+
+      .deck,
+      .canvas,
+      .card,
+      .step,
+      .prompt,
+      .slide-link {
+        min-width: 0;
+        max-width: 100%;
+      }
+
+      h1 {
+        font-size: clamp(1.6rem, 6.8vw, 1.75rem);
+      }
+
+      h2 {
+        font-size: clamp(1.55rem, 7vw, 2rem);
+      }
+
+      h1,
+      h2,
+      h3,
+      p,
+      li,
+      .card strong,
+      .slide-link {
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: break-all;
       }
 
       .grid,
@@ -429,10 +478,10 @@
       <div class="canvas dark hero-visual">
         <p class="eyebrow">課程開始</p>
         <h1>Codex 行政工作實驗課</h1>
-        <p class="lead">用真實行政問題，練習和 Codex 開一場能產出成果的工作會議。</p>
+        <p class="lead">90 分鐘內，用共同安全範例練習和 Codex 開一場能產出成果的工作會議。</p>
         <div class="grid">
           <div class="card accent-blue"><strong>把工作講清楚</strong><p>先整理資料來源、處理步驟與輸出格式。</p></div>
-          <div class="card accent-gold"><strong>照題目操作一次</strong><p>用安全範例建立成功經驗，再換成自己的工作。</p></div>
+          <div class="card accent-gold"><strong>照題目操作一次</strong><p>用安全範例建立成功經驗，課後再套用到自己的工作。</p></div>
           <div class="card accent-teal"><strong>帶走練習包</strong><p>留下可重複指令、草稿或檢查表，以及人工確認清單。</p></div>
         </div>
       </div>
@@ -441,8 +490,8 @@
     <section class="slide" id="slide-2">
       <div class="canvas">
         <p class="eyebrow">課程完成品</p>
-        <h2>下課帶走一份練習包</h2>
-        <p class="lead">每個人用一段真實行政工作，完成一個小而可重複的 Codex 實驗。</p>
+        <h2>下課帶走一份課後探索包</h2>
+        <p class="lead">全班先用共同安全範例完成一次 Codex 實驗，自己的工作課後再依需求套用。</p>
         <div class="grid">
           <div class="card accent-blue"><strong>1. 行政題目</strong><p>選最常重複、最常漏項，或明天就會用到的一小段工作。</p></div>
           <div class="card accent-teal"><strong>2. 工作流程草圖</strong><p>寫出什麼時候開始、手上有什麼、誰要確認、最後交什麼。</p></div>
@@ -583,7 +632,7 @@
         </div>
         <div class="grid two">
           <div class="card soft-sky"><strong>可選題目</strong><p>課程提醒、逐字稿內容、表格檢查、活動行政包。</p></div>
-          <div class="card soft-mint"><strong>下課留下</strong><p>一段可重複指令、一份 Codex 產出、一份人工確認清單。</p></div>
+          <div class="card soft-mint"><strong>課後留下</strong><p>一段可重複指令、一份 Codex 產出、一份人工確認清單。</p></div>
         </div>
         <p class="footer-note"><a href="../exercises/">開啟四個練習操作說明</a>，可查看每題的準備資料、操作步驟與可複製指令。</p>
         <div class="inline-actions" aria-label="四個練習快速連結">
@@ -766,14 +815,14 @@
 
     <section class="slide" id="slide-16">
       <div class="canvas dark">
-        <p class="eyebrow">收尾</p>
-        <h2>今天下課前，請留下三樣東西</h2>
+        <p class="eyebrow">課後探索</p>
+        <h2>課後自己套用時，先留下三樣東西</h2>
         <ul class="checklist">
           <li>一個明天可以繼續試的真實行政工作任務。</li>
           <li>一段可重複使用的 Codex 指令。</li>
           <li>一份人工確認清單，知道下一步要問誰、補什麼、改哪裡。</li>
         </ul>
-        <p class="lead">穩定跑過幾次後，再評估要不要整理成方法小抄、助理角色卡、表格工具或正式流程。</p>
+        <p class="lead">課堂先學會共同題目的操作方式；自己的工作套用、效果記錄與收尾整理，留到課後依需求慢慢探索。</p>
         <div class="inline-actions" aria-label="課後回到學習頁">
           <a class="slide-link primary" href="../kit/#review">回練習包填成果檢查</a>
           <a class="slide-link" href="../learn/">回上課入口</a>

@@ -53,9 +53,7 @@
       display: grid;
       align-items: end;
       color: #fff;
-      background:
-        linear-gradient(180deg, rgba(22, 31, 49, 0.34), rgba(22, 31, 49, 0.92)),
-        url("assets/course-workshop-contact-sheet.png") center / cover;
+      background: #202a44;
     }
 
     .hero-inner,
@@ -440,8 +438,68 @@
     }
 
     @media (max-width: 880px) {
+      body {
+        overflow-x: hidden;
+      }
+
       .hero {
         min-height: 82vh;
+      }
+
+      .hero-inner,
+      .shell,
+      .hero-copy,
+      .hero-point,
+      .button-link {
+        min-width: 0;
+        max-width: 100%;
+      }
+
+      .hero-inner,
+      .shell {
+        width: calc(100vw - 32px);
+      }
+
+      h1 {
+        font-size: clamp(1.8rem, 8vw, 2.2rem);
+      }
+
+      .hero-copy,
+      .hero-point span,
+      .card p,
+      .topic p,
+      .timeline-item p,
+      .boundary-card span {
+        display: block;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: break-all;
+      }
+
+      .button-link {
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: break-all;
+      }
+
+      h1,
+      h2,
+      h3 {
+        overflow-wrap: anywhere;
+        word-break: break-all;
+      }
+
+      .hero-copy {
+        font-size: 1.03rem;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions .button-link {
+        width: 100%;
       }
 
       .hero-points,
@@ -478,9 +536,9 @@
         <a class="button-link secondary" href="needs/">查看需求資料</a>
       </div>
       <div class="hero-points" aria-label="課程重點">
-        <div class="hero-point"><b>3 小時</b><span>講師示範、全班照做、個人工作套用與安全收尾。</span></div>
-        <div class="hero-point"><b>5 份完成品</b><span>題目、流程草圖、可重複指令、草稿或檢查表、人工確認清單。</span></div>
-        <div class="hero-point"><b>帶走可用成果</b><span>完成可重複指令、草稿或檢查表，並標出人工確認點。</span></div>
+        <div class="hero-point"><b>90 分鐘內</b><span>課程定位、講師示範、全班照做與課後探索說明。</span></div>
+        <div class="hero-point"><b>共同練一次</b><span>用安全範例完成一次可檢查的草稿、清單或表格檢查。</span></div>
+        <div class="hero-point"><b>課後自行套用</b><span>個人工作套用與收尾整理，留給學員依自己的需求探索。</span></div>
       </div>
     </div>
   </header>
@@ -513,54 +571,54 @@
 
     <section class="section" id="deliverables">
       <div class="section-head">
-        <h2>下課帶走一份練習包</h2>
-        <p class="lede">每位學員完成一個小而可重複的行政工作實驗，重點放在可立即使用的整理方法、草稿成果與檢查清單。</p>
+        <h2>下課帶走一份課後探索包</h2>
+        <p class="lede">課堂聚焦共同練習與操作方法，讓學員知道怎麼開始；自己的工作套用、效果記錄與收尾整理，留到課後自行完成。</p>
       </div>
       <div class="cards">
-        <article class="card"><strong>一個行政題目</strong><p>選最常重複、最常漏項，或明天就會用到的一小段工作。</p></article>
-        <article class="card"><strong>流程草圖</strong><p>寫清楚什麼時候開始、手上有哪些資料、誰要確認、最後交什麼。</p></article>
-        <article class="card"><strong>可重複指令</strong><p>把情境、資料、輸出格式與不能做的事整理成下次能再用的句型。</p></article>
-        <article class="card"><strong>Codex 產出</strong><p>一份草稿、提醒清單、檢查表、異常表或可交接 checklist。</p></article>
-        <article class="card"><strong>人工確認清單</strong><p>標出哪些可修改使用、哪些要人確認、哪些不適合交給 AI。</p></article>
-        <article class="card"><strong>後續評估依據</strong><p>課後可依成果判斷是否整理成固定方法，或再討論更進階的流程設計。</p></article>
+        <article class="card"><strong>一個課後題目</strong><p>先想好最常重複、最常漏項，或明天就會用到的一小段工作。</p></article>
+        <article class="card"><strong>流程整理卡</strong><p>知道課後要怎麼寫清楚開始條件、資料來源、人工確認點與輸出格式。</p></article>
+        <article class="card"><strong>可重複指令模板</strong><p>帶走可直接改寫的句型，課後再改成自己的工作素材。</p></article>
+        <article class="card"><strong>共同練習產出</strong><p>課堂完成一份安全範例的草稿、提醒清單、檢查表或 checklist。</p></article>
+        <article class="card"><strong>人工確認清單</strong><p>學會標出哪些可修改使用、哪些要人確認、哪些不適合交給 AI。</p></article>
+        <article class="card"><strong>課後探索方向</strong><p>知道課後若要整理成固定方法或工具，需要再補哪些資料與確認。</p></article>
       </div>
     </section>
 
     <section class="section" id="flow">
       <div class="section-head">
-        <h2>3 小時課程安排</h2>
-        <p class="lede">先用安全範例建立成功經驗，再讓學員換成自己的低風險工作片段。</p>
+        <h2>90 分鐘內課程安排</h2>
+        <p class="lede">先用安全範例建立操作感，自己的低風險工作片段留到課後自行套用。</p>
       </div>
       <div class="timeline">
         <article class="timeline-item">
           <div class="dot">1</div>
-          <small>0:00-0:20</small>
+          <small>0:00-0:10</small>
           <h3>課程定位</h3>
-          <p>說明本課會完成的練習包與可檢查成果。</p>
+          <p>說明本課會完成共同練習，個人套用與收尾留到課後探索。</p>
         </article>
         <article class="timeline-item">
           <div class="dot">2</div>
-          <small>0:20-0:45</small>
+          <small>0:10-0:25</small>
+          <h3>操作說明</h3>
+          <p>看 Codex 可視化操作說明，理解資料夾、提示詞與人工確認邊界。</p>
+        </article>
+        <article class="timeline-item">
+          <div class="dot">3</div>
+          <small>0:25-0:45</small>
           <h3>講師示範</h3>
           <p>用同一題示範給資料、下指令、看輸出與修正。</p>
         </article>
         <article class="timeline-item">
-          <div class="dot">3</div>
-          <small>0:45-1:20</small>
-          <h3>全班照做</h3>
-          <p>學員先完成一次可檢查的草稿或檢查表。</p>
-        </article>
-        <article class="timeline-item">
           <div class="dot">4</div>
-          <small>1:30-2:00</small>
-          <h3>套用工作</h3>
-          <p>選一段自己的低風險行政工作，畫出流程草圖。</p>
+          <small>0:45-1:15</small>
+          <h3>全班照做</h3>
+          <p>學員用安全範例完成一次可檢查的草稿或檢查表。</p>
         </article>
         <article class="timeline-item">
           <div class="dot">5</div>
-          <small>2:00-3:00</small>
-          <h3>安全收尾</h3>
-          <p>整理可重複指令、人工確認點與下一次練習任務。</p>
+          <small>1:15-1:30</small>
+          <h3>課後探索說明</h3>
+          <p>交代如何把自己的工作套入練習包，以及成果檢查與人工確認方式。</p>
         </article>
       </div>
     </section>
@@ -568,7 +626,7 @@
     <section class="section" id="topics">
       <div class="section-head">
         <h2>四個可選行政情境</h2>
-        <p class="lede">課堂不要求四題全部操作。共同示範後，每位學員只選最接近自己工作的一題。</p>
+        <p class="lede">課堂不要求四題全部操作。共同示範後，學員可先選一題理解，課後再依自己的工作需求套用。</p>
       </div>
       <div class="topics">
         <article class="topic"><strong>課程提醒與每日工作台</strong><p>倒推提醒、整理待辦、列出等待回覆與人工確認事項。</p></article>
@@ -597,7 +655,7 @@
         <div class="boundary">
           <div class="boundary-card"><b>會練會</b><span>整理、摘要、檢查缺漏，產出可修正的草稿。</span></div>
           <div class="boundary-card"><b>會標出</b><span>哪些內容要人工確認、由誰確認、何時才能使用。</span></div>
-          <div class="boundary-card"><b>會帶走</b><span>一份可重複指令、一份工作檢查表與後續改善清單。</span></div>
+          <div class="boundary-card"><b>會帶走</b><span>一份可重複指令、一份工作檢查表與課後探索清單。</span></div>
         </div>
       </div>
     </section>
@@ -616,7 +674,7 @@
 
     <section class="dark-band">
       <h2>後續確認事項</h2>
-      <p>正式安排課程前，建議先確認學員可使用的資料等級、課後成果收集方式，以及後續若要進入正式資料更新或排程自動化時的權限與人工核准流程。本課先讓同仁把工作說清楚、做出可檢查成果，再決定哪些流程值得升級。</p>
+      <p>正式安排課程前，建議先確認學員可使用的安全範例、課後自行探索的成果收集方式，以及後續若要進入正式資料更新或排程自動化時的權限與人工核准流程。本課先讓同仁看懂方法並完成共同練習，再把個人工作套用留給課後探索。</p>
     </section>
   </main>
 

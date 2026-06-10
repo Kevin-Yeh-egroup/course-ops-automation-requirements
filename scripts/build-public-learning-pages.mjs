@@ -520,7 +520,7 @@ function personCard(person) {
 function buildLearnPage() {
   const body = `
     <section class="notice">
-      這頁是給上課當天使用的入口。照順序走就好：先看簡報，再開啟原本的 Codex 可視化操作說明，接著打開練習包與操作題目；需求資料放在另一區，課堂中不需要來回找。
+      這頁是給上課當天使用的入口。照順序走就好：先看簡報，再開啟原本的 Codex 可視化操作說明，接著打開練習包與操作題目；自己的工作套用與收尾整理，留到課後自行探索。
     </section>
     <section class="section">
       <h2>上課照這五步走</h2>
@@ -547,8 +547,8 @@ function buildLearnPage() {
         </article>
         <article class="path-card accent-green">
           <small>第 5 步</small>
-          <div><strong>檢查與收尾</strong><p class="muted">留下可重複指令、Codex 產出、人工確認清單與下一次修正方向。</p></div>
-          <a class="button-link primary" href="/kit/#review">檢查成果</a>
+          <div><strong>課後自行探索</strong><p class="muted">課堂先學共同操作；課後再把自己的工作套入練習包，整理成果與人工確認點。</p></div>
+          <a class="button-link primary" href="/kit/#review">看探索清單</a>
         </article>
       </div>
     </section>
@@ -632,7 +632,7 @@ function buildPersonPage(person) {
 function buildKitPage() {
   const body = `
     <section class="notice">
-      這份練習包不是下載檔，而是課堂中可以直接打開、照著填的材料。學員可以把自己的低風險工作片段放進去操作，課後留下可重複指令與人工確認清單。
+      這份練習包不是下載檔，而是課堂中可以直接打開、照著看與照著填的材料。90 分鐘課堂先完成共同練習；自己的低風險工作片段可留到課後再套用，並留下可重複指令與人工確認清單。
     </section>
     <section class="section next-strip">
       <div>
@@ -749,12 +749,12 @@ function buildExercisePage() {
 
   const body = `
     <section class="notice">
-      四個練習都用同一個基本方法：說明工作、提供資料、指定輸出、標出人工確認、檢查後修正。課堂共同示範後，每位學員選最接近自己工作的一題操作。
+      四個練習都用同一個基本方法：說明工作、提供資料、指定輸出、標出人工確認、檢查後修正。課堂共同示範後，學員可先選一題理解操作方式；自己的真實工作可留到課後自行套用。
     </section>
     <section class="section next-strip">
       <div>
         <strong>你現在在第 4 步：選一題操作。</strong>
-        <p class="muted">選最接近自己工作的題目，照操作步驟跑一次；完成後回到練習包做成果檢查。</p>
+        <p class="muted">先選最接近自己工作的題目，理解準備資料、操作步驟與檢查方式；課後再用自己的素材完整跑一次。</p>
       </div>
       <a class="button-link primary" href="/kit/#review">完成後：檢查成果</a>
     </section>
