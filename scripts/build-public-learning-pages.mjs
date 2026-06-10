@@ -520,7 +520,7 @@ function personCard(person) {
 function buildLearnPage() {
   const body = `
     <section class="notice">
-      這頁是給上課當天使用的入口。照順序走就好：先看簡報，再看一次 Codex 操作說明，接著打開練習包與操作題目；需求資料放在另一區，課堂中不需要來回找。
+      這頁是給上課當天使用的入口。照順序走就好：先看簡報，再開啟原本的 Codex 可視化操作說明，接著打開練習包與操作題目；需求資料放在另一區，課堂中不需要來回找。
     </section>
     <section class="section">
       <h2>上課照這五步走</h2>
@@ -532,7 +532,7 @@ function buildLearnPage() {
         </article>
         <article class="path-card accent-teal">
           <small>第 2 步</small>
-          <div><strong>看操作說明</strong><p class="muted">第一次使用先看小抄；已熟悉 Codex 的同仁可以快速略過。</p></div>
+          <div><strong>看操作說明</strong><p class="muted">開啟原本的可視化教學，用電子報成效分析情境看完整操作。</p></div>
           <a class="button-link primary" href="/guide/">看操作說明</a>
         </article>
         <article class="path-card accent-wine">
@@ -572,110 +572,6 @@ function buildLearnPage() {
   });
 }
 
-function buildGuidePage() {
-  const exampleRows = exercises.map((exercise) => `<tr><td>${escapeHtml(exercise.name)}</td><td>${escapeHtml(exercise.prepare[0])}</td><td>${escapeHtml(exercise.checks[0])}</td></tr>`).join("");
-  const body = `
-    <section class="notice">
-      這頁是 Codex 第一次操作小抄，不是完整技術手冊。上課主線仍是：簡報、操作說明、練習包、操作題目、成果檢查；迷路時回到上課入口。
-    </section>
-    <section class="section next-strip">
-      <div>
-        <strong>你現在在第 2 步：看操作說明。</strong>
-        <p class="muted">先知道怎麼和 Codex 說明工作、指定輸出、標出人工確認點；已經熟悉操作的人可以直接前往練習包。</p>
-      </div>
-      <a class="button-link primary" href="/kit/">下一步：打開練習包</a>
-    </section>
-    <section class="section">
-      <h2>今天只要記住三件事</h2>
-      <div class="cards">
-        <article class="card accent-blue"><strong>把工作說清楚</strong><p>說明你正在處理哪一段工作、手上有什麼資料、最後希望拿到什麼成果。</p></article>
-        <article class="card accent-teal"><strong>指定輸出格式</strong><p>請 Codex 產出摘要、清單、草稿、表格或待確認事項，不要只說「幫我整理」。</p></article>
-        <article class="card accent-gold"><strong>保留人工確認</strong><p>日期、金額、人名、外部發送、正式資料更新與個資，都要請 Codex 另外標出來。</p></article>
-      </div>
-    </section>
-    <section class="section grid two">
-      <article class="panel">
-        <h2>第一次打開 Codex</h2>
-        <ol>
-          <li>依照課堂或公司指定方式安裝並登入 Codex。</li>
-          <li>先建立一個專用資料夾，例如「課程提醒練習」或「逐字稿摘要練習」。</li>
-          <li>只把這次練習需要的資料放進資料夾，避免混入無關檔案。</li>
-          <li>第一句先要求只讀取、整理與分析，不要改正式資料。</li>
-        </ol>
-      </article>
-      <article class="panel">
-        <h2>像開一場工作會議</h2>
-        <p>使用 Codex 時，不一定要一次給完美指令。你可以像和同事或秘書開會一樣，先說明目前遇到的狀況、想完成的結果，以及有哪些限制。Codex 可以協助你一起釐清問題、整理成步驟，並在你確認後接著執行。</p>
-      </article>
-    </section>
-    <section class="section" id="first-prompt">
-      <h2>第一句可以這樣說</h2>
-      <div class="prompt">我正在練習用 Codex 處理一段行政工作。
-請先只讀取、整理與分析，不要修改檔案、不要寄出訊息、不要寫回正式資料。
-
-我的工作目標是：
-我提供的資料是：
-我希望你產出：
-請特別列出需要人工確認的地方：
-
-如果資料不足，請先問我問題，不要自己猜。</div>
-    </section>
-    <section class="section">
-      <h2>一次操作照這七步走</h2>
-      <div class="cards">
-        <article class="card accent-blue"><strong>1. 說明情境</strong><p>這是什麼工作？為什麼現在要處理？</p></article>
-        <article class="card accent-teal"><strong>2. 提供資料</strong><p>貼上內容、上傳檔案，或說明資料放在哪裡。</p></article>
-        <article class="card accent-gold"><strong>3. 指定輸出</strong><p>說清楚要摘要、清單、草稿、表格或檢查表。</p></article>
-        <article class="card accent-wine"><strong>4. 標出人審</strong><p>請 Codex 把需要人判斷的地方另外列出。</p></article>
-        <article class="card accent-green"><strong>5. 先拆工作</strong><p>若資料複雜，先請 Codex 拆流程與補問問題。</p></article>
-        <article class="card accent-blue"><strong>6. 人工檢查</strong><p>確認日期、金額、稱謂、事實與對外風險。</p></article>
-        <article class="card accent-teal"><strong>7. 要求修正版</strong><p>把你看完後的修正意見交給 Codex，再產出第二版。</p></article>
-      </div>
-    </section>
-    <section class="section">
-      <h2>四個行政練習怎麼開始</h2>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>練習題目</th><th>先準備一份資料</th><th>第一個檢查重點</th></tr></thead>
-          <tbody>${exampleRows}</tbody>
-        </table>
-      </div>
-      <p><a class="button-link primary" href="/exercises/">前往四個操作題目</a></p>
-    </section>
-    <section class="section">
-      <h2>電子報成效分析延伸範例</h2>
-      <p class="muted">原本的 Codex 操作說明用電子報成效分析當情境。這個範例保留在這裡，讓學員看到「同一個方法也能用在報表分析」，但課堂不要求每個人都做電子報。</p>
-      <div class="cards">
-        <article class="card accent-blue"><strong>1. 製作與寄送</strong><p>先在既有系統完成電子報，寄送後再下載報表。</p></article>
-        <article class="card accent-teal"><strong>2. 報表放同一資料夾</strong><p>把開信、點擊、送達、退信等報表集中，檔名加上日期與活動名稱。</p></article>
-        <article class="card accent-gold"><strong>3. 請 Codex 分析</strong><p>要求它找熱門連結、異常指標、內容區塊表現與下次改善清單。</p></article>
-      </div>
-    </section>
-    <section class="section">
-      <h2>安全收尾</h2>
-      <div class="cards">
-        <article class="card soft-mint"><strong>可以先交給 Codex</strong><p>整理、摘要、檢查缺漏、產生草稿、列待辦。</p></article>
-        <article class="card soft-amber"><strong>一定要人工確認</strong><p>日期、金額、人名、單位、發票、核銷、月結與對外文字。</p></article>
-        <article class="card soft-blush"><strong>交由人工確認後再處理</strong><p>外部寄送、正式寫回、付款、薪資、月結或含個資的對外發布。</p></article>
-      </div>
-    </section>
-    <section class="section">
-      <h2>官方資料與進階補充</h2>
-      <p class="muted">Codex 功能與安裝方式可能會更新，上課時以課堂示範與公司指定方式為主。需要進一步閱讀時，再參考官方資料。</p>
-      <ul>
-        <li><a href="https://developers.openai.com/codex/quickstart">OpenAI Developers：Codex Quickstart</a></li>
-        <li><a href="https://developers.openai.com/codex/app">OpenAI Developers：Codex App</a></li>
-        <li><a href="https://developers.openai.com/codex/learn/best-practices">OpenAI Developers：Codex Best Practices</a></li>
-      </ul>
-    </section>`;
-  return pageShell({
-    title: "Codex 操作說明",
-    eyebrow: "第一次使用小抄",
-    intro: "用一頁看懂如何開始和 Codex 討論工作、整理資料、產出草稿，並保留人工確認。",
-    body,
-    active: "guide",
-  });
-}
 
 function buildNeedsIndex() {
   const commonNeeds = existsSync(commonNeedsPath) ? markdownToHtml(readFileSync(commonNeedsPath, "utf8")) : "";
@@ -883,7 +779,6 @@ function writePage(path, html) {
 
 writePage("public/needs/index.html", buildNeedsIndex());
 writePage("public/learn/index.html", buildLearnPage());
-writePage("public/guide/index.html", buildGuidePage());
 for (const person of people) {
   writePage(join("public/needs", person.slug, "index.html"), buildPersonPage(person));
 }
