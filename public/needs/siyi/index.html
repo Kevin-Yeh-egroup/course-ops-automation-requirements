@@ -56,6 +56,7 @@
       color: var(--ink);
       font-weight: 800;
       text-decoration: none;
+      white-space: nowrap;
     }
     .button-link.primary, .nav a.primary { border-color: var(--blue); background: var(--blue); color: #fff; }
     .hero {
@@ -95,7 +96,7 @@
     }
     .path {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 14px;
     }
     .path-card {
@@ -174,6 +175,7 @@
       <a href="/">首頁</a>
       <a href="/learn/">上課入口</a>
       <a href="/slides/">課程簡報</a>
+      <a href="/guide/">操作說明</a>
       <a href="/kit/">練習包</a>
       <a href="/exercises/">操作題目</a>
       <a class="primary" href="/needs/">需求資料</a>
@@ -497,7 +499,7 @@
     </section>
   </main>
   <footer>
-    <div class="shell">版本：2026.06.09｜狀態：public-with-noindex review｜本頁可用網址瀏覽，但 noindex 不是隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
+    <div class="shell">版本：2026.06.10｜狀態：public-with-noindex review｜本頁可用網址瀏覽，但 noindex 不是隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
   </footer>
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";

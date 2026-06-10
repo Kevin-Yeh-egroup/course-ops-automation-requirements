@@ -56,6 +56,7 @@
       color: var(--ink);
       font-weight: 800;
       text-decoration: none;
+      white-space: nowrap;
     }
     .button-link.primary, .nav a.primary { border-color: var(--blue); background: var(--blue); color: #fff; }
     .hero {
@@ -95,7 +96,7 @@
     }
     .path {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 14px;
     }
     .path-card {
@@ -124,8 +125,6 @@
       padding: 16px 18px;
       background: var(--sky);
     }
-    section[id] { scroll-margin-top: 92px; }
-    .button-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
     .prompt {
       overflow-x: auto;
       white-space: pre-wrap;
@@ -176,6 +175,7 @@
       <a href="/">首頁</a>
       <a href="/learn/">上課入口</a>
       <a href="/slides/">課程簡報</a>
+      <a href="/guide/">操作說明</a>
       <a href="/kit/">練習包</a>
       <a class="primary" href="/exercises/">操作題目</a>
       <a href="/needs/">需求資料</a>
@@ -195,13 +195,10 @@
     </section>
     <section class="section next-strip">
       <div>
-        <strong>你現在在第 3 步：選一題操作。</strong>
+        <strong>你現在在第 4 步：選一題操作。</strong>
         <p class="muted">選最接近自己工作的題目，照操作步驟跑一次；完成後回到練習包做成果檢查。</p>
       </div>
-      <div class="button-row">
-        <a class="button-link" href="/slides/#slide-8">回簡報：四個可選題目</a>
-        <a class="button-link primary" href="/kit/#review">完成後：檢查成果</a>
-      </div>
+      <a class="button-link primary" href="/kit/#review">完成後：檢查成果</a>
     </section>
     <section class="section">
       <h2>四個練習題目</h2>
@@ -241,7 +238,6 @@
 請列出你判斷的依據，不要自動寄出或改任何正式資料。
 
 資料：</div>
-        <p><a class="button-link" href="/slides/#slide-9">回簡報：題目一</a></p>
       </div>
     </section>
     <section class="section" id="transcript-content">
@@ -261,7 +257,6 @@
 請使用台灣職場常用的繁體中文語氣，避免誇大或替我做正式發布判斷。
 
 資料：</div>
-        <p><a class="button-link" href="/slides/#slide-10">回簡報：題目二</a></p>
       </div>
     </section>
     <section class="section" id="sheet-status">
@@ -281,7 +276,6 @@
 若資料不足，請列出補問問題；不要替我做正式核銷或付款結論。
 
 資料：</div>
-        <p><a class="button-link" href="/slides/#slide-11">回簡報：題目三</a></p>
       </div>
     </section>
     <section class="section" id="event-admin">
@@ -301,12 +295,11 @@
 請把需要人工確認的場地、餐食、名單、外部通知與個資項目另外列出。
 
 資料：</div>
-        <p><a class="button-link" href="/slides/#slide-12">回簡報：題目四</a></p>
       </div>
     </section>
   </main>
   <footer>
-    <div class="shell">版本：2026.06.09｜狀態：public-with-noindex review｜本頁可用網址瀏覽，但 noindex 不是隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
+    <div class="shell">版本：2026.06.10｜狀態：public-with-noindex review｜本頁可用網址瀏覽，但 noindex 不是隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
   </footer>
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";

@@ -56,6 +56,7 @@
       color: var(--ink);
       font-weight: 800;
       text-decoration: none;
+      white-space: nowrap;
     }
     .button-link.primary, .nav a.primary { border-color: var(--blue); background: var(--blue); color: #fff; }
     .hero {
@@ -95,7 +96,7 @@
     }
     .path {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 14px;
     }
     .path-card {
@@ -124,8 +125,6 @@
       padding: 16px 18px;
       background: var(--sky);
     }
-    section[id] { scroll-margin-top: 92px; }
-    .button-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
     .prompt {
       overflow-x: auto;
       white-space: pre-wrap;
@@ -176,6 +175,7 @@
       <a href="/">首頁</a>
       <a href="/learn/">上課入口</a>
       <a href="/slides/">課程簡報</a>
+      <a href="/guide/">操作說明</a>
       <a class="primary" href="/kit/">練習包</a>
       <a href="/exercises/">操作題目</a>
       <a href="/needs/">需求資料</a>
@@ -195,13 +195,10 @@
     </section>
     <section class="section next-strip">
       <div>
-        <strong>你現在在第 2 步：打開練習包。</strong>
-        <p class="muted">先填工作流程整理卡與共用指令模板；填完後，到操作題目頁選一題實作。</p>
+        <strong>你現在在第 3 步：打開練習包。</strong>
+        <p class="muted">先填工作流程整理卡與共用指令模板；若不確定怎麼下第一句指令，可先回操作說明。填完後，到操作題目頁選一題實作。</p>
       </div>
-      <div class="button-row">
-        <a class="button-link" href="/slides/#slide-2">回簡報：完成品</a>
-        <a class="button-link primary" href="/exercises/">下一步：選操作題目</a>
-      </div>
+      <a class="button-link primary" href="/exercises/">下一步：選操作題目</a>
     </section>
     <section class="section">
       <h2>練習包內容</h2>
@@ -224,7 +221,6 @@
           <li>哪些地方最容易漏，或需要人判斷？</li>
           <li>最後要交付提醒、草稿、表格、文件或 checklist？</li>
         </ol>
-        <p><a class="button-link" href="/slides/#slide-5">回簡報：把工作講清楚卡</a></p>
       </article>
       <article class="panel">
         <h2>成果檢查表</h2>
@@ -235,7 +231,6 @@
           <li>下次再跑時，資料與指令是否足夠清楚？</li>
           <li>這次有沒有省下重複整理或找缺漏的時間？</li>
         </ol>
-        <p><a class="button-link" href="/slides/#slide-13">回簡報：檢查輸出</a></p>
       </article>
     </section>
     <section class="section" id="prompt-template">
@@ -252,7 +247,6 @@
 1. 可修改使用
 2. 需要人工確認
 3. 需要補資料或暫時不適合處理</div>
-      <p><a class="button-link" href="/slides/#slide-4">回簡報：共用操作句型</a></p>
     </section>
     <section class="section" id="human-checklist">
       <h2>人工確認清單</h2>
@@ -261,7 +255,6 @@
         <article class="card soft-amber"><strong>需要人工確認</strong><p>日期、金額、稱謂、收件人、對外語氣、正式欄位。</p></article>
         <article class="card soft-blush"><strong>需要保留人工決策</strong><p>外部發送、正式資料更新、個資揭露、金流、核銷或月結相關判斷。</p></article>
       </div>
-      <p><a class="button-link" href="/slides/#slide-7">回簡報：安全使用方式</a></p>
     </section>
     <section class="section" id="review">
       <h2>效果記錄表</h2>
@@ -277,11 +270,10 @@
           </tbody>
         </table>
       </div>
-      <p><a class="button-link" href="/slides/#slide-16">回簡報：收尾</a></p>
     </section>
   </main>
   <footer>
-    <div class="shell">版本：2026.06.09｜狀態：public-with-noindex review｜本頁可用網址瀏覽，但 noindex 不是隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
+    <div class="shell">版本：2026.06.10｜狀態：public-with-noindex review｜本頁可用網址瀏覽，但 noindex 不是隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
   </footer>
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";

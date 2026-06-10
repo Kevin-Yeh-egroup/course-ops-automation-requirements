@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>素菁需求整理</title>
+  <title>Codex 操作說明</title>
   <style>
     :root {
       color-scheme: light;
@@ -175,80 +175,113 @@
       <a href="/">首頁</a>
       <a href="/learn/">上課入口</a>
       <a href="/slides/">課程簡報</a>
-      <a href="/guide/">操作說明</a>
+      <a class="primary" href="/guide/">操作說明</a>
       <a href="/kit/">練習包</a>
       <a href="/exercises/">操作題目</a>
-      <a class="primary" href="/needs/">需求資料</a>
+      <a href="/needs/">需求資料</a>
     </nav>
   </header>
   <section class="hero">
     <div class="shell">
-      <p class="eyebrow">個別需求資料</p>
-      <h1>素菁需求整理</h1>
-      <p class="lead">需要半自動月結助理，處理資料匯入、規則試算、個人確認包與匯款前檢查。</p>
+      <p class="eyebrow">第一次使用小抄</p>
+      <h1>Codex 操作說明</h1>
+      <p class="lead">用一頁看懂如何開始和 Codex 討論工作、整理資料、產出草稿，並保留人工確認。</p>
     </div>
   </section>
-  <main class="shell md-page">
+  <main class="shell ">
     
     <section class="notice">
-      本頁來源：<code>people/sujing/needs-analysis.md</code>。內容是需求整理與工作流分析，不是正式系統規格；涉及外部發送、正式資料更新、個資、金額或月結的動作仍需人工確認。
+      這頁是 Codex 第一次操作小抄，不是完整技術手冊。上課主線仍是：簡報、操作說明、練習包、操作題目、成果檢查；迷路時回到上課入口。
+    </section>
+    <section class="section next-strip">
+      <div>
+        <strong>你現在在第 2 步：看操作說明。</strong>
+        <p class="muted">先知道怎麼和 Codex 說明工作、指定輸出、標出人工確認點；已經熟悉操作的人可以直接前往練習包。</p>
+      </div>
+      <a class="button-link primary" href="/kit/">下一步：打開練習包</a>
     </section>
     <section class="section">
-      <div class="card accent-teal">
-        <strong>素菁｜帳務、月結與對帳</strong>
-        <p>需要半自動月結助理，處理資料匯入、規則試算、個人確認包與匯款前檢查。</p>
-        <div class="tag-row"><span class="tag">月結</span><span class="tag">帳務</span><span class="tag">對帳</span><span class="tag">人工核准</span></div>
+      <h2>今天只要記住三件事</h2>
+      <div class="cards">
+        <article class="card accent-blue"><strong>把工作說清楚</strong><p>說明你正在處理哪一段工作、手上有什麼資料、最後希望拿到什麼成果。</p></article>
+        <article class="card accent-teal"><strong>指定輸出格式</strong><p>請 Codex 產出摘要、清單、草稿、表格或待確認事項，不要只說「幫我整理」。</p></article>
+        <article class="card accent-gold"><strong>保留人工確認</strong><p>日期、金額、人名、外部發送、正式資料更新與個資，都要請 Codex 另外標出來。</p></article>
       </div>
     </section>
-    <section class="section md">
-      <article><h1 id="素菁帳務-月結需求摘要">素菁帳務/月結需求摘要</h1>
-<h2 id="一句話結論">一句話結論</h2>
-<p>素菁的需求不是「把一張表整理漂亮」，而是建立一個半自動的月結助理：把課務、諮詢、企劃、交通、補扣款與人員歷史累積整理成可追溯的月結試算、個人確認包、Ivy 報帳輸出與匯款前檢查。</p>
-<p>這份摘要依據先前「分析素菁帳務需求」聊天與已做過的月結工作台雛形整理。因為內容涉及薪資、發票與付款風險，公開版只放流程與需求結論，不放完整敏感原文。</p>
-<h2 id="核心工作流">核心工作流</h2>
-<pre class="mermaid">flowchart TD
-  A[&quot;課務與工作紀錄來源&quot;] --&gt; B[&quot;工作紀錄正規化&quot;]
-  B --&gt; C[&quot;價格規則與人員歷史比對&quot;]
-  C --&gt; D[&quot;月結試算&quot;]
-  D --&gt; E[&quot;異常與缺資料清單&quot;]
-  D --&gt; F[&quot;個人確認包&quot;]
-  E --&gt; G[&quot;素菁人工審核&quot;]
-  F --&gt; H[&quot;夥伴確認與修正&quot;]
-  G --&gt; D
-  H --&gt; D
-  D --&gt; I[&quot;Ivy 報帳輸出&quot;]
-  I --&gt; J[&quot;匯款前檢查&quot;]</pre>
-<h2 id="主要資料來源">主要資料來源</h2>
-<div class="table-wrap"><table><thead><tr><th>來源</th><th>可能內容</th><th>第一版處理方式</th></tr></thead><tbody><tr><td>Calendar / 課程紀錄</td><td>課程、訪視、講師、諮詢、內外部工作</td><td>匯入後轉成統一工作紀錄</td></tr><tr><td>Google 表單</td><td>規劃師工時、企劃工時、報帳資料</td><td>檢查欄位、日期區間與人名一致性</td></tr><tr><td>InfoCenter 匯出</td><td>薪資或案件相關匯出</td><td>當作來源之一，不直接視為最終正確</td></tr><tr><td>個人歷史表</td><td>累積趟數、級距、個人例外</td><td>用於判斷單價與升級狀態</td></tr><tr><td>專案/群組紀錄</td><td>企劃件數、稿件、小金句、粉專等</td><td>先建立待確認清單，避免自動判錯</td></tr><tr><td>補扣款資料</td><td>退款、補稅、差旅、設備扣款等</td><td>一律列入高風險人工審核</td></tr></tbody></table></div>
-<h2 id="主要痛點">主要痛點</h2>
-<div class="table-wrap"><table><thead><tr><th>痛點</th><th>影響</th></tr></thead><tbody><tr><td>資料來源太散</td><td>每月要跨 Calendar、表單、InfoCenter、個人表與訊息紀錄重建脈絡</td></tr><tr><td>計價規則複雜</td><td>同一人可能因角色、工作類型、內外部、歷史累積或專案而有不同規則</td></tr><tr><td>歷史累積不能斷</td><td>單價或級距可能依累積次數變動，不能只看本月資料</td></tr><tr><td>本人確認耗時</td><td>需要把明細整理給夥伴確認，錯誤回報後又要回頭修正</td></tr><tr><td>Ivy 輸出要可對帳</td><td>月結結果要能轉成 Ivy 需要的分類表與後續合併資料</td></tr><tr><td>匯款/發票風險高</td><td>不適合第一版直接自動送出或正式開立，必須先做預覽與檢查</td></tr></tbody></table></div>
-<h2 id="codex-可自動化的任務">Codex 可自動化的任務</h2>
-<div class="table-wrap"><table><thead><tr><th>階段</th><th>Codex 任務</th><th>產出</th></tr></thead><tbody><tr><td>P0 規則清冊</td><td>從既有表格與訪談整理人員、工作類型、計價規則、例外條件</td><td>規則草稿與缺資料清單</td></tr><tr><td>P1 資料匯入</td><td>讀取 Calendar、Google 表單、InfoCenter 匯出與人工清單</td><td>統一格式的工作紀錄</td></tr><tr><td>P2 缺漏檢查</td><td>檢查人名、日期、工作類型、數量、來源是否可對上</td><td>異常清單</td></tr><tr><td>P3 月結試算</td><td>依規則與歷史狀態計算本月明細</td><td>試算表、個人小計、差異報告</td></tr><tr><td>P4 個人確認包</td><td>產生每位夥伴可閱讀的月結摘要</td><td>可複製文字、PDF 或 Sheet 草稿</td></tr><tr><td>P5 Ivy 輸出</td><td>把確認後資料轉成 Ivy 需要的分類格式</td><td>Ivy 報帳輸出預覽</td></tr><tr><td>P6 匯款前檢查</td><td>檢查重複人名、負數、分類加總、帳戶缺漏</td><td>匯款前風險清單</td></tr></tbody></table></div>
-<h2 id="可能的解決方案">可能的解決方案</h2>
-<h3 id="方案-a-月結資料檢查包">方案 A：月結資料檢查包</h3>
-<p>先不做完整系統，只讓 Codex 每月讀取匯出檔，產生缺漏清單、異常清單、個人對帳草稿與 Ivy 輸出預覽。</p>
-<p>適合第一步，因為風險低、資料仍由素菁確認。</p>
-<h3 id="方案-b-素菁月結工作台">方案 B：素菁月結工作台</h3>
-<p>把先前雛形延伸成內部工作台，包含月結 Dashboard、類別工作價格、人員薪資檔案、待派薪草稿、Ivy 輸出預覽。</p>
-<p>適合在規則清冊穩定後推進。</p>
-<h3 id="方案-c-課務到月結的共用資料管線">方案 C：課務到月結的共用資料管線</h3>
-<p>把佩欣、瑜君等課務端整理出的課程狀態，轉成素菁月結端可吃的標準欄位，減少月底重新整理。</p>
-<p>適合在課務提醒工具與月結工作台都穩定後串接。</p>
-<h2 id="自動化邊界">自動化邊界</h2>
-<p>第一版可以做：</p>
-<ul>
-<li>匯入、整理、比對、試算。</li>
-<li>產生個人確認包、Ivy 輸出預覽、匯款前檢查表。</li>
-<li>標出缺規則、缺資料、疑似重複與金額異常。</li>
-</ul>
-<p>第一版不應直接做：</p>
-<ul>
-<li>自動匯款。</li>
-<li>自動發送薪資或對帳訊息。</li>
-<li>自動正式開發票。</li>
-<li>自動改寫薪資主檔或付款資料。</li>
-<li>在公開頁放真實個資、帳戶、完整薪資明細或原始逐字稿。</li>
-</ul></article>
+    <section class="section grid two">
+      <article class="panel">
+        <h2>第一次打開 Codex</h2>
+        <ol>
+          <li>依照課堂或公司指定方式安裝並登入 Codex。</li>
+          <li>先建立一個專用資料夾，例如「課程提醒練習」或「逐字稿摘要練習」。</li>
+          <li>只把這次練習需要的資料放進資料夾，避免混入無關檔案。</li>
+          <li>第一句先要求只讀取、整理與分析，不要改正式資料。</li>
+        </ol>
+      </article>
+      <article class="panel">
+        <h2>像開一場工作會議</h2>
+        <p>使用 Codex 時，不一定要一次給完美指令。你可以像和同事或秘書開會一樣，先說明目前遇到的狀況、想完成的結果，以及有哪些限制。Codex 可以協助你一起釐清問題、整理成步驟，並在你確認後接著執行。</p>
+      </article>
+    </section>
+    <section class="section" id="first-prompt">
+      <h2>第一句可以這樣說</h2>
+      <div class="prompt">我正在練習用 Codex 處理一段行政工作。
+請先只讀取、整理與分析，不要修改檔案、不要寄出訊息、不要寫回正式資料。
+
+我的工作目標是：
+我提供的資料是：
+我希望你產出：
+請特別列出需要人工確認的地方：
+
+如果資料不足，請先問我問題，不要自己猜。</div>
+    </section>
+    <section class="section">
+      <h2>一次操作照這七步走</h2>
+      <div class="cards">
+        <article class="card accent-blue"><strong>1. 說明情境</strong><p>這是什麼工作？為什麼現在要處理？</p></article>
+        <article class="card accent-teal"><strong>2. 提供資料</strong><p>貼上內容、上傳檔案，或說明資料放在哪裡。</p></article>
+        <article class="card accent-gold"><strong>3. 指定輸出</strong><p>說清楚要摘要、清單、草稿、表格或檢查表。</p></article>
+        <article class="card accent-wine"><strong>4. 標出人審</strong><p>請 Codex 把需要人判斷的地方另外列出。</p></article>
+        <article class="card accent-green"><strong>5. 先拆工作</strong><p>若資料複雜，先請 Codex 拆流程與補問問題。</p></article>
+        <article class="card accent-blue"><strong>6. 人工檢查</strong><p>確認日期、金額、稱謂、事實與對外風險。</p></article>
+        <article class="card accent-teal"><strong>7. 要求修正版</strong><p>把你看完後的修正意見交給 Codex，再產出第二版。</p></article>
+      </div>
+    </section>
+    <section class="section">
+      <h2>四個行政練習怎麼開始</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>練習題目</th><th>先準備一份資料</th><th>第一個檢查重點</th></tr></thead>
+          <tbody><tr><td>課程提醒與每日工作台</td><td>一筆課程資料或活動資料</td><td>日期與倒推提醒是否正確</td></tr><tr><td>逐字稿與內容草稿</td><td>一段逐字稿、會議紀錄或音檔摘要</td><td>是否有忠於原意</td></tr><tr><td>表格狀態與核銷檢查</td><td>一份表格或 CSV</td><td>是否保留來源列或辨識依據</td></tr><tr><td>活動行政包</td><td>活動日期、地點、對象與人數</td><td>分工是否清楚</td></tr></tbody>
+        </table>
+      </div>
+      <p><a class="button-link primary" href="/exercises/">前往四個操作題目</a></p>
+    </section>
+    <section class="section">
+      <h2>電子報成效分析延伸範例</h2>
+      <p class="muted">原本的 Codex 操作說明用電子報成效分析當情境。這個範例保留在這裡，讓學員看到「同一個方法也能用在報表分析」，但課堂不要求每個人都做電子報。</p>
+      <div class="cards">
+        <article class="card accent-blue"><strong>1. 製作與寄送</strong><p>先在既有系統完成電子報，寄送後再下載報表。</p></article>
+        <article class="card accent-teal"><strong>2. 報表放同一資料夾</strong><p>把開信、點擊、送達、退信等報表集中，檔名加上日期與活動名稱。</p></article>
+        <article class="card accent-gold"><strong>3. 請 Codex 分析</strong><p>要求它找熱門連結、異常指標、內容區塊表現與下次改善清單。</p></article>
+      </div>
+    </section>
+    <section class="section">
+      <h2>安全收尾</h2>
+      <div class="cards">
+        <article class="card soft-mint"><strong>可以先交給 Codex</strong><p>整理、摘要、檢查缺漏、產生草稿、列待辦。</p></article>
+        <article class="card soft-amber"><strong>一定要人工確認</strong><p>日期、金額、人名、單位、發票、核銷、月結與對外文字。</p></article>
+        <article class="card soft-blush"><strong>交由人工確認後再處理</strong><p>外部寄送、正式寫回、付款、薪資、月結或含個資的對外發布。</p></article>
+      </div>
+    </section>
+    <section class="section">
+      <h2>官方資料與進階補充</h2>
+      <p class="muted">Codex 功能與安裝方式可能會更新，上課時以課堂示範與公司指定方式為主。需要進一步閱讀時，再參考官方資料。</p>
+      <ul>
+        <li><a href="https://developers.openai.com/codex/quickstart">OpenAI Developers：Codex Quickstart</a></li>
+        <li><a href="https://developers.openai.com/codex/app">OpenAI Developers：Codex App</a></li>
+        <li><a href="https://developers.openai.com/codex/learn/best-practices">OpenAI Developers：Codex Best Practices</a></li>
+      </ul>
     </section>
   </main>
   <footer>

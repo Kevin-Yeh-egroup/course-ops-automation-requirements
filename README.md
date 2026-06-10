@@ -1,6 +1,6 @@
-# Codex 行政工作實驗課｜主管版課綱
+# Codex 行政工作實驗課｜公開審閱與學員教材
 
-這個 repo 目前的 production 首頁改為主管閱讀用的「Codex 行政工作實驗課」課綱頁。公開頁只呈現課程目的、學習成果、三小時安排、學員完成品、風險控管與主管決策點，不放同仁逐字稿、個別需求細節、內部系統操作細節或正式資料。
+這個 repo 目前的 production 以「Codex 行政工作實驗課」總入口為主，並提供學員上課入口、課程簡報、Codex 操作說明、練習包、操作題目與需求資料總覽。公開頁只呈現課程目的、學習成果、學員操作材料、風險控管與需求摘要，不放同仁逐字稿、個別敏感細節、內部系統操作細節或正式資料。
 
 ## Production URL
 
@@ -9,7 +9,7 @@
 ## 公開輸出邊界
 
 - Vercel `outputDirectory` 設為 `public/`。
-- Production 只部署主管版課程頁、`robots.txt` 與安全視覺資產。
+- Production 只部署總入口、學員教材頁、需求摘要頁、`robots.txt` 與安全視覺資產。
 - `people/`、`shared-modules/`、`training/`、`outputs/` 等內部材料不作為 production 靜態輸出目錄。
 - `noindex/nofollow/noarchive` 保留於 meta、Vercel header 與 robots.txt。
 - `noindex` 不是權限控管，因此 production 首頁仍避免放入敏感資訊。
