@@ -940,7 +940,29 @@
         </div>
         <div class="inline-actions" aria-label="帳號與外掛教學連結">
           <a class="slide-link primary" href="../publish/#accounts">看帳號與外掛步驟</a>
+          <a class="slide-link" href="../publish/#authorization">看授權怎麼選</a>
           <a class="slide-link" href="../publish/">回公開部署總覽</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-authorization">
+      <div class="canvas">
+        <p class="eyebrow">授權判斷</p>
+        <h2>看到確認畫面，不急著按同意</h2>
+        <p class="lead">以現在這個課程網站的授權方式來教：GitHub 用自己的帳號，Vercel 只連本次 repo，Codex 要推送或部署前先列出會做什麼，等本人確認。</p>
+        <div class="grid two">
+          <div class="card accent-blue"><strong>GitHub 問要授權</strong><p>選自己的帳號；能選 repo 時，選 Only select repositories，只勾本次要用的 repo。</p></div>
+          <div class="card accent-teal"><strong>Vercel 問要匯入</strong><p>選剛剛建立的 repo；練習先用個人或課堂測試 workspace，不直接選公司正式 team。</p></div>
+          <div class="card accent-wine"><strong>Codex 問能不能 push</strong><p>先請它列出會提交的檔案，確認沒有個資、.env、金鑰、內部表單，再同意。</p></div>
+          <div class="card accent-gold"><strong>看到付款、domain、公司權限</strong><p>先停下來。這些不是課堂練習要直接確認的項目。</p></div>
+        </div>
+        <div class="prompt compact">如果畫面跳出授權或確認，請先幫我判斷：
+這會不會公開內容、存取其他 repo、改公司設定或產生費用？
+如果安全，請告訴我應該選哪一個；如果不安全，請叫我停下來。</div>
+        <div class="inline-actions" aria-label="授權判斷教學連結">
+          <a class="slide-link primary" href="../publish/#authorization">看完整授權選擇表</a>
+          <a class="slide-link" href="../publish/#prompts">看操作指令</a>
         </div>
       </div>
     </section>

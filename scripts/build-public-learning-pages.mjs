@@ -149,6 +149,7 @@ const exercises = [
 ];
 
 const commonNeedsPath = "shared-modules/office-common-needs.md";
+const workflowIntakePath = "shared-modules/workflow-intake-ai-evaluation-template.md";
 const navItems = [
   { key: "home", label: "首頁", href: "/" },
   { key: "learn", label: "上課入口", href: "/learn/" },
@@ -340,7 +341,7 @@ function pageShell({ title, eyebrow, intro, body, sectionClass = "", active = "h
       font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
     }
     * { box-sizing: border-box; }
-    body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.72; }
+    body { margin: 0; overflow-x: hidden; background: var(--bg); color: var(--ink); line-height: 1.72; }
     a { color: inherit; }
     .topbar {
       position: sticky;
@@ -356,7 +357,7 @@ function pageShell({ title, eyebrow, intro, body, sectionClass = "", active = "h
       backdrop-filter: blur(10px);
     }
     .brand { font-weight: 900; color: var(--navy); }
-    .nav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+    .nav { max-width: 100%; min-width: 0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
     .nav a, .button-link {
       display: inline-flex;
       align-items: center;
@@ -377,7 +378,7 @@ function pageShell({ title, eyebrow, intro, body, sectionClass = "", active = "h
       color: #fff;
       padding: clamp(42px, 8vw, 84px) 0;
     }
-    .shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+    .shell { width: min(1120px, calc(100% - 36px)); min-width: 0; margin: 0 auto; }
     .hero .shell { display: grid; gap: 18px; }
     .eyebrow { margin: 0; color: #9be1d5; font-size: 0.94rem; font-weight: 900; }
     h1, h2, h3, h4, p { margin-top: 0; }
@@ -385,10 +386,11 @@ function pageShell({ title, eyebrow, intro, body, sectionClass = "", active = "h
     .lead { max-width: 880px; margin-bottom: 0; color: rgba(255, 255, 255, 0.82); font-size: clamp(1.05rem, 2vw, 1.25rem); }
     main.shell { padding: 42px 0 76px; }
     .section { margin: 34px 0; }
-    .cards, .grid { display: grid; gap: 16px; }
+    .cards, .grid { min-width: 0; display: grid; gap: 16px; }
     .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .card, .panel, .md article {
+      min-width: 0;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--paper);
@@ -491,12 +493,12 @@ function pageShell({ title, eyebrow, intro, body, sectionClass = "", active = "h
     }
     .steps { counter-reset: step; display: grid; gap: 10px; }
     .steps li { margin: 0 0 8px; }
-    .md { display: grid; gap: 20px; }
+    .md { min-width: 0; display: grid; gap: 20px; }
     .md article { padding: clamp(20px, 4vw, 34px); }
     .md h1 { color: var(--navy); font-size: clamp(1.9rem, 4vw, 3rem); }
     .md h2 { margin-top: 34px; color: var(--navy); font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.25; }
     .md h3 { margin-top: 24px; color: var(--navy); font-size: 1.22rem; }
-    .table-wrap { overflow-x: auto; margin: 16px 0 24px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+    .table-wrap { max-width: 100%; min-width: 0; overflow-x: auto; margin: 16px 0 24px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
     table { width: 100%; min-width: 720px; border-collapse: collapse; }
     th, td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
     th { background: #eef1f6; color: var(--navy); white-space: nowrap; }
@@ -630,6 +632,13 @@ function buildNeedsIndex() {
     <section class="notice">
       這裡放回每位夥伴的需求整理頁，並保留辦公室共通需求摘要。這些頁面是給內部討論與課程設計使用，仍維持 noindex。
     </section>
+    <section class="section next-strip">
+      <div>
+        <strong>工作流蒐集與 AI 評估模板</strong>
+        <p class="muted">後續陪夥伴補工作細節時，先用同一份模板整理觸發、資料來源、步驟、產出、人工確認與 AI 協助邊界，再決定是否進入沙盒實驗。</p>
+      </div>
+      <a class="button-link primary" href="/needs/workflow-intake/">打開蒐集模板</a>
+    </section>
     <section class="section">
       <h2>已整理的夥伴需求</h2>
       <div class="cards">${donePeople.map(personCard).join("")}</div>
@@ -646,6 +655,37 @@ function buildNeedsIndex() {
     eyebrow: "需求資料",
     intro: "這一區是課程設計與後續工具規劃資料，不是學員上課的主要操作路徑。",
     body,
+    active: "needs",
+  });
+}
+
+function buildWorkflowIntakePage() {
+  const sourceMarkdown = existsSync(workflowIntakePath)
+    ? readFileSync(workflowIntakePath, "utf8")
+    : "# 工作流蒐集與 AI 評估模板\n\n模板尚未建立。";
+  const body = `
+    <section class="notice">
+      本頁來源：<code>${escapeHtml(workflowIntakePath)}</code>。這是陪伴夥伴蒐集工作細節的共用模板，不是正式系統規格；涉及個資、帳務、個案、外部發送或正式寫回時，仍需保留人工確認。
+    </section>
+    <section class="section grid two">
+      <article class="card accent-blue">
+        <strong>先整理工作，不先導入工具</strong>
+        <p>每次只挑一項真實工作，補齊觸發、資料來源、步驟、產出、例外與確認責任。</p>
+      </article>
+      <article class="card accent-teal">
+        <strong>先判斷 AI 協助邊界</strong>
+        <p>從摘要、缺漏檢查、提醒、草稿開始；外部發送、正式寫回、薪資、發票與個案判斷保留人工核准。</p>
+      </article>
+    </section>
+    <section class="section md">
+      <article>${markdownToHtml(sourceMarkdown)}</article>
+    </section>`;
+  return pageShell({
+    title: "工作流蒐集與 AI 評估模板",
+    eyebrow: "需求資料",
+    intro: "陪夥伴把真實工作講清楚，再判斷哪些段落適合 AI 協助、哪些必須保留人工確認。",
+    body,
+    sectionClass: "md-page",
     active: "needs",
   });
 }
@@ -885,6 +925,29 @@ function buildPublishPage() {
         </article>
       </div>
     </section>
+    <section class="section" id="authorization">
+      <h2>遇到授權或確認畫面怎麼選</h2>
+      <p class="muted">以這個課程網站目前的做法來看，安全作法是：GitHub 用自己的帳號登入，Vercel 只連到本次要部署的 repo，Codex 需要外部寫入或公開發布前，都先列出會做什麼，等本人確認後再執行。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>畫面或問題</th><th>建議怎麼選</th><th>先停下來的情況</th></tr></thead>
+          <tbody>
+            <tr><td>GitHub 要登入或授權</td><td>用自己的 GitHub 帳號登入；若可以選權限，選「Only select repositories」，只勾本次要用的 repo。</td><td>畫面要求存取所有 repo、組織管理權限、付款資訊，或帳號不是自己的。</td></tr>
+            <tr><td>GitHub 要建立 repo</td><td>練習用可以先選自己的帳號；visibility 不確定時選 Private，要公開展示才選 Public。</td><td>repo 名稱含個資、客戶名稱、內部案名，或檔案內有未確認資料。</td></tr>
+            <tr><td>Codex 要 commit / push</td><td>請 Codex 先列出會提交的檔案與摘要，確認沒有敏感資料後，再同意 commit / push。</td><td>Codex 沒說會改哪些檔案、要推到不熟的 repo，或包含 .env、金鑰、內部表單。</td></tr>
+            <tr><td>Vercel 要 Import Git Repository</td><td>選剛剛建立的那個 repo；不要一次授權所有 repo。練習時選個人或課堂測試 workspace。</td><td>要選公司 team、正式 domain、付費方案，或畫面看起來不是本次 repo。</td></tr>
+            <tr><td>Vercel 要 Deploy / Production</td><td>先請 Codex 檢查公開內容與 noindex；確認後再部署。靜態 HTML 專案通常先沿用預設設定。</td><td>內容還有個資、內部逐字稿、正式金額，或需要付款、改 domain、改權限。</td></tr>
+            <tr><td>Codex 要啟用 GitHub / Vercel 外掛</td><td>請 Codex 先說明外掛用途與需要的權限；確認是本次任務需要，再依畫面登入授權。</td><td>要求貼上密碼、token、金鑰，或要求授權不相關服務。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prompt">如果畫面跳出授權或確認，請先不要急著按。
+請你幫我判斷這個畫面：
+1. 這是在要求 GitHub、Vercel，還是 Codex 外掛授權？
+2. 我應該選自己的帳號、公司 team，還是只選本次 repo？
+3. 這個選項會不會讓內容公開、改正式設定或產生費用？
+4. 如果安全，請告訴我應該選哪一個；如果不安全，請叫我停下來。</div>
+    </section>
     <section class="section callout-row">
       <article class="panel">
         <h2>帳號申請時怎麼跟學員說</h2>
@@ -992,6 +1055,7 @@ function writePage(path, html) {
 }
 
 writePage("public/needs/index.html", buildNeedsIndex());
+writePage("public/needs/workflow-intake/index.html", buildWorkflowIntakePage());
 writePage("public/learn/index.html", buildLearnPage());
 for (const person of people) {
   writePage(join("public/needs", person.slug, "index.html"), buildPersonPage(person));
