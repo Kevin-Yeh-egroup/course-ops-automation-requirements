@@ -106,16 +106,21 @@
         padding: 6px 0;
       }
 
-      .nav-links a {
+      .nav-links a,
+      .nav-links button {
+        border: 0;
         text-decoration: none;
         color: var(--muted);
+        background: transparent;
         font-size: 0.92rem;
         white-space: nowrap;
         padding: 8px 10px;
         border-radius: 6px;
+        cursor: pointer;
       }
 
-      .nav-links a:hover {
+      .nav-links a:hover,
+      .nav-links button:hover {
         color: var(--ink);
         background: var(--soft);
       }
@@ -833,6 +838,8 @@
           <span>Codex 新手教學</span>
         </div>
         <div class="nav-links">
+          <button type="button" data-back>返回上一頁</button>
+          <a href="../learn/">回上課入口</a>
           <a href="#intro">簡介</a>
           <a href="#install">安裝</a>
           <a href="#workflow">操作流程</a>
@@ -853,6 +860,8 @@
               讓你不用寫程式，也能找出關鍵指標、點擊趨勢與下一步改善方向。
             </p>
             <div class="hero-actions">
+              <button class="button" type="button" data-back>返回上一頁</button>
+              <a class="button" href="../learn/">回上課入口</a>
               <a class="button primary" href="#workflow">開始看流程</a>
               <a class="button" href="#prompts">直接拿提示詞</a>
             </div>
@@ -1253,6 +1262,7 @@
       const status = document.querySelector("#copyStatus");
       const buttons = Array.from(document.querySelectorAll(".tab-button"));
       const copyButton = document.querySelector("#copyPrompt");
+      const backButtons = Array.from(document.querySelectorAll("[data-back]"));
       let activePrompt = "first";
 
       function renderPrompt(key) {
@@ -1266,6 +1276,21 @@
 
       buttons.forEach((button) => {
         button.addEventListener("click", () => renderPrompt(button.dataset.prompt));
+      });
+
+      backButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          try {
+            const previous = document.referrer ? new URL(document.referrer) : null;
+            if (previous && previous.origin === window.location.origin && window.history.length > 1) {
+              window.history.back();
+              return;
+            }
+          } catch (error) {
+            // If referrer parsing fails, use the stable course entry fallback.
+          }
+          window.location.href = "../learn/";
+        });
       });
 
       function fallbackCopy(text) {
