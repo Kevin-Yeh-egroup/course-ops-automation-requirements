@@ -250,6 +250,47 @@
       gap: 12px;
     }
 
+    .deploy-map {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .deploy-node {
+      min-height: 150px;
+      display: grid;
+      align-content: space-between;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #fff;
+    }
+
+    .deploy-node small {
+      color: var(--muted);
+      font-weight: 900;
+    }
+
+    .deploy-node strong {
+      display: block;
+      color: var(--navy);
+      line-height: 1.35;
+    }
+
+    .plugin-lane {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .meeting-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
     .step {
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -383,19 +424,20 @@
       }
 
       .nav {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
         width: 100%;
-        overflow-x: visible;
-        padding-bottom: 0;
-        white-space: normal;
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 2px;
+        white-space: nowrap;
       }
 
       .nav a,
       .nav button {
-        width: 100%;
-        padding: 0 8px;
-        white-space: normal;
+        flex: 0 0 auto;
+        width: auto;
+        padding: 0 10px;
+        white-space: nowrap;
       }
 
       .slide {
@@ -440,12 +482,15 @@
       .slide-link {
         white-space: normal;
         overflow-wrap: anywhere;
-        word-break: break-all;
+        word-break: normal;
       }
 
       .grid,
       .grid.two,
       .exercise-layout,
+      .deploy-map,
+      .plugin-lane,
+      .meeting-panel,
       .steps {
         grid-template-columns: 1fr;
       }
@@ -468,6 +513,7 @@
       <a href="../guide/">操作說明</a>
       <a href="../kit/">練習包</a>
       <a href="../exercises/">操作題目</a>
+      <a href="../publish/">公開部署</a>
       <button type="button" id="prevBtn">上一頁</button>
       <button type="button" class="primary" id="nextBtn">下一頁</button>
     </nav>
@@ -825,6 +871,94 @@
         <p class="lead">課堂先學會共同題目的操作方式；自己的工作套用、效果記錄與收尾整理，留到課後依需求慢慢探索。</p>
         <div class="inline-actions" aria-label="課後回到學習頁">
           <a class="slide-link primary" href="../kit/#review">回練習包填成果檢查</a>
+          <a class="slide-link" href="#slide-collaboration">下一步：公開部署教學</a>
+          <a class="slide-link" href="../learn/">回上課入口</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-collaboration">
+      <div class="canvas">
+        <p class="eyebrow">協作方式</p>
+        <h2>不用背流程，要學會怎麼跟 Codex 開會</h2>
+        <p class="lead">學員之後會在自己的電腦和 Codex 協作。畫面、帳號與授權狀態可能不同，所以重點不是記住所有按鈕，而是會問、會確認、會請 Codex 驗證。</p>
+        <div class="deploy-map">
+          <div class="deploy-node accent-blue"><small>1</small><strong>先說目標</strong><p>我要做什麼、給誰看、哪些資料可以公開。</p></div>
+          <div class="deploy-node accent-teal"><small>2</small><strong>請它拆步驟</strong><p>先說明要做哪些事，不急著執行。</p></div>
+          <div class="deploy-node accent-gold"><small>3</small><strong>確認邊界</strong><p>會改檔案、連外部服務或需要登入時，先停下來。</p></div>
+          <div class="deploy-node accent-wine"><small>4</small><strong>一次一小步</strong><p>看完結果再往下一步，不用一口氣全做完。</p></div>
+          <div class="deploy-node accent-green"><small>5</small><strong>請它驗證</strong><p>回報網址、畫面、連結、noindex 與人工確認點。</p></div>
+        </div>
+        <div class="prompt compact">我不用背完整流程，請你像專案秘書一樣帶我做。
+請先幫我拆成 3 到 5 個步驟，並標出哪些你可以做、哪些需要我登入或授權、哪些會公開到網路上。
+請先說明，不要直接執行。</div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-17">
+      <div class="canvas">
+        <p class="eyebrow">課程尾聲延伸</p>
+        <h2>如果成果要公開呈現，走這條路線</h2>
+        <p class="lead">把 Codex 做出的頁面或小工具，整理成 GitHub repo（放專案檔案和修改紀錄的雲端資料夾），再部署到 Vercel production（正式可開啟的公開網址）。這段是課後探索，不是前面 90 分鐘的必做題。</p>
+        <div class="deploy-map">
+          <div class="deploy-node accent-blue"><small>1</small><strong>Codex 做頁面</strong><p>先做本機版本，也就是目前電腦或 Codex 工作區看得到，還不是公開網址。</p></div>
+          <div class="deploy-node accent-teal"><small>2</small><strong>GitHub repo</strong><p>建立版本庫，留下 README。README 就像交接說明，寫給之後維護或審查的人看。</p></div>
+          <div class="deploy-node accent-wine"><small>3</small><strong>部署到 Vercel</strong><p>連到 repo，產生正式網址。</p></div>
+          <div class="deploy-node accent-gold"><small>4</small><strong>跨裝置檢查</strong><p>手機、桌機、連結、導覽與 noindex（請搜尋引擎不要收錄的設定）。</p></div>
+          <div class="deploy-node accent-green"><small>5</small><strong>確認後分享</strong><p>確定沒有個資、內部資料或正式敏感內容。</p></div>
+        </div>
+        <div class="inline-actions" aria-label="公開部署工作流連結">
+          <a class="slide-link primary" href="../publish/">打開完整公開部署教學</a>
+          <a class="slide-link" href="../kit/#review">先回成果檢查表</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-18">
+      <div class="canvas">
+        <p class="eyebrow">帳號與外掛</p>
+        <h2>開始公開部署前，先準備三件事</h2>
+        <div class="plugin-lane">
+          <div class="card accent-blue"><strong>GitHub 帳號</strong><p>用來放專案與版本紀錄。註冊後要完成 Email 驗證，才能順利建立 repo。</p></div>
+          <div class="card accent-teal"><strong>Vercel 帳號</strong><p>用來把 GitHub repo 部署成公開網址。建議用 GitHub 登入，匯入 repo 會比較直覺。</p></div>
+          <div class="card accent-gold"><strong>Codex 外掛</strong><p>外掛是讓 Codex 可以連到 GitHub、Vercel 或瀏覽器檢查的授權能力，不是讓 Codex 自己開公司帳號。</p></div>
+        </div>
+        <div class="meeting-panel">
+          <div class="step-panel">
+            <strong>可以這樣問 Codex</strong>
+            <ol>
+              <li>目前我需要哪些外掛？</li>
+              <li>每個外掛會用來做什麼？</li>
+              <li>需要我登入或授權哪個帳號？</li>
+              <li>完成後你會怎麼驗證？</li>
+            </ol>
+          </div>
+          <div class="prompt compact">請檢查目前可用的 Codex 外掛。
+這個任務需要 GitHub、Vercel 和 Browser 相關能力。
+如果外掛尚未啟用，請先告訴我用途、需要的授權，以及啟用後的驗證方式。
+請不要自行建立外部帳號、不要付款、不要發布未經確認的內容。</div>
+        </div>
+        <div class="inline-actions" aria-label="帳號與外掛教學連結">
+          <a class="slide-link primary" href="../publish/#accounts">看帳號與外掛步驟</a>
+          <a class="slide-link" href="../publish/">回公開部署總覽</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-19">
+      <div class="canvas">
+        <p class="eyebrow">具體操作</p>
+        <h2>請 Codex 協助把成果整理到可檢查的公開網址</h2>
+        <p class="lead">把它想成一位會幫你執行工作的專案秘書：先確認目標，再做本機版本，接著整理 repo、部署、驗證；需要登入、授權或公開發布時，先停下來給你確認。</p>
+        <div class="grid two">
+          <div class="card accent-blue"><strong>建頁面</strong><p>「請先做本機版本，不要放個資，完成後用瀏覽器檢查手機和桌機畫面。」</p></div>
+          <div class="card accent-teal"><strong>建 repo</strong><p>「請先列出會提交的檔案，等我確認沒有敏感資料，再建立 GitHub repo。」</p></div>
+          <div class="card accent-wine"><strong>部署成正式網址</strong><p>「請部署到 Vercel production，回報網址、部署紀錄與 noindex 狀態。」</p></div>
+          <div class="card accent-gold"><strong>公開前驗收</strong><p>「請檢查跨裝置、連結、文字、台灣用語，以及不該公開的資料。」</p></div>
+        </div>
+        <p class="footer-note">公開頁可以被轉傳與截圖；review 階段的 noindex 不是隱私保護。</p>
+        <div class="inline-actions" aria-label="公開部署操作指令連結">
+          <a class="slide-link primary" href="../publish/#prompts">看完整操作指令</a>
           <a class="slide-link" href="../learn/">回上課入口</a>
         </div>
       </div>

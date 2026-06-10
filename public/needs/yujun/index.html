@@ -125,6 +125,47 @@
       padding: 16px 18px;
       background: var(--sky);
     }
+    .deploy-flow {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+      align-items: stretch;
+    }
+    .deploy-step {
+      min-height: 158px;
+      display: grid;
+      align-content: space-between;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(32, 42, 68, 0.06);
+    }
+    .deploy-step small {
+      color: var(--muted);
+      font-weight: 900;
+    }
+    .deploy-step strong {
+      display: block;
+      color: var(--navy);
+      line-height: 1.35;
+    }
+    .account-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .callout-row {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
     .prompt {
       overflow-x: auto;
       white-space: pre-wrap;
@@ -163,7 +204,7 @@
     @media (max-width: 860px) {
       .topbar { align-items: flex-start; flex-direction: column; }
       .nav { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
-      .cards, .grid.two, .path, .next-strip { grid-template-columns: 1fr; }
+      .cards, .grid.two, .path, .next-strip, .deploy-flow, .account-grid, .callout-row, .check-grid { grid-template-columns: 1fr; }
       table { min-width: 640px; }
     }
   </style>
@@ -178,6 +219,7 @@
       <a href="/guide/">操作說明</a>
       <a href="/kit/">練習包</a>
       <a href="/exercises/">操作題目</a>
+      <a href="/publish/">公開部署</a>
       <a class="primary" href="/needs/">需求資料</a>
     </nav>
   </header>
@@ -415,7 +457,7 @@
     </section>
   </main>
   <footer>
-    <div class="shell">版本：2026.06.10｜狀態：public-with-noindex review｜本頁可用網址瀏覽，但 noindex 不是隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
+    <div class="shell">版本：2026.06.10｜內部複核版：可用網址瀏覽，但不代表隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
   </footer>
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";

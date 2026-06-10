@@ -156,6 +156,7 @@ const navItems = [
   { key: "guide", label: "操作說明", href: "/guide/" },
   { key: "kit", label: "練習包", href: "/kit/" },
   { key: "exercises", label: "操作題目", href: "/exercises/" },
+  { key: "publish", label: "公開部署", href: "/publish/" },
   { key: "needs", label: "需求資料", href: "/needs/" },
 ];
 
@@ -437,6 +438,47 @@ function pageShell({ title, eyebrow, intro, body, sectionClass = "", active = "h
       padding: 16px 18px;
       background: var(--sky);
     }
+    .deploy-flow {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+      align-items: stretch;
+    }
+    .deploy-step {
+      min-height: 158px;
+      display: grid;
+      align-content: space-between;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(32, 42, 68, 0.06);
+    }
+    .deploy-step small {
+      color: var(--muted);
+      font-weight: 900;
+    }
+    .deploy-step strong {
+      display: block;
+      color: var(--navy);
+      line-height: 1.35;
+    }
+    .account-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .callout-row {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
     .prompt {
       overflow-x: auto;
       white-space: pre-wrap;
@@ -475,7 +517,7 @@ function pageShell({ title, eyebrow, intro, body, sectionClass = "", active = "h
     @media (max-width: 860px) {
       .topbar { align-items: flex-start; flex-direction: column; }
       .nav { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
-      .cards, .grid.two, .path, .next-strip { grid-template-columns: 1fr; }
+      .cards, .grid.two, .path, .next-strip, .deploy-flow, .account-grid, .callout-row, .check-grid { grid-template-columns: 1fr; }
       table { min-width: 640px; }
     }
   </style>
@@ -498,7 +540,7 @@ function pageShell({ title, eyebrow, intro, body, sectionClass = "", active = "h
     ${body}
   </main>
   <footer>
-    <div class="shell">版本：2026.06.10｜狀態：public-with-noindex review｜本頁可用網址瀏覽，但 noindex 不是隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
+    <div class="shell">版本：2026.06.10｜內部複核版：可用網址瀏覽，但不代表隱私保護；公開頁不放完整逐字稿、正式資料或可識別個資。</div>
   </footer>
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
@@ -551,6 +593,13 @@ function buildLearnPage() {
           <a class="button-link primary" href="/kit/#review">看探索清單</a>
         </article>
       </div>
+    </section>
+    <section class="section next-strip">
+      <div>
+        <strong>課後延伸：公開部署工作流。</strong>
+        <p class="muted">如果你想把 Codex 做出的頁面或小工具變成可在不同裝置開啟的公開作品，重點不是背完整流程，而是學會請 Codex 拆步驟、確認授權與公開邊界，再帶你建立 GitHub repo、接上 Vercel、取得正式網址並完成驗證。</p>
+      </div>
+      <a class="button-link primary" href="/publish/">看公開部署流程</a>
     </section>
     <section class="section grid two">
       <article class="panel">
@@ -772,6 +821,171 @@ function buildExercisePage() {
   });
 }
 
+function buildPublishPage() {
+  const body = `
+    <section class="notice">
+      這一段放在課程尾聲，定位是「作品公開化的下一步」。前面 90 分鐘先學會和 Codex 梳理工作、產出草稿與檢查表；如果之後要把成果做成可公開瀏覽的頁面或小工具，就照這頁把 GitHub repo（放網站檔案與修改紀錄的雲端專案資料夾）與 Vercel production（正式可開啟的公開網址）串起來。這不是寫程式考試，而是學會把已確認可公開的成果，安全放到一個可開啟的網址。
+    </section>
+    <section class="section" id="collaboration">
+      <h2>不用背流程，要學會怎麼跟 Codex 協作</h2>
+      <p class="muted">GitHub、Vercel、瀏覽器畫面可能會因帳號狀態而不同。學員真正要帶走的是問法：先請 Codex 拆步驟、說明會動到什麼、等自己確認後再執行，最後請 Codex 驗證結果。</p>
+      <div class="deploy-flow" aria-label="Codex 協作六步驟">
+        <article class="deploy-step accent-blue"><small>協作 1</small><strong>說目標</strong><p class="muted">我要做什麼、給誰看、哪些資料可以公開。</p></article>
+        <article class="deploy-step accent-teal"><small>協作 2</small><strong>請它拆步驟</strong><p class="muted">先請 Codex 說明接下來會做哪些事，不急著執行。</p></article>
+        <article class="deploy-step accent-gold"><small>協作 3</small><strong>確認邊界</strong><p class="muted">會改哪些檔案、會連到哪些外部服務、是否要登入授權。</p></article>
+        <article class="deploy-step accent-wine"><small>協作 4</small><strong>一次做一小步</strong><p class="muted">讓 Codex 先做低風險步驟，看到結果再往下。</p></article>
+        <article class="deploy-step accent-green"><small>協作 5</small><strong>看結果再回饋</strong><p class="muted">把自己看到的畫面、錯誤訊息或不懂的地方貼回去。</p></article>
+        <article class="deploy-step accent-blue"><small>協作 6</small><strong>請它驗證</strong><p class="muted">要求 Codex 回報網址、截圖、noindex 與仍需人工確認的事項。</p></article>
+      </div>
+      <div class="prompt">我不用背完整流程，請你像專案秘書一樣帶我做。
+請先幫我拆成 3 到 5 個步驟，並標出：
+1. 哪些你可以直接做
+2. 哪些需要我登入、授權或按確認
+3. 哪些會公開到網路上
+4. 每一步完成後我應該看到什麼結果
+請先說明，不要直接執行。</div>
+    </section>
+    <section class="section">
+      <h2>一張圖看完整工作流</h2>
+      <pre class="mermaid">flowchart LR
+  A["1. 和 Codex 說清楚目標"] --> B["2. 產出本機網站或小工具"]
+  B --> C["3. 建立 GitHub repo（專案資料夾）"]
+  C --> D["4. 部署到 Vercel"]
+  D --> E["5. 取得正式網址"]
+  E --> F["6. 手機與桌機驗證"]</pre>
+      <div class="deploy-flow" aria-label="公開部署六步驟">
+        <article class="deploy-step accent-blue"><small>第 1 步</small><strong>說清楚要公開的成果</strong><p class="muted">主題、資料來源、不能放的內容、希望使用者看到什麼。</p></article>
+        <article class="deploy-step accent-teal"><small>第 2 步</small><strong>請 Codex 建頁面</strong><p class="muted">先做本機版本，也就是目前電腦或 Codex 工作區看得到，還不是公開網址。</p></article>
+        <article class="deploy-step accent-wine"><small>第 3 步</small><strong>建立 GitHub repo</strong><p class="muted">把網站檔案、README 交接說明與修改紀錄放到雲端專案資料夾。</p></article>
+        <article class="deploy-step accent-gold"><small>第 4 步</small><strong>部署到 Vercel</strong><p class="muted">從 Vercel 匯入 GitHub repo，讓網站產生可開啟的正式網址。</p></article>
+        <article class="deploy-step accent-green"><small>第 5 步</small><strong>取得正式網址</strong><p class="muted">取得 production URL，確認網址可在不同裝置開啟。</p></article>
+        <article class="deploy-step accent-blue"><small>第 6 步</small><strong>人工檢查後分享</strong><p class="muted">檢查無個資、無內部資料、連結與版面正常。</p></article>
+      </div>
+    </section>
+    <section class="notice">
+      先確認公開範圍：public 代表任何拿到網址的人都可能看見內容；noindex 只是請搜尋引擎不要收錄的設定，不是隱私保護。
+    </section>
+    <section class="section" id="accounts">
+      <h2>先準備三個帳號與外掛</h2>
+      <div class="account-grid">
+        <article class="card accent-blue">
+          <strong>GitHub 帳號</strong>
+          <p>用途是放網站檔案、說明文件與每次修改紀錄。註冊後要完成 Email 驗證，才能順利建立 repo。</p>
+          <p><a href="https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github">GitHub 官方帳號教學</a></p>
+        </article>
+        <article class="card accent-teal">
+          <strong>Vercel 帳號</strong>
+          <p>用途是把 GitHub repo 部署成公開網址。建議用 GitHub 登入，匯入 repo 時比較順。</p>
+          <p><a href="https://vercel.com/docs/getting-started-with-vercel">Vercel 官方入門教學</a></p>
+        </article>
+        <article class="card accent-gold">
+          <strong>Codex 外掛</strong>
+          <p>外掛是讓 Codex 可以連到 GitHub、Vercel 或瀏覽器檢查的授權能力，不是讓 Codex 自己開公司帳號。</p>
+          <p><a href="https://developers.openai.com/codex/plugins">Codex Plugins 官方說明</a></p>
+        </article>
+      </div>
+    </section>
+    <section class="section callout-row">
+      <article class="panel">
+        <h2>帳號申請時怎麼跟學員說</h2>
+        <ol>
+          <li>GitHub 和 Vercel 都可以先申請個人帳號；課堂示範或個人測試通常可從免費方案開始。</li>
+          <li>公司正式對外使用時，要確認公司帳號、團隊權限、方案與資料放置規範。</li>
+          <li>建立 repo 前先確認公開範圍：public 代表任何拿到網址的人都可能看見內容。</li>
+          <li>Vercel production URL 代表正式可公開瀏覽；noindex 只是請搜尋引擎不要收錄，不是隱私保護。</li>
+        </ol>
+      </article>
+      <article class="panel">
+        <h2>要怎麼調動 Codex 外掛</h2>
+        <div class="prompt">請檢查目前可用的 Codex 外掛。
+這個任務需要 GitHub、Vercel 和 Browser 相關能力。
+如果外掛尚未啟用，請先告訴我：
+1. 這個外掛會用來做什麼
+2. 需要我授權或登入什麼
+3. 啟用後你會怎麼驗證結果
+請不要自行建立外部帳號、不要付款、不要發布未經確認的內容。</div>
+      </article>
+    </section>
+    <section class="section" id="prompts">
+      <h2>具體 Codex 操作指令</h2>
+      <div class="check-grid">
+        <article class="panel">
+          <h3>1. 請 Codex 先做本機版本</h3>
+          <div class="prompt">請幫我建立一個可公開瀏覽的靜態網站。
+主題是：[填入你的主題]
+資料來源是：[貼上已可公開的文字或摘要]
+限制是：不要放個資、不要放內部逐字稿、不要放正式帳務或敏感資料。
+請先做本機版本，完成後用瀏覽器檢查手機和桌機畫面。</div>
+        </article>
+        <article class="panel">
+          <h3>2. 請 Codex 建 GitHub repo</h3>
+          <div class="prompt">請幫我檢查目前資料夾是否適合建立 Git repo。
+請先列出會被提交的檔案，等我確認沒有敏感資料後，再建立 repo。
+請建立 README，寫清楚這個網站的目的、資料邊界、部署方式。
+等我確認後，再推到 GitHub，回報 repo 網址。
+完成後我應該會看到一個 GitHub 網址，裡面有檔案列表與 README。</div>
+        </article>
+        <article class="panel">
+          <h3>3. 請 Codex 部署到 Vercel</h3>
+          <div class="prompt">請把這個 GitHub repo 連到 Vercel，並部署成 production。
+部署後請回報：
+1. production URL
+2. deployment id 或部署紀錄編號，之後查問題用
+3. 手機與桌機檢查結果
+4. noindex 狀態，至少檢查 HTML meta robots；若是正式部署，再確認 robots.txt 或 X-Robots-Tag
+如果 Vercel 要我按 Import、Continue 或授權 GitHub，請先停下來確認畫面。</div>
+        </article>
+        <article class="panel">
+          <h3>4. 請 Codex 做公開前檢查</h3>
+          <div class="prompt">請用公開頁檢查角度幫我驗收：
+1. 網址是否可在不同裝置開啟
+2. 導覽與按鈕是否能點
+3. 頁面是否有明顯錯字或台灣用語不自然
+4. 是否有個資、內部資料、正式金額或不該公開的內容
+5. 如果是 review 階段，是否有 noindex
+請列出通過項目與需要修正的項目。</div>
+        </article>
+      </div>
+    </section>
+    <section class="section grid two">
+      <article class="panel">
+        <h2>完成後要交出什麼</h2>
+        <ul>
+          <li>GitHub repo 網址</li>
+          <li>Vercel production URL</li>
+          <li>手機與桌機畫面檢查結果</li>
+          <li>README 或簡短說明，寫清楚公開範圍與資料邊界</li>
+          <li>如果還在內部 review，確認 noindex 已存在</li>
+          <li>實驗效果記錄：從本機到公開網址花多久、哪一步需要人工登入、公開前修掉哪些風險</li>
+        </ul>
+      </article>
+      <article class="panel">
+        <h2>公開部署的三個不要</h2>
+        <ul>
+          <li>不要把個資、未整理逐字稿、內部表單、正式帳務資料放到 public repo 或公開網址。</li>
+          <li>不要請 Codex 自行發送外部訊息、付款、變更公司正式系統或處理月結結論。</li>
+          <li>不要用個人測試帳號承接公司正式對外服務；正式使用前要確認公司帳號與權限。</li>
+        </ul>
+      </article>
+    </section>
+    <section class="section">
+      <h2>卡關時查詢</h2>
+      <p class="muted">官方文件多半是英文或偏技術；看不懂時，可以請 Codex 摘要成中文步驟，但帳號、授權與權限仍由本人確認。</p>
+      <div class="cards">
+        <article class="card"><strong>GitHub</strong><p><a href="https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts">帳號類型與方案</a></p></article>
+        <article class="card"><strong>Vercel</strong><p><a href="https://vercel.com/docs/git/vercel-for-github">用 GitHub 部署到 Vercel</a></p></article>
+        <article class="card"><strong>Codex</strong><p><a href="https://developers.openai.com/codex/app/browser">Browser 外掛與頁面驗證</a></p></article>
+      </div>
+    </section>`;
+  return pageShell({
+    title: "作品公開部署工作流：GitHub repo 與 Vercel",
+    eyebrow: "課程尾聲延伸",
+    intro: "把 Codex 做出的頁面或小工具，整理成 GitHub repo（雲端專案資料夾），部署到 Vercel production（正式公開網址），並用人工檢查確認可以公開。",
+    body,
+    active: "publish",
+  });
+}
+
 function writePage(path, html) {
   ensureDir(path);
   writeFileSync(path, html, "utf8");
@@ -784,3 +998,4 @@ for (const person of people) {
 }
 writePage("public/kit/index.html", buildKitPage());
 writePage("public/exercises/index.html", buildExercisePage());
+writePage("public/publish/index.html", buildPublishPage());

@@ -473,20 +473,20 @@
         display: block;
         white-space: normal;
         overflow-wrap: anywhere;
-        word-break: break-all;
+        word-break: normal;
       }
 
       .button-link {
         white-space: normal;
         overflow-wrap: anywhere;
-        word-break: break-all;
+        word-break: normal;
       }
 
       h1,
       h2,
       h3 {
         overflow-wrap: anywhere;
-        word-break: break-all;
+        word-break: normal;
       }
 
       .hero-copy {
@@ -527,12 +527,13 @@
 <body>
   <header class="hero">
     <div class="hero-inner">
-      <p class="eyebrow">內部審閱版課綱｜Public with noindex review</p>
+      <p class="eyebrow">內部審閱版課綱｜可用網址瀏覽</p>
       <h1>Codex 行政工作實驗課</h1>
       <p class="hero-copy">這裡是課程總入口。上課當天請先進入「上課入口」；課程規劃摘要與同仁需求資料放在後面，供審閱與後續規劃使用。</p>
       <div class="hero-actions" aria-label="主要入口">
         <a class="button-link" href="learn/">進入上課入口</a>
         <a class="button-link secondary" href="#decision">查看課程摘要</a>
+        <a class="button-link secondary" href="publish/">公開部署工作流</a>
         <a class="button-link secondary" href="needs/">查看需求資料</a>
       </div>
       <div class="hero-points" aria-label="課程重點">
@@ -623,6 +624,14 @@
       </div>
     </section>
 
+    <section class="notice">
+      課程尾聲可加看「公開部署工作流」：示範如何請 Codex 協助建立 GitHub repo（雲端專案資料夾），並部署到 Vercel production（正式公開網址），讓作品能用公開網址在不同裝置開啟。
+      <div class="notice-actions">
+        <a class="button-link" href="publish/">查看公開部署工作流</a>
+        <span class="notice-note">這是課後延伸操作，不改變 90 分鐘主課程安排。</span>
+      </div>
+    </section>
+
     <section class="section" id="topics">
       <div class="section-head">
         <h2>四個可選行政情境</h2>
@@ -680,7 +689,7 @@
 
   <footer>
     <div class="shell">
-      版本：2026.06.10｜狀態：public-with-noindex review｜本頁不是隱私控管，僅保留搜尋索引限制；內容已避免放入同仁個別需求、內部系統細節與正式資料。
+      版本：2026.06.10｜內部複核版：可用網址瀏覽，但不代表隱私保護；內容已避免放入同仁個別需求、內部系統細節與正式資料。
     </div>
   </footer>
 </body>
