@@ -87,64 +87,96 @@ const people = [
 
 const exercises = [
   {
-    slug: "course-reminder",
-    name: "課程提醒與每日工作台",
-    outcome: "今日課務工作台、課前提醒清單、等待回覆追蹤表、內部提醒草稿。",
-    prepare: ["一筆課程資料或活動資料", "日期、時間、地點、對象與負責人", "目前已知狀態與等待回覆事項"],
-    steps: [
-      "先用工作流程整理卡寫清楚這件事從哪裡開始、最後要產出什麼。",
-      "把資料貼給 Codex，請它整理成「今日到期、已逾期、等待回覆、需要人工確認」。",
-      "請 Codex 依課程日期倒推提醒節點，並把提醒文字寫成可修改草稿。",
-      "人工檢查日期、對象、稱謂、是否有外部發送風險。",
-      "記錄這次節省了哪一段整理時間，以及下次資料要補哪個欄位。",
+    slug: "ops-report-radar",
+    name: "真實案例一：日週月報營運雷達",
+    outcome: "把日報、週報、月報會用到的 Gmail、Google Ads、好理家在後台與電子報訊號，整理成可檢查的營運摘要。",
+    situation: "這個案例一開始看起來只是「每天要看很多數字和信」。真正困難的是來源很多，而且可信度不一樣。Gmail 有真人回覆與系統通知，Google Ads 有投放數字，好理家在後台有實際使用狀態，電子報則是外部學習素材。如果直接請 Codex 做結論，很容易把已確認、部分確認和還沒讀到的資料混在一起。",
+    purpose: "把每天、每週、每月要看的訊號分層，最後整理成可以交付、可以追問的報表。",
+    journey: [
+      "我先把問題說成「我需要一份今天可以信任的營運狀態」，而不是「幫我把所有數據整理好」。",
+      "接著把資料來源拆開：Gmail、Google Ads、好理家在後台、電子報，以及既有的日報、週報、月報。",
+      "第一版整理後，我再補充一個重點：報表要標清楚資料狀態，哪些已確認、哪些只有部分確認、哪些目前還讀不到。",
+      "後來流程逐漸固定：日報看今日狀態與異常，週報看趨勢與管理摘要，月報看累積成果與需要決策的地方。",
     ],
-    prompt: "請把以下課程資料整理成今日課務工作台。\n請分成：今日到期、已逾期、等待回覆、需要人工確認、可複製提醒草稿。\n請列出你判斷的依據，不要自動寄出或改任何正式資料。\n\n資料：",
-    checks: ["日期與倒推提醒是否正確", "提醒對象是否正確", "需要人工確認的地方是否有被標出"],
+    needStatement: [
+      "目的：確認今天、這週、這個月的營運狀態是否正常。",
+      "資料：Gmail、Google Ads、好理家在後台、電子報，以及既有報表。",
+      "風險：不要把未確認資料寫成結論，也不要漏掉 Ads 或後台異常。",
+      "先請 Codex 做的事：分來源整理、標出資料狀態、產出報表草稿，並列出需要人工重看的地方。",
+    ],
+    workflow: ["先打開 Gmail，看有沒有真人回覆、系統通知或重要回饋", "再看 Google Ads 的花費、點擊與異常", "打開好理家在後台，確認實際使用狀態", "對照既有日報、週報、月報，補上缺漏或差異", "整理成可回報的摘要，標出還沒確認的資料"],
+    codexHelp: ["把 Gmail、Ads、後台與電子報分成不同訊號", "整理今日異常、週趨勢與月累積重點", "標出已確認、部分確認、目前讀不到的資料", "把電子報整理成可審閱的觀察卡，而不是直接變成決策"],
+    humanCheck: ["Google Ads 數字是否真的來自當天後台", "好理家在後台是否已成功開啟並確認", "Gmail 回饋是否需要真人回覆", "週報或月報結論是否有足夠證據", "哪些資料只能先標成待補"],
+    learnerTakeaway: "學員要學到的是：報表不是把所有資料塞成一段結論，而是先說清楚來源、證據與限制。Codex 可以協助整理與寫草稿，但數字、異常、決策與對外說法仍要由人把關。",
   },
   {
     slug: "transcript-content",
-    name: "逐字稿與內容草稿",
-    outcome: "逐字稿摘要、活動紀錄、文章草稿、社群短文與待確認清單。",
-    prepare: ["一段逐字稿、會議紀錄或音檔摘要", "活動名稱、用途與讀者", "希望輸出的格式"],
-    steps: [
-      "先說明這份內容要給誰看，以及要變成摘要、文章、公告還是社群短文。",
-      "請 Codex 先抓出主題、重點、可引用資訊與需要確認的事實。",
-      "請 Codex 產出第一版草稿，再要求它改成適合台灣同仁或合作單位閱讀的語氣。",
-      "人工檢查專有名詞、日期、人名、對外可發布程度。",
-      "留下可重複指令，下一次換逐字稿時可直接套用。",
+    name: "真實案例二：逐字稿變成文章與通知草稿",
+    outcome: "把錄影或逐字稿整理成可審閱的文章素材，並留下處理狀態與待確認事項。",
+    situation: "這不是單純把逐字稿改成文章。真實工作會先遇到幾個問題：錄影檔能不能處理、逐字稿是否完整、文章要放進哪個內容流程、哪一筆已完成、哪一筆還在等確認。如果沒有把狀態整理清楚，後面很容易重複處理或漏掉素材。",
+    purpose: "把影片到文章的中間流程攤開，讓檔案狀態、文章草稿與待確認事項都能被追蹤。",
+    journey: [
+      "我先請 Codex 幫我盤點錄影與管理表，而不是直接叫它寫文章。",
+      "接著把流程拆成：找檔案、確認狀態、整理逐字稿、產文章草稿、回寫管理表。",
+      "中間發現排序、標題與狀態很重要；如果不整理清楚，後面就不知道哪一筆已完成。",
+      "最後我把可處理的錄影先批次處理，未確認的部分留在管理表，避免混在一起。",
     ],
-    prompt: "請將以下逐字稿整理成內容草稿。\n輸出請包含：一段摘要、三個重點、文章草稿、社群短文、需要人工確認的事實清單。\n請使用台灣職場常用的繁體中文語氣，避免誇大或替我做正式發布判斷。\n\n資料：",
-    checks: ["是否有忠於原意", "是否標出需要查證的事實", "語氣是否適合對內或對外讀者"],
+    needStatement: [
+      "讀者：文章最後要給一般民眾、學員，還是內部同仁看。",
+      "資料：錄影檔、逐字稿、管理表與文章位置在哪裡。",
+      "先做哪一步：先整理摘要、先做文章草稿，或先確認缺少哪些資料。",
+      "限制：不能自動發布、不能改變講者原意，也不能忽略待確認事實。",
+    ],
+    workflow: ["先確認錄影檔與逐字稿是否齊全", "手動整理重點與可用段落", "打開管理表確認這筆內容目前狀態", "寫出文章草稿或摘要，再標出待確認句子", "回到管理表更新進度，避免下次重複處理"],
+    codexHelp: ["整理逐字稿重點", "把口語內容改成文章草稿", "列出需要人工查證的內容", "協助回顧哪些素材已處理、哪些還沒完成"],
+    humanCheck: ["講者原意是否保留", "人名、日期與專有名詞是否正確", "內容是否適合公開", "文章是否真的可以放進正式流程"],
+    learnerTakeaway: "學員要學到的是：內容工作不是貼上文字請 AI 改寫而已，要先說明讀者、用途、素材狀態與審稿邊界。",
   },
   {
     slug: "sheet-status",
-    name: "表格狀態與核銷檢查",
-    outcome: "異常清單、人工確認清單、待補資料清單與詢問草稿。",
-    prepare: ["一份表格或 CSV", "欄位意義與必要欄位", "金額、日期或狀態的檢查規則"],
-    steps: [
-      "先告訴 Codex 這張表的用途、哪些欄位一定要有、哪些欄位不能自己猜。",
-      "請 Codex 做只讀檢查，列出缺欄、格式錯、重複、狀態衝突與低信心資料。",
-      "若涉及金額或核銷，請它只做試算與疑點標記，不做正式結論。",
-      "人工確認每一筆異常是否真的需要修正。",
-      "把常見錯誤整理成下次可重複的檢查規則。",
+    name: "真實案例三：自定義名詞與派薪前檢查",
+    outcome: "把候選名詞、修正對照與派薪前資料整理成審閱包，讓人可以清楚判斷下一步。",
+    situation: "這個案例很容易被誤會成讓 AI 判斷薪資。實際上，我做的是比較保守的整理：先把候選名詞、修正對照、事件狀態與派薪前資料攤開，讓人看得到依據，再決定是否寫入正式系統。",
+    purpose: "讓承辦人看清楚哪些名詞可能可以納入、哪些已存在、哪些缺證據、哪些派薪前還不能動。",
+    journey: [
+      "我先讓 Codex 讀取目前仍在處理中的項目，整理成一份可審閱清單。",
+      "第一版不直接執行，而是先分成可納入、不可納入、已存在、需要補證據。",
+      "確認規則後，我才把可執行的批次獨立出來；正式新增、關閉事件與薪資建立都要另外確認。",
+      "做完後還要留下前後證據，知道哪一筆為什麼被處理、哪一筆為什麼暫停。",
     ],
-    prompt: "請只讀檢查以下表格資料。\n請列出：缺漏欄位、格式異常、重複資料、狀態衝突、需要人工確認的金額或日期。\n若資料不足，請列出補問問題；不要替我做正式核銷或付款結論。\n\n資料：",
-    checks: ["是否保留來源列或辨識依據", "是否只做試算與疑點標記", "是否清楚列出需要人工確認的項目"],
+    needStatement: [
+      "影響範圍：名詞資料、事件狀態與派薪前確認。",
+      "判斷依據：候選名詞、修正對照、工作類型、日期與狀態。",
+      "不能代決定的事：正式新增、關閉事件、建立薪資。",
+      "先請 Codex 做的事：整理證據、分組、標記疑點、列出待確認項目。",
+    ],
+    workflow: ["先打開候選名詞與事件清單", "對照既有名詞，確認是否已存在或疑似重複", "查看事件狀態、工作類型與日期", "手動整理可處理、待補證據、先暫停的項目", "正式新增、關閉事件或派薪前，再請人複查"],
+    codexHelp: ["把大量候選資料整理成清楚分類", "找出已存在或疑似重複項目", "標出缺證據與低信心資料", "產出承辦人可以審閱的確認包"],
+    humanCheck: ["是否真的可以新增正式名詞", "是否符合派薪資格", "是否可以關閉事件", "是否要建立薪資或暫停處理"],
+    learnerTakeaway: "學員要學到的是：牽涉正式紀錄或薪資時，Codex 先做整理與提示，不直接替人下結論。",
   },
   {
     slug: "event-admin",
-    name: "活動行政包",
-    outcome: "活動流程、分工表、通知草稿、風險清單與可交接 checklist。",
-    prepare: ["活動日期、地點、對象與人數", "工作人員、講師、物資與場地資訊", "既有流程、通知或範本"],
-    steps: [
-      "先把活動拆成課前、課中、課後三段。",
-      "請 Codex 依三段整理任務、負責人、截止時間與所需資料。",
-      "請 Codex 產生通知草稿、物資清單、風險清單與可交接 checklist。",
-      "人工檢查場地、餐食、報名名單、外部通知與個資揭露。",
-      "課後用同一份清單補上紀錄、附件與待建檔事項。",
+    name: "真實案例四：課程改版包與交接清單",
+    outcome: "把模糊的改版想法整理成教材改版包，讓投影片、練習題與上課流程一致。",
+    situation: "這個案例就是這份教材本身。原本的課程有課務、逐字稿、表格與活動行政，但你覺得還是不夠像真實工作。後來我們改用你在 Codex 裡實際做過的工作，去識別化後包裝成學生能理解的情境。",
+    purpose: "讓學員看到教材如何從模糊感受變成可上課材料：先說哪裡不真實，再找真實案例，最後改投影片、練習頁與檢查方式。",
+    journey: [
+      "你先說：課程與練習題太不實際，希望學生看到可以做到什麼、怎麼做、怎麼確認。",
+      "我先從你的工作記錄中找可去識別化的案例，再和原本四個情境對照。",
+      "你再指定案例三改成自定義名詞與派薪前檢查、案例四改成課程改版。",
+      "後續我們又調整呈現方式：先講情境與歷程，再講工作切分，避免一開始就堆很多專有名詞。",
     ],
-    prompt: "請把以下活動資料整理成活動行政包。\n請輸出：課前/課中/課後流程、分工表、通知草稿、物資清單、風險清單、可交接 checklist。\n請把需要人工確認的場地、餐食、名單、外部通知與個資項目另外列出。\n\n資料：",
-    checks: ["分工是否清楚", "課前/課中/課後是否都有涵蓋", "外部通知與個資項目是否有人工確認"],
+    needStatement: [
+      "問題：學生會覺得題目不真實、太像練習題。",
+      "方向：改用真實工作去識別化，包裝成可上課的情境。",
+      "範圍：案例、投影片、練習頁、課程說明與檢查方式。",
+      "限制：不要露出敏感資料，也不要讓學員以為可以全自動。",
+    ],
+    workflow: ["先看原本教材哪裡不夠貼近真實工作", "回想最近實際做過哪些 Codex 工作", "挑出可以去識別化、也適合上課的案例", "手動改投影片、練習頁與課綱文字", "最後逐頁檢查案例是否一致、語氣是否適合學員"],
+    codexHelp: ["整理你提出的口語需求", "把案例對照到原本課程架構", "改寫成學員能懂的情境", "同步更新多個教材頁面並檢查連結"],
+    humanCheck: ["案例是否真的代表你的工作", "語氣是否適合學員", "是否過度技術化", "是否有不該公開的內部資訊"],
+    learnerTakeaway: "學員要學到的是：和 Codex 合作時，可以先說感受與目標，再一輪一輪把教材、流程或文件修到可用。",
   },
 ];
 
@@ -157,6 +189,7 @@ const navItems = [
   { key: "guide", label: "操作說明", href: "/guide/" },
   { key: "kit", label: "練習包", href: "/kit/" },
   { key: "exercises", label: "操作題目", href: "/exercises/" },
+  { key: "concepts", label: "Agent / Skill", href: "/concepts/" },
   { key: "publish", label: "公開部署", href: "/publish/" },
   { key: "needs", label: "需求資料", href: "/needs/" },
 ];
@@ -171,6 +204,18 @@ function escapeHtml(value) {
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+}
+
+function sentenceParagraphs(value) {
+  return (String(value).match(/[^。！？]+[。！？]?/g) || [String(value)])
+    .map((part) => part.trim())
+    .filter(Boolean);
+}
+
+function renderScenario(value) {
+  return sentenceParagraphs(value)
+    .map((part) => `<p>${escapeHtml(part)}</p>`)
+    .join("");
 }
 
 function parseInline(value) {
@@ -409,6 +454,29 @@ function pageShell({ title, eyebrow, intro, body, sectionClass = "", active = "h
       background: #f0faf8;
       color: #254d49;
     }
+    .scenario-card {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0;
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      background: #f0faf8;
+      color: #254d49;
+    }
+    .scenario-card strong {
+      color: var(--navy);
+      font-size: 1.04rem;
+    }
+    .scenario-body {
+      display: grid;
+      gap: 8px;
+    }
+    .scenario-body p {
+      margin: 0;
+      line-height: 1.78;
+    }
     .path {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -564,34 +632,34 @@ function personCard(person) {
 function buildLearnPage() {
   const body = `
     <section class="notice">
-      這頁是給上課當天使用的入口。照順序走就好：先看簡報，再開啟原本的 Codex 可視化操作說明，接著打開練習包與操作題目；自己的工作套用與收尾整理，留到課後自行探索。
+      這頁是給上課當天使用的入口。照順序走就好：先看簡報，再看操作說明，接著打開練習包與真實案例題；最後再用白話理解 Agent / Skill。
     </section>
     <section class="section">
       <h2>上課照這五步走</h2>
       <div class="path">
         <article class="path-card accent-blue">
           <small>第 1 步</small>
-          <div><strong>看課程簡報</strong><p class="muted">先理解 Codex 能協助什麼，以及今天會完成哪些成果。</p></div>
+          <div><strong>看課程簡報</strong><p class="muted">先理解真實行政案例裡，Codex 能協助到什麼程度。</p></div>
           <a class="button-link primary" href="/slides/">開始看簡報</a>
         </article>
         <article class="path-card accent-teal">
           <small>第 2 步</small>
-          <div><strong>看操作說明</strong><p class="muted">開啟可視化教學，用成效報表情境看完整操作。</p></div>
+          <div><strong>看操作說明</strong><p class="muted">先完成 Codex 安裝、登入、練習資料夾與第一次開啟確認。</p></div>
           <a class="button-link primary" href="/guide/">看操作說明</a>
         </article>
         <article class="path-card accent-wine">
           <small>第 3 步</small>
-          <div><strong>打開練習包</strong><p class="muted">把自己的工作填進流程卡、共用指令與人工確認清單。</p></div>
+          <div><strong>打開練習包</strong><p class="muted">把自己的工作填進需求說明卡、流程卡與確認清單。</p></div>
           <a class="button-link primary" href="/kit/">打開練習包</a>
         </article>
         <article class="path-card accent-gold">
           <small>第 4 步</small>
-          <div><strong>選一題操作</strong><p class="muted">從課程提醒、逐字稿、表格檢查、活動行政包中選一題。</p></div>
+          <div><strong>選一題真實案例</strong><p class="muted">從日週月報營運雷達、逐字稿、名詞/派薪檢查、課程改版包中選一題。</p></div>
           <a class="button-link primary" href="/exercises/">選操作題目</a>
         </article>
         <article class="path-card accent-green">
           <small>第 5 步</small>
-          <div><strong>課後自行探索</strong><p class="muted">課堂先學共同操作；課後再把自己的工作套入練習包，整理成果與人工確認點。</p></div>
+          <div><strong>課後自行探索</strong><p class="muted">課堂先學共同操作；課後再把自己的工作套入練習包，整理成果與確認責任。</p></div>
           <a class="button-link primary" href="/kit/#review">看探索清單</a>
         </article>
       </div>
@@ -606,7 +674,7 @@ function buildLearnPage() {
     <section class="section grid two">
       <article class="panel">
         <h2>我現在要點哪裡？</h2>
-        <p>如果你是學員，優先使用這四個頁面：課程簡報、操作說明、練習包、操作題目。每個頁面上方都有同一組導覽，迷路時回到「上課入口」。</p>
+        <p>如果你是學員，優先使用這四個頁面：課程簡報、操作說明、練習包、操作題目。練習題不是考卷，而是從真實工作拆出來的範例；迷路時回到「上課入口」。</p>
       </article>
       <article class="panel">
         <h2>需求資料放哪裡？</h2>
@@ -617,7 +685,7 @@ function buildLearnPage() {
   return pageShell({
     title: "學員上課入口",
     eyebrow: "上課入口",
-    intro: "把課程簡報、練習包與四個操作題目整理成一條路徑，降低來回跳頁的不確定感。",
+    intro: "把課程簡報、練習包與四個真實案例題整理成一條路徑，讓學員知道如何溝通、如何操作、如何檢查。",
     body,
     active: "learn",
   });
@@ -635,7 +703,7 @@ function buildNeedsIndex() {
     <section class="section next-strip">
       <div>
         <strong>工作流蒐集與 AI 評估模板</strong>
-        <p class="muted">後續陪夥伴補工作細節時，先用同一份模板整理觸發、資料來源、步驟、產出、人工確認與 AI 協助邊界，再決定是否進入沙盒實驗。</p>
+        <p class="muted">後續陪夥伴補工作細節時，先用同一份模板整理觸發、資料來源、步驟、產出、確認責任與 AI 協助邊界，再決定是否進入沙盒實驗。</p>
       </div>
       <a class="button-link primary" href="/needs/workflow-intake/">打開蒐集模板</a>
     </section>
@@ -665,7 +733,7 @@ function buildWorkflowIntakePage() {
     : "# 工作流蒐集與 AI 評估模板\n\n模板尚未建立。";
   const body = `
     <section class="notice">
-      本頁來源：<code>${escapeHtml(workflowIntakePath)}</code>。這是陪伴夥伴蒐集工作細節的共用模板，不是正式系統規格；涉及個資、帳務、個案、外部發送或正式寫回時，仍需保留人工確認。
+      本頁來源：<code>${escapeHtml(workflowIntakePath)}</code>。這是陪伴夥伴蒐集工作細節的共用模板，不是正式系統規格；涉及個資、帳務、個案、外部發送或正式寫回時，仍需保留人工核准。
     </section>
     <section class="section grid two">
       <article class="card accent-blue">
@@ -683,7 +751,7 @@ function buildWorkflowIntakePage() {
   return pageShell({
     title: "工作流蒐集與 AI 評估模板",
     eyebrow: "需求資料",
-    intro: "陪夥伴把真實工作講清楚，再判斷哪些段落適合 AI 協助、哪些必須保留人工確認。",
+    intro: "陪夥伴把真實工作講清楚，再判斷哪些段落適合 AI 協助、哪些必須由人確認。",
     body,
     sectionClass: "md-page",
     active: "needs",
@@ -696,7 +764,7 @@ function buildPersonPage(person) {
     : `# ${person.name}需求整理\n\n狀態：待補資料。`;
   const body = `
     <section class="notice">
-      本頁來源：<code>${escapeHtml(person.source)}</code>。內容是需求整理與工作流分析，不是正式系統規格；涉及外部發送、正式資料更新、個資、金額或月結的動作仍需人工確認。
+      本頁來源：<code>${escapeHtml(person.source)}</code>。內容是需求整理與工作流分析，不是正式系統規格；涉及外部發送、正式資料更新、個資、金額或月結的動作仍需人工核准。
     </section>
     <section class="section">
       <div class="card accent-teal">
@@ -721,24 +789,24 @@ function buildPersonPage(person) {
 function buildKitPage() {
   const body = `
     <section class="notice">
-      這份練習包不是下載檔，而是課堂中可以直接打開、照著看與照著填的材料。90 分鐘課堂先完成共同練習；自己的低風險工作片段可留到課後再套用，並留下可重複指令與人工確認清單。
+      這份練習包不是要大家背固定句子，而是幫學員把一件工作說清楚：為什麼要做、手上有什麼、平常怎麼做、哪裡容易出錯、最後要交付什麼。
     </section>
     <section class="section next-strip">
       <div>
         <strong>你現在在第 3 步：打開練習包。</strong>
-        <p class="muted">先填工作流程整理卡與共用指令模板；若不確定怎麼下第一句指令，可先回操作說明。填完後，到操作題目頁選一題實作。</p>
+        <p class="muted">先填需求說明卡與工作流程整理卡。填完後，到操作題目頁看真實案例，再回來檢查自己的工作是否說清楚。</p>
       </div>
       <a class="button-link primary" href="/exercises/">下一步：選操作題目</a>
     </section>
     <section class="section">
       <h2>練習包內容</h2>
       <div class="cards">
-        <article class="card accent-blue"><strong>1. 工作流程整理卡</strong><p>把工作拆成開始條件、資料來源、處理步驟、人工確認點與輸出。</p></article>
-        <article class="card accent-teal"><strong>2. 共用指令模板</strong><p>用同一個句型請 Codex 整理、檢查、產草稿。</p></article>
-        <article class="card accent-gold"><strong>3. 四題操作任務單</strong><p>課程提醒、逐字稿內容、表格檢查、活動行政包。</p></article>
-        <article class="card accent-wine"><strong>4. 成果檢查表</strong><p>確認輸出是否可用、哪些要人看、哪些需要補資料。</p></article>
-        <article class="card accent-green"><strong>5. 人工確認清單</strong><p>把外部發送、正式資料更新、金額、個資與正式判斷標出來。</p></article>
-        <article class="card accent-blue"><strong>6. 效果記錄表</strong><p>記錄原本花多久、Codex 幫到哪裡、下一次要怎麼改。</p></article>
+        <article class="card accent-blue"><strong>1. 工作流程整理卡</strong><p>把工作拆成開始條件、資料來源、處理步驟、確認責任與輸出。</p></article>
+        <article class="card accent-teal"><strong>2. 需求說明卡</strong><p>用白話說清楚目的、資料、希望 Codex 協助的範圍與不能做的事。</p></article>
+        <article class="card accent-gold"><strong>3. 四題真實案例任務單</strong><p>日週月報營運雷達、逐字稿內容、名詞/派薪檢查、課程改版包。</p></article>
+        <article class="card accent-wine"><strong>4. 互動歷程整理卡</strong><p>記錄自己怎麼和 Codex 來回修正，哪些地方越講越清楚。</p></article>
+        <article class="card accent-green"><strong>5. 確認清單</strong><p>把外部發送、正式資料更新、金額、個資與正式判斷標出來。</p></article>
+        <article class="card accent-blue"><strong>6. 工具化程度</strong><p>知道一次性整理、固定做法與分步協助的差別。</p></article>
       </div>
     </section>
     <section class="section grid two" id="workflow-card">
@@ -750,39 +818,59 @@ function buildKitPage() {
           <li>平常會怎麼整理、檢查或轉換？</li>
           <li>哪些地方最容易漏，或需要人判斷？</li>
           <li>最後要交付提醒、草稿、表格、文件或 checklist？</li>
+          <li>我要怎麼跟同事或主管說明這不是全自動，而是可檢查的草稿或清單？</li>
         </ol>
       </article>
       <article class="panel">
         <h2>成果檢查表</h2>
         <ol>
           <li>輸出有沒有回答原本的工作問題？</li>
-          <li>日期、金額、人名、單位、地點是否需要人工確認？</li>
-          <li>是否清楚列出可修改使用、需人工確認、需補資料？</li>
-          <li>下次再跑時，資料與指令是否足夠清楚？</li>
+          <li>日期、金額、人名、單位、地點是否需要人確認？</li>
+          <li>是否清楚列出可修改使用、需確認、需補資料？</li>
+          <li>下次再跑時，資料與需求說明是否足夠清楚？</li>
           <li>這次有沒有省下重複整理或找缺漏的時間？</li>
         </ol>
       </article>
     </section>
-    <section class="section" id="prompt-template">
-      <h2>共用指令模板</h2>
-      <div class="prompt">我要處理的工作是：
-我提供的資料是：
-我希望你產出：
-請特別檢查：
-需要人工確認的地方：
-
-如果資料不足，請列出需要補問的問題，不要自己猜。
-
-最後請把結果分成：
-1. 可修改使用
-2. 需要人工確認
-3. 需要補資料或暫時不適合處理</div>
+    <section class="section" id="need-card">
+      <h2>需求說明卡</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>要說清楚的事</th><th>學員可以這樣想</th></tr></thead>
+          <tbody>
+            <tr><td>我要達到的目的</td><td>這件工作最後要讓誰比較省力？要避免什麼漏掉？</td></tr>
+            <tr><td>目前手上有什麼</td><td>有表格、錄音、逐字稿、訊息紀錄、舊教材，還是只有口頭需求？</td></tr>
+            <tr><td>平常怎麼做</td><td>先做哪一步？中間要看哪些資料？最後要交付什麼？</td></tr>
+            <tr><td>最容易出錯的地方</td><td>日期、人名、金額、對外語氣、正式資料更新，哪一種最不能錯？</td></tr>
+            <tr><td>希望 Codex 先協助哪裡</td><td>先整理、先分類、先找缺漏、先做草稿，還是先幫我拆步驟？</td></tr>
+            <tr><td>哪些一定要人確認</td><td>凡是發送、寫回、公開、定案、派薪、個資與正式承諾，都要先停下來確認。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="section" id="communication-template">
+      <h2>互動歷程整理卡</h2>
+      <div class="cards">
+        <article class="card accent-blue"><strong>第一輪</strong><p>我先說明情境和目的，不急著要求 Codex 給最後答案。</p></article>
+        <article class="card accent-teal"><strong>第二輪</strong><p>我看 Codex 的整理結果，補充資料來源、缺漏、對象與不能做的事。</p></article>
+        <article class="card accent-gold"><strong>第三輪</strong><p>我請 Codex 把工作切成流程，並列出需要人確認的地方。</p></article>
+      </div>
+    </section>
+    <section class="section" id="concepts-link">
+      <h2>工具化程度</h2>
+      <div class="next-strip">
+        <div>
+          <strong>這裡只先判斷做到哪一步。</strong>
+          <p class="muted">是一次性整理、固定做法，還是未來可能分步協助？完整說明放在下一頁，避免在練習包重複講一遍。</p>
+        </div>
+        <a class="button-link primary" href="/concepts/">看 Agent / Skill 說明頁</a>
+      </div>
     </section>
     <section class="section" id="human-checklist">
-      <h2>人工確認清單</h2>
+      <h2>確認清單</h2>
       <div class="cards">
         <article class="card soft-mint"><strong>可修改使用</strong><p>摘要、清單、草稿、檢查表、流程草圖。</p></article>
-        <article class="card soft-amber"><strong>需要人工確認</strong><p>日期、金額、稱謂、收件人、對外語氣、正式欄位。</p></article>
+        <article class="card soft-amber"><strong>需要人確認</strong><p>日期、金額、稱謂、收件人、對外語氣、正式欄位。</p></article>
         <article class="card soft-blush"><strong>需要保留人工決策</strong><p>外部發送、正式資料更新、個資揭露、金流、核銷或月結相關判斷。</p></article>
       </div>
     </section>
@@ -792,11 +880,12 @@ function buildKitPage() {
         <table>
           <thead><tr><th>項目</th><th>請填寫</th></tr></thead>
           <tbody>
-            <tr><td>我今天選的工作</td><td>例如：課前提醒、逐字稿摘要、表格檢查、活動行政包</td></tr>
+            <tr><td>我今天選的工作</td><td>例如：日週月報營運雷達、逐字稿摘要、名詞/派薪檢查、課程改版包</td></tr>
             <tr><td>原本大約花多久</td><td>估計原本整理、檢查或寫草稿需要的時間</td></tr>
             <tr><td>Codex 幫我產出什麼</td><td>草稿、清單、表格、流程、待確認事項</td></tr>
-            <tr><td>仍需人工確認</td><td>列出日期、金額、人名、對外發送、正式資料更新等</td></tr>
-            <tr><td>下一次要修正</td><td>資料要補什麼、指令要改哪裡、哪些不適合交給 AI</td></tr>
+            <tr><td>這份輸出要怎麼交代</td><td>我要怎麼讓同事、主管或窗口看懂：這是草稿、檢查清單，還是待確認資料</td></tr>
+            <tr><td>仍需確認</td><td>列出日期、金額、人名、對外發送、正式資料更新等</td></tr>
+            <tr><td>下一次要修正</td><td>資料要補什麼、流程要切得更細，或哪裡需要更早請人確認</td></tr>
           </tbody>
         </table>
       </div>
@@ -804,9 +893,91 @@ function buildKitPage() {
   return pageShell({
     title: "課堂練習包",
     eyebrow: "學員操作材料",
-    intro: "一份可直接在課堂上照著填的練習包，協助同仁把工作流講清楚、操作一次、留下可檢查成果。",
+    intro: "一份可直接在課堂上照著填的練習包，協助同仁把真實工作講清楚、拆成流程、留下可檢查成果與確認點。",
     body,
     active: "kit",
+  });
+}
+
+function buildConceptsPage() {
+  const body = `
+    <section class="notice">
+      這頁只做一件事：讓學員分清楚一次性需求、Skill 與 Agent。課堂不要求現場建立正式工具。
+    </section>
+    <section class="section">
+      <h2>先用一個例子理解</h2>
+      <div class="grid two">
+        <article class="card soft-sky"><strong>第一次做</strong><p>你先跟 Codex 說明情境：我有一份逐字稿，要整理成文章草稿，請先列重點與需要確認的事。</p></article>
+        <article class="card soft-mint"><strong>做過幾次後</strong><p>你發現每次都會要求讀者、用途、摘要、待確認事實與人工審閱，這些穩定規則就可以整理成方法。</p></article>
+      </div>
+    </section>
+    <section class="section grid two">
+      <article class="panel">
+        <h2>Skill 是什麼</h2>
+        <p>Skill 可以先把它想成「工作方法小抄」。當同一類事情做過幾次後，你會知道每次都要交代哪些資料、要產出什麼格式、哪些地方一定要人看。把這些固定下來，下次就不用重新解釋一大段。</p>
+        <ul>
+          <li>適合重複但不太複雜的工作。</li>
+          <li>重點是固定語氣、格式、檢查項目與不能做的事。</li>
+          <li>它不代表會自動送出、寫回系統或取代人判斷。</li>
+        </ul>
+      </article>
+      <article class="panel">
+        <h2>Agent 是什麼</h2>
+        <p>Agent 可以先把它想成「有任務邊界的工作助理」。它不只是改一句話，而是依照你給的目的，連續做幾個步驟：先看資料、整理狀態、列出問題、產出草稿，再提醒你哪些地方要確認。</p>
+        <ul>
+          <li>適合有多個步驟、會遇到例外的工作。</li>
+          <li>需要說清楚資料來源、完成標準、停止點與確認責任。</li>
+          <li>正式自動化前，要另外確認權限、風險與責任分工。</li>
+        </ul>
+      </article>
+    </section>
+    <section class="section">
+      <h2>兩者差在哪裡</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>問題</th><th>Skill</th><th>Agent</th></tr></thead>
+          <tbody>
+            <tr><td>適合什麼</td><td>格式固定、規則清楚、每次都很像的工作。</td><td>步驟比較多、要看狀態、需要中途停下確認的工作。</td></tr>
+            <tr><td>要先準備什麼</td><td>常用格式、輸出樣子、檢查清單。</td><td>工作目標、資料來源、流程、停止規則、確認責任。</td></tr>
+            <tr><td>今天課堂做到哪裡</td><td>先知道哪些做法值得整理成方法。</td><td>先知道哪些工作未來可能適合設計成助理流程。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="section grid two">
+      <article class="panel">
+        <h2>怎麼判斷要不要升級</h2>
+        <ol>
+          <li>這件事是否已經重複做過兩三次？</li>
+          <li>每次要提供的資料是否差不多？</li>
+          <li>輸出格式是否能說清楚？</li>
+          <li>哪些地方要停下來確認，是否已經很明確？</li>
+          <li>如果 Codex 做錯，能不能容易看出來並修正？</li>
+        </ol>
+      </article>
+      <article class="panel">
+        <h2>課堂先不要急著做什麼</h2>
+        <ol>
+          <li>不要一開始就要求全自動。</li>
+          <li>不要把正式發送、寫回系統、派薪或公開發布交給 Codex 自己決定。</li>
+          <li>不要把還沒穩定的做法包成長期工具。</li>
+          <li>先把情境、流程與確認責任說清楚，再討論是否需要 Skill 或 Agent。</li>
+        </ol>
+      </article>
+    </section>
+    <section class="section next-strip">
+      <div>
+        <strong>回到案例時，請只問一件事。</strong>
+        <p class="muted">這題目前停在一次性整理、固定做法，還是未來可能分步協助？</p>
+      </div>
+      <a class="button-link primary" href="/exercises/">回到四個案例</a>
+    </section>`;
+  return pageShell({
+    title: "Agent / Skill 白話說明",
+    eyebrow: "概念說明",
+    intro: "給非資訊背景學員看的簡明說明：先理解三種程度，再回到自己的工作判斷適合做到哪一步。",
+    body,
+    active: "concepts",
   });
 }
 
@@ -825,37 +996,46 @@ function buildExercisePage() {
         <p class="eyebrow">練習 ${index + 1}</p>
         <h2>${escapeHtml(exercise.name)}</h2>
         <p class="muted">${escapeHtml(exercise.outcome)}</p>
+        <section class="scenario-card">
+          <strong>情境先看懂</strong>
+          <div class="scenario-body">${renderScenario(exercise.situation)}</div>
+        </section>
         <div class="grid two">
-          <article class="card soft-sky"><strong>先準備</strong><ul>${exercise.prepare.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></article>
-          <article class="card soft-mint"><strong>檢查成果</strong><ul>${exercise.checks.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></article>
+          <article class="card soft-sky"><strong>我要達到的目的</strong><p>${escapeHtml(exercise.purpose)}</p></article>
+          <article class="card soft-amber"><strong>如果不用 Codex，平常我會怎麼做</strong><ol>${exercise.workflow.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol></article>
         </div>
-        <h3>操作步驟</h3>
-        <ol class="steps">${exercise.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
-        <h3>可複製指令</h3>
-        <div class="prompt">${escapeHtml(exercise.prompt)}</div>
+        <h3>我跟 Codex 互動的歷程</h3>
+        <ol class="steps">${exercise.journey.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
+        <h3>我怎麼把需求說清楚</h3>
+        <ol class="steps">${exercise.needStatement.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
+        <h3>Codex 可以協助到哪裡</h3>
+        <ol class="steps">${exercise.codexHelp.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
+        <h3>仍然要由人確認</h3>
+        <ol class="steps">${exercise.humanCheck.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
+        <article class="card accent-teal"><strong>這題要學會的切分</strong><p>${escapeHtml(exercise.learnerTakeaway)}</p></article>
       </div>
     </section>`).join("");
 
   const body = `
     <section class="notice">
-      四個練習都用同一個基本方法：說明工作、提供資料、指定輸出、標出人工確認、檢查後修正。課堂共同示範後，學員可先選一題理解操作方式；自己的真實工作可留到課後自行套用。
+      四個練習都從真實行政工作改寫。每一題先看情境，再看我怎麼和 Codex 來回互動、怎麼把工作切開、哪些地方仍要確認。重點不是背固定句子，而是學會把需求說清楚。
     </section>
     <section class="section next-strip">
       <div>
-        <strong>你現在在第 4 步：選一題操作。</strong>
-        <p class="muted">先選最接近自己工作的題目，理解準備資料、操作步驟與檢查方式；課後再用自己的素材完整跑一次。</p>
+        <strong>你現在在第 4 步：選一題真實案例操作。</strong>
+        <p class="muted">先選最接近自己工作的題目，照著看情境、目的、原本流程、互動歷程與確認點。課後再用自己的工作素材重新描述一次。</p>
       </div>
-      <a class="button-link primary" href="/kit/#review">完成後：檢查成果</a>
+      <a class="button-link primary" href="/concepts/">下一步：看 Agent / Skill</a>
     </section>
     <section class="section">
-      <h2>四個練習題目</h2>
+      <h2>四個真實案例題目</h2>
       <div class="cards">${exercises.map(exerciseCard).join("")}</div>
     </section>
     ${details}`;
   return pageShell({
-    title: "四個練習操作說明",
+    title: "四個真實案例操作說明",
     eyebrow: "課堂實作題目",
-    intro: "每題都列出準備資料、操作步驟、可複製指令與檢查方式，學員可以直接挑一題開始做。",
+    intro: "每題都先用情境帶入，再呈現目的、原本流程、互動歷程與仍需確認的地方。",
     body,
     active: "exercises",
   });
@@ -866,6 +1046,17 @@ function buildPublishPage() {
     <section class="notice">
       這一段放在課程尾聲，定位是「作品公開化的下一步」。前面 90 分鐘先學會和 Codex 梳理工作、產出草稿與檢查表；如果之後要把成果做成可公開瀏覽的頁面或小工具，就照這頁把 GitHub repo（放網站檔案與修改紀錄的雲端專案資料夾）與 Vercel production（正式可開啟的公開網址）串起來。這不是寫程式考試，而是學會把已確認可公開的成果，安全放到一個可開啟的網址。
     </section>
+    <section class="section" id="terms">
+      <h2>先把五個常見術語翻成白話</h2>
+      <p class="muted">學員不用背指令，只要先知道每個字代表哪一種動作。真正要做之前，都可以請 Codex 用白話再說一次。</p>
+      <div class="cards">
+        <article class="card accent-blue"><strong>repo</strong><p>雲端專案資料夾。網站檔案、圖片、README 與修改紀錄都放在這裡。</p></article>
+        <article class="card accent-teal"><strong>commit</strong><p>存一個修改紀錄。像幫這次修改拍照，順手寫一句「這次改了什麼」。</p></article>
+        <article class="card accent-wine"><strong>push</strong><p>把本機修改上傳到 GitHub。也就是把自己電腦裡的新版交到雲端資料夾。</p></article>
+        <article class="card accent-gold"><strong>pull</strong><p>把 GitHub 上的最新版拉回來。開始修改前先同步，避免拿舊版本繼續改。</p></article>
+        <article class="card accent-green"><strong>deploy</strong><p>發布成可開啟的網址。Vercel 會讀取 repo 裡的成果，產生可以分享或檢查的頁面。</p></article>
+      </div>
+    </section>
     <section class="section" id="collaboration">
       <h2>不用背流程，要學會怎麼跟 Codex 協作</h2>
       <p class="muted">GitHub、Vercel、瀏覽器畫面可能會因帳號狀態而不同。學員真正要帶走的是問法：先請 Codex 拆步驟、說明會動到什麼、等自己確認後再執行，最後請 Codex 驗證結果。</p>
@@ -875,15 +1066,14 @@ function buildPublishPage() {
         <article class="deploy-step accent-gold"><small>協作 3</small><strong>確認邊界</strong><p class="muted">會改哪些檔案、會連到哪些外部服務、是否要登入授權。</p></article>
         <article class="deploy-step accent-wine"><small>協作 4</small><strong>一次做一小步</strong><p class="muted">讓 Codex 先做低風險步驟，看到結果再往下。</p></article>
         <article class="deploy-step accent-green"><small>協作 5</small><strong>看結果再回饋</strong><p class="muted">把自己看到的畫面、錯誤訊息或不懂的地方貼回去。</p></article>
-        <article class="deploy-step accent-blue"><small>協作 6</small><strong>請它驗證</strong><p class="muted">要求 Codex 回報網址、截圖、noindex 與仍需人工確認的事項。</p></article>
+        <article class="deploy-step accent-blue"><small>協作 6</small><strong>請它驗證</strong><p class="muted">要求 Codex 回報網址、截圖、noindex 與仍需人確認的事項。</p></article>
       </div>
-      <div class="prompt">我不用背完整流程，請你像專案秘書一樣帶我做。
-請先幫我拆成 3 到 5 個步驟，並標出：
-1. 哪些你可以直接做
-2. 哪些需要我登入、授權或按確認
-3. 哪些會公開到網路上
-4. 每一步完成後我應該看到什麼結果
-請先說明，不要直接執行。</div>
+      <div class="cards">
+        <article class="card soft-sky"><strong>開場先說目的</strong><p>這份成果是給誰看、希望別人看完知道什麼、哪些資料可以公開。</p></article>
+        <article class="card soft-mint"><strong>先請 Codex 拆步驟</strong><p>先看它會怎麼安排工作，再決定哪一步可以做、哪一步要先停下來。</p></article>
+        <article class="card soft-amber"><strong>遇到登入或公開先停</strong><p>凡是授權、發布、刪除、外部寄送或付款，都先回到本人確認。</p></article>
+        <article class="card soft-blush"><strong>每一步都要看結果</strong><p>完成後要看得到網址、畫面、檔案清單、檢查結果或仍需人確認的地方。</p></article>
+      </div>
     </section>
     <section class="section">
       <h2>一張圖看完整工作流</h2>
@@ -954,13 +1144,12 @@ function buildPublishPage() {
           </tbody>
         </table>
       </div>
-      <div class="prompt">如果畫面跳出任何授權、確認、允許、送出、刪除、安裝、部署或付款提示，請先不要急著按。
-請你幫我判斷這個畫面：
-1. 這個動作會改哪裡？本機、GitHub、Vercel、公司系統，還是外部服務？
-2. 這個動作會把資料送去哪裡？會不會公開、寄出、上傳或分享？
-3. 這個動作能不能復原？如果失敗，怎麼回到原狀？
-4. 這個動作會不會碰到個資、正式資料、金額、密碼、金鑰或費用？
-5. 如果安全，請告訴我應該選哪一個；如果不安全，請叫我停下來。</div>
+      <div class="cards">
+        <article class="card soft-sky"><strong>會改哪裡</strong><p>本機檔案、GitHub、Vercel、公司系統，還是外部服務。</p></article>
+        <article class="card soft-mint"><strong>資料會去哪裡</strong><p>會不會公開、寄出、上傳、分享，或讓其他人看得到。</p></article>
+        <article class="card soft-amber"><strong>能不能復原</strong><p>如果按下去失敗，是否能回到原狀，誰可以幫忙復原。</p></article>
+        <article class="card soft-blush"><strong>是否碰到敏感資料</strong><p>個資、正式資料、金額、密碼、金鑰、費用或公司權限都要先停。</p></article>
+      </div>
     </section>
     <section class="section callout-row">
       <article class="panel">
@@ -973,54 +1162,54 @@ function buildPublishPage() {
         </ol>
       </article>
       <article class="panel">
-        <h2>要怎麼調動 Codex 外掛</h2>
-        <div class="prompt">請檢查目前可用的 Codex 外掛。
-這個任務需要 GitHub、Vercel 和 Browser 相關能力。
-如果外掛尚未啟用，請先告訴我：
-1. 這個外掛會用來做什麼
-2. 需要我授權或登入什麼
-3. 啟用後你會怎麼驗證結果
-請不要自行建立外部帳號、不要付款、不要發布未經確認的內容。</div>
+        <h2>要怎麼理解 Codex 外掛</h2>
+        <p>外掛可以先理解成「讓 Codex 看得到或做得到某些事情的授權」。上課不用背外掛名稱，只要確認三件事：這個外掛要用來做什麼、需要登入哪個帳號、啟用後會怎麼驗證。</p>
+        <ul>
+          <li>GitHub 類能力：用來建立或查看專案檔案與修改紀錄。</li>
+          <li>Vercel 類能力：用來把已確認可公開的成果變成網址。</li>
+          <li>Browser 類能力：用來實際打開頁面、檢查手機與桌機畫面。</li>
+        </ul>
       </article>
     </section>
     <section class="section" id="prompts">
-      <h2>具體 Codex 操作指令</h2>
+      <h2>公開前需求說明卡</h2>
       <div class="check-grid">
         <article class="panel">
-          <h3>1. 請 Codex 先做本機版本</h3>
-          <div class="prompt">請幫我建立一個可公開瀏覽的靜態網站。
-主題是：[填入你的主題]
-資料來源是：[貼上已可公開的文字或摘要]
-限制是：不要放個資、不要放內部逐字稿、不要放正式帳務或敏感資料。
-請先做本機版本，完成後用瀏覽器檢查手機和桌機畫面。</div>
+          <h3>1. 先說成果要給誰看</h3>
+          <ul>
+            <li>主題是什麼，使用者看完要知道什麼。</li>
+            <li>資料來源是否已確認可以公開。</li>
+            <li>哪些內容不能放上公開頁，例如個資、內部逐字稿、正式帳務或敏感資料。</li>
+            <li>先做本機版本，完成後再看手機和桌機畫面。</li>
+          </ul>
         </article>
         <article class="panel">
-          <h3>2. 請 Codex 建 GitHub repo</h3>
-          <div class="prompt">請幫我檢查目前資料夾是否適合建立 Git repo。
-請先列出會被提交的檔案，等我確認沒有敏感資料後，再建立 repo。
-請建立 README，寫清楚這個網站的目的、資料邊界、部署方式。
-等我確認後，再推到 GitHub，回報 repo 網址。
-完成後我應該會看到一個 GitHub 網址，裡面有檔案列表與 README。</div>
+          <h3>2. 再確認會留下哪些檔案</h3>
+          <ul>
+            <li>先看會被提交的檔案清單。</li>
+            <li>確認沒有敏感資料後，再建立 GitHub repo。</li>
+            <li>README 要寫清楚網站目的、資料邊界與後續維護方式。</li>
+            <li>完成後要看得到 GitHub 網址、檔案列表與 README。</li>
+          </ul>
         </article>
         <article class="panel">
-          <h3>3. 請 Codex 部署到 Vercel</h3>
-          <div class="prompt">請把這個 GitHub repo 連到 Vercel，並部署成 production。
-部署後請回報：
-1. production URL
-2. deployment id 或部署紀錄編號，之後查問題用
-3. 手機與桌機檢查結果
-4. noindex 狀態，至少檢查 HTML meta robots；若是正式部署，再確認 robots.txt 或 X-Robots-Tag
-如果 Vercel 要我按 Import、Continue 或授權 GitHub，請先停下來確認畫面。</div>
+          <h3>3. 發布前先確認邊界</h3>
+          <ul>
+            <li>Vercel 會把成果變成可開啟網址，發布前先確認內容可以公開。</li>
+            <li>如果畫面要求 Import、Continue 或授權 GitHub，先確認這是不是本次 repo。</li>
+            <li>完成後要看得到 production URL 與部署紀錄。</li>
+            <li>review 階段要確認 noindex；正式公開前仍要人工看內容。</li>
+          </ul>
         </article>
         <article class="panel">
-          <h3>4. 請 Codex 做公開前檢查</h3>
-          <div class="prompt">請用公開頁檢查角度幫我驗收：
-1. 網址是否可在不同裝置開啟
-2. 導覽與按鈕是否能點
-3. 頁面是否有明顯錯字或台灣用語不自然
-4. 是否有個資、內部資料、正式金額或不該公開的內容
-5. 如果是 review 階段，是否有 noindex
-請列出通過項目與需要修正的項目。</div>
+          <h3>4. 最後看公開前檢查</h3>
+          <ul>
+            <li>網址是否可在不同裝置開啟。</li>
+            <li>導覽與按鈕是否能點。</li>
+            <li>是否有明顯錯字或台灣用語不自然。</li>
+            <li>是否有個資、內部資料、正式金額或不該公開的內容。</li>
+            <li>哪些已通過，哪些還需要人工修正。</li>
+          </ul>
         </article>
       </div>
     </section>
@@ -1075,5 +1264,6 @@ for (const person of people) {
   writePage(join("public/needs", person.slug, "index.html"), buildPersonPage(person));
 }
 writePage("public/kit/index.html", buildKitPage());
+writePage("public/concepts/index.html", buildConceptsPage());
 writePage("public/exercises/index.html", buildExercisePage());
 writePage("public/publish/index.html", buildPublishPage());

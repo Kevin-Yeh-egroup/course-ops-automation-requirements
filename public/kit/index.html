@@ -95,6 +95,29 @@
       background: #f0faf8;
       color: #254d49;
     }
+    .scenario-card {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0;
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      background: #f0faf8;
+      color: #254d49;
+    }
+    .scenario-card strong {
+      color: var(--navy);
+      font-size: 1.04rem;
+    }
+    .scenario-body {
+      display: grid;
+      gap: 8px;
+    }
+    .scenario-body p {
+      margin: 0;
+      line-height: 1.78;
+    }
     .path {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -220,6 +243,7 @@
       <a href="/guide/">操作說明</a>
       <a class="primary" href="/kit/">練習包</a>
       <a href="/exercises/">操作題目</a>
+      <a href="/concepts/">Agent / Skill</a>
       <a href="/publish/">公開部署</a>
       <a href="/needs/">需求資料</a>
     </nav>
@@ -228,30 +252,30 @@
     <div class="shell">
       <p class="eyebrow">學員操作材料</p>
       <h1>課堂練習包</h1>
-      <p class="lead">一份可直接在課堂上照著填的練習包，協助同仁把工作流講清楚、操作一次、留下可檢查成果。</p>
+      <p class="lead">一份可直接在課堂上照著填的練習包，協助同仁把真實工作講清楚、拆成流程、留下可檢查成果與確認點。</p>
     </div>
   </section>
   <main class="shell ">
     
     <section class="notice">
-      這份練習包不是下載檔，而是課堂中可以直接打開、照著看與照著填的材料。90 分鐘課堂先完成共同練習；自己的低風險工作片段可留到課後再套用，並留下可重複指令與人工確認清單。
+      這份練習包不是要大家背固定句子，而是幫學員把一件工作說清楚：為什麼要做、手上有什麼、平常怎麼做、哪裡容易出錯、最後要交付什麼。
     </section>
     <section class="section next-strip">
       <div>
         <strong>你現在在第 3 步：打開練習包。</strong>
-        <p class="muted">先填工作流程整理卡與共用指令模板；若不確定怎麼下第一句指令，可先回操作說明。填完後，到操作題目頁選一題實作。</p>
+        <p class="muted">先填需求說明卡與工作流程整理卡。填完後，到操作題目頁看真實案例，再回來檢查自己的工作是否說清楚。</p>
       </div>
       <a class="button-link primary" href="/exercises/">下一步：選操作題目</a>
     </section>
     <section class="section">
       <h2>練習包內容</h2>
       <div class="cards">
-        <article class="card accent-blue"><strong>1. 工作流程整理卡</strong><p>把工作拆成開始條件、資料來源、處理步驟、人工確認點與輸出。</p></article>
-        <article class="card accent-teal"><strong>2. 共用指令模板</strong><p>用同一個句型請 Codex 整理、檢查、產草稿。</p></article>
-        <article class="card accent-gold"><strong>3. 四題操作任務單</strong><p>課程提醒、逐字稿內容、表格檢查、活動行政包。</p></article>
-        <article class="card accent-wine"><strong>4. 成果檢查表</strong><p>確認輸出是否可用、哪些要人看、哪些需要補資料。</p></article>
-        <article class="card accent-green"><strong>5. 人工確認清單</strong><p>把外部發送、正式資料更新、金額、個資與正式判斷標出來。</p></article>
-        <article class="card accent-blue"><strong>6. 效果記錄表</strong><p>記錄原本花多久、Codex 幫到哪裡、下一次要怎麼改。</p></article>
+        <article class="card accent-blue"><strong>1. 工作流程整理卡</strong><p>把工作拆成開始條件、資料來源、處理步驟、確認責任與輸出。</p></article>
+        <article class="card accent-teal"><strong>2. 需求說明卡</strong><p>用白話說清楚目的、資料、希望 Codex 協助的範圍與不能做的事。</p></article>
+        <article class="card accent-gold"><strong>3. 四題真實案例任務單</strong><p>日週月報營運雷達、逐字稿內容、名詞/派薪檢查、課程改版包。</p></article>
+        <article class="card accent-wine"><strong>4. 互動歷程整理卡</strong><p>記錄自己怎麼和 Codex 來回修正，哪些地方越講越清楚。</p></article>
+        <article class="card accent-green"><strong>5. 確認清單</strong><p>把外部發送、正式資料更新、金額、個資與正式判斷標出來。</p></article>
+        <article class="card accent-blue"><strong>6. 工具化程度</strong><p>知道一次性整理、固定做法與分步協助的差別。</p></article>
       </div>
     </section>
     <section class="section grid two" id="workflow-card">
@@ -263,39 +287,59 @@
           <li>平常會怎麼整理、檢查或轉換？</li>
           <li>哪些地方最容易漏，或需要人判斷？</li>
           <li>最後要交付提醒、草稿、表格、文件或 checklist？</li>
+          <li>我要怎麼跟同事或主管說明這不是全自動，而是可檢查的草稿或清單？</li>
         </ol>
       </article>
       <article class="panel">
         <h2>成果檢查表</h2>
         <ol>
           <li>輸出有沒有回答原本的工作問題？</li>
-          <li>日期、金額、人名、單位、地點是否需要人工確認？</li>
-          <li>是否清楚列出可修改使用、需人工確認、需補資料？</li>
-          <li>下次再跑時，資料與指令是否足夠清楚？</li>
+          <li>日期、金額、人名、單位、地點是否需要人確認？</li>
+          <li>是否清楚列出可修改使用、需確認、需補資料？</li>
+          <li>下次再跑時，資料與需求說明是否足夠清楚？</li>
           <li>這次有沒有省下重複整理或找缺漏的時間？</li>
         </ol>
       </article>
     </section>
-    <section class="section" id="prompt-template">
-      <h2>共用指令模板</h2>
-      <div class="prompt">我要處理的工作是：
-我提供的資料是：
-我希望你產出：
-請特別檢查：
-需要人工確認的地方：
-
-如果資料不足，請列出需要補問的問題，不要自己猜。
-
-最後請把結果分成：
-1. 可修改使用
-2. 需要人工確認
-3. 需要補資料或暫時不適合處理</div>
+    <section class="section" id="need-card">
+      <h2>需求說明卡</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>要說清楚的事</th><th>學員可以這樣想</th></tr></thead>
+          <tbody>
+            <tr><td>我要達到的目的</td><td>這件工作最後要讓誰比較省力？要避免什麼漏掉？</td></tr>
+            <tr><td>目前手上有什麼</td><td>有表格、錄音、逐字稿、訊息紀錄、舊教材，還是只有口頭需求？</td></tr>
+            <tr><td>平常怎麼做</td><td>先做哪一步？中間要看哪些資料？最後要交付什麼？</td></tr>
+            <tr><td>最容易出錯的地方</td><td>日期、人名、金額、對外語氣、正式資料更新，哪一種最不能錯？</td></tr>
+            <tr><td>希望 Codex 先協助哪裡</td><td>先整理、先分類、先找缺漏、先做草稿，還是先幫我拆步驟？</td></tr>
+            <tr><td>哪些一定要人確認</td><td>凡是發送、寫回、公開、定案、派薪、個資與正式承諾，都要先停下來確認。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="section" id="communication-template">
+      <h2>互動歷程整理卡</h2>
+      <div class="cards">
+        <article class="card accent-blue"><strong>第一輪</strong><p>我先說明情境和目的，不急著要求 Codex 給最後答案。</p></article>
+        <article class="card accent-teal"><strong>第二輪</strong><p>我看 Codex 的整理結果，補充資料來源、缺漏、對象與不能做的事。</p></article>
+        <article class="card accent-gold"><strong>第三輪</strong><p>我請 Codex 把工作切成流程，並列出需要人確認的地方。</p></article>
+      </div>
+    </section>
+    <section class="section" id="concepts-link">
+      <h2>工具化程度</h2>
+      <div class="next-strip">
+        <div>
+          <strong>這裡只先判斷做到哪一步。</strong>
+          <p class="muted">是一次性整理、固定做法，還是未來可能分步協助？完整說明放在下一頁，避免在練習包重複講一遍。</p>
+        </div>
+        <a class="button-link primary" href="/concepts/">看 Agent / Skill 說明頁</a>
+      </div>
     </section>
     <section class="section" id="human-checklist">
-      <h2>人工確認清單</h2>
+      <h2>確認清單</h2>
       <div class="cards">
         <article class="card soft-mint"><strong>可修改使用</strong><p>摘要、清單、草稿、檢查表、流程草圖。</p></article>
-        <article class="card soft-amber"><strong>需要人工確認</strong><p>日期、金額、稱謂、收件人、對外語氣、正式欄位。</p></article>
+        <article class="card soft-amber"><strong>需要人確認</strong><p>日期、金額、稱謂、收件人、對外語氣、正式欄位。</p></article>
         <article class="card soft-blush"><strong>需要保留人工決策</strong><p>外部發送、正式資料更新、個資揭露、金流、核銷或月結相關判斷。</p></article>
       </div>
     </section>
@@ -305,11 +349,12 @@
         <table>
           <thead><tr><th>項目</th><th>請填寫</th></tr></thead>
           <tbody>
-            <tr><td>我今天選的工作</td><td>例如：課前提醒、逐字稿摘要、表格檢查、活動行政包</td></tr>
+            <tr><td>我今天選的工作</td><td>例如：日週月報營運雷達、逐字稿摘要、名詞/派薪檢查、課程改版包</td></tr>
             <tr><td>原本大約花多久</td><td>估計原本整理、檢查或寫草稿需要的時間</td></tr>
             <tr><td>Codex 幫我產出什麼</td><td>草稿、清單、表格、流程、待確認事項</td></tr>
-            <tr><td>仍需人工確認</td><td>列出日期、金額、人名、對外發送、正式資料更新等</td></tr>
-            <tr><td>下一次要修正</td><td>資料要補什麼、指令要改哪裡、哪些不適合交給 AI</td></tr>
+            <tr><td>這份輸出要怎麼交代</td><td>我要怎麼讓同事、主管或窗口看懂：這是草稿、檢查清單，還是待確認資料</td></tr>
+            <tr><td>仍需確認</td><td>列出日期、金額、人名、對外發送、正式資料更新等</td></tr>
+            <tr><td>下一次要修正</td><td>資料要補什麼、流程要切得更細，或哪裡需要更早請人確認</td></tr>
           </tbody>
         </table>
       </div>

@@ -95,6 +95,29 @@
       background: #f0faf8;
       color: #254d49;
     }
+    .scenario-card {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0;
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      background: #f0faf8;
+      color: #254d49;
+    }
+    .scenario-card strong {
+      color: var(--navy);
+      font-size: 1.04rem;
+    }
+    .scenario-body {
+      display: grid;
+      gap: 8px;
+    }
+    .scenario-body p {
+      margin: 0;
+      line-height: 1.78;
+    }
     .path {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -220,6 +243,7 @@
       <a href="/guide/">操作說明</a>
       <a href="/kit/">練習包</a>
       <a href="/exercises/">操作題目</a>
+      <a href="/concepts/">Agent / Skill</a>
       <a class="primary" href="/publish/">公開部署</a>
       <a href="/needs/">需求資料</a>
     </nav>
@@ -236,6 +260,17 @@
     <section class="notice">
       這一段放在課程尾聲，定位是「作品公開化的下一步」。前面 90 分鐘先學會和 Codex 梳理工作、產出草稿與檢查表；如果之後要把成果做成可公開瀏覽的頁面或小工具，就照這頁把 GitHub repo（放網站檔案與修改紀錄的雲端專案資料夾）與 Vercel production（正式可開啟的公開網址）串起來。這不是寫程式考試，而是學會把已確認可公開的成果，安全放到一個可開啟的網址。
     </section>
+    <section class="section" id="terms">
+      <h2>先把五個常見術語翻成白話</h2>
+      <p class="muted">學員不用背指令，只要先知道每個字代表哪一種動作。真正要做之前，都可以請 Codex 用白話再說一次。</p>
+      <div class="cards">
+        <article class="card accent-blue"><strong>repo</strong><p>雲端專案資料夾。網站檔案、圖片、README 與修改紀錄都放在這裡。</p></article>
+        <article class="card accent-teal"><strong>commit</strong><p>存一個修改紀錄。像幫這次修改拍照，順手寫一句「這次改了什麼」。</p></article>
+        <article class="card accent-wine"><strong>push</strong><p>把本機修改上傳到 GitHub。也就是把自己電腦裡的新版交到雲端資料夾。</p></article>
+        <article class="card accent-gold"><strong>pull</strong><p>把 GitHub 上的最新版拉回來。開始修改前先同步，避免拿舊版本繼續改。</p></article>
+        <article class="card accent-green"><strong>deploy</strong><p>發布成可開啟的網址。Vercel 會讀取 repo 裡的成果，產生可以分享或檢查的頁面。</p></article>
+      </div>
+    </section>
     <section class="section" id="collaboration">
       <h2>不用背流程，要學會怎麼跟 Codex 協作</h2>
       <p class="muted">GitHub、Vercel、瀏覽器畫面可能會因帳號狀態而不同。學員真正要帶走的是問法：先請 Codex 拆步驟、說明會動到什麼、等自己確認後再執行，最後請 Codex 驗證結果。</p>
@@ -245,15 +280,14 @@
         <article class="deploy-step accent-gold"><small>協作 3</small><strong>確認邊界</strong><p class="muted">會改哪些檔案、會連到哪些外部服務、是否要登入授權。</p></article>
         <article class="deploy-step accent-wine"><small>協作 4</small><strong>一次做一小步</strong><p class="muted">讓 Codex 先做低風險步驟，看到結果再往下。</p></article>
         <article class="deploy-step accent-green"><small>協作 5</small><strong>看結果再回饋</strong><p class="muted">把自己看到的畫面、錯誤訊息或不懂的地方貼回去。</p></article>
-        <article class="deploy-step accent-blue"><small>協作 6</small><strong>請它驗證</strong><p class="muted">要求 Codex 回報網址、截圖、noindex 與仍需人工確認的事項。</p></article>
+        <article class="deploy-step accent-blue"><small>協作 6</small><strong>請它驗證</strong><p class="muted">要求 Codex 回報網址、截圖、noindex 與仍需人確認的事項。</p></article>
       </div>
-      <div class="prompt">我不用背完整流程，請你像專案秘書一樣帶我做。
-請先幫我拆成 3 到 5 個步驟，並標出：
-1. 哪些你可以直接做
-2. 哪些需要我登入、授權或按確認
-3. 哪些會公開到網路上
-4. 每一步完成後我應該看到什麼結果
-請先說明，不要直接執行。</div>
+      <div class="cards">
+        <article class="card soft-sky"><strong>開場先說目的</strong><p>這份成果是給誰看、希望別人看完知道什麼、哪些資料可以公開。</p></article>
+        <article class="card soft-mint"><strong>先請 Codex 拆步驟</strong><p>先看它會怎麼安排工作，再決定哪一步可以做、哪一步要先停下來。</p></article>
+        <article class="card soft-amber"><strong>遇到登入或公開先停</strong><p>凡是授權、發布、刪除、外部寄送或付款，都先回到本人確認。</p></article>
+        <article class="card soft-blush"><strong>每一步都要看結果</strong><p>完成後要看得到網址、畫面、檔案清單、檢查結果或仍需人確認的地方。</p></article>
+      </div>
     </section>
     <section class="section">
       <h2>一張圖看完整工作流</h2>
@@ -324,13 +358,12 @@
           </tbody>
         </table>
       </div>
-      <div class="prompt">如果畫面跳出任何授權、確認、允許、送出、刪除、安裝、部署或付款提示，請先不要急著按。
-請你幫我判斷這個畫面：
-1. 這個動作會改哪裡？本機、GitHub、Vercel、公司系統，還是外部服務？
-2. 這個動作會把資料送去哪裡？會不會公開、寄出、上傳或分享？
-3. 這個動作能不能復原？如果失敗，怎麼回到原狀？
-4. 這個動作會不會碰到個資、正式資料、金額、密碼、金鑰或費用？
-5. 如果安全，請告訴我應該選哪一個；如果不安全，請叫我停下來。</div>
+      <div class="cards">
+        <article class="card soft-sky"><strong>會改哪裡</strong><p>本機檔案、GitHub、Vercel、公司系統，還是外部服務。</p></article>
+        <article class="card soft-mint"><strong>資料會去哪裡</strong><p>會不會公開、寄出、上傳、分享，或讓其他人看得到。</p></article>
+        <article class="card soft-amber"><strong>能不能復原</strong><p>如果按下去失敗，是否能回到原狀，誰可以幫忙復原。</p></article>
+        <article class="card soft-blush"><strong>是否碰到敏感資料</strong><p>個資、正式資料、金額、密碼、金鑰、費用或公司權限都要先停。</p></article>
+      </div>
     </section>
     <section class="section callout-row">
       <article class="panel">
@@ -343,54 +376,54 @@
         </ol>
       </article>
       <article class="panel">
-        <h2>要怎麼調動 Codex 外掛</h2>
-        <div class="prompt">請檢查目前可用的 Codex 外掛。
-這個任務需要 GitHub、Vercel 和 Browser 相關能力。
-如果外掛尚未啟用，請先告訴我：
-1. 這個外掛會用來做什麼
-2. 需要我授權或登入什麼
-3. 啟用後你會怎麼驗證結果
-請不要自行建立外部帳號、不要付款、不要發布未經確認的內容。</div>
+        <h2>要怎麼理解 Codex 外掛</h2>
+        <p>外掛可以先理解成「讓 Codex 看得到或做得到某些事情的授權」。上課不用背外掛名稱，只要確認三件事：這個外掛要用來做什麼、需要登入哪個帳號、啟用後會怎麼驗證。</p>
+        <ul>
+          <li>GitHub 類能力：用來建立或查看專案檔案與修改紀錄。</li>
+          <li>Vercel 類能力：用來把已確認可公開的成果變成網址。</li>
+          <li>Browser 類能力：用來實際打開頁面、檢查手機與桌機畫面。</li>
+        </ul>
       </article>
     </section>
     <section class="section" id="prompts">
-      <h2>具體 Codex 操作指令</h2>
+      <h2>公開前需求說明卡</h2>
       <div class="check-grid">
         <article class="panel">
-          <h3>1. 請 Codex 先做本機版本</h3>
-          <div class="prompt">請幫我建立一個可公開瀏覽的靜態網站。
-主題是：[填入你的主題]
-資料來源是：[貼上已可公開的文字或摘要]
-限制是：不要放個資、不要放內部逐字稿、不要放正式帳務或敏感資料。
-請先做本機版本，完成後用瀏覽器檢查手機和桌機畫面。</div>
+          <h3>1. 先說成果要給誰看</h3>
+          <ul>
+            <li>主題是什麼，使用者看完要知道什麼。</li>
+            <li>資料來源是否已確認可以公開。</li>
+            <li>哪些內容不能放上公開頁，例如個資、內部逐字稿、正式帳務或敏感資料。</li>
+            <li>先做本機版本，完成後再看手機和桌機畫面。</li>
+          </ul>
         </article>
         <article class="panel">
-          <h3>2. 請 Codex 建 GitHub repo</h3>
-          <div class="prompt">請幫我檢查目前資料夾是否適合建立 Git repo。
-請先列出會被提交的檔案，等我確認沒有敏感資料後，再建立 repo。
-請建立 README，寫清楚這個網站的目的、資料邊界、部署方式。
-等我確認後，再推到 GitHub，回報 repo 網址。
-完成後我應該會看到一個 GitHub 網址，裡面有檔案列表與 README。</div>
+          <h3>2. 再確認會留下哪些檔案</h3>
+          <ul>
+            <li>先看會被提交的檔案清單。</li>
+            <li>確認沒有敏感資料後，再建立 GitHub repo。</li>
+            <li>README 要寫清楚網站目的、資料邊界與後續維護方式。</li>
+            <li>完成後要看得到 GitHub 網址、檔案列表與 README。</li>
+          </ul>
         </article>
         <article class="panel">
-          <h3>3. 請 Codex 部署到 Vercel</h3>
-          <div class="prompt">請把這個 GitHub repo 連到 Vercel，並部署成 production。
-部署後請回報：
-1. production URL
-2. deployment id 或部署紀錄編號，之後查問題用
-3. 手機與桌機檢查結果
-4. noindex 狀態，至少檢查 HTML meta robots；若是正式部署，再確認 robots.txt 或 X-Robots-Tag
-如果 Vercel 要我按 Import、Continue 或授權 GitHub，請先停下來確認畫面。</div>
+          <h3>3. 發布前先確認邊界</h3>
+          <ul>
+            <li>Vercel 會把成果變成可開啟網址，發布前先確認內容可以公開。</li>
+            <li>如果畫面要求 Import、Continue 或授權 GitHub，先確認這是不是本次 repo。</li>
+            <li>完成後要看得到 production URL 與部署紀錄。</li>
+            <li>review 階段要確認 noindex；正式公開前仍要人工看內容。</li>
+          </ul>
         </article>
         <article class="panel">
-          <h3>4. 請 Codex 做公開前檢查</h3>
-          <div class="prompt">請用公開頁檢查角度幫我驗收：
-1. 網址是否可在不同裝置開啟
-2. 導覽與按鈕是否能點
-3. 頁面是否有明顯錯字或台灣用語不自然
-4. 是否有個資、內部資料、正式金額或不該公開的內容
-5. 如果是 review 階段，是否有 noindex
-請列出通過項目與需要修正的項目。</div>
+          <h3>4. 最後看公開前檢查</h3>
+          <ul>
+            <li>網址是否可在不同裝置開啟。</li>
+            <li>導覽與按鈕是否能點。</li>
+            <li>是否有明顯錯字或台灣用語不自然。</li>
+            <li>是否有個資、內部資料、正式金額或不該公開的內容。</li>
+            <li>哪些已通過，哪些還需要人工修正。</li>
+          </ul>
         </article>
       </div>
     </section>

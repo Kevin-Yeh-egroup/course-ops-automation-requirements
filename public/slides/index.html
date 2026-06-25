@@ -291,6 +291,55 @@
       align-items: stretch;
     }
 
+    .assignment-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .assignment-card {
+      min-height: 174px;
+      display: grid;
+      align-content: start;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #fff;
+    }
+
+    .assignment-card small {
+      color: var(--muted);
+      font-weight: 900;
+    }
+
+    .assignment-card strong {
+      display: block;
+      color: var(--navy);
+      font-size: 1.04rem;
+      line-height: 1.35;
+    }
+
+    .assignment-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .criteria-panel {
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      background: #f0faf8;
+    }
+
+    .criteria-panel strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--navy);
+    }
+
     .step {
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -491,6 +540,7 @@
       .deploy-map,
       .plugin-lane,
       .meeting-panel,
+      .assignment-grid,
       .steps {
         grid-template-columns: 1fr;
       }
@@ -513,6 +563,7 @@
       <a href="../guide/">操作說明</a>
       <a href="../kit/">練習包</a>
       <a href="../exercises/">操作題目</a>
+      <a href="../concepts/">Agent / Skill</a>
       <a href="../publish/">公開部署</a>
       <button type="button" id="prevBtn">上一頁</button>
       <button type="button" class="primary" id="nextBtn">下一頁</button>
@@ -524,11 +575,11 @@
       <div class="canvas dark hero-visual">
         <p class="eyebrow">課程開始</p>
         <h1>Codex 行政工作實驗課</h1>
-        <p class="lead">90 分鐘內，用共同安全範例練習和 Codex 開一場能產出成果的工作會議。</p>
+        <p class="lead">用真實行政案例練習和 Codex 開一場能產出成果、也能被同事理解的工作會議。</p>
         <div class="grid">
-          <div class="card accent-blue"><strong>把工作講清楚</strong><p>先整理資料來源、處理步驟與輸出格式。</p></div>
-          <div class="card accent-gold"><strong>照題目操作一次</strong><p>用安全範例建立成功經驗，課後再套用到自己的工作。</p></div>
-          <div class="card accent-teal"><strong>帶走練習包</strong><p>留下可重複指令、草稿或檢查表，以及人工確認清單。</p></div>
+          <div class="card accent-blue"><strong>看真實案例</strong><p>從課務、逐字稿、名詞/派薪檢查、課程改版拆出可練習的一小段。</p></div>
+          <div class="card accent-gold"><strong>學會怎麼溝通</strong><p>先問完成定義、風險與確認責任，不一開始就推自動化。</p></div>
+          <div class="card accent-teal"><strong>帶走切分方法</strong><p>學會先說情境、目的、資料、流程與確認責任。</p></div>
         </div>
       </div>
     </section>
@@ -536,37 +587,22 @@
     <section class="slide" id="slide-2">
       <div class="canvas">
         <p class="eyebrow">課程完成品</p>
-        <h2>下課帶走一份課後探索包</h2>
-        <p class="lead">全班先用共同安全範例完成一次 Codex 實驗，自己的工作課後再依需求套用。</p>
+        <h2>下課帶走一份真實工作練習包</h2>
+        <p class="lead">全班先看一個真實案例怎麼被拆解、溝通與檢查，再把方法套到自己的低風險工作片段。</p>
         <div class="grid">
           <div class="card accent-blue"><strong>1. 行政題目</strong><p>選最常重複、最常漏項，或明天就會用到的一小段工作。</p></div>
           <div class="card accent-teal"><strong>2. 工作流程草圖</strong><p>寫出什麼時候開始、手上有什麼、誰要確認、最後交什麼。</p></div>
-          <div class="card accent-wine"><strong>3. 可重複指令</strong><p>把情境、資料、輸出格式與人工確認點寫成下次能再用的句型。</p></div>
+          <div class="card accent-wine"><strong>3. 溝通句型</strong><p>寫出要怎麼問需求、怎麼說明這只是草稿或檢查清單。</p></div>
           <div class="card accent-gold"><strong>4. Codex 產出</strong><p>一份草稿、檢查表、提醒清單、異常表或可交接 checklist。</p></div>
-          <div class="card accent-green"><strong>5. 人工確認清單</strong><p>標出哪些可修改使用、哪些需要確認、哪些需要補資料。</p></div>
-          <div class="card accent-blue"><strong>6. 後續改善清單</strong><p>知道下一次指令、資料或流程可以怎麼調整。</p></div>
+          <div class="card accent-green"><strong>5. 確認清單</strong><p>標出哪些可修改使用、哪些需要確認、哪些需要補資料。</p></div>
+          <div class="card accent-blue"><strong>6. 工具化程度</strong><p>知道一次性整理、固定做法與分步協助的差別。</p></div>
         </div>
-        <p class="footer-note"><a href="../kit/">開啟完整練習包</a>，可直接照著填工作流程整理卡、共用指令模板與成果檢查表。</p>
+        <p class="footer-note"><a href="../kit/">開啟完整練習包</a>，可直接照著填需求說明卡、工作流程整理卡與成果檢查表。</p>
         <div class="inline-actions" aria-label="學習頁快速連結">
           <a class="slide-link" href="../learn/">上課入口</a>
           <a class="slide-link" href="../guide/">看操作說明</a>
           <a class="slide-link primary" href="../kit/">打開練習包</a>
           <a class="slide-link" href="../exercises/">選操作題目</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide" id="slide-3">
-      <div class="canvas">
-        <p class="eyebrow">Codex 可以協助什麼</p>
-        <h2>先用辦公室語言理解 AI</h2>
-        <div class="grid">
-          <div class="card soft-sky"><strong>整理</strong><p>把亂資料變成摘要、待辦、疑點與清單。</p></div>
-          <div class="card soft-mint"><strong>檢查</strong><p>找缺漏、重複、格式錯、狀態衝突。</p></div>
-          <div class="card soft-blush"><strong>產草稿</strong><p>寫可修改的通知、Email、Line、文章或補問清單。</p></div>
-          <div class="card soft-amber"><strong>拆流程</strong><p>把工作拆成資料、步驟、輸出與人工確認點。</p></div>
-          <div class="card"><strong>做成果</strong><p>產出表格、SOP、流程圖、工作台或報告頁。</p></div>
-          <div class="card"><strong>留證據</strong><p>記錄哪裡省時間、哪裡還要人判斷。</p></div>
         </div>
       </div>
     </section>
@@ -578,7 +614,7 @@
         <p class="lead">Codex 不是一次問答就結束。你可以持續補資料、修方向、請它重做，直到成果可以拿來使用。</p>
         <div class="grid">
           <div class="card accent-blue"><strong>你負責主持</strong><p>說明目標、背景、限制、判斷標準與最後要交付的樣子。</p></div>
-          <div class="card accent-teal"><strong>Codex 協助執行</strong><p>整理資料、拆流程、產草稿、列出疑點與人工確認點。</p></div>
+          <div class="card accent-teal"><strong>Codex 協助執行</strong><p>整理資料、拆流程、產草稿，列出疑點與下一步。</p></div>
           <div class="card accent-gold"><strong>你負責確認</strong><p>檢查事實、語氣、風險，以及成果是否能正式使用。</p></div>
         </div>
         <div class="grid two">
@@ -590,57 +626,34 @@
 
     <section class="slide" id="slide-4">
       <div class="canvas">
-        <p class="eyebrow">共用操作句型</p>
-        <h2>先把工作說清楚</h2>
-        <div class="prompt">我要處理的工作是：
-我提供的資料是：
-我希望你產出：
-請特別檢查：
-需要人工確認的地方：
-
-如果資料不足，請列出需要補問的問題，不要自己猜。
-
-最後請把結果分成：
-1. 可修改使用
-2. 需要人工確認
-3. 需要補資料或暫時不適合處理</div>
-        <div class="inline-actions" aria-label="共用指令學習連結">
-          <a class="slide-link" href="../guide/#prompts">看原本操作說明提示詞</a>
-          <a class="slide-link primary" href="../kit/#prompt-template">到練習包複製指令模板</a>
-          <a class="slide-link" href="../learn/">回上課入口</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide" id="slide-5">
-      <div class="canvas">
-        <p class="eyebrow">把工作講清楚卡</p>
-        <h2>五個問題就能開始</h2>
+        <p class="eyebrow">需求說明方式</p>
+        <h2>先把工作說清楚：五個問題就能開始</h2>
+        <p class="lead">不用先想完整指令。先把工作講清楚，Codex 才知道要整理什麼、要停在哪裡。</p>
         <div class="steps">
-          <div class="step"><span class="num">1</span><h3>開始</h3><p>什麼情況下這件工作開始？</p></div>
+          <div class="step"><span class="num">1</span><h3>目的</h3><p>這件工作最後要幫誰省力？要避免什麼漏掉？</p></div>
           <div class="step"><span class="num">2</span><h3>資料</h3><p>手上需要哪些資料？資料在哪裡？</p></div>
-          <div class="step"><span class="num">3</span><h3>處理</h3><p>平常會怎麼整理、檢查或轉換？</p></div>
-          <div class="step"><span class="num">4</span><h3>確認</h3><p>哪些地方容易漏，或需要人判斷？</p></div>
+          <div class="step"><span class="num">3</span><h3>流程</h3><p>平常先做什麼、中間看什麼、最後交付什麼？</p></div>
+          <div class="step"><span class="num">4</span><h3>確認</h3><p>哪些地方不能猜，或一定要人看過才算完成？</p></div>
           <div class="step"><span class="num">5</span><h3>輸出</h3><p>最後要交付提醒、草稿、表格或 checklist？</p></div>
         </div>
-        <div class="inline-actions" aria-label="工作流程卡學習連結">
-          <a class="slide-link primary" href="../kit/#workflow-card">到練習包填工作流程卡</a>
-          <a class="slide-link" href="../kit/#review">看成果檢查表</a>
+        <div class="inline-actions" aria-label="需求與工作流程卡學習連結">
+          <a class="slide-link primary" href="../kit/#need-card">到練習包看需求說明卡</a>
+          <a class="slide-link" href="../kit/#workflow-card">到練習包填工作流程卡</a>
         </div>
       </div>
     </section>
 
     <section class="slide" id="slide-6">
       <div class="canvas">
-        <p class="eyebrow">操作流程</p>
-        <h2>一題照這七步走</h2>
+        <p class="eyebrow">操作小撇步</p>
+        <h2>七個小撇步</h2>
         <div class="grid">
           <div class="card accent-blue"><strong>1. 說明情境</strong><p>現在遇到什麼行政工作？</p></div>
           <div class="card accent-teal"><strong>2. 提供資料</strong><p>貼上安全範例、副本或低風險素材。</p></div>
           <div class="card accent-wine"><strong>3. 指定輸出</strong><p>表格、清單、草稿、流程或 checklist。</p></div>
-          <div class="card accent-gold"><strong>4. 標出確認點</strong><p>哪些地方要補問、要人看、要保留判斷。</p></div>
+          <div class="card accent-gold"><strong>4. 標出疑點</strong><p>哪些地方要補問、要人看、要保留判斷。</p></div>
           <div class="card accent-green"><strong>5. 先拆工作</strong><p>請 Codex 先整理步驟，再產出草稿。</p></div>
-          <div class="card accent-blue"><strong>6. 人工檢查</strong><p>看有沒有誤解、漏項或語氣不合。</p></div>
+          <div class="card accent-blue"><strong>6. 檢查輸出</strong><p>看有沒有誤解、漏項或語氣不合。</p></div>
           <div class="card accent-teal"><strong>7. 要求修正版</strong><p>把修正意見變成下一版輸出。</p></div>
         </div>
       </div>
@@ -648,176 +661,124 @@
 
     <section class="slide" id="slide-7">
       <div class="canvas">
-        <p class="eyebrow">安全使用方式</p>
-        <h2>學會把成果變得可確認</h2>
+        <p class="eyebrow">Agent / Skill 白話說明</p>
+        <h2>方法小抄，以及陪你跑流程的助理</h2>
         <div class="grid">
-          <div class="card soft-mint"><strong>會練會</strong><p>整理、摘要、檢查缺漏，產出可修正的草稿。</p></div>
-          <div class="card soft-amber"><strong>會標出</strong><p>哪些內容要人工確認、由誰確認、何時才能使用。</p></div>
-          <div class="card soft-blush"><strong>會帶走</strong><p>一份可重複指令、一份工作檢查表與後續改善清單。</p></div>
+          <div class="card accent-blue"><strong>一次性需求</strong><p>這次先把情境、目的、資料和確認點說清楚，請 Codex 協助整理一版。</p></div>
+          <div class="card accent-teal"><strong>Skill</strong><p>像一張方法小抄：同類工作常常重複，就把固定步驟與檢查方式寫下來。</p></div>
+          <div class="card accent-gold"><strong>Agent</strong><p>像一位有邊界的工作助理：會依流程幫你看資料、整理狀態、提醒要確認的事。</p></div>
         </div>
-        <p class="footer-note">安全不是把事情停住，而是讓下一步更清楚、更好交接。</p>
-        <div class="inline-actions" aria-label="人工確認清單學習連結">
-          <a class="slide-link primary" href="../kit/#human-checklist">到練習包看人工確認清單</a>
-          <a class="slide-link" href="../kit/#review">看成果檢查表</a>
+        <div class="grid two">
+          <div class="card soft-mint"><strong>今天先理解</strong><p>不需要現場建立正式 Skill 或 Agent，先看懂什麼情境可能適合。</p></div>
+          <div class="card soft-amber"><strong>什麼時候再討論</strong><p>同一類工作重複出現、資料來源穩定、確認點清楚，再考慮升級。</p></div>
         </div>
+        <p class="footer-note"><a href="../concepts/">打開完整 Agent / Skill 說明頁</a>，用更白話的方式看差別。</p>
       </div>
     </section>
 
     <section class="slide" id="slide-8">
       <div class="canvas">
         <p class="eyebrow">四個可選題目</p>
-        <h2>四題都照同一個節奏操作</h2>
-        <p class="lead">學員不用四題全做。共同示範後，每個人選最接近自己工作的一題，照下面三步跑一次。</p>
+        <h2>四題都從真實工作拆出來</h2>
+        <p class="lead">學員不用四題全做。共同示範後，每個人選最接近自己工作的一題，先看情境與溝通，再照步驟跑一次。</p>
         <figure class="visual-frame">
-          <img src="../assets/codex-practice-tracks.png" alt="四個練習題目整理成課程提醒、逐字稿、表格檢查與活動行政四個工作區塊">
+          <img src="../assets/codex-practice-tracks.png" alt="四個練習題目整理成日週月報營運雷達、逐字稿、名詞派薪檢查與課程改版四個工作區塊">
         </figure>
         <div class="grid">
-          <div class="card accent-blue"><strong>1. 選題與貼資料</strong><p>選一段低風險、明天就可能用到的工作，貼上範例或副本。</p></div>
-          <div class="card accent-teal"><strong>2. 用短版指令產出</strong><p>說清楚要整理、檢查或產草稿，要求 Codex 列出人工確認點。</p></div>
-          <div class="card accent-gold"><strong>3. 人工檢查後修正</strong><p>檢查日期、金額、人名、外部發送與正式資料更新，再要求修正版。</p></div>
+          <div class="card accent-blue"><strong>1. 先問真實痛點</strong><p>這件事做到哪裡算完成？目前最怕漏掉什麼？</p></div>
+          <div class="card accent-teal"><strong>2. 說清楚需求</strong><p>說明目的、資料來源、希望協助的範圍與不能做的事。</p></div>
+          <div class="card accent-gold"><strong>3. 拿輸出去溝通</strong><p>說明這是第一版草稿或只讀檢查，不直接對外送出或改正式資料。</p></div>
         </div>
         <div class="grid two">
-          <div class="card soft-sky"><strong>可選題目</strong><p>課程提醒、逐字稿內容、表格檢查、活動行政包。</p></div>
-          <div class="card soft-mint"><strong>課後留下</strong><p>一段可重複指令、一份 Codex 產出、一份人工確認清單。</p></div>
+          <div class="card soft-sky"><strong>可選題目</strong><p>日週月報營運雷達、逐字稿內容、名詞/派薪檢查、課程改版包。</p></div>
+          <div class="card soft-mint"><strong>課後留下</strong><p>一份情境說明、一張流程卡、一份可檢查成果。</p></div>
         </div>
-        <p class="footer-note"><a href="../exercises/">開啟四個練習操作說明</a>，可查看每題的準備資料、操作步驟與可複製指令。</p>
+        <p class="footer-note"><a href="../exercises/">開啟四個練習操作說明</a>，查看每題的完整情境與操作歷程。</p>
         <div class="inline-actions" aria-label="四個練習快速連結">
-          <a class="slide-link primary" href="../exercises/#course-reminder">練習 1 課務提醒</a>
+          <a class="slide-link primary" href="../exercises/#ops-report-radar">練習 1 營運雷達</a>
           <a class="slide-link" href="../exercises/#transcript-content">練習 2 逐字稿</a>
           <a class="slide-link" href="../exercises/#sheet-status">練習 3 表格檢查</a>
-          <a class="slide-link" href="../exercises/#event-admin">練習 4 活動行政</a>
+          <a class="slide-link" href="../exercises/#event-admin">練習 4 課程改版</a>
         </div>
       </div>
     </section>
 
     <section class="slide" id="slide-9">
       <div class="canvas">
-        <p class="eyebrow">題目一</p>
-        <h2>課程提醒與每日工作台</h2>
-        <p class="lead">把課程資料整理成今天可以處理的待辦與提醒草稿。</p>
-        <div class="exercise-layout">
-          <div class="step-panel">
-            <strong>學員怎麼做</strong>
-            <ol>
-              <li>貼上一筆課程或活動資料。</li>
-              <li>補上日期、地點、對象、負責人與目前狀態。</li>
-              <li>請 Codex 分成今日到期、已逾期、等待回覆、需確認。</li>
-              <li>檢查日期與對象，再把提醒草稿改成自己的語氣。</li>
-            </ol>
-          </div>
-          <div class="prompt compact">請把以下課程資料整理成今日課務工作台。
-請輸出：今日到期、已逾期、等待回覆、需要人工確認、可修改提醒草稿。
-如果資料不足，請列出補問問題，不要自己猜。
-
-資料：</div>
+        <p class="eyebrow">真實案例一</p>
+        <h2>日週月報營運雷達</h2>
+        <p class="lead">一開始看起來只是每天要看很多數字和信，後來發現真正的問題是來源很多：Gmail、Google Ads、好理家在後台、電子報與既有報表都要分層整理。</p>
+        <div class="grid two">
+          <div class="card soft-sky"><strong>我要達到的目的</strong><p>把日報、週報、月報需要看的訊號整理成可檢查摘要，清楚標出已確認、部分確認與待補資料。</p></div>
+          <div class="card soft-amber"><strong>平常不用 Codex 時</strong><p>先看 Gmail，再看 Google Ads 與好理家在後台，最後對照日週月報補上缺口。</p></div>
         </div>
         <div class="grid">
-          <div class="card soft-sky"><strong>先準備</strong><p>課程資料、日期時間地點、負責人、等待回覆事項。</p></div>
-          <div class="card soft-mint"><strong>會產出</strong><p>工作台、提醒清單、等待回覆追蹤、提醒草稿。</p></div>
-          <div class="card soft-amber"><strong>要檢查</strong><p>日期、對象、提醒文字、外部發送與正式資料更新。</p></div>
+          <div class="card accent-blue"><strong>我怎麼互動</strong><p>我先說「我要一份今天可以信任的營運狀態」，再補充哪些來源要分開看。</p></div>
+          <div class="card accent-teal"><strong>Codex 幫到哪裡</strong><p>整理 Gmail、Google Ads、好理家在後台與電子報訊號，產出日週月報草稿。</p></div>
+          <div class="card accent-gold"><strong>人要確認什麼</strong><p>Ads 數字、後台狀態、Gmail 回饋是否需回覆，以及哪些資料只能標成部分驗證。</p></div>
         </div>
         <div class="inline-actions" aria-label="練習一對應頁面">
-          <a class="slide-link primary" href="../exercises/#course-reminder">到練習 1 操作頁</a>
-          <a class="slide-link" href="../kit/#review">完成後填成果檢查</a>
+          <a class="slide-link primary" href="../exercises/#ops-report-radar">到練習 1 操作頁</a>
         </div>
       </div>
     </section>
 
     <section class="slide" id="slide-10">
       <div class="canvas">
-        <p class="eyebrow">題目二</p>
-        <h2>逐字稿與內容草稿</h2>
-        <p class="lead">把逐字稿先整理成摘要與可修改草稿，再由人確認事實與語氣。</p>
-        <div class="exercise-layout">
-          <div class="step-panel">
-            <strong>學員怎麼做</strong>
-            <ol>
-              <li>貼上一段逐字稿、會議紀錄或音檔摘要。</li>
-              <li>說明讀者是同仁、學員、合作單位或社群。</li>
-              <li>請 Codex 先抓重點與待確認事實，再產草稿。</li>
-              <li>人工確認人名、日期、專有名詞與可發布程度。</li>
-            </ol>
-          </div>
-          <div class="prompt compact">請將以下逐字稿整理成內容草稿。
-請輸出：一段摘要、三個重點、文章草稿、社群短文、需要人工確認的事實清單。
-請使用台灣職場常用的繁體中文語氣。
-
-資料：</div>
+        <p class="eyebrow">真實案例二</p>
+        <h2>逐字稿變成文章與通知草稿</h2>
+        <p class="lead">真實工作不是把逐字稿貼上去就能發文，而是要先知道這份內容給誰看、要放在哪裡、哪些事實還不能直接發布。</p>
+        <div class="grid two">
+          <div class="card soft-sky"><strong>我要達到的目的</strong><p>把錄影或逐字稿變成可審閱的文章素材，並留下哪些已完成、哪些還要確認。</p></div>
+          <div class="card soft-amber"><strong>平常不用 Codex 時</strong><p>先確認素材是否齊全，手動整理重點與草稿，再回管理表更新進度。</p></div>
         </div>
         <div class="grid">
-          <div class="card soft-sky"><strong>先準備</strong><p>逐字稿或摘要、活動名稱、讀者、輸出格式。</p></div>
-          <div class="card soft-mint"><strong>會產出</strong><p>摘要、文章草稿、社群短文、待確認清單。</p></div>
-          <div class="card soft-amber"><strong>要檢查</strong><p>事實、語氣、可公開程度、是否忠於原意。</p></div>
+          <div class="card accent-blue"><strong>我怎麼互動</strong><p>我先請 Codex 盤點錄影和管理表，不是直接叫它寫文章。</p></div>
+          <div class="card accent-teal"><strong>Codex 幫到哪裡</strong><p>整理重點、改成文章草稿、列出待查證內容，並協助追蹤處理進度。</p></div>
+          <div class="card accent-gold"><strong>人要確認什麼</strong><p>講者原意、人名日期、可公開範圍，以及文章是否能進正式流程。</p></div>
         </div>
         <div class="inline-actions" aria-label="練習二對應頁面">
           <a class="slide-link primary" href="../exercises/#transcript-content">到練習 2 操作頁</a>
-          <a class="slide-link" href="../kit/#review">完成後填成果檢查</a>
         </div>
       </div>
     </section>
 
     <section class="slide" id="slide-11">
       <div class="canvas">
-        <p class="eyebrow">題目三</p>
-        <h2>表格狀態與核銷檢查</h2>
-        <p class="lead">先做只讀檢查，把缺漏、衝突、低信心資料列出來，不直接下正式結論。</p>
-        <div class="exercise-layout">
-          <div class="step-panel">
-            <strong>學員怎麼做</strong>
-            <ol>
-              <li>貼上表格片段或上傳表格副本。</li>
-              <li>說明哪些欄位必填、哪些規則要檢查。</li>
-              <li>請 Codex 找缺漏、重複、格式錯與狀態衝突。</li>
-              <li>保留來源列，逐項確認哪些要補問或修正。</li>
-            </ol>
-          </div>
-          <div class="prompt compact">請只讀檢查以下表格資料。
-請列出：缺漏欄位、格式異常、重複資料、狀態衝突、需要人工確認的金額或日期。
-若資料不足，請列出補問問題，不要做正式核銷或付款結論。
-
-資料：</div>
+        <p class="eyebrow">真實案例三</p>
+        <h2>自定義名詞與派薪前檢查</h2>
+        <p class="lead">這題不是讓 Codex 判斷薪資，而是把正式動作前的證據整理清楚，讓人知道哪些可以處理、哪些要先停下來。</p>
+        <div class="grid two">
+          <div class="card soft-sky"><strong>我要達到的目的</strong><p>先整理候選名詞、修正對照、事件狀態與派薪前資料，做成可審閱清單。</p></div>
+          <div class="card soft-amber"><strong>平常不用 Codex 時</strong><p>先對照候選資料與既有名詞，整理疑點，正式動作前再請人複查。</p></div>
         </div>
         <div class="grid">
-          <div class="card soft-sky"><strong>先準備</strong><p>表格副本、必要欄位、日期/狀態/金額規則。</p></div>
-          <div class="card soft-mint"><strong>會產出</strong><p>異常清單、補問清單、人工確認清單。</p></div>
-          <div class="card soft-amber"><strong>要檢查</strong><p>來源列、異常原因、金額只做試算。</p></div>
+          <div class="card accent-blue"><strong>我怎麼互動</strong><p>我先要 Codex 分類和列疑點，不讓它直接新增、關閉或建立薪資。</p></div>
+          <div class="card accent-teal"><strong>Codex 幫到哪裡</strong><p>找出已存在、疑似重複、缺證據與需要人工判斷的項目。</p></div>
+          <div class="card accent-gold"><strong>人要確認什麼</strong><p>是否能新增正式名詞、是否符合派薪資格、是否可以關閉事件。</p></div>
         </div>
         <div class="inline-actions" aria-label="練習三對應頁面">
           <a class="slide-link primary" href="../exercises/#sheet-status">到練習 3 操作頁</a>
-          <a class="slide-link" href="../kit/#review">完成後填成果檢查</a>
         </div>
       </div>
     </section>
 
     <section class="slide" id="slide-12">
       <div class="canvas">
-        <p class="eyebrow">題目四</p>
-        <h2>活動行政包</h2>
-        <p class="lead">把活動拆成課前、課中、課後，產生可交接的流程與清單。</p>
-        <div class="exercise-layout">
-          <div class="step-panel">
-            <strong>學員怎麼做</strong>
-            <ol>
-              <li>貼上活動日期、地點、對象、人數與人力資訊。</li>
-              <li>列出物資、場地、餐食、通知與既有範本。</li>
-              <li>請 Codex 拆成課前、課中、課後，產出分工與 checklist。</li>
-              <li>人工確認外部通知、個資揭露、場地餐食與課後建檔。</li>
-            </ol>
-          </div>
-          <div class="prompt compact">請把以下活動資料整理成活動行政包。
-請輸出：課前/課中/課後流程、分工表、通知草稿、物資清單、風險清單、可交接 checklist。
-請把需要人工確認的項目另外列出。
-
-資料：</div>
+        <p class="eyebrow">真實案例四</p>
+        <h2>課程改版包</h2>
+        <p class="lead">這題就是這份教材本身：從「我覺得不夠真實」開始，一輪一輪把案例、練習頁和簡報改到更像真實工作。</p>
+        <div class="grid two">
+          <div class="card soft-sky"><strong>我要達到的目的</strong><p>讓學員看到真實歷程：需求怎麼說、案例怎麼選、教材怎麼改、哪裡要再確認。</p></div>
+          <div class="card soft-amber"><strong>平常不用 Codex 時</strong><p>先看原教材問題，挑可去識別化案例，手動同步簡報、練習頁與課綱。</p></div>
         </div>
         <div class="grid">
-          <div class="card soft-sky"><strong>先準備</strong><p>活動資訊、人力、物資、場地與既有範本。</p></div>
-          <div class="card soft-mint"><strong>會產出</strong><p>流程、分工、通知草稿、物資與風險清單。</p></div>
-          <div class="card soft-amber"><strong>要檢查</strong><p>場地餐食、名單、外部通知、個資與建檔事項。</p></div>
+          <div class="card accent-blue"><strong>我怎麼互動</strong><p>你先說教材不夠實際，我再回頭找你的工作記錄，整理成可上課案例。</p></div>
+          <div class="card accent-teal"><strong>Codex 幫到哪裡</strong><p>把口語需求轉成改版清單，更新簡報、練習頁、入口頁，並檢查連結。</p></div>
+          <div class="card accent-gold"><strong>人要確認什麼</strong><p>案例是否代表你的工作、是否去識別化、語氣是否適合學員。</p></div>
         </div>
         <div class="inline-actions" aria-label="練習四對應頁面">
           <a class="slide-link primary" href="../exercises/#event-admin">到練習 4 操作頁</a>
-          <a class="slide-link" href="../kit/#review">完成後填成果檢查</a>
         </div>
       </div>
     </section>
@@ -829,7 +790,7 @@
         <div class="grid">
           <div class="card accent-blue"><strong>有沒有幫我省整理時間？</strong><p>資料是否更清楚、待辦是否更集中？</p></div>
           <div class="card accent-gold"><strong>有沒有漏掉重要判斷？</strong><p>需要人確認的地方是否有列出來？</p></div>
-          <div class="card accent-teal"><strong>下次能不能重跑？</strong><p>指令、資料格式與檢查方式是否足夠清楚？</p></div>
+          <div class="card accent-teal"><strong>下次能不能重跑？</strong><p>情境、資料、流程與檢查方式是否足夠清楚？</p></div>
         </div>
       </div>
     </section>
@@ -840,22 +801,24 @@
         <h2>用簡單表格留下證據</h2>
         <div class="grid">
           <div class="card"><strong>原本花多久？</strong><p>估計原本整理、查缺漏、寫草稿需要多少時間。</p></div>
-          <div class="card"><strong>Codex 幫到哪裡？</strong><p>記錄省下的整理時間與仍需人工確認的部分。</p></div>
-          <div class="card"><strong>下一步怎麼改？</strong><p>改指令、補資料、整理成方法小抄，或暫時維持人工。</p></div>
+          <div class="card"><strong>Codex 幫到哪裡？</strong><p>記錄省下的整理時間與仍需確認的部分。</p></div>
+          <div class="card"><strong>下一步怎麼改？</strong><p>補資料、切更細、固定做法，或暫時維持人工。</p></div>
         </div>
       </div>
     </section>
 
-    <section class="slide" id="slide-15">
+    <section class="slide" id="slide-capability-levels">
       <div class="canvas">
-        <p class="eyebrow">升級語言</p>
-        <h2>指令、方法小抄、助理角色卡怎麼分</h2>
-        <div class="grid">
-          <div class="card accent-blue"><strong>指令</strong><p>一次請 Codex 幫你做一版。</p></div>
-          <div class="card accent-teal"><strong>方法小抄</strong><p>同一類工作跑過幾次後，把穩定做法寫下來。</p></div>
-          <div class="card accent-gold"><strong>助理角色卡</strong><p>把任務、邊界、資料來源、檢查方式寫清楚。</p></div>
+        <p class="eyebrow">可以做到什麼程度</p>
+        <h2>先從可檢查成果開始，不直接跳全自動</h2>
+        <div class="deploy-map">
+          <div class="deploy-node accent-blue"><small>1</small><strong>只讀整理</strong><p>摘要、待辦、缺漏、疑點、補問清單。</p></div>
+          <div class="deploy-node accent-teal"><small>2</small><strong>草稿產出</strong><p>Email、LINE、文章、提醒、分工、SOP 草稿。</p></div>
+          <div class="deploy-node accent-gold"><small>3</small><strong>固定做法</strong><p>同一類工作重複出現時，把步驟與檢查方式留下來。</p></div>
+          <div class="deploy-node accent-wine"><small>4</small><strong>分步協助</strong><p>當流程有多步驟，再考慮讓 Codex 依規則陪你跑一段。</p></div>
+          <div class="deploy-node accent-green"><small>5</small><strong>正式自動化</strong><p>外部發送、寫回、排程、帳號權限都要另行審查。</p></div>
         </div>
-        <p class="footer-note">這堂課先學會分辨與寫草稿，讓之後的工具化更穩。</p>
+        <p class="footer-note">課堂重點放在 1 到 4；第 5 階段需要權限、資料安全、責任分工與人工核准，不在第一堂直接操作。</p>
       </div>
     </section>
 
@@ -865,8 +828,8 @@
         <h2>課後自己套用時，先留下三樣東西</h2>
         <ul class="checklist">
           <li>一個明天可以繼續試的真實行政工作任務。</li>
-          <li>一段可重複使用的 Codex 指令。</li>
-          <li>一份人工確認清單，知道下一步要問誰、補什麼、改哪裡。</li>
+          <li>一份可以講清楚的需求說明與工作流程。</li>
+          <li>一份確認清單，知道下一步要問誰、補什麼、改哪裡。</li>
         </ul>
         <p class="lead">課堂先學會共同題目的操作方式；自己的工作套用、效果記錄與收尾整理，留到課後依需求慢慢探索。</p>
         <div class="inline-actions" aria-label="課後回到學習頁">
@@ -879,19 +842,20 @@
 
     <section class="slide" id="slide-collaboration">
       <div class="canvas">
-        <p class="eyebrow">協作方式</p>
-        <h2>不用背流程，要學會怎麼跟 Codex 開會</h2>
-        <p class="lead">學員之後會在自己的電腦和 Codex 協作。畫面、帳號與授權狀態可能不同，所以重點不是記住所有按鈕，而是會問、會確認、會請 Codex 驗證。</p>
+        <p class="eyebrow">需求說明方式</p>
+        <h2>不要背句型，先把這件事講清楚</h2>
+        <p class="lead">我實際跟 Codex 工作時，不是一開始就丟完整指令，而是先說「我想達到什麼」，再看它整理得對不對，接著補資料、切流程、標出要停下來確認的地方。</p>
         <div class="deploy-map">
-          <div class="deploy-node accent-blue"><small>1</small><strong>先說目標</strong><p>我要做什麼、給誰看、哪些資料可以公開。</p></div>
-          <div class="deploy-node accent-teal"><small>2</small><strong>請它拆步驟</strong><p>先說明要做哪些事，不急著執行。</p></div>
-          <div class="deploy-node accent-gold"><small>3</small><strong>確認邊界</strong><p>會改檔案、連外部服務或需要登入時，先停下來。</p></div>
-          <div class="deploy-node accent-wine"><small>4</small><strong>一次一小步</strong><p>看完結果再往下一步，不用一口氣全做完。</p></div>
-          <div class="deploy-node accent-green"><small>5</small><strong>請它驗證</strong><p>回報網址、畫面、連結、noindex 與人工確認點。</p></div>
+          <div class="deploy-node accent-blue"><small>1</small><strong>先說情境</strong><p>我現在遇到什麼麻煩，為什麼這件事容易漏。</p></div>
+          <div class="deploy-node accent-teal"><small>2</small><strong>說想達到的目的</strong><p>最後要得到草稿、清單、流程、提醒，還是審閱包。</p></div>
+          <div class="deploy-node accent-gold"><small>3</small><strong>補資料與限制</strong><p>手上有哪些資料，哪些不能公開、不能寫回、不能自動決定。</p></div>
+          <div class="deploy-node accent-wine"><small>4</small><strong>看第一版再修正</strong><p>如果它理解錯，就補充對象、語氣、欄位、流程或判斷依據。</p></div>
+          <div class="deploy-node accent-green"><small>5</small><strong>請它列確認點</strong><p>最後要看哪些地方仍需要人確認，下一步要問誰或補什麼。</p></div>
         </div>
-        <div class="prompt compact">我不用背完整流程，請你像專案秘書一樣帶我做。
-請先幫我拆成 3 到 5 個步驟，並標出哪些你可以做、哪些需要我登入或授權、哪些會公開到網路上。
-請先說明，不要直接執行。</div>
+        <div class="grid two">
+          <div class="card soft-sky"><strong>像真實工作一樣來回</strong><p>第一版通常不是最後答案；重要的是把 Codex 的整理拿來對照自己的工作經驗，逐步補清楚。</p></div>
+          <div class="card soft-amber"><strong>不要急著讓它做完</strong><p>遇到登入、公開、送出、刪除、派薪、正式資料更新，就先停下來，改成列出待確認事項。</p></div>
+        </div>
       </div>
     </section>
 
@@ -899,14 +863,15 @@
       <div class="canvas">
         <p class="eyebrow">課程尾聲延伸</p>
         <h2>如果成果要公開呈現，走這條路線</h2>
-        <p class="lead">把 Codex 做出的頁面或小工具，整理成 GitHub repo（放專案檔案和修改紀錄的雲端資料夾），再部署到 Vercel production（正式可開啟的公開網址）。這段是課後探索，不是前面 90 分鐘的必做題。</p>
+        <p class="lead">不用先背英文指令。先把它想成：把作品放進雲端資料夾，留下每次修改紀錄，上傳到 GitHub，再讓 Vercel 變成可開啟的網址。</p>
         <div class="deploy-map">
-          <div class="deploy-node accent-blue"><small>1</small><strong>Codex 做頁面</strong><p>先做本機版本，也就是目前電腦或 Codex 工作區看得到，還不是公開網址。</p></div>
-          <div class="deploy-node accent-teal"><small>2</small><strong>GitHub repo</strong><p>建立版本庫，留下 README。README 就像交接說明，寫給之後維護或審查的人看。</p></div>
-          <div class="deploy-node accent-wine"><small>3</small><strong>部署到 Vercel</strong><p>連到 repo，產生正式網址。</p></div>
-          <div class="deploy-node accent-gold"><small>4</small><strong>跨裝置檢查</strong><p>手機、桌機、連結、導覽與 noindex（請搜尋引擎不要收錄的設定）。</p></div>
-          <div class="deploy-node accent-green"><small>5</small><strong>確認後分享</strong><p>確定沒有個資、內部資料或正式敏感內容。</p></div>
+          <div class="deploy-node accent-blue"><small>repo</small><strong>雲端專案資料夾</strong><p>放網站檔案、圖片、README 與修改紀錄的地方。</p></div>
+          <div class="deploy-node accent-teal"><small>commit</small><strong>存一個修改紀錄</strong><p>像幫這次修改拍照，附上一句「這次改了什麼」。</p></div>
+          <div class="deploy-node accent-wine"><small>push</small><strong>把修改上傳</strong><p>把本機改好的內容送到 GitHub 的 repo。</p></div>
+          <div class="deploy-node accent-gold"><small>pull</small><strong>把最新版拉回來</strong><p>開始前先拿雲端最新版，避免改到舊版本。</p></div>
+          <div class="deploy-node accent-green"><small>deploy</small><strong>發布成網址</strong><p>讓 Vercel 把 repo 裡的成果變成大家能開的頁面。</p></div>
         </div>
+        <p class="footer-note">課堂只要聽懂意思；真正操作前，請 Codex 先說會改哪些檔案、會送去哪裡，再由本人確認。</p>
         <div class="inline-actions" aria-label="公開部署工作流連結">
           <a class="slide-link primary" href="../publish/">打開完整公開部署教學</a>
           <a class="slide-link" href="../kit/#review">先回成果檢查表</a>
@@ -925,18 +890,17 @@
         </div>
         <div class="meeting-panel">
           <div class="step-panel">
-            <strong>可以這樣問 Codex</strong>
+            <strong>先釐清三件事</strong>
             <ol>
-              <li>目前我需要哪些外掛？</li>
-              <li>每個外掛會用來做什麼？</li>
+              <li>這個能力會用來看資料、改檔案，還是連外部服務？</li>
               <li>需要我登入或授權哪個帳號？</li>
-              <li>完成後你會怎麼驗證？</li>
+              <li>完成後要用什麼畫面或網址確認結果？</li>
             </ol>
           </div>
-          <div class="prompt compact">請檢查目前可用的 Codex 外掛。
-這個任務需要 GitHub、Vercel 和 Browser 相關能力。
-如果外掛尚未啟用，請先告訴我用途、需要的授權，以及啟用後的驗證方式。
-請不要自行建立外部帳號、不要付款、不要發布未經確認的內容。</div>
+          <div class="step-panel">
+            <strong>學員不用背外掛名稱</strong>
+            <p>只要知道：外掛是讓 Codex 有能力看瀏覽器、連 GitHub 或連 Vercel。真正要確認的是用途、帳號、權限與驗證方式。</p>
+          </div>
         </div>
         <div class="inline-actions" aria-label="帳號與外掛教學連結">
           <a class="slide-link primary" href="../publish/#accounts">看帳號與外掛步驟</a>
@@ -957,31 +921,66 @@
           <div class="card accent-wine"><strong>外部寄送、刪除、安裝、公開</strong><p>先停下來確認收件人、檔案、公開範圍、是否能復原。</p></div>
           <div class="card accent-gold"><strong>付款、密碼、金鑰、公司權限</strong><p>課堂不要直接按。截圖或記下問題，找主管或帳號管理者確認。</p></div>
         </div>
-        <div class="prompt compact">如果畫面跳出授權或確認，請先幫我判斷：
-這會改哪裡？會把資料送去哪裡？能不能復原？會不會碰到個資、正式資料、金額、密碼或公司權限？
-如果安全，請告訴我應該選哪一個；如果不安全，請叫我停下來。</div>
+        <div class="grid two">
+          <div class="card soft-sky"><strong>我會先看</strong><p>它要改哪裡、資料會送去哪裡、是否能復原。</p></div>
+          <div class="card soft-amber"><strong>我會先停</strong><p>碰到個資、正式資料、金額、密碼、金鑰、公司權限或付款。</p></div>
+        </div>
         <div class="inline-actions" aria-label="授權判斷教學連結">
           <a class="slide-link primary" href="../publish/#authorization">看完整授權選擇表</a>
-          <a class="slide-link" href="../publish/#prompts">看操作指令</a>
+          <a class="slide-link" href="../publish/#prompts">看需求說明卡</a>
         </div>
       </div>
     </section>
 
     <section class="slide" id="slide-19">
       <div class="canvas">
-        <p class="eyebrow">具體操作</p>
-        <h2>請 Codex 協助把成果整理到可檢查的公開網址</h2>
-        <p class="lead">把它想成一位會幫你執行工作的專案秘書：先確認目標，再做本機版本，接著整理 repo、部署、驗證；需要登入、授權或公開發布時，先停下來給你確認。</p>
+        <p class="eyebrow">公開成果前</p>
+        <h2>把「我要公開什麼」說明清楚</h2>
+        <p class="lead">這頁不是要學員背部署指令，而是示範：當成果要變成網址時，先說明公開目的、資料邊界、檢查方式與需要本人確認的動作。</p>
         <div class="grid two">
-          <div class="card accent-blue"><strong>建頁面</strong><p>「請先做本機版本，不要放個資，完成後用瀏覽器檢查手機和桌機畫面。」</p></div>
-          <div class="card accent-teal"><strong>建 repo</strong><p>「請先列出會提交的檔案，等我確認沒有敏感資料，再建立 GitHub repo。」</p></div>
-          <div class="card accent-wine"><strong>部署成正式網址</strong><p>「請部署到 Vercel production，回報網址、部署紀錄與 noindex 狀態。」</p></div>
-          <div class="card accent-gold"><strong>公開前驗收</strong><p>「請檢查跨裝置、連結、文字、台灣用語，以及不該公開的資料。」</p></div>
+          <div class="card accent-blue"><strong>公開目的</strong><p>這個頁面給誰看？看完要知道什麼？目前是內部 review 還是正式公開？</p></div>
+          <div class="card accent-teal"><strong>資料邊界</strong><p>哪些文字、圖片、表格可以公開？哪些個資、逐字稿、帳務或內部資料不能放？</p></div>
+          <div class="card accent-wine"><strong>本人確認</strong><p>建立 repo、push、deploy、授權帳號、改公開範圍時，都先停下來確認。</p></div>
+          <div class="card accent-gold"><strong>公開前檢查</strong><p>用手機和桌機開頁面，檢查導覽、連結、台灣用語、noindex 與敏感資料。</p></div>
         </div>
         <p class="footer-note">公開頁可以被轉傳與截圖；review 階段的 noindex 不是隱私保護。</p>
-        <div class="inline-actions" aria-label="公開部署操作指令連結">
-          <a class="slide-link primary" href="../publish/#prompts">看完整操作指令</a>
+        <div class="inline-actions" aria-label="公開部署需求說明連結">
+          <a class="slide-link primary" href="../publish/#prompts">看公開前需求說明卡</a>
           <a class="slide-link" href="../learn/">回上課入口</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-final-assignment">
+      <div class="canvas">
+        <p class="eyebrow">課後檢核題</p>
+        <h2>用一份簡報說明你的真實工作案例</h2>
+        <p class="lead">請選一件下週真的會做、常重複或容易漏項的工作，做成 5 到 7 頁簡報。對象是同事或主管，目標是讓對方看懂你怎麼溝通、Codex 可以做到哪裡、哪些仍要人確認。</p>
+        <div class="assignment-grid">
+          <article class="assignment-card accent-blue">
+            <small>1</small>
+            <strong>真實情境</strong>
+            <p>這件工作是什麼？什麼時候開始？最花時間或最容易漏掉的是哪裡？</p>
+          </article>
+          <article class="assignment-card accent-teal">
+            <small>2</small>
+            <strong>我要達到的目的</strong>
+            <p>這件工作最後要改善什麼？要避免什麼漏掉或出錯？</p>
+          </article>
+          <article class="assignment-card accent-gold">
+            <small>3</small>
+            <strong>工作流程</strong>
+            <p>從開始到交付，請拆成 4 到 6 個普通人看得懂的步驟。</p>
+          </article>
+          <article class="assignment-card accent-wine">
+            <small>4</small>
+            <strong>確認點</strong>
+            <p>哪些資料、語氣、金額、正式動作或對外內容一定要人確認？</p>
+          </article>
+        </div>
+        <div class="criteria-panel">
+          <strong>檢核重點</strong>
+          <p class="footer-note">案例是否真實｜目的是否清楚｜流程是否能被同事理解｜Codex 協助範圍是否明確｜確認點是否具體。</p>
         </div>
       </div>
     </section>

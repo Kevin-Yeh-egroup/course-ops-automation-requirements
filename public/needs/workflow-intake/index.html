@@ -95,6 +95,29 @@
       background: #f0faf8;
       color: #254d49;
     }
+    .scenario-card {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0;
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      background: #f0faf8;
+      color: #254d49;
+    }
+    .scenario-card strong {
+      color: var(--navy);
+      font-size: 1.04rem;
+    }
+    .scenario-body {
+      display: grid;
+      gap: 8px;
+    }
+    .scenario-body p {
+      margin: 0;
+      line-height: 1.78;
+    }
     .path {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -220,6 +243,7 @@
       <a href="/guide/">操作說明</a>
       <a href="/kit/">練習包</a>
       <a href="/exercises/">操作題目</a>
+      <a href="/concepts/">Agent / Skill</a>
       <a href="/publish/">公開部署</a>
       <a class="primary" href="/needs/">需求資料</a>
     </nav>
@@ -228,13 +252,13 @@
     <div class="shell">
       <p class="eyebrow">需求資料</p>
       <h1>工作流蒐集與 AI 評估模板</h1>
-      <p class="lead">陪夥伴把真實工作講清楚，再判斷哪些段落適合 AI 協助、哪些必須保留人工確認。</p>
+      <p class="lead">陪夥伴把真實工作講清楚，再判斷哪些段落適合 AI 協助、哪些必須由人確認。</p>
     </div>
   </section>
   <main class="shell md-page">
     
     <section class="notice">
-      本頁來源：<code>shared-modules/workflow-intake-ai-evaluation-template.md</code>。這是陪伴夥伴蒐集工作細節的共用模板，不是正式系統規格；涉及個資、帳務、個案、外部發送或正式寫回時，仍需保留人工確認。
+      本頁來源：<code>shared-modules/workflow-intake-ai-evaluation-template.md</code>。這是陪伴夥伴蒐集工作細節的共用模板，不是正式系統規格；涉及個資、帳務、個案、外部發送或正式寫回時，仍需保留人工核准。
     </section>
     <section class="section grid two">
       <article class="card accent-blue">

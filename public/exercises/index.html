@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>四個練習操作說明</title>
+  <title>四個真實案例操作說明</title>
   <style>
     :root {
       color-scheme: light;
@@ -94,6 +94,29 @@
       padding: 16px 18px;
       background: #f0faf8;
       color: #254d49;
+    }
+    .scenario-card {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0;
+      border: 1px solid #c7d5da;
+      border-left: 6px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      background: #f0faf8;
+      color: #254d49;
+    }
+    .scenario-card strong {
+      color: var(--navy);
+      font-size: 1.04rem;
+    }
+    .scenario-body {
+      display: grid;
+      gap: 8px;
+    }
+    .scenario-body p {
+      margin: 0;
+      line-height: 1.78;
     }
     .path {
       display: grid;
@@ -220,6 +243,7 @@
       <a href="/guide/">操作說明</a>
       <a href="/kit/">練習包</a>
       <a class="primary" href="/exercises/">操作題目</a>
+      <a href="/concepts/">Agent / Skill</a>
       <a href="/publish/">公開部署</a>
       <a href="/needs/">需求資料</a>
     </nav>
@@ -227,117 +251,137 @@
   <section class="hero">
     <div class="shell">
       <p class="eyebrow">課堂實作題目</p>
-      <h1>四個練習操作說明</h1>
-      <p class="lead">每題都列出準備資料、操作步驟、可複製指令與檢查方式，學員可以直接挑一題開始做。</p>
+      <h1>四個真實案例操作說明</h1>
+      <p class="lead">每題都先用情境帶入，再呈現目的、原本流程、互動歷程與仍需確認的地方。</p>
     </div>
   </section>
   <main class="shell ">
     
     <section class="notice">
-      四個練習都用同一個基本方法：說明工作、提供資料、指定輸出、標出人工確認、檢查後修正。課堂共同示範後，學員可先選一題理解操作方式；自己的真實工作可留到課後自行套用。
+      四個練習都從真實行政工作改寫。每一題先看情境，再看我怎麼和 Codex 來回互動、怎麼把工作切開、哪些地方仍要確認。重點不是背固定句子，而是學會把需求說清楚。
     </section>
     <section class="section next-strip">
       <div>
-        <strong>你現在在第 4 步：選一題操作。</strong>
-        <p class="muted">先選最接近自己工作的題目，理解準備資料、操作步驟與檢查方式；課後再用自己的素材完整跑一次。</p>
+        <strong>你現在在第 4 步：選一題真實案例操作。</strong>
+        <p class="muted">先選最接近自己工作的題目，照著看情境、目的、原本流程、互動歷程與確認點。課後再用自己的工作素材重新描述一次。</p>
       </div>
-      <a class="button-link primary" href="/kit/#review">完成後：檢查成果</a>
+      <a class="button-link primary" href="/concepts/">下一步：看 Agent / Skill</a>
     </section>
     <section class="section">
-      <h2>四個練習題目</h2>
+      <h2>四個真實案例題目</h2>
       <div class="cards"><article class="card accent-blue">
-    <strong>課程提醒與每日工作台</strong>
-    <p>今日課務工作台、課前提醒清單、等待回覆追蹤表、內部提醒草稿。</p>
-    <p style="margin-top:14px"><a class="button-link primary" href="#course-reminder">看操作步驟</a></p>
+    <strong>真實案例一：日週月報營運雷達</strong>
+    <p>把日報、週報、月報會用到的 Gmail、Google Ads、好理家在後台與電子報訊號，整理成可檢查的營運摘要。</p>
+    <p style="margin-top:14px"><a class="button-link primary" href="#ops-report-radar">看操作步驟</a></p>
   </article><article class="card accent-blue">
-    <strong>逐字稿與內容草稿</strong>
-    <p>逐字稿摘要、活動紀錄、文章草稿、社群短文與待確認清單。</p>
+    <strong>真實案例二：逐字稿變成文章與通知草稿</strong>
+    <p>把錄影或逐字稿整理成可審閱的文章素材，並留下處理狀態與待確認事項。</p>
     <p style="margin-top:14px"><a class="button-link primary" href="#transcript-content">看操作步驟</a></p>
   </article><article class="card accent-blue">
-    <strong>表格狀態與核銷檢查</strong>
-    <p>異常清單、人工確認清單、待補資料清單與詢問草稿。</p>
+    <strong>真實案例三：自定義名詞與派薪前檢查</strong>
+    <p>把候選名詞、修正對照與派薪前資料整理成審閱包，讓人可以清楚判斷下一步。</p>
     <p style="margin-top:14px"><a class="button-link primary" href="#sheet-status">看操作步驟</a></p>
   </article><article class="card accent-blue">
-    <strong>活動行政包</strong>
-    <p>活動流程、分工表、通知草稿、風險清單與可交接 checklist。</p>
+    <strong>真實案例四：課程改版包與交接清單</strong>
+    <p>把模糊的改版想法整理成教材改版包，讓投影片、練習題與上課流程一致。</p>
     <p style="margin-top:14px"><a class="button-link primary" href="#event-admin">看操作步驟</a></p>
   </article></div>
     </section>
     
-    <section class="section" id="course-reminder">
+    <section class="section" id="ops-report-radar">
       <div class="panel">
         <p class="eyebrow">練習 1</p>
-        <h2>課程提醒與每日工作台</h2>
-        <p class="muted">今日課務工作台、課前提醒清單、等待回覆追蹤表、內部提醒草稿。</p>
+        <h2>真實案例一：日週月報營運雷達</h2>
+        <p class="muted">把日報、週報、月報會用到的 Gmail、Google Ads、好理家在後台與電子報訊號，整理成可檢查的營運摘要。</p>
+        <section class="scenario-card">
+          <strong>情境先看懂</strong>
+          <div class="scenario-body"><p>這個案例一開始看起來只是「每天要看很多數字和信」。</p><p>真正困難的是來源很多，而且可信度不一樣。</p><p>Gmail 有真人回覆與系統通知，Google Ads 有投放數字，好理家在後台有實際使用狀態，電子報則是外部學習素材。</p><p>如果直接請 Codex 做結論，很容易把已確認、部分確認和還沒讀到的資料混在一起。</p></div>
+        </section>
         <div class="grid two">
-          <article class="card soft-sky"><strong>先準備</strong><ul><li>一筆課程資料或活動資料</li><li>日期、時間、地點、對象與負責人</li><li>目前已知狀態與等待回覆事項</li></ul></article>
-          <article class="card soft-mint"><strong>檢查成果</strong><ul><li>日期與倒推提醒是否正確</li><li>提醒對象是否正確</li><li>需要人工確認的地方是否有被標出</li></ul></article>
+          <article class="card soft-sky"><strong>我要達到的目的</strong><p>把每天、每週、每月要看的訊號分層，最後整理成可以交付、可以追問的報表。</p></article>
+          <article class="card soft-amber"><strong>如果不用 Codex，平常我會怎麼做</strong><ol><li>先打開 Gmail，看有沒有真人回覆、系統通知或重要回饋</li><li>再看 Google Ads 的花費、點擊與異常</li><li>打開好理家在後台，確認實際使用狀態</li><li>對照既有日報、週報、月報，補上缺漏或差異</li><li>整理成可回報的摘要，標出還沒確認的資料</li></ol></article>
         </div>
-        <h3>操作步驟</h3>
-        <ol class="steps"><li>先用工作流程整理卡寫清楚這件事從哪裡開始、最後要產出什麼。</li><li>把資料貼給 Codex，請它整理成「今日到期、已逾期、等待回覆、需要人工確認」。</li><li>請 Codex 依課程日期倒推提醒節點，並把提醒文字寫成可修改草稿。</li><li>人工檢查日期、對象、稱謂、是否有外部發送風險。</li><li>記錄這次節省了哪一段整理時間，以及下次資料要補哪個欄位。</li></ol>
-        <h3>可複製指令</h3>
-        <div class="prompt">請把以下課程資料整理成今日課務工作台。
-請分成：今日到期、已逾期、等待回覆、需要人工確認、可複製提醒草稿。
-請列出你判斷的依據，不要自動寄出或改任何正式資料。
-
-資料：</div>
+        <h3>我跟 Codex 互動的歷程</h3>
+        <ol class="steps"><li>我先把問題說成「我需要一份今天可以信任的營運狀態」，而不是「幫我把所有數據整理好」。</li><li>接著把資料來源拆開：Gmail、Google Ads、好理家在後台、電子報，以及既有的日報、週報、月報。</li><li>第一版整理後，我再補充一個重點：報表要標清楚資料狀態，哪些已確認、哪些只有部分確認、哪些目前還讀不到。</li><li>後來流程逐漸固定：日報看今日狀態與異常，週報看趨勢與管理摘要，月報看累積成果與需要決策的地方。</li></ol>
+        <h3>我怎麼把需求說清楚</h3>
+        <ol class="steps"><li>目的：確認今天、這週、這個月的營運狀態是否正常。</li><li>資料：Gmail、Google Ads、好理家在後台、電子報，以及既有報表。</li><li>風險：不要把未確認資料寫成結論，也不要漏掉 Ads 或後台異常。</li><li>先請 Codex 做的事：分來源整理、標出資料狀態、產出報表草稿，並列出需要人工重看的地方。</li></ol>
+        <h3>Codex 可以協助到哪裡</h3>
+        <ol class="steps"><li>把 Gmail、Ads、後台與電子報分成不同訊號</li><li>整理今日異常、週趨勢與月累積重點</li><li>標出已確認、部分確認、目前讀不到的資料</li><li>把電子報整理成可審閱的觀察卡，而不是直接變成決策</li></ol>
+        <h3>仍然要由人確認</h3>
+        <ol class="steps"><li>Google Ads 數字是否真的來自當天後台</li><li>好理家在後台是否已成功開啟並確認</li><li>Gmail 回饋是否需要真人回覆</li><li>週報或月報結論是否有足夠證據</li><li>哪些資料只能先標成待補</li></ol>
+        <article class="card accent-teal"><strong>這題要學會的切分</strong><p>學員要學到的是：報表不是把所有資料塞成一段結論，而是先說清楚來源、證據與限制。Codex 可以協助整理與寫草稿，但數字、異常、決策與對外說法仍要由人把關。</p></article>
       </div>
     </section>
     <section class="section" id="transcript-content">
       <div class="panel">
         <p class="eyebrow">練習 2</p>
-        <h2>逐字稿與內容草稿</h2>
-        <p class="muted">逐字稿摘要、活動紀錄、文章草稿、社群短文與待確認清單。</p>
+        <h2>真實案例二：逐字稿變成文章與通知草稿</h2>
+        <p class="muted">把錄影或逐字稿整理成可審閱的文章素材，並留下處理狀態與待確認事項。</p>
+        <section class="scenario-card">
+          <strong>情境先看懂</strong>
+          <div class="scenario-body"><p>這不是單純把逐字稿改成文章。</p><p>真實工作會先遇到幾個問題：錄影檔能不能處理、逐字稿是否完整、文章要放進哪個內容流程、哪一筆已完成、哪一筆還在等確認。</p><p>如果沒有把狀態整理清楚，後面很容易重複處理或漏掉素材。</p></div>
+        </section>
         <div class="grid two">
-          <article class="card soft-sky"><strong>先準備</strong><ul><li>一段逐字稿、會議紀錄或音檔摘要</li><li>活動名稱、用途與讀者</li><li>希望輸出的格式</li></ul></article>
-          <article class="card soft-mint"><strong>檢查成果</strong><ul><li>是否有忠於原意</li><li>是否標出需要查證的事實</li><li>語氣是否適合對內或對外讀者</li></ul></article>
+          <article class="card soft-sky"><strong>我要達到的目的</strong><p>把影片到文章的中間流程攤開，讓檔案狀態、文章草稿與待確認事項都能被追蹤。</p></article>
+          <article class="card soft-amber"><strong>如果不用 Codex，平常我會怎麼做</strong><ol><li>先確認錄影檔與逐字稿是否齊全</li><li>手動整理重點與可用段落</li><li>打開管理表確認這筆內容目前狀態</li><li>寫出文章草稿或摘要，再標出待確認句子</li><li>回到管理表更新進度，避免下次重複處理</li></ol></article>
         </div>
-        <h3>操作步驟</h3>
-        <ol class="steps"><li>先說明這份內容要給誰看，以及要變成摘要、文章、公告還是社群短文。</li><li>請 Codex 先抓出主題、重點、可引用資訊與需要確認的事實。</li><li>請 Codex 產出第一版草稿，再要求它改成適合台灣同仁或合作單位閱讀的語氣。</li><li>人工檢查專有名詞、日期、人名、對外可發布程度。</li><li>留下可重複指令，下一次換逐字稿時可直接套用。</li></ol>
-        <h3>可複製指令</h3>
-        <div class="prompt">請將以下逐字稿整理成內容草稿。
-輸出請包含：一段摘要、三個重點、文章草稿、社群短文、需要人工確認的事實清單。
-請使用台灣職場常用的繁體中文語氣，避免誇大或替我做正式發布判斷。
-
-資料：</div>
+        <h3>我跟 Codex 互動的歷程</h3>
+        <ol class="steps"><li>我先請 Codex 幫我盤點錄影與管理表，而不是直接叫它寫文章。</li><li>接著把流程拆成：找檔案、確認狀態、整理逐字稿、產文章草稿、回寫管理表。</li><li>中間發現排序、標題與狀態很重要；如果不整理清楚，後面就不知道哪一筆已完成。</li><li>最後我把可處理的錄影先批次處理，未確認的部分留在管理表，避免混在一起。</li></ol>
+        <h3>我怎麼把需求說清楚</h3>
+        <ol class="steps"><li>讀者：文章最後要給一般民眾、學員，還是內部同仁看。</li><li>資料：錄影檔、逐字稿、管理表與文章位置在哪裡。</li><li>先做哪一步：先整理摘要、先做文章草稿，或先確認缺少哪些資料。</li><li>限制：不能自動發布、不能改變講者原意，也不能忽略待確認事實。</li></ol>
+        <h3>Codex 可以協助到哪裡</h3>
+        <ol class="steps"><li>整理逐字稿重點</li><li>把口語內容改成文章草稿</li><li>列出需要人工查證的內容</li><li>協助回顧哪些素材已處理、哪些還沒完成</li></ol>
+        <h3>仍然要由人確認</h3>
+        <ol class="steps"><li>講者原意是否保留</li><li>人名、日期與專有名詞是否正確</li><li>內容是否適合公開</li><li>文章是否真的可以放進正式流程</li></ol>
+        <article class="card accent-teal"><strong>這題要學會的切分</strong><p>學員要學到的是：內容工作不是貼上文字請 AI 改寫而已，要先說明讀者、用途、素材狀態與審稿邊界。</p></article>
       </div>
     </section>
     <section class="section" id="sheet-status">
       <div class="panel">
         <p class="eyebrow">練習 3</p>
-        <h2>表格狀態與核銷檢查</h2>
-        <p class="muted">異常清單、人工確認清單、待補資料清單與詢問草稿。</p>
+        <h2>真實案例三：自定義名詞與派薪前檢查</h2>
+        <p class="muted">把候選名詞、修正對照與派薪前資料整理成審閱包，讓人可以清楚判斷下一步。</p>
+        <section class="scenario-card">
+          <strong>情境先看懂</strong>
+          <div class="scenario-body"><p>這個案例很容易被誤會成讓 AI 判斷薪資。</p><p>實際上，我做的是比較保守的整理：先把候選名詞、修正對照、事件狀態與派薪前資料攤開，讓人看得到依據，再決定是否寫入正式系統。</p></div>
+        </section>
         <div class="grid two">
-          <article class="card soft-sky"><strong>先準備</strong><ul><li>一份表格或 CSV</li><li>欄位意義與必要欄位</li><li>金額、日期或狀態的檢查規則</li></ul></article>
-          <article class="card soft-mint"><strong>檢查成果</strong><ul><li>是否保留來源列或辨識依據</li><li>是否只做試算與疑點標記</li><li>是否清楚列出需要人工確認的項目</li></ul></article>
+          <article class="card soft-sky"><strong>我要達到的目的</strong><p>讓承辦人看清楚哪些名詞可能可以納入、哪些已存在、哪些缺證據、哪些派薪前還不能動。</p></article>
+          <article class="card soft-amber"><strong>如果不用 Codex，平常我會怎麼做</strong><ol><li>先打開候選名詞與事件清單</li><li>對照既有名詞，確認是否已存在或疑似重複</li><li>查看事件狀態、工作類型與日期</li><li>手動整理可處理、待補證據、先暫停的項目</li><li>正式新增、關閉事件或派薪前，再請人複查</li></ol></article>
         </div>
-        <h3>操作步驟</h3>
-        <ol class="steps"><li>先告訴 Codex 這張表的用途、哪些欄位一定要有、哪些欄位不能自己猜。</li><li>請 Codex 做只讀檢查，列出缺欄、格式錯、重複、狀態衝突與低信心資料。</li><li>若涉及金額或核銷，請它只做試算與疑點標記，不做正式結論。</li><li>人工確認每一筆異常是否真的需要修正。</li><li>把常見錯誤整理成下次可重複的檢查規則。</li></ol>
-        <h3>可複製指令</h3>
-        <div class="prompt">請只讀檢查以下表格資料。
-請列出：缺漏欄位、格式異常、重複資料、狀態衝突、需要人工確認的金額或日期。
-若資料不足，請列出補問問題；不要替我做正式核銷或付款結論。
-
-資料：</div>
+        <h3>我跟 Codex 互動的歷程</h3>
+        <ol class="steps"><li>我先讓 Codex 讀取目前仍在處理中的項目，整理成一份可審閱清單。</li><li>第一版不直接執行，而是先分成可納入、不可納入、已存在、需要補證據。</li><li>確認規則後，我才把可執行的批次獨立出來；正式新增、關閉事件與薪資建立都要另外確認。</li><li>做完後還要留下前後證據，知道哪一筆為什麼被處理、哪一筆為什麼暫停。</li></ol>
+        <h3>我怎麼把需求說清楚</h3>
+        <ol class="steps"><li>影響範圍：名詞資料、事件狀態與派薪前確認。</li><li>判斷依據：候選名詞、修正對照、工作類型、日期與狀態。</li><li>不能代決定的事：正式新增、關閉事件、建立薪資。</li><li>先請 Codex 做的事：整理證據、分組、標記疑點、列出待確認項目。</li></ol>
+        <h3>Codex 可以協助到哪裡</h3>
+        <ol class="steps"><li>把大量候選資料整理成清楚分類</li><li>找出已存在或疑似重複項目</li><li>標出缺證據與低信心資料</li><li>產出承辦人可以審閱的確認包</li></ol>
+        <h3>仍然要由人確認</h3>
+        <ol class="steps"><li>是否真的可以新增正式名詞</li><li>是否符合派薪資格</li><li>是否可以關閉事件</li><li>是否要建立薪資或暫停處理</li></ol>
+        <article class="card accent-teal"><strong>這題要學會的切分</strong><p>學員要學到的是：牽涉正式紀錄或薪資時，Codex 先做整理與提示，不直接替人下結論。</p></article>
       </div>
     </section>
     <section class="section" id="event-admin">
       <div class="panel">
         <p class="eyebrow">練習 4</p>
-        <h2>活動行政包</h2>
-        <p class="muted">活動流程、分工表、通知草稿、風險清單與可交接 checklist。</p>
+        <h2>真實案例四：課程改版包與交接清單</h2>
+        <p class="muted">把模糊的改版想法整理成教材改版包，讓投影片、練習題與上課流程一致。</p>
+        <section class="scenario-card">
+          <strong>情境先看懂</strong>
+          <div class="scenario-body"><p>這個案例就是這份教材本身。</p><p>原本的課程有課務、逐字稿、表格與活動行政，但你覺得還是不夠像真實工作。</p><p>後來我們改用你在 Codex 裡實際做過的工作，去識別化後包裝成學生能理解的情境。</p></div>
+        </section>
         <div class="grid two">
-          <article class="card soft-sky"><strong>先準備</strong><ul><li>活動日期、地點、對象與人數</li><li>工作人員、講師、物資與場地資訊</li><li>既有流程、通知或範本</li></ul></article>
-          <article class="card soft-mint"><strong>檢查成果</strong><ul><li>分工是否清楚</li><li>課前/課中/課後是否都有涵蓋</li><li>外部通知與個資項目是否有人工確認</li></ul></article>
+          <article class="card soft-sky"><strong>我要達到的目的</strong><p>讓學員看到教材如何從模糊感受變成可上課材料：先說哪裡不真實，再找真實案例，最後改投影片、練習頁與檢查方式。</p></article>
+          <article class="card soft-amber"><strong>如果不用 Codex，平常我會怎麼做</strong><ol><li>先看原本教材哪裡不夠貼近真實工作</li><li>回想最近實際做過哪些 Codex 工作</li><li>挑出可以去識別化、也適合上課的案例</li><li>手動改投影片、練習頁與課綱文字</li><li>最後逐頁檢查案例是否一致、語氣是否適合學員</li></ol></article>
         </div>
-        <h3>操作步驟</h3>
-        <ol class="steps"><li>先把活動拆成課前、課中、課後三段。</li><li>請 Codex 依三段整理任務、負責人、截止時間與所需資料。</li><li>請 Codex 產生通知草稿、物資清單、風險清單與可交接 checklist。</li><li>人工檢查場地、餐食、報名名單、外部通知與個資揭露。</li><li>課後用同一份清單補上紀錄、附件與待建檔事項。</li></ol>
-        <h3>可複製指令</h3>
-        <div class="prompt">請把以下活動資料整理成活動行政包。
-請輸出：課前/課中/課後流程、分工表、通知草稿、物資清單、風險清單、可交接 checklist。
-請把需要人工確認的場地、餐食、名單、外部通知與個資項目另外列出。
-
-資料：</div>
+        <h3>我跟 Codex 互動的歷程</h3>
+        <ol class="steps"><li>你先說：課程與練習題太不實際，希望學生看到可以做到什麼、怎麼做、怎麼確認。</li><li>我先從你的工作記錄中找可去識別化的案例，再和原本四個情境對照。</li><li>你再指定案例三改成自定義名詞與派薪前檢查、案例四改成課程改版。</li><li>後續我們又調整呈現方式：先講情境與歷程，再講工作切分，避免一開始就堆很多專有名詞。</li></ol>
+        <h3>我怎麼把需求說清楚</h3>
+        <ol class="steps"><li>問題：學生會覺得題目不真實、太像練習題。</li><li>方向：改用真實工作去識別化，包裝成可上課的情境。</li><li>範圍：案例、投影片、練習頁、課程說明與檢查方式。</li><li>限制：不要露出敏感資料，也不要讓學員以為可以全自動。</li></ol>
+        <h3>Codex 可以協助到哪裡</h3>
+        <ol class="steps"><li>整理你提出的口語需求</li><li>把案例對照到原本課程架構</li><li>改寫成學員能懂的情境</li><li>同步更新多個教材頁面並檢查連結</li></ol>
+        <h3>仍然要由人確認</h3>
+        <ol class="steps"><li>案例是否真的代表你的工作</li><li>語氣是否適合學員</li><li>是否過度技術化</li><li>是否有不該公開的內部資訊</li></ol>
+        <article class="card accent-teal"><strong>這題要學會的切分</strong><p>學員要學到的是：和 Codex 合作時，可以先說感受與目標，再一輪一輪把教材、流程或文件修到可用。</p></article>
       </div>
     </section>
   </main>

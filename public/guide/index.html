@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex,nofollow,noarchive">
-    <title>Codex 新手可視化教學｜成效報表分析情境</title>
+    <title>輕鬆安裝 Codex｜新手準備教學</title>
     <meta
       name="description"
-      content="給沒有 IT 背景的管理者使用 Codex 分析 InfoCenter 成效報表的可視化教學。"
+      content="給第一次使用 Codex 的學員看的安裝與準備說明。"
     >
     <style>
       :root {
@@ -144,7 +144,7 @@
         width: min(1180px, calc(100% - 32px));
         margin: 0 auto;
         display: grid;
-        grid-template-columns: minmax(0, 0.95fr) minmax(420px, 1.05fr);
+        grid-template-columns: minmax(0, 780px);
         gap: 44px;
         align-items: center;
       }
@@ -215,141 +215,6 @@
         box-shadow: 0 10px 22px rgba(23, 32, 42, 0.1);
       }
 
-      .dashboard-visual {
-        position: relative;
-        padding: 18px;
-        border: 1px solid rgba(216, 225, 234, 0.9);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.82);
-        box-shadow: var(--shadow);
-      }
-
-      .window-bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        margin-bottom: 14px;
-      }
-
-      .window-dots {
-        display: flex;
-        gap: 6px;
-      }
-
-      .window-dots span {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--line);
-      }
-
-      .window-title {
-        color: var(--muted);
-        font-size: 0.85rem;
-        font-weight: 700;
-      }
-
-      .visual-layout {
-        display: grid;
-        grid-template-columns: 1fr 0.92fr;
-        gap: 14px;
-      }
-
-      .visual-panel {
-        min-height: 168px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: #fff;
-        padding: 14px;
-      }
-
-      .visual-panel h2,
-      .visual-panel h3 {
-        margin: 0 0 10px;
-        font-size: 1rem;
-        letter-spacing: 0;
-      }
-
-      .mini-metrics {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-
-      .mini-metric {
-        padding: 10px;
-        border-radius: 8px;
-        background: var(--soft);
-        border: 1px solid rgba(216, 225, 234, 0.7);
-      }
-
-      .mini-metric strong {
-        display: block;
-        font-size: 1.42rem;
-        line-height: 1.1;
-      }
-
-      .mini-metric span {
-        color: var(--muted);
-        font-size: 0.82rem;
-      }
-
-      .mail-preview {
-        display: grid;
-        gap: 9px;
-      }
-
-      .mail-block {
-        border-radius: 7px;
-        background: var(--soft);
-        border: 1px solid rgba(216, 225, 234, 0.75);
-        height: 22px;
-      }
-
-      .mail-block.short {
-        width: 62%;
-      }
-
-      .mail-block.image {
-        height: 78px;
-        background:
-          linear-gradient(135deg, rgba(13, 107, 120, 0.14), rgba(177, 75, 45, 0.14)),
-          #f7fbfc;
-      }
-
-      .chart-row {
-        display: grid;
-        grid-template-columns: 82px minmax(0, 1fr) 44px;
-        gap: 8px;
-        align-items: center;
-        margin: 9px 0;
-        color: var(--muted);
-        font-size: 0.82rem;
-      }
-
-      .bar-track {
-        height: 10px;
-        border-radius: 999px;
-        background: #e6edf3;
-        overflow: hidden;
-      }
-
-      .bar-fill {
-        display: block;
-        height: 100%;
-        border-radius: inherit;
-        background: var(--accent);
-      }
-
-      .bar-fill.alt {
-        background: var(--accent-2);
-      }
-
-      .bar-fill.green {
-        background: var(--accent-3);
-      }
-
       section {
         padding: 70px 0;
       }
@@ -384,65 +249,6 @@
       .section-note {
         margin: 0;
         color: var(--muted);
-      }
-
-      .flow {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 12px;
-      }
-
-      .flow-step {
-        position: relative;
-        min-height: 210px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: #fff;
-        padding: 18px;
-      }
-
-      .flow-step::after {
-        content: "";
-        position: absolute;
-        top: 44px;
-        right: -18px;
-        width: 24px;
-        height: 2px;
-        background: var(--line);
-      }
-
-      .flow-step:last-child::after {
-        display: none;
-      }
-
-      .step-number {
-        width: 34px;
-        height: 34px;
-        display: grid;
-        place-items: center;
-        border-radius: 8px;
-        background: var(--soft-2);
-        color: var(--accent-3);
-        font-weight: 900;
-      }
-
-      .flow-step h3 {
-        margin: 14px 0 8px;
-        font-size: 1.05rem;
-        letter-spacing: 0;
-      }
-
-      .flow-step p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 0.95rem;
-      }
-
-      .split {
-        display: grid;
-        grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
-        gap: 30px;
-        align-items: start;
       }
 
       .panel {
@@ -565,186 +371,6 @@
         font-size: 0.92rem;
       }
 
-      .folder-map {
-        display: grid;
-        gap: 12px;
-      }
-
-      .folder {
-        display: grid;
-        grid-template-columns: 42px 1fr;
-        gap: 12px;
-        align-items: center;
-        padding: 13px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--soft);
-      }
-
-      .folder-icon {
-        width: 42px;
-        height: 32px;
-        border-radius: 7px 7px 5px 5px;
-        background: #e0a943;
-        position: relative;
-      }
-
-      .folder-icon::before {
-        content: "";
-        position: absolute;
-        top: -7px;
-        left: 3px;
-        width: 21px;
-        height: 9px;
-        border-radius: 5px 5px 0 0;
-        background: #e0a943;
-      }
-
-      .folder strong {
-        display: block;
-        font-size: 0.98rem;
-      }
-
-      .folder span {
-        color: var(--muted);
-        font-size: 0.88rem;
-      }
-
-      .metrics-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 14px;
-      }
-
-      .metric-card {
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: #fff;
-        padding: 18px;
-      }
-
-      .metric-card span {
-        color: var(--muted);
-        font-size: 0.86rem;
-      }
-
-      .metric-card strong {
-        display: block;
-        margin: 4px 0 8px;
-        font-size: 2rem;
-        line-height: 1.08;
-      }
-
-      .metric-card p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 0.9rem;
-      }
-
-      .prompt-lab {
-        display: grid;
-        grid-template-columns: minmax(260px, 0.42fr) minmax(0, 0.58fr);
-        gap: 18px;
-      }
-
-      .prompt-tabs {
-        display: grid;
-        gap: 9px;
-      }
-
-      .tab-button {
-        width: 100%;
-        text-align: left;
-        border: 1px solid var(--line);
-        background: #fff;
-        border-radius: 8px;
-        padding: 14px;
-        color: var(--muted);
-        cursor: pointer;
-      }
-
-      .tab-button strong {
-        display: block;
-        color: var(--ink);
-        font-size: 1rem;
-      }
-
-      .tab-button.active {
-        border-color: rgba(13, 107, 120, 0.55);
-        background: #eef8f8;
-      }
-
-      .prompt-card {
-        display: grid;
-        gap: 12px;
-      }
-
-      .prompt-output {
-        min-height: 300px;
-        white-space: pre-wrap;
-        color: #20313d;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: #fff;
-        padding: 18px;
-        overflow: auto;
-      }
-
-      .copy-row {
-        display: flex;
-        justify-content: space-between;
-        gap: 12px;
-        align-items: center;
-        color: var(--muted);
-      }
-
-      .copy-status {
-        min-height: 22px;
-        font-size: 0.9rem;
-      }
-
-      .safety-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-      }
-
-      .safety-card {
-        border-radius: 8px;
-        border: 1px solid var(--line);
-        background: #fff;
-        padding: 18px;
-      }
-
-      .safety-card h3 {
-        margin: 0 0 8px;
-        font-size: 1.08rem;
-        letter-spacing: 0;
-      }
-
-      .safety-card p {
-        margin: 0;
-        color: var(--muted);
-      }
-
-      .callout {
-        border: 1px solid rgba(155, 107, 24, 0.35);
-        border-radius: 8px;
-        background: #fff8ea;
-        padding: 18px;
-        color: #5a410f;
-      }
-
-      .sources {
-        color: var(--muted);
-        font-size: 0.92rem;
-      }
-
-      .sources ul {
-        margin: 10px 0 0;
-        padding-left: 20px;
-      }
-
       .footer {
         border-top: 1px solid var(--line);
         background: #fff;
@@ -759,27 +385,11 @@
         }
 
         .hero-grid,
-        .section-head,
-        .split,
-        .prompt-lab {
+        .section-head {
           grid-template-columns: 1fr;
         }
 
-        .visual-layout {
-          grid-template-columns: 1fr;
-        }
-
-        .flow {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .flow-step::after {
-          display: none;
-        }
-
-        .metrics-grid,
-        .download-grid,
-        .safety-grid {
+        .download-grid {
           grid-template-columns: repeat(2, 1fr);
         }
       }
@@ -808,24 +418,8 @@
           padding: 52px 0;
         }
 
-        .dashboard-visual {
-          padding: 12px;
-        }
-
-        .flow,
-        .metrics-grid,
-        .download-grid,
-        .safety-grid {
+        .download-grid {
           grid-template-columns: 1fr;
-        }
-
-        .mini-metrics {
-          grid-template-columns: 1fr;
-        }
-
-        .copy-row {
-          align-items: flex-start;
-          flex-direction: column;
         }
       }
     </style>
@@ -842,9 +436,7 @@
           <a href="../learn/">回上課入口</a>
           <a href="#intro">簡介</a>
           <a href="#install">安裝</a>
-          <a href="#workflow">操作流程</a>
-          <a href="#prompts">提示詞</a>
-          <a href="#safety">安全</a>
+          <a href="#first-install">第一次安裝</a>
         </div>
       </nav>
     </header>
@@ -853,56 +445,17 @@
       <section class="hero" id="intro">
         <div class="hero-grid">
           <div>
-            <p class="eyebrow">給沒有 IT 背景的管理者</p>
-            <h1>用 Codex 看懂成效報表</h1>
+            <p class="eyebrow">給第一次使用 Codex 的學員</p>
+            <h1>輕鬆安裝 Codex</h1>
             <p class="hero-copy">
-              這份教學把「匯出報表後如何交給 Codex 分析」做成視覺化流程。
-              讓你不用寫程式，也能找出關鍵指標、點擊趨勢與下一步改善方向。
+              這頁先處理課前最基本的準備：下載桌面 App、登入帳號、準備練習資料夾，
+              並確認第一次開啟時知道下一步要做什麼。
             </p>
             <div class="hero-actions">
               <button class="button" type="button" data-back>返回上一頁</button>
               <a class="button" href="../learn/">回上課入口</a>
-              <a class="button primary" href="#workflow">開始看流程</a>
-              <a class="button" href="#prompts">直接拿提示詞</a>
-            </div>
-          </div>
-
-          <div class="dashboard-visual" aria-label="成效報表可視化示意">
-            <div class="window-bar">
-              <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
-              <div class="window-title">InfoCenter Report</div>
-            </div>
-            <div class="visual-layout">
-              <div class="visual-panel">
-                <h2>本次成效概況</h2>
-                <div class="mini-metrics">
-                  <div class="mini-metric"><strong>41.8%</strong><span>互動率</span></div>
-                  <div class="mini-metric"><strong>12.4%</strong><span>點擊率</span></div>
-                  <div class="mini-metric"><strong>98.6%</strong><span>完成率</span></div>
-                  <div class="mini-metric"><strong>0.03%</strong><span>異常率</span></div>
-                </div>
-              </div>
-              <div class="visual-panel">
-                <h3>收信版面預覽</h3>
-                <div class="mail-preview" aria-hidden="true">
-                  <div class="mail-block short"></div>
-                  <div class="mail-block image"></div>
-                  <div class="mail-block"></div>
-                  <div class="mail-block"></div>
-                </div>
-              </div>
-              <div class="visual-panel">
-                <h3>熱門連結排行</h3>
-                <div class="chart-row"><span>活動報名</span><div class="bar-track"><span class="bar-fill" style="width: 86%"></span></div><b>86</b></div>
-                <div class="chart-row"><span>優惠說明</span><div class="bar-track"><span class="bar-fill alt" style="width: 64%"></span></div><b>64</b></div>
-                <div class="chart-row"><span>社群連結</span><div class="bar-track"><span class="bar-fill green" style="width: 41%"></span></div><b>41</b></div>
-              </div>
-              <div class="visual-panel">
-                <h3>Codex 分析輸出</h3>
-                <p class="section-note">
-                  重點內容吸引力佳，活動報名連結最受關注。下次可將高互動內容上移，並觀察不同渠道的表現差異。
-                </p>
-              </div>
+              <a class="button primary" href="#install">看安裝與準備</a>
+              <a class="button" href="#first-install">看第一次安裝</a>
             </div>
           </div>
         </div>
@@ -916,7 +469,7 @@
               <h2>先下載 Codex App，再準備一個專用資料夾</h2>
             </div>
             <p class="section-note">
-              沒有 IT 背景的使用者，建議先用桌面 App，不要從 CLI 或開發工具開始。請依照自己的電腦選一個下載按鈕。
+              第一次使用時，建議先用桌面 App，不要從指令或開發工具開始。請依照自己的電腦選擇版本；如果公司有指定帳號或設備，以公司安排為準。
             </p>
           </div>
 
@@ -965,237 +518,86 @@
             </article>
           </div>
 
-          <div class="split">
-            <div class="panel">
-              <h3>第一次安裝照這樣做</h3>
-              <div class="plain-steps">
-                <div class="plain-step">
-                  <span class="step-badge">1</span>
-                  <div>
-                    <h4>按上方下載按鈕</h4>
-                    <p>Windows 選 Windows 版；Mac 不確定晶片時，點左上角 Apple 圖示，再看「關於這台 Mac」。</p>
-                  </div>
-                </div>
-                <div class="plain-step">
-                  <span class="step-badge">2</span>
-                  <div>
-                    <h4>依畫面完成安裝</h4>
-                    <p>看到「安裝」、「取得」、「開啟」或「拖曳到 Applications」時，照畫面提示操作即可。</p>
-                  </div>
-                </div>
-                <div class="plain-step">
-                  <span class="step-badge">3</span>
-                  <div>
-                    <h4>打開 Codex 並登入</h4>
-                    <p>用自己的 ChatGPT 帳號登入。若公司有指定帳號，請使用公司提供的帳號。</p>
-                  </div>
-                </div>
-                <div class="plain-step">
-                  <span class="step-badge">4</span>
-                  <div>
-                    <h4>選擇一個資料夾給 Codex 使用</h4>
-                    <p>先建立「課程練習資料」資料夾，再把要練習分析的報表都放進去。</p>
-                  </div>
-                </div>
-              </div>
-              <p class="install-note">
-                官方下載與說明頁：<a href="https://developers.openai.com/codex/quickstart" target="_blank" rel="noopener noreferrer">Codex Quickstart</a>、
-                <a href="https://developers.openai.com/codex/app" target="_blank" rel="noopener noreferrer">Codex App 說明</a>。
-              </p>
-            </div>
-
-            <div class="panel">
-              <h3>安裝後第一個資料夾這樣放</h3>
-              <div class="folder-map">
-                <div class="folder">
-                  <span class="folder-icon" aria-hidden="true"></span>
-                  <div><strong>課程練習資料</strong><span>Codex 第一次使用時選這個資料夾</span></div>
-                </div>
-                <div class="folder">
-                  <span class="folder-icon" aria-hidden="true"></span>
-                  <div><strong>2026-05 月報表</strong><span>同月份或同活動的資料放一起</span></div>
-                </div>
-                <div class="folder">
-                  <span class="folder-icon" aria-hidden="true"></span>
-                  <div><strong>匯出檔案</strong><span>整體成效、連結點擊、使用者明細、渠道分布</span></div>
-                </div>
-              </div>
-              <div class="callout" style="margin-top: 18px;">
-                第一次打開 Codex 後，可以直接貼上這句：請先只檢查這個資料夾，不要修改任何檔案，並用新手看得懂的方式告訴我裡面有哪些報表。
-              </div>
-            </div>
+          <div class="panel">
+            <h3>開始前先準備好</h3>
+            <ul class="checklist">
+              <li><span class="check">✓</span><span>登入用的帳號：可使用自己的 ChatGPT 帳號；若公司有指定帳號，請用公司提供的帳號。</span></li>
+              <li><span class="check">✓</span><span>一個練習資料夾：先建立「課程練習資料」，第一次只放課堂範例或可公開練習的檔案。</span></li>
+              <li><span class="check">✓</span><span>基本權限觀念：看到授權、外掛、連線或修改檔案的提醒時，先停下來看用途，不急著按同意。</span></li>
+            </ul>
           </div>
         </div>
       </section>
 
-      <section id="workflow" style="background: #fff;">
+      <section id="first-install" style="background: #fff;">
         <div class="section-inner">
           <div class="section-head">
             <div>
-              <p class="section-kicker">使用流程</p>
-              <h2>從 InfoCenter 到 Codex 的五步驟</h2>
+              <p class="section-kicker">第一次安裝照這樣做</p>
+              <h2>照畫面完成安裝，再用練習資料夾測試</h2>
             </div>
             <p class="section-note">
-              把重點想成一條路線：先匯出，再集中，再讓 Codex 讀懂，最後把洞察變成下一次內容或流程的改善清單。
+              第一次先確認「能開啟、能登入、能選資料夾、能回覆你」。等熟悉後，再放入正式工作資料。
             </p>
           </div>
 
-          <div class="flow">
-            <article class="flow-step">
-              <div class="step-number">1</div>
-              <h3>在 InfoCenter 完成資料設定</h3>
-              <p>設定區塊、內容、社群連結、排列方式與版面樣式，依活動或公告需求調整。</p>
-            </article>
-            <article class="flow-step">
-              <div class="step-number">2</div>
-              <h3>完成後下載報表</h3>
-              <p>下載互動率、點擊率、完成率、異常紀錄、渠道分布與明細資料。</p>
-            </article>
-            <article class="flow-step">
-              <div class="step-number">3</div>
-              <h3>同一活動放同一資料夾</h3>
-              <p>把相關 Excel、CSV 或報表檔集中，檔名加上日期與活動名稱，Codex 會更容易理解。</p>
-            </article>
-            <article class="flow-step">
-              <div class="step-number">4</div>
-              <h3>請 Codex 分析</h3>
-              <p>用新手提示詞請 Codex 找出熱門連結、異常指標、標題與內容區塊表現。</p>
-            </article>
-            <article class="flow-step">
-              <div class="step-number">5</div>
-              <h3>轉成下次改善清單</h3>
-              <p>把分析結果整理成下一次內容、版面、CTA 與後續策略建議。</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="section-inner">
-          <div class="section-head">
-            <div>
-              <p class="section-kicker">報表重點</p>
-              <h2>請 Codex 優先看這些指標</h2>
-            </div>
-            <p class="section-note">
-              不用先學資料分析術語。先讓 Codex 把數字翻成「這代表什麼」與「下一步怎麼做」。
-            </p>
-          </div>
-
-          <div class="metrics-grid">
-            <article class="metric-card">
-              <span>內容吸引力</span>
-              <strong>互動率</strong>
-              <p>判斷使用者是否願意進一步互動，可比較不同標題、內容或發布時間。</p>
-            </article>
-            <article class="metric-card">
-              <span>內容吸引力</span>
-              <strong>點擊率</strong>
-              <p>判斷內容是否讓人有下一步行動，可搭配連結點擊排行分析。</p>
-            </article>
-            <article class="metric-card">
-              <span>流程品質</span>
-              <strong>完成率</strong>
-              <p>觀察使用者是否順利完成預期行動，搭配渠道分布可找出特定流程問題。</p>
-            </article>
-            <article class="metric-card">
-              <span>風險訊號</span>
-              <strong>異常紀錄</strong>
-              <p>若比例異常，應檢查資料品質、內容適切性或流程設定。</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="prompts" style="background: #fff;">
-        <div class="section-inner">
-          <div class="section-head">
-            <div>
-              <p class="section-kicker">直接可用</p>
-              <h2>選一個提示詞，貼給 Codex</h2>
-            </div>
-            <p class="section-note">
-              每個提示詞都假設你已把 InfoCenter 匯出的報表放在同一個資料夾，並希望 Codex 用非工程師也看得懂的方式回覆。
-            </p>
-          </div>
-
-          <div class="prompt-lab">
-            <div class="prompt-tabs" role="tablist" aria-label="提示詞類型">
-              <button class="tab-button active" type="button" data-prompt="first">
-                <strong>第一次分析</strong>
-                先看整體表現與異常
-              </button>
-              <button class="tab-button" type="button" data-prompt="links">
-                <strong>連結點擊分析</strong>
-                找出內容吸引力
-              </button>
-              <button class="tab-button" type="button" data-prompt="compare">
-                <strong>多次報表比較</strong>
-                比較內容與活動差異
-              </button>
-              <button class="tab-button" type="button" data-prompt="summary">
-                <strong>管理者摘要</strong>
-                產出可回報版本
-              </button>
-            </div>
-
-            <div class="prompt-card">
-              <div class="copy-row">
-                <span class="copy-status" id="copyStatus">已選擇：第一次分析</span>
-                <button class="button primary" type="button" id="copyPrompt">複製提示詞</button>
+          <div class="panel">
+            <div class="plain-steps">
+              <div class="plain-step">
+                <span class="step-badge">1</span>
+                <div>
+                  <h4>按上方下載按鈕</h4>
+                  <p>Windows 選 Windows 版；Mac 不確定晶片時，點左上角 Apple 圖示，再看「關於這台 Mac」。</p>
+                </div>
               </div>
-              <pre class="prompt-output" id="promptOutput"></pre>
+              <div class="plain-step">
+                <span class="step-badge">2</span>
+                <div>
+                  <h4>依畫面完成安裝</h4>
+                  <p>看到「安裝」、「取得」、「開啟」或「拖曳到 Applications」時，照畫面提示操作即可。</p>
+                </div>
+              </div>
+              <div class="plain-step">
+                <span class="step-badge">3</span>
+                <div>
+                  <h4>打開 Codex 並登入</h4>
+                  <p>用自己的 ChatGPT 帳號登入。若公司有指定帳號，請使用公司提供的帳號。</p>
+                </div>
+              </div>
+              <div class="plain-step">
+                <span class="step-badge">4</span>
+                <div>
+                  <h4>選擇練習資料夾</h4>
+                  <p>第一次先選「課程練習資料」這類專用資料夾，不要一開始就選整台電腦或公司正式資料夾。</p>
+                </div>
+              </div>
+              <div class="plain-step">
+                <span class="step-badge">5</span>
+                <div>
+                  <h4>先請 Codex 看資料夾</h4>
+                  <p>可以用白話說明：請先只檢查這個資料夾，不要修改檔案，並告訴我裡面有哪些東西。</p>
+                </div>
+              </div>
+              <div class="plain-step">
+                <span class="step-badge">6</span>
+                <div>
+                  <h4>看到權限提醒先確認</h4>
+                  <p>如果 Codex 詢問是否要連線、安裝、修改或送出資料，先確認用途；不確定時先暫停，課堂一起看。</p>
+                </div>
+              </div>
+              <div class="plain-step">
+                <span class="step-badge">7</span>
+                <div>
+                  <h4>確認成功標準</h4>
+                  <p>能打開 Codex、完成登入、選到練習資料夾，並收到一段看得懂的回覆，就代表第一次準備完成。</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="safety">
-        <div class="section-inner">
-          <div class="section-head">
-            <div>
-              <p class="section-kicker">安全守則</p>
-              <h2>新手使用 Codex 的三個原則</h2>
-            </div>
-            <p class="section-note">
-              Codex 很適合協助分析，但仍要注意資料權限與個資。最穩的做法是先分析、再確認、最後才修改或輸出新檔。
+            <p class="install-note">
+              官方下載與說明頁：<a href="https://developers.openai.com/codex/app" target="_blank" rel="noopener noreferrer">Codex App 說明</a>、
+              <a href="https://developers.openai.com/codex/quickstart" target="_blank" rel="noopener noreferrer">Codex Quickstart</a>。
             </p>
           </div>
-
-          <div class="safety-grid">
-            <article class="safety-card">
-              <h3>只用專案資料夾</h3>
-              <p>把要分析的報表集中在一個資料夾，讓 Codex 只處理這個範圍內的檔案。</p>
-            </article>
-            <article class="safety-card">
-              <h3>先要求不修改</h3>
-              <p>第一次請 Codex「只讀取與分析，不要修改檔案」，等理解結果後再決定下一步。</p>
-            </article>
-            <article class="safety-card">
-              <h3>留意個資與權限</h3>
-              <p>若報表含姓名、電話、Email 或其他個人資訊，先確認內部資料使用規範，再交給 Codex 分析。</p>
-            </article>
-          </div>
-
-          <div class="callout" style="margin-top: 18px;">
-            建議第一句話就寫清楚：「我沒有 IT 或資料分析背景，請用管理者看得懂的方式說明，並把每個數字代表的意義講清楚。」
-          </div>
-        </div>
-      </section>
-
-      <section style="background: #fff;">
-        <div class="section-inner sources">
-          <p class="section-kicker">參考來源</p>
-          <h2>官方資料與版本註記</h2>
-          <p>
-            本教學依 2026-05-28 可查到的 OpenAI Codex 官方說明整理，並套用到 InfoCenter 成效報表情境。實際功能、方案與額度仍以官方最新頁面為準。
-          </p>
-          <ul>
-            <li><a href="https://openai.com/academy/codex-how-to-start/">OpenAI Academy：How to get started with Codex</a></li>
-            <li><a href="https://developers.openai.com/codex/quickstart">OpenAI Developers：Codex Quickstart</a></li>
-            <li><a href="https://developers.openai.com/codex/app">OpenAI Developers：Codex App</a></li>
-            <li><a href="https://developers.openai.com/codex/learn/best-practices">OpenAI Developers：Codex Best Practices</a></li>
-          </ul>
         </div>
       </section>
     </main>
@@ -1207,76 +609,7 @@
     </footer>
 
     <script>
-      const prompts = {
-        first: {
-          label: "第一次分析",
-          text: `請幫我分析這個資料夾中的 InfoCenter 成效報表。
-我沒有 IT 或資料分析背景，請用容易理解的方式說明：
-1. 這次資料整體表現如何
-2. 互動率、點擊率、完成率與異常紀錄是否有需要注意的地方
-3. 哪些數字代表表現好，哪些數字需要注意
-4. 可能的原因是什麼
-5. 下一次內容可以優化哪些地方
-
-請先只分析，不要修改任何檔案。`
-        },
-        links: {
-          label: "連結點擊分析",
-          text: `請針對這個資料夾中的連結點擊報表進行分析。
-請用管理者看得懂的方式回答：
-1. 點擊排行最高的連結是哪些
-2. 每個熱門連結可能代表使用者關注什麼
-3. 總點擊次數與不重複點擊人數有什麼差異
-4. 首次點擊與最後點擊時間能看出什麼
-5. 下一次內容區塊、CTA 或版面順序可以怎麼調整
-
-請整理成表格與三到五點建議。`
-        },
-        compare: {
-          label: "多次報表比較",
-          text: `請比較這個資料夾中不同月份或不同活動的成效報表。
-請特別分析：
-1. 哪些標題或內容的互動率較高
-2. 哪些內容區塊或連結的點擊表現較好
-3. 完成率、異常率或使用者反應是否有變化趨勢
-4. 不同渠道或活動來源是否有明顯差異
-5. 下一次最值得保留、調整或停止的做法
-
-請用非資料分析背景也能懂的語言，最後給我一份改善優先順序。`
-        },
-        summary: {
-          label: "管理者摘要",
-          text: `請根據這個資料夾中的成效資料，產出一份給管理者看的摘要。
-格式請包含：
-1. 一句話總結
-2. 三個表現亮點
-3. 三個需要注意的地方
-4. 下一次內容的具體改善建議
-5. 如果要向主管報告，可以怎麼說
-
-請避免使用太多技術術語；如果一定要使用，請先用白話解釋。`
-        }
-      };
-
-      const output = document.querySelector("#promptOutput");
-      const status = document.querySelector("#copyStatus");
-      const buttons = Array.from(document.querySelectorAll(".tab-button"));
-      const copyButton = document.querySelector("#copyPrompt");
       const backButtons = Array.from(document.querySelectorAll("[data-back]"));
-      let activePrompt = "first";
-
-      function renderPrompt(key) {
-        activePrompt = key;
-        output.textContent = prompts[key].text;
-        status.textContent = `已選擇：${prompts[key].label}`;
-        buttons.forEach((button) => {
-          button.classList.toggle("active", button.dataset.prompt === key);
-        });
-      }
-
-      buttons.forEach((button) => {
-        button.addEventListener("click", () => renderPrompt(button.dataset.prompt));
-      });
 
       backButtons.forEach((button) => {
         button.addEventListener("click", () => {
@@ -1292,34 +625,6 @@
           window.location.href = "../learn/";
         });
       });
-
-      function fallbackCopy(text) {
-        const textarea = document.createElement("textarea");
-        textarea.value = text;
-        textarea.setAttribute("readonly", "");
-        textarea.style.position = "fixed";
-        textarea.style.left = "-9999px";
-        document.body.appendChild(textarea);
-        textarea.select();
-        const copied = document.execCommand("copy");
-        textarea.remove();
-        return copied;
-      }
-
-      copyButton.addEventListener("click", async () => {
-        try {
-          if (navigator.clipboard && window.isSecureContext) {
-            await navigator.clipboard.writeText(prompts[activePrompt].text);
-          } else if (!fallbackCopy(prompts[activePrompt].text)) {
-            throw new Error("copy failed");
-          }
-          status.textContent = `已複製：${prompts[activePrompt].label}`;
-        } catch (error) {
-          status.textContent = "瀏覽器不允許自動複製，請手動選取文字。";
-        }
-      });
-
-      renderPrompt(activePrompt);
     </script>
   </body>
 </html>
