@@ -55,11 +55,10 @@
 
 ## 課後作業成績單
 
-課後作業評分與排行榜目前放在本機 repo 內，不放入 `public/`，因此不會因 Vercel 部署自動公開。
+課後作業評分與排行榜已依 Kevin 確認公開到課程網站，並保留 `noindex/nofollow/noarchive` 設定。公開頁只放學員層級分數、診斷摘要與補強建議，不放原始作業檔、逐字稿、內部系統操作細節或未去識別資料。
 
+- 公開頁：`/leaderboard/`
 - 學員層級排行榜：`leaderboard/leaderboard/leaderboard-by-student.md`
 - 作品層級排行榜：`leaderboard/leaderboard/leaderboard.md`
 - 成績單式回饋：`leaderboard/leaderboard/report-cards.md`
 - 評分標準：`leaderboard/rubric/rubric-v2.yaml`
-
-如需公開到課程網站，需先確認是否公開學員姓名與分數，再另行建立 `public/leaderboard/` 頁面。
