@@ -55,7 +55,7 @@
 
 ## 課後作業成績單
 
-課後作業評分與排行榜已依 Kevin 確認公開到課程網站，並保留 `noindex/nofollow/noarchive` 設定。公開頁只放學員層級分數、診斷摘要與補強建議，不放原始作業檔、逐字稿、內部系統操作細節或未去識別資料。
+課後作業評分與排行榜已依 Kevin 確認公開到課程網站，並保留 `noindex/nofollow/noarchive` 設定。公開頁只放去識別化學員代碼、作品層級分數、診斷摘要與具體補強建議，不放原始作業檔、逐字稿、內部系統操作細節或未去識別資料。
 
 - 公開頁：`/leaderboard/`
 - 學員層級排行榜：`leaderboard/leaderboard/leaderboard-by-student.md`

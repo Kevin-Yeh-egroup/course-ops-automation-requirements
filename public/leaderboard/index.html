@@ -342,6 +342,7 @@
     .card:nth-child(3) { border-top: 5px solid var(--gold); }
     .card:nth-child(4) { border-top: 5px solid var(--wine); }
     .card:nth-child(5) { border-top: 5px solid var(--green); }
+    .card:nth-child(6) { border-top: 5px solid var(--navy); }
 
     .card-title {
       display: flex;
@@ -545,8 +546,8 @@
         </p>
       </div>
       <div class="stat-grid">
-        <div class="stat"><b>5</b><span>位學員列入學員層級排行榜</span></div>
-        <div class="stat"><b>6</b><span>件作品完成評閱，其中 1 件作為補充作品</span></div>
+        <div class="stat"><b>5</b><span>位學員以去識別化代碼呈現</span></div>
+        <div class="stat"><b>6</b><span>件作品都列入作品層級排行榜</span></div>
         <div class="stat"><b>3</b><span>個主指標：工作結合、AI 互動、現實成果</span></div>
         <div class="stat"><b>0</b><span>件作品因紅線風險被排除</span></div>
       </div>
@@ -581,10 +582,10 @@
 
     <section class="section" id="ranking" aria-labelledby="ranking-title">
       <div class="section-head">
-        <h2 id="ranking-title">學員層級排行榜</h2>
+        <h2 id="ranking-title">作品層級排行榜</h2>
         <p class="lede">
-          同一位學員有多件作品時，排行榜採較能代表學習成果的作品列入主榜；
-          其他作品保留為補充判斷。
+          排行榜改採作品層級，因此同一位學員若有兩件作業，兩件都會列入。
+          學員名稱以「姓氏 + 0 + 尾字」呈現。
         </p>
       </div>
       <div class="leaderboard-wrap">
@@ -592,8 +593,8 @@
           <thead>
             <tr>
               <th>名次</th>
-              <th>學員</th>
-              <th>代表作品</th>
+              <th>學員代碼</th>
+              <th>作品</th>
               <th>I1</th>
               <th>I2</th>
               <th>I3</th>
@@ -604,7 +605,7 @@
           <tbody>
             <tr>
               <td class="rank">1</td>
-              <td><strong>劉奕吟</strong></td>
+              <td><strong>劉0吟</strong></td>
               <td>S001 研習營資料整理</td>
               <td>34 / 35</td>
               <td>29 / 30</td>
@@ -614,7 +615,7 @@
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td><strong>李怡霖</strong></td>
+              <td><strong>李0霖</strong></td>
               <td>S003 逐字稿整理與自定義名詞工作</td>
               <td>30 / 35</td>
               <td>26 / 30</td>
@@ -624,7 +625,7 @@
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td><strong>黃駿宇</strong></td>
+              <td><strong>黃0宇</strong></td>
               <td>S005 老身保追償單生成器</td>
               <td>33 / 35</td>
               <td>18 / 30</td>
@@ -634,7 +635,7 @@
             </tr>
             <tr>
               <td class="rank">4</td>
-              <td><strong>李芝璇</strong></td>
+              <td><strong>李0璇</strong></td>
               <td>S006 語音轉文字名詞修正 v0 簡報網站</td>
               <td>31 / 35</td>
               <td>28 / 30</td>
@@ -644,13 +645,23 @@
             </tr>
             <tr>
               <td class="rank">5</td>
-              <td><strong>吳婷宇</strong></td>
+              <td><strong>吳0宇</strong></td>
               <td>S002 語音轉文字自定義名詞修正</td>
               <td>28 / 35</td>
               <td>20 / 30</td>
               <td>19 / 35</td>
               <td class="total">67</td>
               <td>工作方向清楚，需補實際操作與驗證證據。</td>
+            </tr>
+            <tr>
+              <td class="rank">6</td>
+              <td><strong>黃0宇</strong></td>
+              <td>S004 文獻閱讀紀錄 App</td>
+              <td>24 / 35</td>
+              <td>17 / 30</td>
+              <td>14 / 35</td>
+              <td class="total">55</td>
+              <td>工具構想清楚，目前需補 Codex 協作與可操作實作證據。</td>
             </tr>
           </tbody>
         </table>
@@ -667,7 +678,7 @@
       <div class="cards">
         <article class="card">
           <div class="card-title">
-            <div><strong>劉奕吟</strong><span>S001 研習營資料整理</span></div>
+            <div><strong>劉0吟</strong><span>S001 研習營資料整理</span></div>
             <div class="score">96<small>總分</small></div>
           </div>
           <div class="metric"><div class="metric-line"><span>工作實際結合</span><span>34 / 35</span></div><div class="bar"><span style="width:97.1%"></span></div></div>
@@ -682,14 +693,18 @@
             </ul>
           </div>
           <div class="feedback-block">
-            <h4>補強建議</h4>
-            <p class="lede">正式 SOP 可補實際輸出樣本，例如可貼 TSV、排房表或主管決策表。</p>
+            <h4>下一步改善建議</h4>
+            <ul>
+              <li>補一份「輸入資料、Codex 指令、輸出 TSV / 表格、人工確認欄位」的前後對照範例。</li>
+              <li>在 SOP 標出哪些欄位可由 Codex 整理，哪些欄位必須由同仁或主管核定。</li>
+              <li>補一個缺漏或錯誤案例，示範 Codex 如何標記待確認項目，而不是直接下結論。</li>
+            </ul>
           </div>
         </article>
 
         <article class="card">
           <div class="card-title">
-            <div><strong>李怡霖</strong><span>S003 逐字稿整理與自定義名詞工作</span></div>
+            <div><strong>李0霖</strong><span>S003 逐字稿整理與自定義名詞工作</span></div>
             <div class="score">83<small>總分</small></div>
           </div>
           <div class="metric"><div class="metric-line"><span>工作實際結合</span><span>30 / 35</span></div><div class="bar"><span style="width:85.7%"></span></div></div>
@@ -704,14 +719,18 @@
             </ul>
           </div>
           <div class="feedback-block">
-            <h4>補強建議</h4>
-            <p class="lede">補 1166 / 494 / 9 的來源或處理紀錄，並補完整前後對照。</p>
+            <h4>下一步改善建議</h4>
+            <ul>
+              <li>補一段逐字稿處理前後對照，標出 Codex 初篩、人工確認、最後採用的差異。</li>
+              <li>說明 1166 / 494 / 9 分別代表總筆數、候選詞或確認詞，並附來源或處理紀錄。</li>
+              <li>把 prompt 固定成可重複模板：目的、輸入資料、輸出欄位、不確定時如何標記。</li>
+            </ul>
           </div>
         </article>
 
         <article class="card">
           <div class="card-title">
-            <div><strong>黃駿宇</strong><span>S005 老身保追償單生成器</span></div>
+            <div><strong>黃0宇</strong><span>S005 老身保追償單生成器</span></div>
             <div class="score">83<small>總分</small></div>
           </div>
           <div class="metric"><div class="metric-line"><span>工作實際結合</span><span>33 / 35</span></div><div class="bar"><span style="width:94.3%"></span></div></div>
@@ -726,14 +745,44 @@
             </ul>
           </div>
           <div class="feedback-block">
-            <h4>補充說明</h4>
-            <p class="lede">S004 文獻閱讀紀錄 App 得分 55，作為補充作品，不列入主榜。</p>
+            <h4>下一步改善建議</h4>
+            <ul>
+              <li>補一組去識別化測試資料，呈現匯入欄位、辨識結果、費率計算與總額檢核。</li>
+              <li>補操作截圖或短流程紀錄，從匯入、預覽、人工確認到 Word / Excel 匯出都要看得到。</li>
+              <li>加一張人工覆核清單：費率、總額、機關格式、案號與姓名欄位不得自動送出。</li>
+            </ul>
           </div>
         </article>
 
         <article class="card">
           <div class="card-title">
-            <div><strong>李芝璇</strong><span>S006 語音轉文字名詞修正 v0 簡報網站</span></div>
+            <div><strong>黃0宇</strong><span>S004 文獻閱讀紀錄 App</span></div>
+            <div class="score">55<small>總分</small></div>
+          </div>
+          <div class="metric"><div class="metric-line"><span>工作實際結合</span><span>24 / 35</span></div><div class="bar"><span style="width:68.6%"></span></div></div>
+          <div class="metric"><div class="metric-line"><span>AI 互動能力</span><span>17 / 30</span></div><div class="bar"><span style="width:56.7%"></span></div></div>
+          <div class="metric"><div class="metric-line"><span>現實成果能力</span><span>14 / 35</span></div><div class="bar"><span style="width:40%"></span></div></div>
+          <div class="feedback-block">
+            <h4>評語</h4>
+            <ul>
+              <li>文獻閱讀、摘錄、頁碼紀錄與 Word 匯出的工作情境清楚，工具方向合理。</li>
+              <li>目前比較像 App 方案介紹，較少看到 Codex 如何協助整理、修正或驗證文獻內容。</li>
+              <li>成果若要回到工作，需要補最小可用流程與可檢查輸出，而不是只停在功能構想。</li>
+            </ul>
+          </div>
+          <div class="feedback-block">
+            <h4>下一步改善建議</h4>
+            <ul>
+              <li>先做最小可用版本：匯入一篇去識別化 PDF / 文字，輸出引用句、頁碼、摘要與 Word / 表格。</li>
+              <li>補 Codex 對話紀錄，展示如何要求摘要、頁碼依據、引用格式與不確定標記。</li>
+              <li>加人工確認欄位：引用是否準確、頁碼是否一致、摘要是否超出原文。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-title">
+            <div><strong>李0璇</strong><span>S006 語音轉文字名詞修正 v0 簡報網站</span></div>
             <div class="score">79<small>總分</small></div>
           </div>
           <div class="metric"><div class="metric-line"><span>工作實際結合</span><span>31 / 35</span></div><div class="bar"><span style="width:88.6%"></span></div></div>
@@ -748,14 +797,18 @@
             </ul>
           </div>
           <div class="feedback-block">
-            <h4>補強建議</h4>
-            <p class="lede">補實際語音 / 逐字稿處理範例、2x2 對照表樣本與送審前人工確認紀錄。</p>
+            <h4>下一步改善建議</h4>
+            <ul>
+              <li>補一段去識別化語音 / 逐字稿範例，列出錯字候選、時間點、人工判斷與最後採用詞。</li>
+              <li>把 2x2 對照表做成固定欄位：原詞、疑似正確詞、判斷依據、是否送審。</li>
+              <li>區分 v0 簡報展示與真正工作流程，列出下一版要做成表格或小工具的最小版本。</li>
+            </ul>
           </div>
         </article>
 
         <article class="card">
           <div class="card-title">
-            <div><strong>吳婷宇</strong><span>S002 語音轉文字自定義名詞修正</span></div>
+            <div><strong>吳0宇</strong><span>S002 語音轉文字自定義名詞修正</span></div>
             <div class="score">67<small>總分</small></div>
           </div>
           <div class="metric"><div class="metric-line"><span>工作實際結合</span><span>28 / 35</span></div><div class="bar"><span style="width:80%"></span></div></div>
@@ -770,8 +823,12 @@
             </ul>
           </div>
           <div class="feedback-block">
-            <h4>補強建議</h4>
-            <p class="lede">補實際逐字稿處理流程、具體 prompt 與修正紀錄。</p>
+            <h4>下一步改善建議</h4>
+            <ul>
+              <li>先用 5 到 10 分鐘去識別化逐字稿測試，輸出「原句、疑似錯字、修正建議、人工確認」表。</li>
+              <li>補一輪 prompt 修正紀錄：第一次輸出哪裡不準、如何要求 Codex 修正、最後採用什麼規則。</li>
+              <li>把嚴格 / 彈性矩陣改成詞庫規則：哪些詞不可自動改、哪些詞可建議但必須人工確認。</li>
+            </ul>
           </div>
         </article>
       </div>

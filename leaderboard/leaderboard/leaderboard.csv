@@ -1,7 +1,7 @@
 rank,display_order,submission_id,student_alias,work_scenario,final_total,tie_group_id,manual_confirm_status,confirmed_by,confirmed_at,notes
-1,1,S001,劉奕吟,研習營資料整理,96,,reviewed,,,工作結合、AI互動、成果落地與安全邊界都完整
-2,2,S003,李怡霖,逐字稿整理與自定義名詞工作,83,TIE-083,reviewed_needs_source_check,,,與 S005 同分；AI互動較強，量化數據來源待補
-2,3,S005,黃駿宇,老身保追償單生成器,83,TIE-083,reviewed_needs_output_check,,,與 S003 同分；成果落地較強，AI互動證據較少
-4,4,S006,李芝璇,語音轉文字名詞修正 v0 簡報網站,79,,reviewed_needs_evidence_check,,,AI協作流程清楚；成果偏展示型網站
-5,5,S002,吳婷宇,語音轉文字自定義名詞修正,67,,needs_recheck,,,流程與名詞矩陣清楚；實作或驗證證據較少
-6,6,S004,黃駿宇,文獻閱讀紀錄 App,55,,needs_recheck,,,工具構想清楚；Codex互動與實作證據不足
+1,1,S001,劉0吟,研習營資料整理,96,,reviewed,,,工作結合、AI互動、成果落地與安全邊界都完整
+2,2,S003,李0霖,逐字稿整理與自定義名詞工作,83,TIE-083,reviewed_needs_source_check,,,與 S005 同分；AI互動較強，量化數據來源待補
+2,3,S005,黃0宇,老身保追償單生成器,83,TIE-083,reviewed_needs_output_check,,,與 S003 同分；成果落地較強，AI互動證據較少
+4,4,S006,李0璇,語音轉文字名詞修正 v0 簡報網站,79,,reviewed_needs_evidence_check,,,AI協作流程清楚；成果偏展示型網站
+5,5,S002,吳0宇,語音轉文字自定義名詞修正,67,,needs_recheck,,,流程與名詞矩陣清楚；實作或驗證證據較少
+6,6,S004,黃0宇,文獻閱讀紀錄 App,55,,needs_recheck,,,工具構想清楚；Codex互動與實作證據不足
