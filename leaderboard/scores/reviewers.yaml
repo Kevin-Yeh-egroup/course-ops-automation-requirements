@@ -1,0 +1,40 @@
+reviewers_version: "2026-07-06-v2"
+status: "active_draft"
+reviewers:
+  - reviewer_id: "course_alignment"
+    display_name: "課程對齊評審"
+    focus:
+      - "是否看懂 Codex 如何結合工作"
+      - "是否避免把作業變成技巧展示"
+      - "是否保留人工判斷"
+  - reviewer_id: "risk_safety"
+    display_name: "風險與人工確認評審"
+    focus:
+      - "個資、金額、正式資料、外部發送、帳號權限、公開部署"
+      - "紅線與扣分上限"
+  - reviewer_id: "work_usefulness"
+    display_name: "工作實用性評審"
+    focus:
+      - "是否能放回學員自己的工作流程"
+      - "是否減少漏項"
+      - "是否節省重複整理時間"
+      - "是否能被同仁接手"
+  - reviewer_id: "ai_interaction"
+    display_name: "AI 互動評審"
+    focus:
+      - "是否能提供背景、資料、限制與輸出格式"
+      - "是否能描述修正 AI 產出的方式"
+      - "是否知道不確定時要交回人工確認"
+  - reviewer_id: "evidence_quality"
+    display_name: "證據與資料品質評審"
+    focus:
+      - "來源"
+      - "檢查紀錄"
+      - "截圖或驗收證據"
+      - "修正紀錄"
+  - reviewer_id: "taiwan_workplace_reader"
+    display_name: "台灣職場讀者評審"
+    focus:
+      - "繁體中文是否自然"
+      - "對內或對外語氣是否合適"
+      - "交接說明是否好讀"

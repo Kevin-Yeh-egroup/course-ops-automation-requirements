@@ -1,0 +1,13 @@
+submission_id: "S003"
+student_alias: "李怡霖"
+rubric_version: "2026-07-06-v2"
+review_status: "reviewed_needs_source_check"
+reviewed_at: "2026-07-06"
+criteria_scores:
+  I1_work_integration: 30
+  I2_ai_interaction: 26
+  I3_real_world_delivery: 27
+final_total: 83
+safety_status: "needs_recheck"
+panel_notes: "逐字稿流程、prompt 設計與 AI/人分工清楚；1166/494/9 的來源或處理紀錄可再補。"
+

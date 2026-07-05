@@ -1,0 +1,13 @@
+submission_id: "S001"
+student_alias: "劉奕吟"
+rubric_version: "2026-07-06-v2"
+review_status: "reviewed"
+reviewed_at: "2026-07-06"
+criteria_scores:
+  I1_work_integration: 34
+  I2_ai_interaction: 29
+  I3_real_world_delivery: 33
+final_total: 96
+safety_status: "pass"
+panel_notes: "研習營資料整理與人工確認最完整；Codex 介入點、資料邊界、二次驗證都清楚。"
+

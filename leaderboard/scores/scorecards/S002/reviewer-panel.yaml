@@ -1,0 +1,13 @@
+submission_id: "S002"
+student_alias: "吳婷宇"
+rubric_version: "2026-07-06-v2"
+review_status: "needs_recheck"
+reviewed_at: "2026-07-06"
+criteria_scores:
+  I1_work_integration: 28
+  I2_ai_interaction: 20
+  I3_real_world_delivery: 19
+final_total: 67
+safety_status: "needs_recheck"
+panel_notes: "工作流程與名詞矩陣清楚，但實際工具執行、具體 prompt 回合與驗證證據較少。"
+

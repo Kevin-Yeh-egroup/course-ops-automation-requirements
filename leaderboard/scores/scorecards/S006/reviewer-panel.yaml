@@ -1,0 +1,13 @@
+submission_id: "S006"
+student_alias: "李芝璇"
+rubric_version: "2026-07-06-v2"
+review_status: "reviewed_needs_evidence_check"
+reviewed_at: "2026-07-06"
+criteria_scores:
+  I1_work_integration: 31
+  I2_ai_interaction: 28
+  I3_real_world_delivery: 20
+final_total: 79
+safety_status: "needs_recheck"
+panel_notes: "AI 協作流程與人工判斷邊界清楚；成果偏 v0 簡報網站，工作落地證據可再補。"
+

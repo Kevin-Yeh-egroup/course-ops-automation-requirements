@@ -1,0 +1,13 @@
+submission_id: "S004"
+student_alias: "黃駿宇"
+rubric_version: "2026-07-06-v2"
+review_status: "needs_recheck"
+reviewed_at: "2026-07-06"
+criteria_scores:
+  I1_work_integration: 24
+  I2_ai_interaction: 17
+  I3_real_world_delivery: 14
+final_total: 55
+safety_status: "needs_recheck"
+panel_notes: "文獻整理工具構想完整，但目前較像 App 方案介紹；Codex 互動與實作證據不足。"
+

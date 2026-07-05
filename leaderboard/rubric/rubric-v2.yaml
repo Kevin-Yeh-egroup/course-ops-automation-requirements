@@ -1,0 +1,87 @@
+rubric_version: "2026-07-06-v2"
+status: "active_draft"
+course_title: "Codex 行政工作實驗課"
+course_url: "https://course-ops-automation-requirements.vercel.app"
+score_scale:
+  max_total: 100
+  safety_gate_first: true
+principle: "這不是技巧競賽，而是理解診斷。評分要看學員是否理解 Codex 如何進入自己的工作流程，是否能有效與 AI 互動，以及是否能把需求落成可用成果。"
+
+criteria:
+  - criterion_id: "I1_work_integration"
+    name: "Codex 與工作實際結合"
+    max_points: 35
+    core_question: "是否選到自己工作中的真實片段，並說清楚 Codex 放在哪一步、成果如何回到工作流程。"
+    score_bands:
+      "0-10": "主要是在展示 Codex 或 AI 概念，和自己的實際工作關聯薄弱。"
+      "11-20": "有工作情境，但工作片段、痛點或使用方式仍偏模糊。"
+      "21-28": "能描述真實工作片段、原本痛點、Codex 介入點與初步成果。"
+      "29-35": "能清楚說明原本工作、Codex 介入步驟、人工保留事項，以及成果如何回到工作流程使用。"
+    evidence_required:
+      - "真實工作片段"
+      - "原本痛點或耗時處"
+      - "Codex 介入的位置"
+      - "工作流程中的使用方式"
+
+  - criterion_id: "I2_ai_interaction"
+    name: "與 AI 的互動能力"
+    max_points: 30
+    core_question: "是否能提供背景、資料、限制、輸出格式與人工確認規則，並展現修正 AI 產出的能力。"
+    score_bands:
+      "0-8": "只丟一句話或展示結果，缺少背景、限制、資料與檢查。"
+      "9-16": "能描述需求，但互動偏一次性，缺少修正、追問或驗證。"
+      "17-24": "能給出背景、格式、規則與限制，也能指出 AI 產出需要修正的地方。"
+      "25-30": "能像帶助理一樣和 AI 協作：提供資料、設定邊界、逐步修正、要求檢查，並保留人的判斷。"
+    evidence_required:
+      - "給 AI 的任務描述或 prompt 方向"
+      - "資料來源與限制"
+      - "輸出格式或檢查規則"
+      - "不確定時如何交回人工確認"
+
+  - criterion_id: "I3_real_world_delivery"
+    name: "需求轉換成現實成果的能力"
+    max_points: 35
+    core_question: "是否能把模糊需求變成可使用、可檢查、可交接的草稿、表格、流程、頁面、清單或工具。"
+    score_bands:
+      "0-10": "停在想法、概念或聊天紀錄，沒有可用產出。"
+      "11-20": "有產出，但仍像範例或展示，難以直接放回工作。"
+      "21-28": "有可用成果，且能說明如何檢查、如何修正或如何交接。"
+      "29-35": "成果已接近真實工作可用，包含輸入資料、處理步驟、檢查方式、人工確認點與下一步。"
+    evidence_required:
+      - "實際成果"
+      - "可檢查方式"
+      - "可交接說明"
+      - "下一步或限制"
+
+safety_gate:
+  purpose: "安全邊界是列入排行榜前的門檻，不是主要競分項。"
+  caps:
+    - rule_id: "CAP_no_human_review"
+      condition: "沒有任何人工確認點"
+      max_score: 80
+    - rule_id: "CAP_no_verification"
+      condition: "沒有可檢查證據"
+      max_score: 70
+    - rule_id: "CAP_unclear_data_boundary"
+      condition: "資料來源、正式資料、公開範圍或不可做事項不清楚"
+      max_score: 75
+  red_lines:
+    - "未授權外部寄送、刪除、正式資料異動、付款或帳號權限變更"
+    - "公開真實個資、敏感資料、金額或內部文件"
+    - "把 AI 推測包裝成已驗證事實"
+    - "讓 AI 做正式核准、拒絕、資格認定、金額結論或高風險專業判斷"
+  red_line_action: "excluded_from_leaderboard"
+
+not_primary_bonus:
+  - "Codex 進階技巧"
+  - "多 agent 或複雜 prompt"
+  - "漂亮 UI"
+  - "公開部署"
+  - "全自動流程"
+
+tie_breakers:
+  - "同分同名次"
+  - "同分卡在獎項門檻時，先比 I1_work_integration"
+  - "再比 I3_real_world_delivery"
+  - "仍同分則標記 tie_needs_decision，由 Kevin 人工裁示"
+

@@ -1,0 +1,13 @@
+submission_id: "S005"
+student_alias: "黃駿宇"
+rubric_version: "2026-07-06-v2"
+review_status: "reviewed_needs_output_check"
+reviewed_at: "2026-07-06"
+criteria_scores:
+  I1_work_integration: 33
+  I2_ai_interaction: 18
+  I3_real_world_delivery: 32
+final_total: 83
+safety_status: "needs_recheck"
+panel_notes: "追償單工具最接近真實可用成果；AI 互動與 prompt 證據較少，正式文件需人工審核。"
+

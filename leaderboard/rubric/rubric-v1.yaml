@@ -1,0 +1,125 @@
+rubric_version: "2026-07-03-draft-v0.1"
+status: "pending_kevin_confirmation"
+course_title: "Codex 行政工作實驗課"
+course_url: "https://course-ops-automation-requirements.vercel.app"
+score_scale:
+  max_total: 100
+  ranking_requires_status: "reviewed"
+  safety_gate_first: true
+principle: "先看工作實際應用、安全與可檢查，再看完成度；Codex 進階技巧、漂亮介面或複雜自動化只作為支撐，不作為主要加分。"
+learner_assumption: "多數學員是 Codex 新手；只要能把真實工作片段整理成可用、可檢查、可交接的成果，就可以拿高分。"
+
+criteria:
+  - criterion_id: "C1_scope_boundary"
+    name: "工作片段與資料邊界"
+    max_points: 15
+    evidence_required:
+      - "選定的行政工作片段"
+      - "資料來源與使用範圍"
+      - "不能猜、不能自動處理、不能公開的項目"
+    anchors:
+      high: "目的、對象、資料來源、交付物與不可做事項都清楚。"
+      middle: "工作主題清楚，但資料來源或邊界仍有缺漏。"
+      low: "只描述想做什麼，看不出資料從哪裡來或哪些不能做。"
+
+  - criterion_id: "C2_workflow_prompt"
+    name: "流程整理與工作應用設計"
+    max_points: 20
+    evidence_required:
+      - "原本流程或操作步驟"
+      - "工作上會怎麼使用這份成果"
+      - "新手也能照著做的簡單指令或操作方式"
+      - "資料不足時的補問規則"
+    anchors:
+      high: "開始條件、步驟、輸入、輸出、補問與停止點清楚，且能放回實際工作使用。"
+      middle: "有基本流程與指令，但例外情況或補問規則不完整。"
+      low: "只有聊天紀錄或結果，缺少可重做的流程。"
+
+  - criterion_id: "C3_checkable_output"
+    name: "工作成果可用性與可檢查性"
+    max_points: 25
+    evidence_required:
+      - "能放回工作使用的檔案、表格、清單、頁面、草稿或 checklist"
+      - "驗收清單或來源比對"
+      - "修正紀錄"
+    anchors:
+      high: "有清楚成品，能依來源或檢查表驗收，且能直接支援工作中的下一步。"
+      middle: "有成品，但檢查依據、欄位或修正紀錄不足。"
+      low: "只停在概念、摘要或口頭說明，沒有可檢查輸出。"
+
+  - criterion_id: "C4_human_review_safety"
+    name: "人工確認與安全控管"
+    max_points: 20
+    evidence_required:
+      - "人工確認清單"
+      - "風險項目標記"
+      - "外部發送、正式資料、個資、金額、權限、公開部署邊界"
+    anchors:
+      high: "需要人工確認的內容、確認人、停止點與不可自動化項目都清楚。"
+      middle: "知道要人工確認，但沒有列清楚確認項目或影響範圍。"
+      low: "把正式判斷、外部發送或敏感資料交給 AI 自動處理。"
+
+  - criterion_id: "C5_handoff_reuse"
+    name: "可交接與可重做"
+    max_points: 15
+    evidence_required:
+      - "README 或交接說明"
+      - "資料位置"
+      - "重跑步驟"
+      - "已知限制與下一次需要補的欄位"
+    anchors:
+      high: "另一位同仁可依說明重跑、檢查、修改與接手。"
+      middle: "大致能理解，但缺少資料位置、重跑步驟或限制說明。"
+      low: "只有本人知道怎麼做，無法交接。"
+
+  - criterion_id: "C6_effect_reflection"
+    name: "工作應用效果與下一步"
+    max_points: 5
+    evidence_required:
+      - "原本大約花多久"
+      - "Codex 幫到哪一段"
+      - "仍需人工確認"
+      - "下一次要修正什麼"
+    anchors:
+      high: "能具體說明節省或改善之處，以及下一步修正。"
+      middle: "有反思但偏概念。"
+      low: "只說好用或不好用，沒有可操作的下一步。"
+
+not_primary_bonus:
+  - "使用進階 Codex 技巧"
+  - "使用多 agent 或複雜 prompt"
+  - "公開部署或漂亮 UI"
+  - "全自動流程"
+  - "技術複雜度"
+
+caps_and_exclusions:
+  - rule_id: "CAP_no_human_review"
+    condition: "沒有人工確認清單或人工確認欄位"
+    max_score: 80
+  - rule_id: "CAP_no_verification"
+    condition: "沒有檢查證據、來源比對、截圖或驗收紀錄"
+    max_score: 70
+  - rule_id: "CAP_unclear_data_boundary"
+    condition: "資料來源、公開範圍或不可做事項不清楚"
+    max_score: 75
+  - rule_id: "CAP_high_risk_repaired"
+    condition: "曾出現高風險處理，但已補救且未造成外部影響"
+    max_score: 60
+  - rule_id: "EXCLUDE_red_line"
+    condition: "未授權外部寄送、正式資料異動、刪除、付款、帳號權限變更、公開敏感資料、把 AI 推測包裝成已驗證事實"
+    action: "excluded_from_leaderboard"
+
+tie_breakers:
+  - "同分同名次"
+  - "同分卡在獎項門檻時，先比 C4_human_review_safety"
+  - "再比 C3_checkable_output"
+  - "仍同分則標記 tie_needs_decision，由 Kevin 人工裁示"
+
+review_status_values:
+  - "draft"
+  - "pending_review"
+  - "reviewed"
+  - "needs_recheck"
+  - "tie_needs_decision"
+  - "confirmed"
+  - "excluded"

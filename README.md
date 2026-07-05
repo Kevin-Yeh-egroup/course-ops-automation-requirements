@@ -52,3 +52,14 @@
 - HTML 含 `<meta name="robots" content="noindex,nofollow,noarchive">`。
 - `/robots.txt` 回 `User-agent: *` 與 `Disallow: /`。
 - `/people/*`、`/shared-modules/*`、`/training/*`、`/outputs/*` 不應成為可直接閱讀的 production 路徑。
+
+## 課後作業成績單
+
+課後作業評分與排行榜目前放在本機 repo 內，不放入 `public/`，因此不會因 Vercel 部署自動公開。
+
+- 學員層級排行榜：`leaderboard/leaderboard/leaderboard-by-student.md`
+- 作品層級排行榜：`leaderboard/leaderboard/leaderboard.md`
+- 成績單式回饋：`leaderboard/leaderboard/report-cards.md`
+- 評分標準：`leaderboard/rubric/rubric-v2.yaml`
+
+如需公開到課程網站，需先確認是否公開學員姓名與分數，再另行建立 `public/leaderboard/` 頁面。

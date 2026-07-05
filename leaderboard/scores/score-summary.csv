@@ -1,0 +1,7 @@
+submission_id,reviewer_count,final_total,score_variance,missing_reviewers,summary_status,notes
+S001,3,96,1,,reviewed,"I1=34; I2=29; I3=33; safety=pass; 研習營資料整理與人工確認最完整"
+S002,3,67,14,,needs_recheck,"I1=28; I2=20; I3=19; safety=needs_recheck/cap70 note; 流程與矩陣清楚但實際驗證較少"
+S003,3,83,4,,reviewed_needs_source_check,"I1=30; I2=26; I3=27; safety=needs_recheck note; prompt 與人機分工清楚，量化數據來源待補"
+S004,3,55,25,,needs_recheck,"I1=24; I2=17; I3=14; safety=needs_recheck/cap70 note; 文獻工具構想完整但 Codex 互動與實作證據較少"
+S005,3,83,1,,reviewed_needs_output_check,"I1=33; I2=18; I3=32; safety=needs_recheck note; 追償單工具最接近真實可用，但 AI 互動證據較少"
+S006,3,79,19,,reviewed_needs_evidence_check,"I1=31; I2=28; I3=20; safety=needs_recheck note; AI 協作流程清楚，成果偏簡報網站"

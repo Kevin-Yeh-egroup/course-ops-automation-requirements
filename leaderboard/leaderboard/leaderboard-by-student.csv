@@ -1,0 +1,6 @@
+rank,display_order,student_alias,best_submission_id,best_work_scenario,best_total,other_submissions,manual_confirm_status,notes
+1,1,劉奕吟,S001,研習營資料整理,96,,reviewed,工作結合、AI互動、成果落地與安全邊界都完整
+2,2,李怡霖,S003,逐字稿整理與自定義名詞工作,83,,reviewed_needs_source_check,AI互動與prompt設計較強；量化數據來源待補
+2,3,黃駿宇,S005,老身保追償單生成器,83,S004,reviewed_needs_output_check,取最高分作品S005；S004文獻App為另一份作品
+4,4,李芝璇,S006,語音轉文字名詞修正 v0 簡報網站,79,,reviewed_needs_evidence_check,AI協作流程清楚；成果偏展示型網站
+5,5,吳婷宇,S002,語音轉文字自定義名詞修正,67,,needs_recheck,流程與名詞矩陣清楚；實作或驗證證據較少
